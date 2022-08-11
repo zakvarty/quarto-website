@@ -1,0 +1,55 @@
+project:
+  type: website
+
+website:
+  title: "Zak Varty"
+  site-url: "https://zakvarty.com/"
+  favicon: "assets/00_favicon/favicon.ico"
+  twitter-card: true
+#    creator: "@zakvarty"
+  google-analytics: "G-326407710"
+  navbar:
+    background: primary
+    #foreground: "#f7f8fc"
+    search: true
+    #left:
+    #  - href: index.qmd
+    #    text: Home
+    #  - about.qmd
+    right:
+      - text: Home
+        href: index.qmd
+      - text: About 
+        href: about.qmd
+      - text: Professional 
+        menu:
+          - professional/research.qmd
+          - professional/teaching.qmd
+          - professional/talks.qmd 
+          - professional/bookmarks.qmd
+      - text: Personal
+        menu:
+          - personal/reading-record.qmd
+      - icon: github
+        href: www.github.com
+  page-footer: 
+    #background: light
+    border: true
+    left: "Copyright 2022, Zak Varty."
+    center: "" 
+    right: 
+      - icon: twitter 
+        href: "https://www.twitter.com/zakvarty"      
+      - icon: github
+        href: "https://github.com/zakvarty"
+      - icon: google 
+        href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
+
+format:
+  html:
+    theme: litera #flatly
+    css: styles.css
+    toc: true
+
+
+

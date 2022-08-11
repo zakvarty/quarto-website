@@ -1,0 +1,34 @@
+---
+title: ""
+image: assets/ZV_270_270.jpg
+---
+
+## Summary
+
+::: small_left
+<img style = "border-radius: 10%;" src="assets/ZV_270_270.jpg" alt="Headshot Zak Varty">
+:::
+Zak Varty is a statistician, data scientist and educator. 
+
+He is a Teaching Fellow in Statistics at Imperial College London where he teaches courses and supervises research projects in statistics, data science and data ethics.
+
+Outside of work, Zak enjoys spending time reading, running and baking tasty treats.
+ 
+</br>
+
+## Education
+
+University of California, San Diego | San Diego, CA
+PhD in Mathematics | Sep 2011 - June 2015
+
+Macalester College | St. Paul MA
+B.A in Economics | Sep 2007 - June 2011
+
+## Experience
+
+Wengo Analytics | Head Data Scientist | April 2018 - present
+
+GeoScynce | Chief Analyst | Spet 2012 - April 2018
+
+
+
