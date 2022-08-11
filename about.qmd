@@ -18,17 +18,50 @@ Outside of work, Zak enjoys spending time reading, running and baking tasty trea
 
 ## Education
 
-University of California, San Diego | San Diego, CA
-PhD in Mathematics | Sep 2011 - June 2015
+__PhD Statistics and Operational Research__ | 2017 - 2021
 
-Macalester College | St. Paul MA
-B.A in Economics | Sep 2007 - June 2011
+_Title:_ [Statistical Modelling of Induced Earthquakes](https://eprints.lancs.ac.uk/id/eprint/160193/1/2021VartyPhD.pdf)
+
+_Institution:_ Lancaster University, UK.  
+
+
+__MRes Statistics and Operational Research__ | 2016 - 2017
+
+_Grade:_ Distinction
+
+_Institution:_ Lancaster University, UK.  
+
+
+__MSci Mathematics and Statistics (Study Abroad)__ | 2012 - 2016
+
+_Grade:_ First Class (Honours)
+
+_Institution:_ Lancaster University, UK and University of Western Ontario, CA.  
+
+
 
 ## Experience
 
-Wengo Analytics | Head Data Scientist | April 2018 - present
+__Teaching Fellow, Imperial College London__ | Aug 2021 - present
 
-GeoScynce | Chief Analyst | Spet 2012 - April 2018
+I teach on the online MSc in Machine Learning and Data Science course, support undergraduate student development, and supervise research projects at the undergraduate and postgraduate level.
+
+__Lecturer, Lancaster University__ | Feb 2021 - Apr 2021
+
+Fixed term lecturship in department of Mathematics and Statistics. I adapted for online delivery and co-delivered a postgraduate course in extreme value theory.
+
+__Statistical Contractor, Shell Global Solutions, NL.__ | Oct 2019 - Jan 2020
+
+Four month placement as a statistical contractor. I worked within the statistics and data-science teams on two projects related to corrosion management. 
+
+__Intern, Huawei Technologies, CHN.__ | Jul - Aug 2016
+
+Fully sponsored internship in Beijing and Shenzhen for high performing STEM undergraduates. Immersive education in large-scale ICT infrastructure, intercultural relations and international business management.
+
+__Reseach Intern, Lancaster University, UK.__ | Jul - Sept 2015
+
+Summer research project within STOR-i CDT, investigating modelling techniques to estimate pharmacokinetic parameters from small data sets.
+
 
 
 

@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zakvarty.com/index.html</loc>
-    <lastmod>2022-08-11T12:05:45.024Z</lastmod>
+    <lastmod>2022-08-11T16:50:10.899Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/about.html</loc>
-    <lastmod>2022-08-11T11:59:57.124Z</lastmod>
+    <lastmod>2022-08-11T17:23:14.091Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/bookmarks.html</loc>
@@ -19,5 +19,17 @@
   <url>
     <loc>https://zakvarty.com/personal/reading-record.html</loc>
     <lastmod>2022-08-11T11:29:37.898Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/professional/teaching.html</loc>
+    <lastmod>2022-08-11T16:50:09.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/professional/research.html</loc>
+    <lastmod>2022-08-11T16:50:10.242Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/professional/talks.html</loc>
+    <lastmod>2022-08-11T16:50:10.561Z</lastmod>
   </url>
 </urlset>
