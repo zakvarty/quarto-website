@@ -6,7 +6,7 @@ image: assets/ZV_270_270.jpg
 ## Summary
 
 ::: small_right
-<img style = "border-radius: 10%;" src="assets/ZV_270_270.jpg" alt="Headshot Zak Varty">
+<img style = "border-radius: 10%;" src="assets/00_avatars/ZV_270_270.jpg" alt="Headshot Zak Varty">
 :::
 Zak Varty is a statistician, data scientist and educator. 
 

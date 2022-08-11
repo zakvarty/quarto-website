@@ -19,7 +19,7 @@ about:
 :::{#hero-heading}
 
 ::: medium_right
-<img style = "border-radius: 10%;" src="assets/ZV_270_270.jpg" alt="Headshot Zak Varty">
+<img style = "border-radius: 10%;" src="assets/00_avatars/ZV_270_270.jpg" alt="Headshot Zak Varty">
 :::
 I am a __statistician__, __data scientist__  and __educator__. 
 
