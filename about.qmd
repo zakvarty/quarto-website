@@ -5,7 +5,7 @@ image: assets/ZV_270_270.jpg
 
 ## Summary
 
-::: small_left
+::: small_right
 <img style = "border-radius: 10%;" src="assets/ZV_270_270.jpg" alt="Headshot Zak Varty">
 :::
 Zak Varty is a statistician, data scientist and educator. 
@@ -14,7 +14,7 @@ He is a Teaching Fellow in Statistics at Imperial College London where he teache
 
 Outside of work, Zak enjoys spending time reading, running and baking tasty treats.
  
-</br>
+
 
 ## Education
 
@@ -60,7 +60,13 @@ Fully sponsored internship in Beijing and Shenzhen for high performing STEM unde
 
 __Reseach Intern, Lancaster University, UK.__ | Jul - Sept 2015
 
-Summer research project within STOR-i CDT, investigating modelling techniques to estimate pharmacokinetic parameters from small data sets.
+Summer research project within STOR-i CDT, investigating modelling techniques to estimate pharmacokinetic parameters from small data sets. 
+
+## Outreach 
+
+I was an active member of the Royal Statistical Society’s Lancashire & East Cumbria local group from 2017-2020. The group organises seminars and events to bring together those with an interest in data both within and outside of academia. I served as treasurer for the group for two years from 2017-2019.
+
+I have also been involved in delivering university open days since 2016. At these events I have delivered mini-lectures to promote statistical thinking, raise awareness of available funding, and to promote the option of studying abroad.
 
 
 

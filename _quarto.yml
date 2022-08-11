@@ -30,8 +30,10 @@ website:
       - text: Personal
         menu:
           - personal/reading-record.qmd
+      - icon: twitter 
+        href: "https://www.twitter.com/zakvarty"      
       - icon: github
-        href: www.github.com
+        href: "https://github.com/zakvarty"
   page-footer: 
     #background: light
     border: true

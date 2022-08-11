@@ -114,3 +114,21 @@ a.about-link:hover{
 .small_left img, .small_right img{
   max-width: 100%;
 }
+
+
+.medium_right, .medium_left {
+  display: inline-block;
+  width: 55%;
+  max-width: 270px;
+}
+.medium_left {
+  float: left;
+  margin: 1em 1em 1em 0;
+}
+.medium_right {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+.medium_left img, .medium_right img{
+  max-width: 100%;
+}

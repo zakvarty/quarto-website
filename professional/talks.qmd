@@ -1,1 +1,12 @@
 # Talks
+
+## Upcoming
+
+__September 2022: Royal Statistical Society Conference __
+
+_Incorporating Ethics into the Data Science Curriculum_
+
+
+## Archive 
+
+Slides from talks will be added here. 
