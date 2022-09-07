@@ -14,7 +14,7 @@ Data-driven decision making is now pervasive and impacts us all. Your data is us
 
 The ways in which these predictive models can fail mathematically form a core part of the training for an aspiring statistician or data scientist. In contrast, the potential for ethical failures in these same models is rarely covered in-depth during as part of this initial training. As a result, these modes of failure are often not considered until those predictive models have been put into production and are actively causing harm. We argue that to prevent this harm, the ethical impacts of using data to make decisions must be made core to the curriculum of both statistics and data science.  
 
-This talk will describe how this may be done in a way that is appealing to an audience with a strong mathematical focus and that does not require the authoring of extended essays or moral treaties. The discussion is structured around the development of a post-graduate course in the Ethics of Data Science, but the core ideas are salient to all statistics training. Throughout, we give actionable ways in which these topics may be integrated into statistical training at all levels.  
+This talk will describe how this may be done in a way that is appealing to an audience with a strong mathematical focus and that does not require the authoring of extended essays or moral treaties. The discussion is structured around the development of a post-graduate course in the Ethics of Data Science, but the core ideas are salient to all statistics training. Throughout, we give actionable ways in which these topics may be integrated into statistical training at all levels. 
 
 ---
 

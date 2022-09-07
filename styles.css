@@ -25,11 +25,10 @@
   color: #b2c2bc !important;
 }
 
-.nav-link:hover{
+.nav-link:hover, .nav-link:hover{
+  color: teal !important;
   text-decoration:  underline;
-  color: #b2c2bc !important;
 }
-
 
 .dropdown-item {
   color: #F4F5FF;
@@ -97,6 +96,16 @@ a.about-link:hover{
   color: #00aeae /*#d22dcb*/ !important;
 }
 
+.btn-outline-primary{
+  color: teal !important;
+  border-color: teal !important;
+}
+
+.btn-outline-primary:hover{
+  color: white !important;
+  background-color: teal !important;
+  border-color: teal !important;
+}
 
 .small_right, .small_left {
   display: inline-block;
