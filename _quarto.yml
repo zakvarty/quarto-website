@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Zak Varty"
-  site-url: "https://zakvarty.com/"
+  site-url: "https://zakvarty.com"
   favicon: "assets/00_favicon/favicon.ico"
   twitter-card: true
 #    creator: "@zakvarty"
@@ -21,6 +21,8 @@ website:
         href: index.qmd
       - text: About 
         href: about.qmd
+      - text: Blog
+        href: blog.qmd
       - text: Professional 
         menu:
           - professional/research.qmd
@@ -49,7 +51,7 @@ website:
 
 format:
   html:
-    theme: litera #flatly
+    theme: litera #[,custom.scss] #flatly
     css: styles.css
     toc: true
 

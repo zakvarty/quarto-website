@@ -1,0 +1,71 @@
+---
+title: "Setting up a quarto blog"
+description: |
+    Adding a blog _within_ a quarto website
+date: "2022-09-26"
+categories:
+  - quarto
+  - tutorial
+code-fold: true
+image: florian-klauer-mk7D-4UCfmg-unsplash.jpg
+image-alt: Mechanical typewriter on white background.
+image-cap: Image caption
+draft: false
+freeze: false
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+---
+
+# What am I trying to do?
+
+::: small_right
+<img style = "border-radius: 10%;" src="florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background">
+:::
+
+My aim here is to set up a blog within an existing quarto website. I want the blog to be a subdomain of the main site (`zakvarty.com/blog`) and for it to inherit the styling of that site. 
+
+It probably would have been easier to make the blog a subdomain (`blog.zakvarty.com`) and use two separate but matching style files to make those sites look coherent. However, I wanted to make the most of the built in search features on quarto websites and am a glutton for punnishment. 
+
+Credit to [Drew Dimmery](https://ddimmery.com/), whose website I used alongside the [quarto docs](https://quarto.org/docs/guide/) to work out how to get all these pieces working together. 
+
+
+# Steps
+
+1. Create a subdirectory of the website called `blog/`. This has subfolders for each blog post and will contain the files of metadata that are common to all blog posts (e.g. default settings for YAML headers information and a bibliography file).
+<!-- -->
+2. Create a [listing page](https://quarto.org/docs/websites/website-listings.html) called `blog.qmd` in the root directory. This will become the blog "landing page" and what we will point to from the website header. 
+<!-- -->
+3. Add a "Blog" header item to the `_quarto.yml` file for the website and set the `link:` for this to be `blog.qmd`
+<!-- -->
+4. Added a simple example post to the `blog/` directory. See for example my [hello-world](https://www.github.com/zakvarty/quarto-website/blog/hello-world/) post. 
+<!-- -->
+5. Adjust the default YAML parameters for the blog posts by making the file `blog/_metadata.yml`. These default values can be overwritten by specifying them again in the YAML header at the top of any individual post. For examples of what you might want to include see [my file](https://www.github.com/zakvarty/quarto-website/blog/_metadata.yml) or the [projects section](https://quarto.org/docs/projects/quarto-projects.html) of the quarto docs.
+<!-- -->
+6. Add a simple bibliography file, called `library.bib` or simular to the `blog/` directory. Set this as the default bibliography file for each blog post by adding `bibliography: ../library.bib` to `blog/_metadata.yml`. 
+<!-- -->
+7. (optional) Create a post template so that you don't have to memorise header fields.
+<!-- -->
+8. Set your "Hello, World!" and template posts to have `draft: true` in their headers. This will prevent them from showing up on your website.
+<!-- --> 
+9. Set your "Hello, World!" and template posts to have `freeze: true` in thier headers. This will prevent any code in them from re-running each time the website is rendered. 
+
+Freezing the code within posts will improve the build speed, as well as make the website more stable and portable. See the quarto docs on [freezing posts](https://quarto.org/docs/websites/website-blog.html#freezing-posts) for more details. My current plan is to have this as `false` by default and change to `true` on publiction of each post. 
+
+# Checking that references work
+
+I have set up a single bibtex file in which to store references for all posts. This lives in the `blog/` directory and is set as the default `bibliography` parameter for each post in the file `blog/_metadata.yml`.
+
+This is an inline reference to @wan2020network writen as `@citationkey`. Parenthetical references, such as [@wan2020network], are written using `[@citationkey]`. These can be strung together by separating each citation key with a semicolon, for example [@wan2020network; @wan2020network]. 
+
+To let people know the license yourbwork is under and how they should cite your blog posts you can use the `appendix-style` argument. This can be added to the YAML header of individual blog posts or you can specify a default value in `blog/_metadata.yml`. There are three options for this parameter: 
+
+- `default` does some nice formatting and makes the text a bit smaller than the rest of the article;
+- `plain` matches the style of the rest of your post; 
+- `none` does not add any citation details to the end of your post. 
+
+I'm currently using some pretty hacky CSS to style this website so am limited to the latter two options for now. In the process of writing this article I stumbled across some neat SCSS that I hope will fix this issue that I have made for myself!
+
+_Note: When adding references to your posts, make sure that the `site-url` field in your website's `qaurto.yml` does not have a trailing slash - this will be copied into the reference and break the links._ 
+
+
+

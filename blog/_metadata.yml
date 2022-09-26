@@ -1,0 +1,31 @@
+# options apply to all posts in this folder
+
+# freeze computational output
+freeze: auto
+
+# Make a big title block
+title-block-banner: true
+
+# long dates
+date-format: long
+
+# smooth scroll
+smooth-scroll: true
+
+# Default author
+author:
+  - name: Zak Varty
+    url: https://www.zakvarty.com/
+    #affiliation: Teaching Fellow in Statistics @ Imperial College London
+    #affiliation-url: https://www.imperial.ac.uk/statistics/
+
+# citation
+citation: true
+
+
+title-block-banner: false
+
+# Enable CC licence appendix
+license: "CC BY" 
+
+bibliography: ../library.bib

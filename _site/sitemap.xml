@@ -2,30 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zakvarty.com/personal/reading-record.html</loc>
-    <lastmod>2022-09-07T17:04:35.208Z</lastmod>
+    <lastmod>2022-09-26T10:42:04.677Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/professional/teaching.html</loc>
-    <lastmod>2022-09-07T17:04:35.559Z</lastmod>
+    <lastmod>2022-09-26T11:22:46.360Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/professional/research.html</loc>
-    <lastmod>2022-09-07T17:04:35.931Z</lastmod>
+    <lastmod>2022-09-26T10:42:05.419Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/professional/talks.html</loc>
-    <lastmod>2022-09-07T17:04:36.263Z</lastmod>
+    <lastmod>2022-09-26T10:42:05.732Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/professional/bookmarks.html</loc>
-    <lastmod>2022-09-07T17:04:36.682Z</lastmod>
+    <lastmod>2022-09-26T10:42:06.170Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/index.html</loc>
-    <lastmod>2022-09-07T17:04:38.501Z</lastmod>
+    <lastmod>2022-09-26T15:08:35.042Z</lastmod>
   </url>
   <url>
     <loc>https://zakvarty.com/about.html</loc>
-    <lastmod>2022-09-07T17:04:38.794Z</lastmod>
+    <lastmod>2022-09-26T16:38:21.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/blog.html</loc>
+    <lastmod>2022-09-26T16:53:21.830Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/posts/hello-world/hello-world.html</loc>
+    <lastmod>2022-09-26T10:48:31.550Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/blog/hello-world/hello-world.html</loc>
+    <lastmod>2022-09-26T15:16:59.163Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/blog/hello-world/index.html</loc>
+    <lastmod>2022-09-26T16:37:12.286Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zakvarty.com/blog/adding-a-quarto-blog/index.html</loc>
+    <lastmod>2022-09-26T16:53:21.454Z</lastmod>
   </url>
 </urlset>

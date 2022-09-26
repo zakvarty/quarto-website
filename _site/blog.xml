@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Zak Varty</title>
+<link>https://zakvarty.com/blog.html</link>
+<atom:link href="https://zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.0.38</generator>
+<lastBuildDate>Sun, 25 Sep 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Setting up a quarto blog</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://zakvarty.com/blog/adding-a-quarto-blog/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="what-am-i-trying-to-do" class="level1">
+<h1>What am I trying to do?</h1>
+<div class="small_right">
+<p><img style="border-radius: 10%;" src="https://zakvarty.com/blog/adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background"></p>
+</div>
+<p>My aim here is to set up a blog within an existing quarto website. I want the blog to be a subdomain of the main site (<code>zakvarty.com/blog</code>) and for it to inherit the styling of that site.</p>
+<p>It probably would have been easier to make the blog a subdomain (<code>blog.zakvarty.com</code>) and use two separate but matching style files to make those sites look coherent. However, I wanted to make the most of the built in search features on quarto websites and am a glutton for punnishment.</p>
+<p>Credit to <a href="https://ddimmery.com/">Drew Dimmery</a>, whose website I used alongside the <a href="https://quarto.org/docs/guide/">quarto docs</a> to work out how to get all these pieces working together.</p>
+</section>
+<section id="steps" class="level1">
+<h1>Steps</h1>
+<ol type="1">
+<li>Create a subdirectory of the website called <code>blog/</code>. This has subfolders for each blog post and will contain the files of metadata that are common to all blog posts (e.g.&nbsp;default settings for YAML headers information and a bibliography file). <!-- --></li>
+<li>Create a <a href="https://quarto.org/docs/websites/website-listings.html">listing page</a> called <code>blog.qmd</code> in the root directory. This will become the blog “landing page” and what we will point to from the website header. <!-- --></li>
+<li>Add a “Blog” header item to the <code>_quarto.yml</code> file for the website and set the <code>link:</code> for this to be <code>blog.qmd</code> <!-- --></li>
+<li>Added a simple example post to the <code>blog/</code> directory. See for example my <a href="https://www.github.com/zakvarty/quarto-website/blog/hello-world/">hello-world</a> post. <!-- --></li>
+<li>Adjust the default YAML parameters for the blog posts by making the file <code>blog/_metadata.yml</code>. These default values can be overwritten by specifying them again in the YAML header at the top of any individual post. For examples of what you might want to include see <a href="https://www.github.com/zakvarty/quarto-website/blog/_metadata.yml">my file</a> or the <a href="https://quarto.org/docs/projects/quarto-projects.html">projects section</a> of the quarto docs. <!-- --></li>
+<li>Add a simple bibliography file, called <code>library.bib</code> or simular to the <code>blog/</code> directory. Set this as the default bibliography file for each blog post by adding <code>bibliography: ../library.bib</code> to <code>blog/_metadata.yml</code>. <!-- --></li>
+<li>(optional) Create a post template so that you don’t have to memorise header fields. <!-- --></li>
+<li>Set your “Hello, World!” and template posts to have <code>draft: true</code> in their headers. This will prevent them from showing up on your website. <!-- --></li>
+<li>Set your “Hello, World!” and template posts to have <code>freeze: true</code> in thier headers. This will prevent any code in them from re-running each time the website is rendered.</li>
+</ol>
+<p>Freezing the code within posts will improve the build speed, as well as make the website more stable and portable. See the quarto docs on <a href="https://quarto.org/docs/websites/website-blog.html#freezing-posts">freezing posts</a> for more details. My current plan is to have this as <code>false</code> by default and change to <code>true</code> on publiction of each post.</p>
+</section>
+<section id="checking-that-references-work" class="level1">
+<h1>Checking that references work</h1>
+<p>I have set up a single bibtex file in which to store references for all posts. This lives in the <code>blog/</code> directory and is set as the default <code>bibliography</code> parameter for each post in the file <code>blog/_metadata.yml</code>.</p>
+<p>This is an inline reference to <span class="citation" data-cites="wan2020network">Wan et al. (2020)</span> writen as <code>@citationkey</code>. Parenthetical references, such as <span class="citation" data-cites="wan2020network">(Wan et al. 2020)</span>, are written using <code>[@citationkey]</code>. These can be strung together by separating each citation key with a semicolon, for example <span class="citation" data-cites="wan2020network wan2020network">(Wan et al. 2020, 2020)</span>.</p>
+<p>To let people know the license yourbwork is under and how they should cite your blog posts you can use the <code>appendix-style</code> argument. This can be added to the YAML header of individual blog posts or you can specify a default value in <code>blog/_metadata.yml</code>. There are three options for this parameter:</p>
+<ul>
+<li><code>default</code> does some nice formatting and makes the text a bit smaller than the rest of the article;</li>
+<li><code>plain</code> matches the style of the rest of your post;</li>
+<li><code>none</code> does not add any citation details to the end of your post.</li>
+</ul>
+<p>I’m currently using some pretty hacky CSS to style this website so am limited to the latter two options for now. In the process of writing this article I stumbled across some neat SCSS that I hope will fix this issue that I have made for myself!</p>
+<p><em>Note: When adding references to your posts, make sure that the <code>site-url</code> field in your website’s <code>qaurto.yml</code> does not have a trailing slash - this will be copied into the reference and break the links.</em></p>
+
+
+
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-wan2020network" class="csl-entry">
+Wan, Phyllis, Tiandong Wang, Richard A Davis, and Sidney I Resnick. 2020. <span>“Are Extreme Value Estimation Methods Useful for Network Data?”</span> <em>Extremes</em> 23 (1): 171–95.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
+  author = {Zak Varty},
+  title = {Setting up a Quarto Blog},
+  date = {2022-09-26},
+  url = {https://zakvarty.com/blog/adding-a-quarto-blog},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
+Zak Varty. 2022. <span>“Setting up a Quarto Blog.”</span> September 26,
+2022. <a href="https://zakvarty.com/blog/adding-a-quarto-blog">https://zakvarty.com/blog/adding-a-quarto-blog</a>.
+</div></div></section></div> ]]></description>
+  <category>quarto</category>
+  <category>tutorial</category>
+  <guid>https://zakvarty.com/blog/adding-a-quarto-blog/index.html</guid>
+  <pubDate>Sun, 25 Sep 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://zakvarty.com/blog/adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Hello, World!</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://zakvarty.com/blog/hello-world/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="some-text" class="level1">
+<h1>Some Text</h1>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</section>
+<section id="some-code" class="level1">
+<h1>Some Code</h1>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">par</span>(<span class="at" style="color: #657422;">bg =</span> <span class="cn" style="color: #8f5902;">NA</span>)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">plot</span>(</span>
+<span id="cb1-3">    <span class="at" style="color: #657422;">x =</span> mtcars<span class="sc" style="color: #5E5E5E;">$</span>mpg,</span>
+<span id="cb1-4">    <span class="at" style="color: #657422;">y =</span> mtcars<span class="sc" style="color: #5E5E5E;">$</span>cyl,</span>
+<span id="cb1-5">    <span class="at" style="color: #657422;">xlab =</span> <span class="st" style="color: #20794D;">"miles per gallon"</span>,</span>
+<span id="cb1-6">    <span class="at" style="color: #657422;">ylab =</span> <span class="st" style="color: #20794D;">"cyclider count"</span>,</span>
+<span id="cb1-7">    <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">16</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://zakvarty.com/blog/hello-world/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>Quarto</category>
+  <category>Templates</category>
+  <guid>https://zakvarty.com/blog/hello-world/index.html</guid>
+  <pubDate>Sun, 25 Sep 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://zakvarty.com/blog/hello-world/hello-world-image.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>
