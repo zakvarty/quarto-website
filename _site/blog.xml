@@ -121,43 +121,43 @@ Zak Varty. 2022. <span>“Writing a Rhetorical Précis.”</span> October 7,
 <div class="small_right">
 <p><img style="border-radius: 10%;" src="https://zakvarty.com/blog/adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background"></p>
 </div>
-<p>My aim here is to set up a blog within an existing quarto website. I want the blog to be a subdomain of the main site (<code>zakvarty.com/blog</code>) and for it to inherit the styling of that site.</p>
-<p>It probably would have been easier to make the blog a subdomain (<code>blog.zakvarty.com</code>) and use two separate but matching style files to make those sites look coherent. However, I wanted to make the most of the built in search features on quarto websites and am a glutton for punnishment.</p>
+<p>My aim here is to set up a blog within an existing quarto website. I want the blog to be a sub-domain of the main site (<code>zakvarty.com/blog</code>) and for it to inherit the styling of that site.</p>
+<p>It probably would have been easier to make the blog a sub domain (<code>blog.zakvarty.com</code>) and use two separate but matching style files to make those sites look coherent. However, I wanted to make the most of the built in search features on quarto websites and am a glutton for punishment.</p>
 <p>Credit to <a href="https://ddimmery.com/">Drew Dimmery</a>, whose website I used alongside the <a href="https://quarto.org/docs/guide/">quarto docs</a> to work out how to get all these pieces working together.</p>
 </section>
 <section id="steps" class="level1">
 <h1>Steps</h1>
 <ol type="1">
-<li>Create a subdirectory of the website called <code>blog/</code>. This has subfolders for each blog post and will contain the files of metadata that are common to all blog posts (e.g.&nbsp;default settings for YAML headers information and a bibliography file). <!-- --></li>
+<li>Create a subdirectory of the website called <code>blog/</code>. This has sub-folders for each blog post and will contain the files of metadata that are common to all blog posts (e.g.&nbsp;default settings for YAML headers information and a bibliography file). <!-- --></li>
 <li>Create a <a href="https://quarto.org/docs/websites/website-listings.html">listing page</a> called <code>blog.qmd</code> in the root directory. This will become the blog “landing page” and what we will point to from the website header. <!-- --></li>
 <li>Add a “Blog” header item to the <code>_quarto.yml</code> file for the website and set the <code>link:</code> for this to be <code>blog.qmd</code> <!-- --></li>
 <li>Added a simple example post to the <code>blog/</code> directory. See for example my <a href="https://www.github.com/zakvarty/quarto-website/blog/hello-world/">hello-world</a> post. <!-- --></li>
 <li>Adjust the default YAML parameters for the blog posts by making the file <code>blog/_metadata.yml</code>. These default values can be overwritten by specifying them again in the YAML header at the top of any individual post. For examples of what you might want to include see <a href="https://www.github.com/zakvarty/quarto-website/blog/_metadata.yml">my file</a> or the <a href="https://quarto.org/docs/projects/quarto-projects.html">projects section</a> of the quarto docs. <!-- --></li>
-<li>Add a simple bibliography file, called <code>library.bib</code> or simular to the <code>blog/</code> directory. Set this as the default bibliography file for each blog post by adding <code>bibliography: ../library.bib</code> to <code>blog/_metadata.yml</code>. <!-- --></li>
+<li>Add a simple bibliography file, called <code>library.bib</code> or similar to the <code>blog/</code> directory. Set this as the default bibliography file for each blog post by adding <code>bibliography: ../library.bib</code> to <code>blog/_metadata.yml</code>. <!-- --></li>
 <li>(optional) Create a post template so that you don’t have to memorise header fields. <!-- --></li>
 <li>Set your “Hello, World!” and template posts to have <code>draft: true</code> in their headers. This will prevent them from showing up on your website. <!-- --></li>
-<li>Set your “Hello, World!” and template posts to have <code>freeze: true</code> in thier headers. This will prevent any code in them from re-running each time the website is rendered.</li>
+<li>Set your “Hello, World!” and template posts to have <code>freeze: true</code> in their headers. This will prevent any code in them from re-running each time the website is rendered.</li>
 </ol>
-<p>Freezing the code within posts will improve the build speed, as well as make the website more stable and portable. See the quarto docs on <a href="https://quarto.org/docs/websites/website-blog.html#freezing-posts">freezing posts</a> for more details. My current plan is to have this as <code>false</code> by default and change to <code>true</code> on publiction of each post.</p>
+<p>Freezing the code within posts will improve the build speed, as well as make the website more stable and portable. See the quarto docs on <a href="https://quarto.org/docs/websites/website-blog.html#freezing-posts">freezing posts</a> for more details. My current plan is to have this as <code>false</code> by default and change to <code>true</code> on publication of each post.</p>
 </section>
 <section id="checking-that-references-work" class="level1">
 <h1>Checking that references work</h1>
 <p>I have set up a single bibtex file in which to store references for all posts. This lives in the <code>blog/</code> directory and is set as the default <code>bibliography</code> parameter for each post in the file <code>blog/_metadata.yml</code>.</p>
-<p>This is an inline reference to <span class="citation" data-cites="wan2020network">Wan et al. (2020)</span> writen as <code>@citationkey</code>. Parenthetical references, such as <span class="citation" data-cites="wan2020network">(Wan et al. 2020)</span>, are written using <code>[@citationkey]</code>. These can be strung together by separating each citation key with a semicolon, for example <span class="citation" data-cites="wan2020network wan2020network">(Wan et al. 2020, 2020)</span>.</p>
-<p>To let people know the license yourbwork is under and how they should cite your blog posts you can use the <code>appendix-style</code> argument. This can be added to the YAML header of individual blog posts or you can specify a default value in <code>blog/_metadata.yml</code>. There are three options for this parameter:</p>
+<p>This is an in-line reference to <span class="citation" data-cites="wan2020network">Wan et al. (2020)</span> written as <code>@citationkey</code>. Parenthetical references, such as <span class="citation" data-cites="wan2020network">(Wan et al. 2020)</span>, are written using <code>[@citationkey]</code>. These can be strung together by separating each citation key with a semicolon, for example <span class="citation" data-cites="wan2020network wan2020network">(Wan et al. 2020, 2020)</span>.</p>
+<p>To let people know the license your work is under and how they should cite your blog posts you can use the <code>appendix-style</code> argument. This can be added to the YAML header of individual blog posts or you can specify a default value in <code>blog/_metadata.yml</code>. There are three options for this parameter:</p>
 <ul>
 <li><code>default</code> does some nice formatting and makes the text a bit smaller than the rest of the article;</li>
 <li><code>plain</code> matches the style of the rest of your post;</li>
 <li><code>none</code> does not add any citation details to the end of your post.</li>
 </ul>
-<p>I’m currently using some pretty hacky CSS to style this website so am limited to the latter two options for now. In the process of writing this article I stumbled across some neat SCSS that I hope will fix this issue that I have made for myself!</p>
-<p><em>Note: When adding references to your posts, make sure that the <code>site-url</code> field in your website’s <code>qaurto.yml</code> does not have a trailing slash - this will be copied into the reference and break the links.</em></p>
+<p>I’m currently using some pretty hacky CSS to style this website so am limited to the latter two options for now. In the process of writing this article I stumbled across some neat SCSS that I hope will fix this issue that I have made for myself! [Update: I changed to SCSS and this is now fixed!]</p>
+<p><em>Note: When adding references to your posts, make sure that the <code>site-URL</code> field in your website’s <code>quarto.yml</code> does not have a trailing slash - this will be copied into the reference and break the links.</em></p>
 
 
 
 </section>
 
-<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-wan2020network" class="csl-entry">
 Wan, Phyllis, Tiandong Wang, Richard A Davis, and Sidney I Resnick. 2020. <span>“Are Extreme Value Estimation Methods Useful for Network Data?”</span> <em>Extremes</em> 23 (1): 171–95.
 </div>

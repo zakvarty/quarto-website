@@ -1,9 +1,76 @@
 /*-- scss:defaults --*/
-// Base document colors 
-$body-bg: #F4F5FF;
-//$body-color: white;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+$body-color: #222222; //#5b868d; Text colour
 $primary: #4B5853;
+$link-color: teal; //#12a79d;
+$body-bg: #F4F5FF;
+$code-block-font-size: 0.65em;
+$code-block-bg: #EBEEEE; // Imperial Gray
+$code-block-border-color: #222222;
+$code-color: #C81E78;
+$nav-link-hover-color:  teal;
+$nav-link-active-color:  teal;
+
+p {
+  font-family: Raleway, Sans-Serif !important;
+}
+
+.navbar{
+  font-family: Bebas Neue, serif;
+}
+
+h1, h2 {
+  font-family: 'Bebas Neue', serif;
+  /*font-family: 'Cormorant Garamond', cursive;*/
+  color:  #3e4653;
+}
+
+.small_right, .small_left {
+  display: inline-block;
+  width: 33%;
+  max-width: 200px;
+}
+.small_left {
+  float: left;
+  margin: 1em 1em 1em 0;
+}
+.small_right {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+.small_left img, .small_right img{
+  max-width: 100%;
+}
+
+
+.medium_right, .medium_left {
+  display: inline-block;
+  width: 55%;
+  max-width: 270px;
+}
+.medium_left {
+  float: left;
+  margin: 1em 1em 1em 0;
+}
+.medium_right {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+.medium_left img, .medium_right img{
+  max-width: 100%;
+}
+
+
+// Base document colors
+//$body-bg: #F4F5FF;
+//$body-color: white;
+//$primary: #4B5853;
 //$link-color: #75AADB;
 
-// Code Blocks 
-$code-block-bg-alpha: -0.8;
+// Code Blocks
+//$code-block-bg-alpha: -0.8;

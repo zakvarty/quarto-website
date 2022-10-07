@@ -19,40 +19,40 @@ website:
     right:
       - text: Home
         href: index.qmd
-      - text: About 
+      - text: About
         href: about.qmd
       - text: Blog
         href: blog.qmd
-      - text: Professional 
+      - text: Professional
         menu:
           - professional/research.qmd
           - professional/teaching.qmd
-          - professional/talks.qmd 
+          - professional/talks.qmd
           - professional/bookmarks.qmd
       - text: Personal
         menu:
           - personal/reading-record.qmd
-      - icon: twitter 
-        href: "https://www.twitter.com/zakvarty"      
+      - icon: twitter
+        href: "https://www.twitter.com/zakvarty"
       - icon: github
         href: "https://github.com/zakvarty"
-  page-footer: 
+  page-footer:
     #background: light
     border: true
     left: "Copyright 2022, Zak Varty."
-    center: "" 
-    right: 
-      - icon: twitter 
-        href: "https://www.twitter.com/zakvarty"      
+    center: ""
+    right:
+      - icon: twitter
+        href: "https://www.twitter.com/zakvarty"
       - icon: github
         href: "https://github.com/zakvarty"
-      - icon: google 
+      - icon: google
         href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
 
 format:
   html:
-    theme: litera #[,custom.scss] #flatly
-    css: styles.css
+    theme: [litera, custom.scss] #litera
+    #css: styles.css
     toc: true
 
 
