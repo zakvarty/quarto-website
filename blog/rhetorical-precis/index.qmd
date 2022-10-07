@@ -1,0 +1,108 @@
+---
+title: "Writing a rhetorical précis"
+description: |
+    Structured summaries to remember and retrieve what you read
+date: "2022-10-07"
+categories:
+  - academic skills
+  - writing
+  - reading
+code-fold: true
+image: maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg
+image-alt: Photograph of a filing cabinet filled with library index cards.
+image-cap: Image caption
+draft: false
+freeze: false
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+---
+
+Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maksym Kaharlytskyi</a> on <a href="https://unsplash.com/s/photos/filing-cabinet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
+  
+## What is a rhetorical precis? 
+
+::: small_right
+<img style = "border-radius: 10%;" src="maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" alt="Photograph of a filing cabinet filled with library index cards.">
+:::
+
+A rhetorical precis is a short summary and analysis of a piece of writing, which considers both the content and the delivery of the piece.  
+
+A rhetorical precis serves to summarise and analyse the text through:
+
+- an accurate bibliographic reference to the text, 
+- a list of keywords relating to the text, 
+- a highly structured four-sentence paragraph providing a summary and analysis of the text.  
+
+## Why write one?
+
+Keeping a rhetorical precis for each text that you read is a fantasitc way to build the skills of active reading and succinct writing. A rhetorical precis is more informative than a bib entry and more easily reviewed _(read: waded through)_ than a stack of annotated papers. 
+
+Taken collectively, a set of rhetorical precis summaries provide a reading record that can be a tremendously useful when trying to recall the contents of a paper or book long after you originally read it. 
+
+## How to store them?
+
+Writing and storing these reading summaries electronically can make them even more useful. This allows you to search for topics, target audiences or keywords. 
+
+For this reason it can be helpful to keep them all together in one word document or plain text file. Alternatively, having a single folder with each summary as a plain text or markdown file works well if you are comfortable with searching at the command line. The same can be achieved by writing these summaries within a reference manager, if that is something you are invested in already.
+
+
+## Definition 
+
+Just to prove that I'm not making all this up: 
+
+> A rhetorical precis analyzes both the content (the what) and the delivery (the how) of a unit of spoken or written discourse. It is a highly structured four-sentence paragraph blending summary and analysis. Each of the four sentences requires specific information; students are expected to use brief quotations (to convey a sense of the author’s style and tone) and to include a terminal bibliographic reference. Practicing this sort of writing fosters precision in both reading and writing, forcing a writer to employ a variety of sentence structures and to develop a discerning eye for connotative shades of meaning. <br> __Attribution:__ [lumenlearning.com]( https://courses.lumenlearning.com/englishcomp2kscopex92x2/chapter/rhetorical-precis/)
+
+## Format 
+
+Four sentences summarising the aim of the work, how this is addressed, why it is important and a description of the target audience. 
+
+1. Name of author, [optional phrase describing author], genre and title of work, date in parentheses (additional publishing information in parentheses); a rhetorically accurate verb (such as “asserts,” “argues,” suggests,” “implies,” claims,” etc.); a THAT clause containing the major assertion or thesis statement of the work.
+2. An explanation of _how_ the author develops and/or supports the thesis, usually in chronological order.
+3. A statement of the author’s purpose followed by an “in order to” phrase.
+4. A description of the intended audience and/or the essay’s tone
+
+
+
+## A (self-indulgent) example 
+
+Here is a rather self-indulgent example of a rhetorical precis.
+
+------------------
+
+`varty2021inference`
+
+**Title:** _Inference for extreme earthquake magnitudes accounting for a time-varying measurement process. {ArXiV preprint, 2021} (20 pages)._
+
+**Authors:** _Zak Varty, Jonathan Tawn, Peter Atkinson and Stijn Bierman._
+
+**Key words:** _extreme value_, _earthquake_, _threshold selection_, _magnitude of completion_, _seismology_, _bootstrap._
+
+In this paper, Varty et al (2021) propose a new threshold selection method for modelling earthquake catalogues, where the magnitude distribution is stationary but detection of small events improves over time. The paper generalises the Gutenberg-Richter law to the GPD and uses metrics based on PP and QQ plots to balance between bias and variance when selecting a time-varying threshold. This procedure more than doubles the usable catalogue size for Groningen earthquakes and gives the first emprircal evidence that the magnitude distribution in this region has a finite upper end point. The paper is targeted at applied and research statisticians with an interest in EVT but would also be accessible to a statistically-minded seismologist. 
+
+----------------------
+
+## A template for new entries 
+
+
+----------------------
+
+`firstauthorYYYYkeyword`
+
+**Title:** _Title goes here. {Journal, YYYY} (NN pages)._
+
+**Authors:** _Author One, Author Two and Author Three. (optional affiliations)_
+
+**Key words:** _key word 1_, _key word 2_, _key work 3_. 
+
+1. _What_ is the document and _what_ does it say? 
+2. _How_ do they do / show this?
+3. _Why_ are they bothering to do this in the first place?
+4. _Who_ is the intended audience for this work?
+
+In this DOC_TYPE, AUTHOUR VERB that THESIS\_STATEMENT.
+They DO/SHOW this by ACTIONS. 
+This is important to PEOPLE because REASONS. 
+This work would be useful when PEOPLE are doing ACTIVITY.
+
+----------------------

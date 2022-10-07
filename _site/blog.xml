@@ -10,7 +10,104 @@
 <atom:link href="https://zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.0.38</generator>
-<lastBuildDate>Sun, 25 Sep 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 06 Oct 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Writing a rhetorical précis</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://zakvarty.com/blog/rhetorical-precis/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Maksym Kaharlytskyi</a> on <a href="https://unsplash.com/s/photos/filing-cabinet?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+<section id="what-is-a-rhetorical-precis" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-rhetorical-precis">What is a rhetorical precis?</h2>
+<div class="small_right">
+<p><img style="border-radius: 10%;" src="https://zakvarty.com/blog/rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" alt="Photograph of a filing cabinet filled with library index cards."></p>
+</div>
+<p>A rhetorical precis is a short summary and analysis of a piece of writing, which considers both the content and the delivery of the piece.</p>
+<p>A rhetorical precis serves to summarise and analyse the text through:</p>
+<ul>
+<li>an accurate bibliographic reference to the text,</li>
+<li>a list of keywords relating to the text,</li>
+<li>a highly structured four-sentence paragraph providing a summary and analysis of the text.</li>
+</ul>
+</section>
+<section id="why-write-one" class="level2">
+<h2 class="anchored" data-anchor-id="why-write-one">Why write one?</h2>
+<p>Keeping a rhetorical precis for each text that you read is a fantasitc way to build the skills of active reading and succinct writing. A rhetorical precis is more informative than a bib entry and more easily reviewed <em>(read: waded through)</em> than a stack of annotated papers.</p>
+<p>Taken collectively, a set of rhetorical precis summaries provide a reading record that can be a tremendously useful when trying to recall the contents of a paper or book long after you originally read it.</p>
+</section>
+<section id="how-to-store-them" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-store-them">How to store them?</h2>
+<p>Writing and storing these reading summaries electronically can make them even more useful. This allows you to search for topics, target audiences or keywords.</p>
+<p>For this reason it can be helpful to keep them all together in one word document or plain text file. Alternatively, having a single folder with each summary as a plain text or markdown file works well if you are comfortable with searching at the command line. The same can be achieved by writing these summaries within a reference manager, if that is something you are invested in already.</p>
+</section>
+<section id="definition" class="level2">
+<h2 class="anchored" data-anchor-id="definition">Definition</h2>
+<p>Just to prove that I’m not making all this up:</p>
+<blockquote class="blockquote">
+<p>A rhetorical precis analyzes both the content (the what) and the delivery (the how) of a unit of spoken or written discourse. It is a highly structured four-sentence paragraph blending summary and analysis. Each of the four sentences requires specific information; students are expected to use brief quotations (to convey a sense of the author’s style and tone) and to include a terminal bibliographic reference. Practicing this sort of writing fosters precision in both reading and writing, forcing a writer to employ a variety of sentence structures and to develop a discerning eye for connotative shades of meaning. <br> <strong>Attribution:</strong> <a href="https://courses.lumenlearning.com/englishcomp2kscopex92x2/chapter/rhetorical-precis/">lumenlearning.com</a></p>
+</blockquote>
+</section>
+<section id="format" class="level2">
+<h2 class="anchored" data-anchor-id="format">Format</h2>
+<p>Four sentences summarising the aim of the work, how this is addressed, why it is important and a description of the target audience.</p>
+<ol type="1">
+<li>Name of author, [optional phrase describing author], genre and title of work, date in parentheses (additional publishing information in parentheses); a rhetorically accurate verb (such as “asserts,” “argues,” suggests,” “implies,” claims,” etc.); a THAT clause containing the major assertion or thesis statement of the work.</li>
+<li>An explanation of <em>how</em> the author develops and/or supports the thesis, usually in chronological order.</li>
+<li>A statement of the author’s purpose followed by an “in order to” phrase.</li>
+<li>A description of the intended audience and/or the essay’s tone</li>
+</ol>
+</section>
+<section id="a-self-indulgent-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-self-indulgent-example">A (self-indulgent) example</h2>
+<p>Here is a rather self-indulgent example of a rhetorical precis.</p>
+<hr>
+<p><code>varty2021inference</code></p>
+<p><strong>Title:</strong> <em>Inference for extreme earthquake magnitudes accounting for a time-varying measurement process. {ArXiV preprint, 2021} (20 pages).</em></p>
+<p><strong>Authors:</strong> <em>Zak Varty, Jonathan Tawn, Peter Atkinson and Stijn Bierman.</em></p>
+<p><strong>Key words:</strong> <em>extreme value</em>, <em>earthquake</em>, <em>threshold selection</em>, <em>magnitude of completion</em>, <em>seismology</em>, <em>bootstrap.</em></p>
+<p>In this paper, Varty et al (2021) propose a new threshold selection method for modelling earthquake catalogues, where the magnitude distribution is stationary but detection of small events improves over time. The paper generalises the Gutenberg-Richter law to the GPD and uses metrics based on PP and QQ plots to balance between bias and variance when selecting a time-varying threshold. This procedure more than doubles the usable catalogue size for Groningen earthquakes and gives the first emprircal evidence that the magnitude distribution in this region has a finite upper end point. The paper is targeted at applied and research statisticians with an interest in EVT but would also be accessible to a statistically-minded seismologist.</p>
+<hr>
+</section>
+<section id="a-template-for-new-entries" class="level2">
+<h2 class="anchored" data-anchor-id="a-template-for-new-entries">A template for new entries</h2>
+<hr>
+<p><code>firstauthorYYYYkeyword</code></p>
+<p><strong>Title:</strong> <em>Title goes here. {Journal, YYYY} (NN pages).</em></p>
+<p><strong>Authors:</strong> <em>Author One, Author Two and Author Three. (optional affiliations)</em></p>
+<p><strong>Key words:</strong> <em>key word 1</em>, <em>key word 2</em>, <em>key work 3</em>.</p>
+<ol type="1">
+<li><em>What</em> is the document and <em>what</em> does it say?</li>
+<li><em>How</em> do they do / show this?</li>
+<li><em>Why</em> are they bothering to do this in the first place?</li>
+<li><em>Who</em> is the intended audience for this work?</li>
+</ol>
+<p>In this DOC_TYPE, AUTHOUR VERB that THESIS_STATEMENT. They DO/SHOW this by ACTIONS. This is important to PEOPLE because REASONS. This work would be useful when PEOPLE are doing ACTIVITY.</p>
+<hr>
+
+
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
+  author = {Zak Varty},
+  title = {Writing a Rhetorical Précis},
+  date = {2022-10-07},
+  url = {https://zakvarty.com/blog/rhetorical-precis},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
+Zak Varty. 2022. <span>“Writing a Rhetorical Précis.”</span> October 7,
+2022. <a href="https://zakvarty.com/blog/rhetorical-precis">https://zakvarty.com/blog/rhetorical-precis</a>.
+</div></div></section></div> ]]></description>
+  <category>academic skills</category>
+  <category>writing</category>
+  <category>reading</category>
+  <guid>https://zakvarty.com/blog/rhetorical-precis/index.html</guid>
+  <pubDate>Thu, 06 Oct 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://zakvarty.com/blog/rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Setting up a quarto blog</title>
   <dc:creator>Zak Varty</dc:creator>
