@@ -2,7 +2,7 @@
 title: "Recommended Statistics Books"
 description: |
     Book recommendations for those looking to reinforce their knowledge of undergraduate and advanced statistics.
-date: "2022-10-07"
+date: "2022-10-10"
 categories:
   - academic skills
   - reading

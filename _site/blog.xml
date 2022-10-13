@@ -10,7 +10,7 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.0.38</generator>
-<lastBuildDate>Thu, 06 Oct 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 09 Oct 2022 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Recommended Statistics Books</title>
   <dc:creator>Zak Varty</dc:creator>
@@ -111,18 +111,18 @@ Wood, Simon N. 2015. <em>Core Statistics</em>. Cambridge University Press.
 </div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
   author = {Zak Varty},
   title = {Recommended {Statistics} {Books}},
-  date = {2022-10-07},
+  date = {2022-10-10},
   url = {https://www.zakvarty.com/blog/2022-10-10-statistics-books},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
-Zak Varty. 2022. <span>“Recommended Statistics Books.”</span> October 7,
-2022. <a href="https://www.zakvarty.com/blog/2022-10-10-statistics-books">https://www.zakvarty.com/blog/2022-10-10-statistics-books</a>.
+Zak Varty. 2022. <span>“Recommended Statistics Books.”</span> October
+10, 2022. <a href="https://www.zakvarty.com/blog/2022-10-10-statistics-books">https://www.zakvarty.com/blog/2022-10-10-statistics-books</a>.
 </div></div></section></div> ]]></description>
   <category>academic skills</category>
   <category>reading</category>
   <guid>https://www.zakvarty.com/blog/2022-10-10-statistics-books/index.html</guid>
-  <pubDate>Thu, 06 Oct 2022 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 09 Oct 2022 23:00:00 GMT</pubDate>
   <media:content url="https://www.zakvarty.com/blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
