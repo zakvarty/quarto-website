@@ -18,7 +18,7 @@ bibliography: ../library.bib
 
 # What am I trying to do?
 
-::: small_right
+::: medium_right
 <img style = "border-radius: 10%;" src="florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background">
 :::
 

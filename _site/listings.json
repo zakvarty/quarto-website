@@ -2,9 +2,10 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/blog/rhetorical-precis/index.html",
-      "/blog/adding-a-quarto-blog/index.html",
-      "/blog/hello-world/index.html"
+      "/blog/2022-10-10-statistics-books/index.html",
+      "/blog/2022-10-07-rhetorical-precis/index.html",
+      "/blog/2022-09-26-adding-a-quarto-blog/index.html",
+      "/blog/2022-09-26-hello-world/index.html"
     ]
   }
 ]

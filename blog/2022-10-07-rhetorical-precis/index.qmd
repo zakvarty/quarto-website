@@ -22,7 +22,7 @@ Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&utm_medium=re
   
 ## What is a rhetorical precis? 
 
-::: small_right
+::: medium_right
 <img style = "border-radius: 10%;" src="maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" alt="Photograph of a filing cabinet filled with library index cards.">
 :::
 

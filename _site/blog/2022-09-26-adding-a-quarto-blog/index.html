@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zak Varty">
-<meta name="dcterms.date" content="2022-10-07">
-<meta name="description" content="Structured summaries to remember and retrieve what you read">
+<meta name="dcterms.date" content="2022-09-26">
+<meta name="description" content="Adding a blog within a quarto website">
 
-<title>Zak Varty - Writing a rhetorical précis</title>
+<title>Zak Varty - Setting up a quarto blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,6 +18,25 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -69,10 +88,10 @@ gtag('config', 'G-326407710', { 'anonymize_ip': true});
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<meta name="twitter:title" content="Zak Varty - Writing a rhetorical précis">
-<meta name="twitter:description" content="Structured summaries to remember and retrieve what you read">
-<meta name="twitter:image" content="https://zakvarty.com/blog/rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg">
-<meta name="twitter:image:alt" content="Photograph of a filing cabinet filled with library index cards.">
+<meta name="twitter:title" content="Zak Varty - Setting up a quarto blog">
+<meta name="twitter:description" content="Adding a blog within a quarto website">
+<meta name="twitter:image" content="https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg">
+<meta name="twitter:image:alt" content="Mechanical typewriter on white background.">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -154,13 +173,9 @@ gtag('config', 'G-326407710', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-a-rhetorical-precis" id="toc-what-is-a-rhetorical-precis" class="nav-link active" data-scroll-target="#what-is-a-rhetorical-precis">What is a rhetorical precis?</a></li>
-  <li><a href="#why-write-one" id="toc-why-write-one" class="nav-link" data-scroll-target="#why-write-one">Why write one?</a></li>
-  <li><a href="#how-to-store-them" id="toc-how-to-store-them" class="nav-link" data-scroll-target="#how-to-store-them">How to store them?</a></li>
-  <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition">Definition</a></li>
-  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
-  <li><a href="#a-self-indulgent-example" id="toc-a-self-indulgent-example" class="nav-link" data-scroll-target="#a-self-indulgent-example">A (self-indulgent) example</a></li>
-  <li><a href="#a-template-for-new-entries" id="toc-a-template-for-new-entries" class="nav-link" data-scroll-target="#a-template-for-new-entries">A template for new entries</a></li>
+  <li><a href="#what-am-i-trying-to-do" id="toc-what-am-i-trying-to-do" class="nav-link active" data-scroll-target="#what-am-i-trying-to-do">What am I trying to do?</a></li>
+  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
+  <li><a href="#checking-that-references-work" id="toc-checking-that-references-work" class="nav-link" data-scroll-target="#checking-that-references-work">Checking that references work</a></li>
   </ul>
 </nav>
     </div>
@@ -169,17 +184,16 @@ gtag('config', 'G-326407710', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Writing a rhetorical précis</h1>
+<h1 class="title">Setting up a quarto blog</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">academic skills</div>
-    <div class="quarto-category">writing</div>
-    <div class="quarto-category">reading</div>
+    <div class="quarto-category">quarto</div>
+    <div class="quarto-category">tutorial</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    <p>Structured summaries to remember and retrieve what you read</p>
+    <p>Adding a blog <em>within</em> a quarto website</p>
   </div>
 </div>
 
@@ -196,7 +210,7 @@ gtag('config', 'G-326407710', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 7, 2022</p>
+      <p class="date">September 26, 2022</p>
     </div>
   </div>
     
@@ -205,87 +219,61 @@ gtag('config', 'G-326407710', { 'anonymize_ip': true});
 
 </header>
 
-<p>Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Maksym Kaharlytskyi</a> on <a href="https://unsplash.com/s/photos/filing-cabinet?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
-<section id="what-is-a-rhetorical-precis" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-rhetorical-precis">What is a rhetorical precis?</h2>
-<div class="small_right">
-<p><img style="border-radius: 10%;" src="maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" alt="Photograph of a filing cabinet filled with library index cards."></p>
+<section id="what-am-i-trying-to-do" class="level1">
+<h1>What am I trying to do?</h1>
+<div class="medium_right">
+<p><img style="border-radius: 10%;" src="florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background"></p>
 </div>
-<p>A rhetorical precis is a short summary and analysis of a piece of writing, which considers both the content and the delivery of the piece.</p>
-<p>A rhetorical precis serves to summarise and analyse the text through:</p>
+<p>My aim here is to set up a blog within an existing quarto website. I want the blog to be a sub-domain of the main site (<code>zakvarty.com/blog</code>) and for it to inherit the styling of that site.</p>
+<p>It probably would have been easier to make the blog a sub domain (<code>blog.zakvarty.com</code>) and use two separate but matching style files to make those sites look coherent. However, I wanted to make the most of the built in search features on quarto websites and am a glutton for punishment.</p>
+<p>Credit to <a href="https://ddimmery.com/">Drew Dimmery</a>, whose website I used alongside the <a href="https://quarto.org/docs/guide/">quarto docs</a> to work out how to get all these pieces working together.</p>
+</section>
+<section id="steps" class="level1">
+<h1>Steps</h1>
+<ol type="1">
+<li>Create a subdirectory of the website called <code>blog/</code>. This has sub-folders for each blog post and will contain the files of metadata that are common to all blog posts (e.g.&nbsp;default settings for YAML headers information and a bibliography file). <!-- --></li>
+<li>Create a <a href="https://quarto.org/docs/websites/website-listings.html">listing page</a> called <code>blog.qmd</code> in the root directory. This will become the blog “landing page” and what we will point to from the website header. <!-- --></li>
+<li>Add a “Blog” header item to the <code>_quarto.yml</code> file for the website and set the <code>link:</code> for this to be <code>blog.qmd</code> <!-- --></li>
+<li>Added a simple example post to the <code>blog/</code> directory. See for example my <a href="https://www.github.com/zakvarty/quarto-website/blog/hello-world/">hello-world</a> post. <!-- --></li>
+<li>Adjust the default YAML parameters for the blog posts by making the file <code>blog/_metadata.yml</code>. These default values can be overwritten by specifying them again in the YAML header at the top of any individual post. For examples of what you might want to include see <a href="https://www.github.com/zakvarty/quarto-website/blog/_metadata.yml">my file</a> or the <a href="https://quarto.org/docs/projects/quarto-projects.html">projects section</a> of the quarto docs. <!-- --></li>
+<li>Add a simple bibliography file, called <code>library.bib</code> or similar to the <code>blog/</code> directory. Set this as the default bibliography file for each blog post by adding <code>bibliography: ../library.bib</code> to <code>blog/_metadata.yml</code>. <!-- --></li>
+<li>(optional) Create a post template so that you don’t have to memorise header fields. <!-- --></li>
+<li>Set your “Hello, World!” and template posts to have <code>draft: true</code> in their headers. This will prevent them from showing up on your website. <!-- --></li>
+<li>Set your “Hello, World!” and template posts to have <code>freeze: true</code> in their headers. This will prevent any code in them from re-running each time the website is rendered.</li>
+</ol>
+<p>Freezing the code within posts will improve the build speed, as well as make the website more stable and portable. See the quarto docs on <a href="https://quarto.org/docs/websites/website-blog.html#freezing-posts">freezing posts</a> for more details. My current plan is to have this as <code>false</code> by default and change to <code>true</code> on publication of each post.</p>
+</section>
+<section id="checking-that-references-work" class="level1">
+<h1>Checking that references work</h1>
+<p>I have set up a single bibtex file in which to store references for all posts. This lives in the <code>blog/</code> directory and is set as the default <code>bibliography</code> parameter for each post in the file <code>blog/_metadata.yml</code>.</p>
+<p>This is an in-line reference to <span class="citation" data-cites="wan2020network">Wan et al. (<a href="#ref-wan2020network" role="doc-biblioref">2020</a>)</span> written as <code>@citationkey</code>. Parenthetical references, such as <span class="citation" data-cites="wan2020network">(<a href="#ref-wan2020network" role="doc-biblioref">Wan et al. 2020</a>)</span>, are written using <code>[@citationkey]</code>. These can be strung together by separating each citation key with a semicolon, for example <span class="citation" data-cites="wan2020network wan2020network">(<a href="#ref-wan2020network" role="doc-biblioref">Wan et al. 2020</a>, <a href="#ref-wan2020network" role="doc-biblioref">2020</a>)</span>.</p>
+<p>To let people know the license your work is under and how they should cite your blog posts you can use the <code>appendix-style</code> argument. This can be added to the YAML header of individual blog posts or you can specify a default value in <code>blog/_metadata.yml</code>. There are three options for this parameter:</p>
 <ul>
-<li>an accurate bibliographic reference to the text,</li>
-<li>a list of keywords relating to the text,</li>
-<li>a highly structured four-sentence paragraph providing a summary and analysis of the text.</li>
+<li><code>default</code> does some nice formatting and makes the text a bit smaller than the rest of the article;</li>
+<li><code>plain</code> matches the style of the rest of your post;</li>
+<li><code>none</code> does not add any citation details to the end of your post.</li>
 </ul>
-</section>
-<section id="why-write-one" class="level2">
-<h2 class="anchored" data-anchor-id="why-write-one">Why write one?</h2>
-<p>Keeping a rhetorical precis for each text that you read is a fantasitc way to build the skills of active reading and succinct writing. A rhetorical precis is more informative than a bib entry and more easily reviewed <em>(read: waded through)</em> than a stack of annotated papers.</p>
-<p>Taken collectively, a set of rhetorical precis summaries provide a reading record that can be a tremendously useful when trying to recall the contents of a paper or book long after you originally read it.</p>
-</section>
-<section id="how-to-store-them" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-store-them">How to store them?</h2>
-<p>Writing and storing these reading summaries electronically can make them even more useful. This allows you to search for topics, target audiences or keywords.</p>
-<p>For this reason it can be helpful to keep them all together in one word document or plain text file. Alternatively, having a single folder with each summary as a plain text or markdown file works well if you are comfortable with searching at the command line. The same can be achieved by writing these summaries within a reference manager, if that is something you are invested in already.</p>
-</section>
-<section id="definition" class="level2">
-<h2 class="anchored" data-anchor-id="definition">Definition</h2>
-<p>Just to prove that I’m not making all this up:</p>
-<blockquote class="blockquote">
-<p>A rhetorical precis analyzes both the content (the what) and the delivery (the how) of a unit of spoken or written discourse. It is a highly structured four-sentence paragraph blending summary and analysis. Each of the four sentences requires specific information; students are expected to use brief quotations (to convey a sense of the author’s style and tone) and to include a terminal bibliographic reference. Practicing this sort of writing fosters precision in both reading and writing, forcing a writer to employ a variety of sentence structures and to develop a discerning eye for connotative shades of meaning. <br> <strong>Attribution:</strong> <a href="https://courses.lumenlearning.com/englishcomp2kscopex92x2/chapter/rhetorical-precis/">lumenlearning.com</a></p>
-</blockquote>
-</section>
-<section id="format" class="level2">
-<h2 class="anchored" data-anchor-id="format">Format</h2>
-<p>Four sentences summarising the aim of the work, how this is addressed, why it is important and a description of the target audience.</p>
-<ol type="1">
-<li>Name of author, [optional phrase describing author], genre and title of work, date in parentheses (additional publishing information in parentheses); a rhetorically accurate verb (such as “asserts,” “argues,” suggests,” “implies,” claims,” etc.); a THAT clause containing the major assertion or thesis statement of the work.</li>
-<li>An explanation of <em>how</em> the author develops and/or supports the thesis, usually in chronological order.</li>
-<li>A statement of the author’s purpose followed by an “in order to” phrase.</li>
-<li>A description of the intended audience and/or the essay’s tone</li>
-</ol>
-</section>
-<section id="a-self-indulgent-example" class="level2">
-<h2 class="anchored" data-anchor-id="a-self-indulgent-example">A (self-indulgent) example</h2>
-<p>Here is a rather self-indulgent example of a rhetorical precis.</p>
-<hr>
-<p><code>varty2021inference</code></p>
-<p><strong>Title:</strong> <em>Inference for extreme earthquake magnitudes accounting for a time-varying measurement process. {ArXiV preprint, 2021} (20 pages).</em></p>
-<p><strong>Authors:</strong> <em>Zak Varty, Jonathan Tawn, Peter Atkinson and Stijn Bierman.</em></p>
-<p><strong>Key words:</strong> <em>extreme value</em>, <em>earthquake</em>, <em>threshold selection</em>, <em>magnitude of completion</em>, <em>seismology</em>, <em>bootstrap.</em></p>
-<p>In this paper, Varty et al (2021) propose a new threshold selection method for modelling earthquake catalogues, where the magnitude distribution is stationary but detection of small events improves over time. The paper generalises the Gutenberg-Richter law to the GPD and uses metrics based on PP and QQ plots to balance between bias and variance when selecting a time-varying threshold. This procedure more than doubles the usable catalogue size for Groningen earthquakes and gives the first emprircal evidence that the magnitude distribution in this region has a finite upper end point. The paper is targeted at applied and research statisticians with an interest in EVT but would also be accessible to a statistically-minded seismologist.</p>
-<hr>
-</section>
-<section id="a-template-for-new-entries" class="level2">
-<h2 class="anchored" data-anchor-id="a-template-for-new-entries">A template for new entries</h2>
-<hr>
-<p><code>firstauthorYYYYkeyword</code></p>
-<p><strong>Title:</strong> <em>Title goes here. {Journal, YYYY} (NN pages).</em></p>
-<p><strong>Authors:</strong> <em>Author One, Author Two and Author Three. (optional affiliations)</em></p>
-<p><strong>Key words:</strong> <em>key word 1</em>, <em>key word 2</em>, <em>key work 3</em>.</p>
-<ol type="1">
-<li><em>What</em> is the document and <em>what</em> does it say?</li>
-<li><em>How</em> do they do / show this?</li>
-<li><em>Why</em> are they bothering to do this in the first place?</li>
-<li><em>Who</em> is the intended audience for this work?</li>
-</ol>
-<p>In this DOC_TYPE, AUTHOUR VERB that THESIS_STATEMENT. They DO/SHOW this by ACTIONS. This is important to PEOPLE because REASONS. This work would be useful when PEOPLE are doing ACTIVITY.</p>
-<hr>
+<p>I’m currently using some pretty hacky CSS to style this website so am limited to the latter two options for now. In the process of writing this article I stumbled across some neat SCSS that I hope will fix this issue that I have made for myself! [Update: I changed to SCSS and this is now fixed!]</p>
+<p><em>Note: When adding references to your posts, make sure that the <code>site-URL</code> field in your website’s <code>quarto.yml</code> does not have a trailing slash - this will be copied into the reference and break the links.</em></p>
+
 
 
 </section>
 
-<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-wan2020network" class="csl-entry" role="doc-biblioentry">
+Wan, Phyllis, Tiandong Wang, Richard A Davis, and Sidney I Resnick. 2020. <span>“Are Extreme Value Estimation Methods Useful for Network Data?”</span> <em>Extremes</em> 23 (1): 171–95.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
   author = {Zak Varty},
-  title = {Writing a Rhetorical Précis},
-  date = {2022-10-07},
-  url = {https://zakvarty.com/blog/rhetorical-precis},
+  title = {Setting up a Quarto Blog},
+  date = {2022-09-26},
+  url = {https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Zak Varty. 2022. <span>“Writing a Rhetorical Précis.”</span> October 7,
-2022. <a href="https://zakvarty.com/blog/rhetorical-precis">https://zakvarty.com/blog/rhetorical-precis</a>.
+Zak Varty. 2022. <span>“Setting up a Quarto Blog.”</span> September 26,
+2022. <a href="https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog">https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
