@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>Zak Varty</title>
-<link>https://zakvarty.com/blog.html</link>
-<atom:link href="https://zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://www.zakvarty.com/blog.html</link>
+<atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.0.38</generator>
 <lastBuildDate>Thu, 06 Oct 2022 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Recommended Statistics Books</title>
   <dc:creator>Zak Varty</dc:creator>
-  <link>https://zakvarty.com/blog/2022-10-10-statistics-books/index.html</link>
+  <link>https://www.zakvarty.com/blog/2022-10-10-statistics-books/index.html</link>
   <description><![CDATA[ 
 
 
@@ -22,7 +22,7 @@
 <section id="statistics-and-statistical-inference-books" class="level2">
 <h2 class="anchored" data-anchor-id="statistics-and-statistical-inference-books">Statistics and Statistical Inference Books</h2>
 <div class="medium_right">
-<p><img style="border-radius: 10%;" src="https://zakvarty.com/blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" alt="Photograph of the mathematics section of Blackwell's book shop in Oxford."></p>
+<p><img style="border-radius: 10%;" src="https://www.zakvarty.com/blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" alt="Photograph of the mathematics section of Blackwell's book shop in Oxford."></p>
 </div>
 <p>While teaching a course on supervised learning last year, several students asked about what books I would recommended on statistical inference and modelling.</p>
 <p>For context, the students on this course are all highly numerate and studying at the postgraduate level. What makes this request challenging is the broad range of student backgrounds, some students had a maths degree but the majority are trained and work as engineers, physicists or computer scientists.</p>
@@ -33,7 +33,7 @@
 <h3 class="anchored" data-anchor-id="mathematical-statistics-and-data-analysis---john-a.-rice">Mathematical Statistics and Data Analysis - John A. Rice</h3>
 <p><br></p>
 <div class="small_left">
-<p><img style="border-radius: 2%;" src="https://zakvarty.com/blog/2022-10-10-statistics-books/rice.jpg" alt="Cover of Mathematical Statistics and Data Analysis by John A. Rice."></p>
+<p><img style="border-radius: 2%;" src="https://www.zakvarty.com/blog/2022-10-10-statistics-books/rice.jpg" alt="Cover of Mathematical Statistics and Data Analysis by John A. Rice."></p>
 </div>
 <p><span class="citation" data-cites="rice2007mathematical">Rice (2007)</span> covers the basics of probability and statistics usually contained in the first couple of undergraduate statistics courses. Generally the first university courses are a bit dry, building up the required knowledge to do interesting things. This book is slightly better than the average treatment in terms of readability and is fairly comprehensive, making it well suited as a reference text. This is a book full of all the stuff you might once have known but have now forgotten, or never studied before.</p>
 <p><br></p>
@@ -41,7 +41,7 @@
 <section id="essential-medical-statistics---betty-kirkwood-and-jonathan-sterne" class="level3">
 <h3 class="anchored" data-anchor-id="essential-medical-statistics---betty-kirkwood-and-jonathan-sterne">Essential Medical Statistics - Betty Kirkwood and Jonathan Sterne</h3>
 <div class="small_left">
-<p><img style="border-radius: 2%;" src="https://zakvarty.com/blog/2022-10-10-statistics-books/kirkwood.jpg" alt="Cover of Essential Medical Statistics by Betty Kirkwood and Jonathan Sterne."></p>
+<p><img style="border-radius: 2%;" src="https://www.zakvarty.com/blog/2022-10-10-statistics-books/kirkwood.jpg" alt="Cover of Essential Medical Statistics by Betty Kirkwood and Jonathan Sterne."></p>
 </div>
 <p><br></p>
 <p><span class="citation" data-cites="kirkwood2010essential">Kirkwood and Sterne (2010)</span> focuses on more advanced topics in statistics, such as inference, hypothesis testing and modelling. However, it approaches these from an applications perspective. While all of the applications it uses are from medical statistics, the authors give sufficient context that you do not need to be familiar with this area before reading. This is a very readable book, with a moderate amount of mathematical detail. I find myself revisiting it quite often.</p>
@@ -50,7 +50,7 @@
 <section id="core-statistics---simon-wood" class="level3">
 <h3 class="anchored" data-anchor-id="core-statistics---simon-wood">Core Statistics - Simon Wood</h3>
 <div class="small_left">
-<p><img style="border-radius: 2%;" src="https://zakvarty.com/blog/2022-10-10-statistics-books/wood.jpg" alt="Cover of Core Statistics by Simon Wood."></p>
+<p><img style="border-radius: 2%;" src="https://www.zakvarty.com/blog/2022-10-10-statistics-books/wood.jpg" alt="Cover of Core Statistics by Simon Wood."></p>
 </div>
 <p><span class="citation" data-cites="wood2015core">Wood (2015)</span> gives an introduction to the core topics in statistics aimed at new graduate-level students. It is mathematically dense but written in an approachable manner and (unsurprisingly) covers all the core ideas of statistics. This means that is often a good source to get an overview of a topic and to cover the key points in that area quickly. It is probably wise to supplement this with a more applied text to see worked examples and to a more detailed text for topics that you need to explore in greater detail.</p>
 <p><br></p>
@@ -58,7 +58,7 @@
 <section id="in-all-likelihood---yudi-pawitan" class="level3">
 <h3 class="anchored" data-anchor-id="in-all-likelihood---yudi-pawitan">In All Likelihood - Yudi Pawitan</h3>
 <div class="small_left">
-<p><img style="border-radius: 2%;" src="https://zakvarty.com/blog/2022-10-10-statistics-books/pawitan.jpg" alt="Cover of In All Likelihood by Yudi Pawitan."></p>
+<p><img style="border-radius: 2%;" src="https://www.zakvarty.com/blog/2022-10-10-statistics-books/pawitan.jpg" alt="Cover of In All Likelihood by Yudi Pawitan."></p>
 </div>
 <p><br></p>
 <p><span class="citation" data-cites="pawitan2001all">Pawitan (2001)</span> focuses entirely on likelihood inference and covers both theory and applications in a great deal of detail. I highly recommend this to supplement frequentist topics covered in core statistics and the elements of statistical learning. It builds up from very little assumed knowledge but also goes on to cover some very advanced topics in later chapters.</p>
@@ -67,7 +67,7 @@
 <section id="kendalls-advanced-theory-of-statistics---alan-stuart-et-al." class="level3">
 <h3 class="anchored" data-anchor-id="kendalls-advanced-theory-of-statistics---alan-stuart-et-al.">Kendall’s Advanced Theory of Statistics - Alan Stuart et al.</h3>
 <div class="small_left">
-<p><img style="border-radius: 2%;" src="https://zakvarty.com/blog/2022-10-10-statistics-books/kendall-1.webp" alt="Cover of Kendall's Advanced Theory of Statistics."></p>
+<p><img style="border-radius: 2%;" src="https://www.zakvarty.com/blog/2022-10-10-statistics-books/kendall-1.webp" alt="Cover of Kendall's Advanced Theory of Statistics."></p>
 </div>
 <p><br></p>
 <p><span class="citation" data-cites="kendall1987kendall">Kendall, Stuart, and Ord (1987)</span> is an alternative to In All Likelihood, aimed at a similar audience and level. Split over several volumes this is good to do a deep-dive into a particular topic but probably not one to try and read cover to cover!</p>
@@ -112,23 +112,23 @@ Wood, Simon N. 2015. <em>Core Statistics</em>. Cambridge University Press.
   author = {Zak Varty},
   title = {Recommended {Statistics} {Books}},
   date = {2022-10-07},
-  url = {https://zakvarty.com/blog/2022-10-10-statistics-books},
+  url = {https://www.zakvarty.com/blog/2022-10-10-statistics-books},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
 Zak Varty. 2022. <span>“Recommended Statistics Books.”</span> October 7,
-2022. <a href="https://zakvarty.com/blog/2022-10-10-statistics-books">https://zakvarty.com/blog/2022-10-10-statistics-books</a>.
+2022. <a href="https://www.zakvarty.com/blog/2022-10-10-statistics-books">https://www.zakvarty.com/blog/2022-10-10-statistics-books</a>.
 </div></div></section></div> ]]></description>
   <category>academic skills</category>
   <category>reading</category>
-  <guid>https://zakvarty.com/blog/2022-10-10-statistics-books/index.html</guid>
+  <guid>https://www.zakvarty.com/blog/2022-10-10-statistics-books/index.html</guid>
   <pubDate>Thu, 06 Oct 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://zakvarty.com/blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.zakvarty.com/blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Writing a rhetorical précis</title>
   <dc:creator>Zak Varty</dc:creator>
-  <link>https://zakvarty.com/blog/2022-10-07-rhetorical-precis/index.html</link>
+  <link>https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis/index.html</link>
   <description><![CDATA[ 
 
 
@@ -137,7 +137,7 @@ Zak Varty. 2022. <span>“Recommended Statistics Books.”</span> October 7,
 <section id="what-is-a-rhetorical-precis" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-rhetorical-precis">What is a rhetorical precis?</h2>
 <div class="medium_right">
-<p><img style="border-radius: 10%;" src="https://zakvarty.com/blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" alt="Photograph of a filing cabinet filled with library index cards."></p>
+<p><img style="border-radius: 10%;" src="https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" alt="Photograph of a filing cabinet filled with library index cards."></p>
 </div>
 <p>A rhetorical precis is a short summary and analysis of a piece of writing, which considers both the content and the delivery of the piece.</p>
 <p>A rhetorical precis serves to summarise and analyse the text through:</p>
@@ -208,24 +208,24 @@ Zak Varty. 2022. <span>“Recommended Statistics Books.”</span> October 7,
   author = {Zak Varty},
   title = {Writing a Rhetorical Précis},
   date = {2022-10-07},
-  url = {https://zakvarty.com/blog/2022-10-07-rhetorical-precis},
+  url = {https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
 Zak Varty. 2022. <span>“Writing a Rhetorical Précis.”</span> October 7,
-2022. <a href="https://zakvarty.com/blog/2022-10-07-rhetorical-precis">https://zakvarty.com/blog/2022-10-07-rhetorical-precis</a>.
+2022. <a href="https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis">https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis</a>.
 </div></div></section></div> ]]></description>
   <category>academic skills</category>
   <category>writing</category>
   <category>reading</category>
-  <guid>https://zakvarty.com/blog/2022-10-07-rhetorical-precis/index.html</guid>
+  <guid>https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis/index.html</guid>
   <pubDate>Thu, 06 Oct 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://zakvarty.com/blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Setting up a quarto blog</title>
   <dc:creator>Zak Varty</dc:creator>
-  <link>https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/index.html</link>
+  <link>https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/index.html</link>
   <description><![CDATA[ 
 
 
@@ -233,7 +233,7 @@ Zak Varty. 2022. <span>“Writing a Rhetorical Précis.”</span> October 7,
 <section id="what-am-i-trying-to-do" class="level1">
 <h1>What am I trying to do?</h1>
 <div class="medium_right">
-<p><img style="border-radius: 10%;" src="https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background"></p>
+<p><img style="border-radius: 10%;" src="https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background"></p>
 </div>
 <p>My aim here is to set up a blog within an existing quarto website. I want the blog to be a sub-domain of the main site (<code>zakvarty.com/blog</code>) and for it to inherit the styling of that site.</p>
 <p>It probably would have been easier to make the blog a sub domain (<code>blog.zakvarty.com</code>) and use two separate but matching style files to make those sites look coherent. However, I wanted to make the most of the built in search features on quarto websites and am a glutton for punishment.</p>
@@ -279,23 +279,23 @@ Wan, Phyllis, Tiandong Wang, Richard A Davis, and Sidney I Resnick. 2020. <span>
   author = {Zak Varty},
   title = {Setting up a Quarto Blog},
   date = {2022-09-26},
-  url = {https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog},
+  url = {https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
 Zak Varty. 2022. <span>“Setting up a Quarto Blog.”</span> September 26,
-2022. <a href="https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog">https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog</a>.
+2022. <a href="https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog">https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog</a>.
 </div></div></section></div> ]]></description>
   <category>quarto</category>
   <category>tutorial</category>
-  <guid>https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/index.html</guid>
+  <guid>https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/index.html</guid>
   <pubDate>Sun, 25 Sep 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Hello, World!</title>
   <dc:creator>Zak Varty</dc:creator>
-  <link>https://zakvarty.com/blog/2022-09-26-hello-world/index.html</link>
+  <link>https://www.zakvarty.com/blog/2022-09-26-hello-world/index.html</link>
   <description><![CDATA[ 
 
 
@@ -320,7 +320,7 @@ Zak Varty. 2022. <span>“Setting up a Quarto Blog.”</span> September 26,
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://zakvarty.com/blog/2022-09-26-hello-world/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://www.zakvarty.com/blog/2022-09-26-hello-world/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -332,9 +332,9 @@ Zak Varty. 2022. <span>“Setting up a Quarto Blog.”</span> September 26,
  ]]></description>
   <category>Quarto</category>
   <category>Templates</category>
-  <guid>https://zakvarty.com/blog/2022-09-26-hello-world/index.html</guid>
+  <guid>https://www.zakvarty.com/blog/2022-09-26-hello-world/index.html</guid>
   <pubDate>Sun, 25 Sep 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://zakvarty.com/blog/2022-09-26-hello-world/hello-world-image.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.zakvarty.com/blog/2022-09-26-hello-world/hello-world-image.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

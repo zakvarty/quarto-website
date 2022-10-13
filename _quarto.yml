@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Zak Varty"
-  site-url: "https://zakvarty.com"
+  site-url: "https://www.zakvarty.com"
   favicon: "assets/00_favicon/favicon.ico"
   twitter-card: true
 #    creator: "@zakvarty"
