@@ -1,0 +1,16 @@
+{
+  "hash": "e500a1945158006f7d6b9a5da49d9b63",
+  "result": {
+    "markdown": "---\ntitle: \"Hello, World!\"\ndescription: |\n    A minimal first post\ndate: \"2022-09-26\"\ncategories:\n  - Quarto\n  - Templates\ncode-fold: true\nimage: hello-world-image.jpg\nimage-alt: |\n    The text Hello, World` written in red monospaced font inside curly braces on a grey background.\ndraft: false\nfreeze: true\nappendix-style: none #(default, plain, none)\n---\n\n\n# Some Text\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n# Some Code\n\n\n::: {.cell layout-align=\"center\"}\n\n```{.r .cell-code}\npar(bg = NA)\nplot(\n    x = mtcars$mpg,\n    y = mtcars$cyl,\n    xlab = \"miles per gallon\",\n    ylab = \"cyclider count\",\n    pch = 16)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){fig-align='center' width=672}\n:::\n:::",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

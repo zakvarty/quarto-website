@@ -1,7 +1,7 @@
 ---
 title: "Good Enough Practices in Scientific Computing"
 description: |
-    Reading Summary.
+    Reading Summary of Wilson et al. (2017).
 date: "2022-10-19"
 categories:
   - academic skills
@@ -10,9 +10,9 @@ categories:
   - reading summary
 code-fold: false
 image: gepisc-image.png
-image-alt: Header section of a PLOS Comptational Biology perspective paper titled "Good Enough Practices in Scientific Computing".
+image-alt: "Header section of a PLOS Comptational Biology perspective paper titled 'Good Enough Practices in Scientific Computing'."
 draft: false
-freeze: false
+freeze: true
 appendix-style: plain #(default, plain, none)
 bibliography: ../library.bib
 citation: false

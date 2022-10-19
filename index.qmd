@@ -12,6 +12,7 @@ about:
     - icon: google
       text: Google Scholar 
       href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
+freeze: true
 ---
 
 <!-- jolla trestles _solana_ marquee broadside -->

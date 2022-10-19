@@ -11,7 +11,7 @@ image: hello-world-image.jpg
 image-alt: |
     The text Hello, World` written in red monospaced font inside curly braces on a grey background.
 draft: false
-freeze: false
+freeze: true
 appendix-style: none #(default, plain, none)
 ---
 
