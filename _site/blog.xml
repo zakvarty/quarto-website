@@ -200,6 +200,24 @@ Zak Varty. 2022. <span>“Recommended Statistics Books.”</span> October
 </ol>
 <p>In this DOC_TYPE, AUTHOUR VERB that THESIS_STATEMENT. They DO/SHOW this by ACTIONS. This is important to PEOPLE because REASONS. This work would be useful when PEOPLE are doing ACTIVITY.</p>
 <hr>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="in" style="color: #5E5E5E;">`firstauthorYYYYkeyword`</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3">**Title:** _Title goes here. {Journal, YYYY} (NN pages)._</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">**Authors:** _Author One, Author Two and Author Three. (optional affiliations)_</span>
+<span id="cb1-6"></span>
+<span id="cb1-7">**Key words:** _key word 1_, _key word 2_, _key work 3_. </span>
+<span id="cb1-8"></span>
+<span id="cb1-9"><span class="ss" style="color: #20794D;">1. </span>_What_ is the document and _what_ does it say? </span>
+<span id="cb1-10"><span class="ss" style="color: #20794D;">2. </span>_How_ do they do / show this?</span>
+<span id="cb1-11"><span class="ss" style="color: #20794D;">3. </span>_Why_ are they bothering to do this in the first place?</span>
+<span id="cb1-12"><span class="ss" style="color: #20794D;">4. </span>_Who_ is the intended audience for this work?</span>
+<span id="cb1-13"></span>
+<span id="cb1-14">In this DOC_TYPE, AUTHOUR VERB that THESIS<span class="sc" style="color: #5E5E5E;">\_</span>STATEMENT.</span>
+<span id="cb1-15">They DO/SHOW this by ACTIONS. </span>
+<span id="cb1-16">This is important to PEOPLE because REASONS. </span>
+<span id="cb1-17">This work would be useful when PEOPLE are doing ACTIVITY.</span></code></pre></div>
+<hr>
 
 
 </section>
