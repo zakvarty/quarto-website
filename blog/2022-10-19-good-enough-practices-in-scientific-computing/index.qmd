@@ -1,0 +1,160 @@
+---
+title: "Good Enough Practices in Scientific Computing"
+description: |
+    Reading Summary.
+date: "2022-10-19"
+categories:
+  - academic skills
+  - computing
+  - reproducible research
+  - reading summary
+code-fold: false
+image: gepisc-image.png
+image-alt: Header section of a PLOS Comptational Biology perspective paper titled "Good Enough Practices in Scientific Computing".
+draft: false
+freeze: false
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: false
+---
+
+<!--Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maksym Kaharlytskyi</a> on <a href="https://unsplash.com/s/photos/filing-cabinet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> --> 
+
+## Reading Summary
+
+`wilson2017good`
+
+**Title:** _Good Enough Practices in Scientific Computing. {PLOS Computational Biology, 2017} (20 pages)._
+
+**Authors:** _Greg Wilson, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt and Tracy K. Teal._
+
+**Key words:** _computing_, _research skills_, _reproducibilty_, _guides_. 
+
+In this paper by @wilson2017good, a collection of experienced researchers and instructors give simple ways to implement good computing practices during a research project. They do this by providing a list of concrete recommendations that every researcher can adopt, regardless of their current computational skills. This is important to help the transition toward open, documented and reproducible research. The article is aimed specifically at people who are new to computational research but also contains useful guidance for more experienced researchers.
+
+## Notes 
+
+
+This article describes some of the best-practices in software development and how those ideas can be implemented in a reasearch project. This focus here is on implementing these approaches without requiring reseachers to learn how to use lots of peripheral technologies (for example git and LaTeX / markdown). 
+
+An earlier paper "Best Practices for Scientifc Computing" [@wilson2014best], is aimed at those who have or would like to develop such peripheral skills.
+
+## Suggested Best Practices 
+
+Best practices are grouped into 6 main themes. 
+
+### 1. Data Management
+
+#### Create the data you wish to see in the world
+
+Raw data should be created in a format that is ammenable to analysis and where multiple tables are used, a unique identifer used to link each record across these tables.
+
+#### Keep it backed up, keep it intact
+ 
+This raw data should be backed up in more than one location and preserved during the analysis (i.e. __not__ directly edited). When cleaning, handling and modelling the data keep a record of all steps used.
+
+#### Share the data
+
+To allow your future self (and others) to access and cite your hard won data, submit it to a reputable DOI-issuing repository.
+
+### 2. Software 
+
+#### Script files
+
+Start each script with a brief explanatory comment of its purpose and a description of any dependencies. 
+
+Within scripts, ruthlessly eliminate duplication. Do this by creating functions for any repeated operations and provide simple examples of how those functions work. 
+
+When making functions and variables, give them meaningful names. As rule of thumb: fuctions are verbs, variables are nouns.
+
+If you need your script to perform different actions, control this behaviour programmatically rather than by commenting/uncommenting sections of code. 
+
+```{r not-recommended.R}
+#| eval: false
+# Uncomment for weekly reports
+output_dir <- paste0("weekly_reports/",year,"/",week_of_year,"/")
+# Uncomment for annual reports
+#output_dir <- paste0("annual_reports/",year,"/")
+
+```
+
+```{r recommended.R}
+#| eval: false
+report_type = "weekly"
+year = 2022
+week_of_year = 21
+
+if (report_type == "weekly") {
+  output_dir <- paste0("weekly_reports/",year,"/",week_of_year,"/")
+} else if (report_type == "annual") {
+  output_dir <- paste0("annual_reports/",year,"/")
+} else {
+  stop("report_type should be 'weekly' or 'annual'.")
+}
+```
+
+Submit the final code for your research project to to a reputable DOI-issuing repository. 
+
+#### External Code
+
+Before writing your own code, check if someone else got there first. Are there well-maintained software libraries that already do what you need? 
+
+If so, test the code (extensively!) before relying on it. Keep a record of what you have tested and add to this as you find awkward edge cases.
+
+
+### 3. Collaboration 
+
+#### Collaborating within your team
+
+Create a single file called `README` giving an overview of your project. This should describe aim of the project and how to get started working with the data/code/writing. A good rule of thumb is to write this as though it were for either a new-starter on your team. Future you will thank you! 
+
+Create a shared to-do list for the project in a file called `TODO` and decide on how you will communicate during the project. For example, what channels will you use for group meetings, quick questions, assigning tasks and setting deadlines?
+
+
+#### Opening up to the wider world
+
+Add another file called `LICENSE` giving the licensing information for the project. This says who can use it and for what purposes. No license implies you are keeping all rights and nobody is allowed to reuse or modify the materials. For more information on licenses see [choosealicense.com](choosealicense.com) or [The Open Source Guide](https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project). Consult your company's legal folks as needed.
+
+Create a final file called `CITATION` letting other people know how they should give proper attribution to your work if they use it.
+
+
+
+### 4. Project Organisation 
+
+Each project should be self-contained in its own directory (folder) and this directory should be named after the project. 
+
+Create subdirectories called:
+
+-  `docs/` for all text documents associated with the project 
+-  `data/raw/` for all raw data and metadata 
+-  `data/derived/` for all data files during cleanup and analysis
+-  `src` for all code you write as part of this project 
+-  `bin` for all external code or compiled programs that you use in this project 
+
+When adding files and subdirectories within this structure, name these to clearly reflect their content or function. 
+
+
+### 5. Tracking Changes 
+
+As soon as any file is created by a human, back it up in multiple locations. If you make a huge file, then consult your IT folks about how to store and back it up.
+
+Add a file called `CHANGELOG` to the docs subfolder. Use this to track all changes made within the project by all contributers, describing when the changes happened and why they were made. 
+
+Keep these changes as small as possible and share among collaborators frequently to avoid getting out of sync.
+
+Make a Copy the entire project whenever a significant change has been made. 
+
+Better yet, use a dedicated version control system such as git if that is a realistic option.
+
+
+### 6. Manuscripts 
+
+Pick one and stick to it within each project. The former has a much lower bar to entry and has most of the benefits of the latter (other than manuscripts being stored in the same place as everything else). 
+
+1. Write the manuscript using online tools with rich formatting, change tracking and reference management. (e.g. Overleaf, Google Docs)
+
+2. Write the manuscript in plain text format the permits version control (e.g. tex + git or markdown + git)
+
+
+
+

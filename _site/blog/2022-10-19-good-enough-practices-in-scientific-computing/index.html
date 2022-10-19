@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zak Varty">
+<meta name="dcterms.date" content="2022-10-19">
+<meta name="description" content="Reading Summary.">
+
+<title>Zak Varty - Good Enough Practices in Scientific Computing</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/00_favicon/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-326407710"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-326407710', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<meta name="twitter:title" content="Zak Varty - Good Enough Practices in Scientific Computing">
+<meta name="twitter:description" content="Reading Summary.">
+<meta name="twitter:image" content="https://www.zakvarty.com/blog/2022-10-19-good-enough-practices-in-scientific-computing/gepisc-image.png">
+<meta name="twitter:image-height" content="1022">
+<meta name="twitter:image-width" content="2178">
+<meta name="twitter:image:alt" content="Header section of a PLOS Comptational Biology perspective paper titled &quot;Good Enough Practices in Scientific Computing&quot;.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Zak Varty</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-professional" role="button" data-bs-toggle="dropdown" aria-expanded="false">Professional</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-professional">    
+        <li>
+    <a class="dropdown-item" href="../../professional/research.html">
+ <span class="dropdown-text">Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/teaching.html">
+ <span class="dropdown-text">Teaching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/talks.html">
+ <span class="dropdown-text">Talks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/bookmarks.html">
+ <span class="dropdown-text">Bookmarks</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-personal" role="button" data-bs-toggle="dropdown" aria-expanded="false">Personal</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-personal">    
+        <li>
+    <a class="dropdown-item" href="../../personal/reading-record.html">
+ <span class="dropdown-text">Reading record 📚</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zakvarty"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reading-summary" id="toc-reading-summary" class="nav-link active" data-scroll-target="#reading-summary">Reading Summary</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#suggested-best-practices" id="toc-suggested-best-practices" class="nav-link" data-scroll-target="#suggested-best-practices">Suggested Best Practices</a>
+  <ul class="collapse">
+  <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management">1. Data Management</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">2. Software</a></li>
+  <li><a href="#collaboration" id="toc-collaboration" class="nav-link" data-scroll-target="#collaboration">3. Collaboration</a></li>
+  <li><a href="#project-organisation" id="toc-project-organisation" class="nav-link" data-scroll-target="#project-organisation">4. Project Organisation</a></li>
+  <li><a href="#tracking-changes" id="toc-tracking-changes" class="nav-link" data-scroll-target="#tracking-changes">5. Tracking Changes</a></li>
+  <li><a href="#manuscripts" id="toc-manuscripts" class="nav-link" data-scroll-target="#manuscripts">6. Manuscripts</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Good Enough Practices in Scientific Computing</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">academic skills</div>
+    <div class="quarto-category">computing</div>
+    <div class="quarto-category">reproducible research</div>
+    <div class="quarto-category">reading summary</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>Reading Summary.</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zak Varty </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 19, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<!--Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maksym Kaharlytskyi</a> on <a href="https://unsplash.com/s/photos/filing-cabinet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> -->
+<section id="reading-summary" class="level2">
+<h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
+<p><code>wilson2017good</code></p>
+<p><strong>Title:</strong> <em>Good Enough Practices in Scientific Computing. {PLOS Computational Biology, 2017} (20 pages).</em></p>
+<p><strong>Authors:</strong> <em>Greg Wilson, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt and Tracy K. Teal.</em></p>
+<p><strong>Key words:</strong> <em>computing</em>, <em>research skills</em>, <em>reproducibilty</em>, <em>guides</em>.</p>
+<p>In this paper by <span class="citation" data-cites="wilson2017good">Wilson et al. (<a href="#ref-wilson2017good" role="doc-biblioref">2017</a>)</span>, a collection of experienced researchers and instructors give simple ways to implement good computing practices during a research project. They do this by providing a list of concrete recommendations that every researcher can adopt, regardless of their current computational skills. This is important to help the transition toward open, documented and reproducible research. The article is aimed specifically at people who are new to computational research but also contains useful guidance for more experienced researchers.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>This article describes some of the best-practices in software development and how those ideas can be implemented in a reasearch project. This focus here is on implementing these approaches without requiring reseachers to learn how to use lots of peripheral technologies (for example git and LaTeX / markdown).</p>
+<p>An earlier paper “Best Practices for Scientifc Computing” <span class="citation" data-cites="wilson2014best">(<a href="#ref-wilson2014best" role="doc-biblioref">Wilson et al. 2014</a>)</span>, is aimed at those who have or would like to develop such peripheral skills.</p>
+</section>
+<section id="suggested-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-best-practices">Suggested Best Practices</h2>
+<p>Best practices are grouped into 6 main themes.</p>
+<section id="data-management" class="level3">
+<h3 class="anchored" data-anchor-id="data-management">1. Data Management</h3>
+<section id="create-the-data-you-wish-to-see-in-the-world" class="level4">
+<h4 class="anchored" data-anchor-id="create-the-data-you-wish-to-see-in-the-world">Create the data you wish to see in the world</h4>
+<p>Raw data should be created in a format that is ammenable to analysis and where multiple tables are used, a unique identifer used to link each record across these tables.</p>
+</section>
+<section id="keep-it-backed-up-keep-it-intact" class="level4">
+<h4 class="anchored" data-anchor-id="keep-it-backed-up-keep-it-intact">Keep it backed up, keep it intact</h4>
+<p>This raw data should be backed up in more than one location and preserved during the analysis (i.e.&nbsp;<strong>not</strong> directly edited). When cleaning, handling and modelling the data keep a record of all steps used.</p>
+</section>
+<section id="share-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="share-the-data">Share the data</h4>
+<p>To allow your future self (and others) to access and cite your hard won data, submit it to a reputable DOI-issuing repository.</p>
+</section>
+</section>
+<section id="software" class="level3">
+<h3 class="anchored" data-anchor-id="software">2. Software</h3>
+<section id="script-files" class="level4">
+<h4 class="anchored" data-anchor-id="script-files">Script files</h4>
+<p>Start each script with a brief explanatory comment of its purpose and a description of any dependencies.</p>
+<p>Within scripts, ruthlessly eliminate duplication. Do this by creating functions for any repeated operations and provide simple examples of how those functions work.</p>
+<p>When making functions and variables, give them meaningful names. As rule of thumb: fuctions are verbs, variables are nouns.</p>
+<p>If you need your script to perform different actions, control this behaviour programmatically rather than by commenting/uncommenting sections of code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment for weekly reports</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>output_dir <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"weekly_reports/"</span>,year,<span class="st">"/"</span>,week_of_year,<span class="st">"/"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment for annual reports</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#output_dir &lt;- paste0("annual_reports/",year,"/")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>report_type <span class="ot">=</span> <span class="st">"weekly"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>year <span class="ot">=</span> <span class="dv">2022</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>week_of_year <span class="ot">=</span> <span class="dv">21</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (report_type <span class="sc">==</span> <span class="st">"weekly"</span>) {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  output_dir <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"weekly_reports/"</span>,year,<span class="st">"/"</span>,week_of_year,<span class="st">"/"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (report_type <span class="sc">==</span> <span class="st">"annual"</span>) {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  output_dir <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"annual_reports/"</span>,year,<span class="st">"/"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="st">"report_type should be 'weekly' or 'annual'."</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Submit the final code for your research project to to a reputable DOI-issuing repository.</p>
+</section>
+<section id="external-code" class="level4">
+<h4 class="anchored" data-anchor-id="external-code">External Code</h4>
+<p>Before writing your own code, check if someone else got there first. Are there well-maintained software libraries that already do what you need?</p>
+<p>If so, test the code (extensively!) before relying on it. Keep a record of what you have tested and add to this as you find awkward edge cases.</p>
+</section>
+</section>
+<section id="collaboration" class="level3">
+<h3 class="anchored" data-anchor-id="collaboration">3. Collaboration</h3>
+<section id="collaborating-within-your-team" class="level4">
+<h4 class="anchored" data-anchor-id="collaborating-within-your-team">Collaborating within your team</h4>
+<p>Create a single file called <code>README</code> giving an overview of your project. This should describe aim of the project and how to get started working with the data/code/writing. A good rule of thumb is to write this as though it were for either a new-starter on your team. Future you will thank you!</p>
+<p>Create a shared to-do list for the project in a file called <code>TODO</code> and decide on how you will communicate during the project. For example, what channels will you use for group meetings, quick questions, assigning tasks and setting deadlines?</p>
+</section>
+<section id="opening-up-to-the-wider-world" class="level4">
+<h4 class="anchored" data-anchor-id="opening-up-to-the-wider-world">Opening up to the wider world</h4>
+<p>Add another file called <code>LICENSE</code> giving the licensing information for the project. This says who can use it and for what purposes. No license implies you are keeping all rights and nobody is allowed to reuse or modify the materials. For more information on licenses see <a href="choosealicense.com">choosealicense.com</a> or <a href="https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project">The Open Source Guide</a>. Consult your company’s legal folks as needed.</p>
+<p>Create a final file called <code>CITATION</code> letting other people know how they should give proper attribution to your work if they use it.</p>
+</section>
+</section>
+<section id="project-organisation" class="level3">
+<h3 class="anchored" data-anchor-id="project-organisation">4. Project Organisation</h3>
+<p>Each project should be self-contained in its own directory (folder) and this directory should be named after the project.</p>
+<p>Create subdirectories called:</p>
+<ul>
+<li><code>docs/</code> for all text documents associated with the project</li>
+<li><code>data/raw/</code> for all raw data and metadata</li>
+<li><code>data/derived/</code> for all data files during cleanup and analysis</li>
+<li><code>src</code> for all code you write as part of this project</li>
+<li><code>bin</code> for all external code or compiled programs that you use in this project</li>
+</ul>
+<p>When adding files and subdirectories within this structure, name these to clearly reflect their content or function.</p>
+</section>
+<section id="tracking-changes" class="level3">
+<h3 class="anchored" data-anchor-id="tracking-changes">5. Tracking Changes</h3>
+<p>As soon as any file is created by a human, back it up in multiple locations. If you make a huge file, then consult your IT folks about how to store and back it up.</p>
+<p>Add a file called <code>CHANGELOG</code> to the docs subfolder. Use this to track all changes made within the project by all contributers, describing when the changes happened and why they were made.</p>
+<p>Keep these changes as small as possible and share among collaborators frequently to avoid getting out of sync.</p>
+<p>Make a Copy the entire project whenever a significant change has been made.</p>
+<p>Better yet, use a dedicated version control system such as git if that is a realistic option.</p>
+</section>
+<section id="manuscripts" class="level3">
+<h3 class="anchored" data-anchor-id="manuscripts">6. Manuscripts</h3>
+<p>Pick one and stick to it within each project. The former has a much lower bar to entry and has most of the benefits of the latter (other than manuscripts being stored in the same place as everything else).</p>
+<ol type="1">
+<li><p>Write the manuscript using online tools with rich formatting, change tracking and reference management. (e.g.&nbsp;Overleaf, Google Docs)</p></li>
+<li><p>Write the manuscript in plain text format the permits version control (e.g.&nbsp;tex + git or markdown + git)</p></li>
+</ol>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-wilson2014best" class="csl-entry" role="doc-biblioentry">
+Wilson, Greg, D. A. Aruliah, C. Titus Brown, Neil P. Chue Hong, Matt Davis, Richard T. Guy, Steven H. D. Haddock, et al. 2014. <span>“Best Practices for Scientific Computing.”</span> <em>PLOS Biology</em> 12 (January): 1–7. <a href="https://doi.org/10.1371/journal.pbio.1001745">https://doi.org/10.1371/journal.pbio.1001745</a>.
+</div>
+<div id="ref-wilson2017good" class="csl-entry" role="doc-biblioentry">
+Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (June): 1–20. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022, Zak Varty.</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zakvarty">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=3H4vg4cAAAAJ&amp;hl=en&amp;oi=ao">
+      <i class="bi bi-google" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

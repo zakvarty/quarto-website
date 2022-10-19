@@ -10,7 +10,145 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.0.38</generator>
-<lastBuildDate>Sun, 09 Oct 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 18 Oct 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Good Enough Practices in Scientific Computing</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<!--Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maksym Kaharlytskyi</a> on <a href="https://unsplash.com/s/photos/filing-cabinet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> -->
+<section id="reading-summary" class="level2">
+<h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
+<p><code>wilson2017good</code></p>
+<p><strong>Title:</strong> <em>Good Enough Practices in Scientific Computing. {PLOS Computational Biology, 2017} (20 pages).</em></p>
+<p><strong>Authors:</strong> <em>Greg Wilson, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt and Tracy K. Teal.</em></p>
+<p><strong>Key words:</strong> <em>computing</em>, <em>research skills</em>, <em>reproducibilty</em>, <em>guides</em>.</p>
+<p>In this paper by <span class="citation" data-cites="wilson2017good">Wilson et al. (2017)</span>, a collection of experienced researchers and instructors give simple ways to implement good computing practices during a research project. They do this by providing a list of concrete recommendations that every researcher can adopt, regardless of their current computational skills. This is important to help the transition toward open, documented and reproducible research. The article is aimed specifically at people who are new to computational research but also contains useful guidance for more experienced researchers.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>This article describes some of the best-practices in software development and how those ideas can be implemented in a reasearch project. This focus here is on implementing these approaches without requiring reseachers to learn how to use lots of peripheral technologies (for example git and LaTeX / markdown).</p>
+<p>An earlier paper “Best Practices for Scientifc Computing” <span class="citation" data-cites="wilson2014best">(Wilson et al. 2014)</span>, is aimed at those who have or would like to develop such peripheral skills.</p>
+</section>
+<section id="suggested-best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-best-practices">Suggested Best Practices</h2>
+<p>Best practices are grouped into 6 main themes.</p>
+<section id="data-management" class="level3">
+<h3 class="anchored" data-anchor-id="data-management">1. Data Management</h3>
+<section id="create-the-data-you-wish-to-see-in-the-world" class="level4">
+<h4 class="anchored" data-anchor-id="create-the-data-you-wish-to-see-in-the-world">Create the data you wish to see in the world</h4>
+<p>Raw data should be created in a format that is ammenable to analysis and where multiple tables are used, a unique identifer used to link each record across these tables.</p>
+</section>
+<section id="keep-it-backed-up-keep-it-intact" class="level4">
+<h4 class="anchored" data-anchor-id="keep-it-backed-up-keep-it-intact">Keep it backed up, keep it intact</h4>
+<p>This raw data should be backed up in more than one location and preserved during the analysis (i.e.&nbsp;<strong>not</strong> directly edited). When cleaning, handling and modelling the data keep a record of all steps used.</p>
+</section>
+<section id="share-the-data" class="level4">
+<h4 class="anchored" data-anchor-id="share-the-data">Share the data</h4>
+<p>To allow your future self (and others) to access and cite your hard won data, submit it to a reputable DOI-issuing repository.</p>
+</section>
+</section>
+<section id="software" class="level3">
+<h3 class="anchored" data-anchor-id="software">2. Software</h3>
+<section id="script-files" class="level4">
+<h4 class="anchored" data-anchor-id="script-files">Script files</h4>
+<p>Start each script with a brief explanatory comment of its purpose and a description of any dependencies.</p>
+<p>Within scripts, ruthlessly eliminate duplication. Do this by creating functions for any repeated operations and provide simple examples of how those functions work.</p>
+<p>When making functions and variables, give them meaningful names. As rule of thumb: fuctions are verbs, variables are nouns.</p>
+<p>If you need your script to perform different actions, control this behaviour programmatically rather than by commenting/uncommenting sections of code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># Uncomment for weekly reports</span></span>
+<span id="cb1-2">output_dir <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">"weekly_reports/"</span>,year,<span class="st" style="color: #20794D;">"/"</span>,week_of_year,<span class="st" style="color: #20794D;">"/"</span>)</span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;"># Uncomment for annual reports</span></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#output_dir &lt;- paste0("annual_reports/",year,"/")</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">report_type <span class="ot" style="color: #003B4F;">=</span> <span class="st" style="color: #20794D;">"weekly"</span></span>
+<span id="cb2-2">year <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">2022</span></span>
+<span id="cb2-3">week_of_year <span class="ot" style="color: #003B4F;">=</span> <span class="dv" style="color: #AD0000;">21</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="cf" style="color: #003B4F;">if</span> (report_type <span class="sc" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"weekly"</span>) {</span>
+<span id="cb2-6">  output_dir <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">"weekly_reports/"</span>,year,<span class="st" style="color: #20794D;">"/"</span>,week_of_year,<span class="st" style="color: #20794D;">"/"</span>)</span>
+<span id="cb2-7">} <span class="cf" style="color: #003B4F;">else</span> <span class="cf" style="color: #003B4F;">if</span> (report_type <span class="sc" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"annual"</span>) {</span>
+<span id="cb2-8">  output_dir <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">paste0</span>(<span class="st" style="color: #20794D;">"annual_reports/"</span>,year,<span class="st" style="color: #20794D;">"/"</span>)</span>
+<span id="cb2-9">} <span class="cf" style="color: #003B4F;">else</span> {</span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;">stop</span>(<span class="st" style="color: #20794D;">"report_type should be 'weekly' or 'annual'."</span>)</span>
+<span id="cb2-11">}</span></code></pre></div>
+</div>
+<p>Submit the final code for your research project to to a reputable DOI-issuing repository.</p>
+</section>
+<section id="external-code" class="level4">
+<h4 class="anchored" data-anchor-id="external-code">External Code</h4>
+<p>Before writing your own code, check if someone else got there first. Are there well-maintained software libraries that already do what you need?</p>
+<p>If so, test the code (extensively!) before relying on it. Keep a record of what you have tested and add to this as you find awkward edge cases.</p>
+</section>
+</section>
+<section id="collaboration" class="level3">
+<h3 class="anchored" data-anchor-id="collaboration">3. Collaboration</h3>
+<section id="collaborating-within-your-team" class="level4">
+<h4 class="anchored" data-anchor-id="collaborating-within-your-team">Collaborating within your team</h4>
+<p>Create a single file called <code>README</code> giving an overview of your project. This should describe aim of the project and how to get started working with the data/code/writing. A good rule of thumb is to write this as though it were for either a new-starter on your team. Future you will thank you!</p>
+<p>Create a shared to-do list for the project in a file called <code>TODO</code> and decide on how you will communicate during the project. For example, what channels will you use for group meetings, quick questions, assigning tasks and setting deadlines?</p>
+</section>
+<section id="opening-up-to-the-wider-world" class="level4">
+<h4 class="anchored" data-anchor-id="opening-up-to-the-wider-world">Opening up to the wider world</h4>
+<p>Add another file called <code>LICENSE</code> giving the licensing information for the project. This says who can use it and for what purposes. No license implies you are keeping all rights and nobody is allowed to reuse or modify the materials. For more information on licenses see <a href="choosealicense.com">choosealicense.com</a> or <a href="https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project">The Open Source Guide</a>. Consult your company’s legal folks as needed.</p>
+<p>Create a final file called <code>CITATION</code> letting other people know how they should give proper attribution to your work if they use it.</p>
+</section>
+</section>
+<section id="project-organisation" class="level3">
+<h3 class="anchored" data-anchor-id="project-organisation">4. Project Organisation</h3>
+<p>Each project should be self-contained in its own directory (folder) and this directory should be named after the project.</p>
+<p>Create subdirectories called:</p>
+<ul>
+<li><code>docs/</code> for all text documents associated with the project</li>
+<li><code>data/raw/</code> for all raw data and metadata</li>
+<li><code>data/derived/</code> for all data files during cleanup and analysis</li>
+<li><code>src</code> for all code you write as part of this project</li>
+<li><code>bin</code> for all external code or compiled programs that you use in this project</li>
+</ul>
+<p>When adding files and subdirectories within this structure, name these to clearly reflect their content or function.</p>
+</section>
+<section id="tracking-changes" class="level3">
+<h3 class="anchored" data-anchor-id="tracking-changes">5. Tracking Changes</h3>
+<p>As soon as any file is created by a human, back it up in multiple locations. If you make a huge file, then consult your IT folks about how to store and back it up.</p>
+<p>Add a file called <code>CHANGELOG</code> to the docs subfolder. Use this to track all changes made within the project by all contributers, describing when the changes happened and why they were made.</p>
+<p>Keep these changes as small as possible and share among collaborators frequently to avoid getting out of sync.</p>
+<p>Make a Copy the entire project whenever a significant change has been made.</p>
+<p>Better yet, use a dedicated version control system such as git if that is a realistic option.</p>
+</section>
+<section id="manuscripts" class="level3">
+<h3 class="anchored" data-anchor-id="manuscripts">6. Manuscripts</h3>
+<p>Pick one and stick to it within each project. The former has a much lower bar to entry and has most of the benefits of the latter (other than manuscripts being stored in the same place as everything else).</p>
+<ol type="1">
+<li><p>Write the manuscript using online tools with rich formatting, change tracking and reference management. (e.g.&nbsp;Overleaf, Google Docs)</p></li>
+<li><p>Write the manuscript in plain text format the permits version control (e.g.&nbsp;tex + git or markdown + git)</p></li>
+</ol>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-wilson2014best" class="csl-entry">
+Wilson, Greg, D. A. Aruliah, C. Titus Brown, Neil P. Chue Hong, Matt Davis, Richard T. Guy, Steven H. D. Haddock, et al. 2014. <span>“Best Practices for Scientific Computing.”</span> <em>PLOS Biology</em> 12 (January): 1–7. <a href="https://doi.org/10.1371/journal.pbio.1001745">https://doi.org/10.1371/journal.pbio.1001745</a>.
+</div>
+<div id="ref-wilson2017good" class="csl-entry">
+Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (June): 1–20. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div> ]]></description>
+  <category>academic skills</category>
+  <category>computing</category>
+  <category>reproducible research</category>
+  <category>reading summary</category>
+  <guid>https://www.zakvarty.com/blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html</guid>
+  <pubDate>Tue, 18 Oct 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2022-10-19-good-enough-practices-in-scientific-computing/gepisc-image.png" medium="image" type="image/png" height="68" width="144"/>
+</item>
 <item>
   <title>Recommended Statistics Books</title>
   <dc:creator>Zak Varty</dc:creator>
