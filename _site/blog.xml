@@ -150,6 +150,184 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
   <media:content url="https://www.zakvarty.com/blog/2022-10-19-good-enough-practices-in-scientific-computing/gepisc-image.png" medium="image" type="image/png" height="68" width="144"/>
 </item>
 <item>
+  <title>Data Journalism: Recreating a Professional Plot</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="bbc-temperature-records" class="level1">
+<h1>BBC Temperature Records</h1>
+<p>On Friday 2022-10-14, the BBC Data Journalism Team released this excellent <a href="https://www.bbc.co.uk/news/science-environment-63244353">article</a> about the record temperatures in the UK during this summer’s heatwave. The article has some amazing data visualisations, and draws on a recent Met Office report.</p>
+<p>I wanted to try and recreate one of the plots to test the limits of my ggplot knowledge. Since I had already tackled a stacked bar plot, I figured I might have a go at their dumbbell plot that shows the weather stations which exceeded their previous records largest margins.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/bbc-temperature-records.png.webp" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">bbc temperature records dumbbell plot</figcaption><p></p>
+</figure>
+</div>
+<p>I couldn’t find the data source, so spent <strong>far</strong> too long with a printed copy of the original figure to make my own version of the data set.</p>
+<p>It took a while, but I got most of the way there with it and am happy with the final result.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/zdv-temperature-records.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">my attempt at recreating the same plot</figcaption><p></p>
+</figure>
+</div>
+<p>There were a few things that still have me stumped, that I might revisit at some later date:</p>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="">
+Left aligning title and caption (Thanks to Jack Davison for this!)</li>
+<li><input type="checkbox" disabled="">
+Using gradients on multiple parts of the plot</li>
+<li><input type="checkbox" disabled="">
+Using the YeOrRd gradient, rather than default blues</li>
+<li><input type="checkbox" disabled="">
+Adding a non-BBC logo to the bottom right.</li>
+</ul>
+<p>If anyone with superior ggplot skills would like to help with those or give pointers, then I would be most grateful!</p>
+<p>Code and figure down below ↓</p>
+<div class="cell" data-fig.dpi="100">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># Load packages ----</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(bbplot)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;">library</span>(showtext)</span>
+<span id="cb1-5"></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;"># Import fonts ----</span></span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;">font_add_google</span>(<span class="at" style="color: #657422;">name =</span> <span class="st" style="color: #20794D;">"Roboto Slab"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"roboto-slab"</span>)</span>
+<span id="cb1-8"><span class="fu" style="color: #4758AB;">font_add_google</span>(<span class="at" style="color: #657422;">name =</span> <span class="st" style="color: #20794D;">"Roboto"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"roboto"</span>)</span>
+<span id="cb1-9"><span class="fu" style="color: #4758AB;">showtext_auto</span>()</span>
+<span id="cb1-10">title_font <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"roboto-slab"</span></span>
+<span id="cb1-11">font <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"roboto"</span></span>
+<span id="cb1-12"></span>
+<span id="cb1-13"><span class="co" style="color: #5E5E5E;"># Input data (estimated values from article) ---</span></span>
+<span id="cb1-14">temperatures <span class="ot" style="color: #003B4F;">&lt;-</span> tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">tribble</span>(</span>
+<span id="cb1-15">  <span class="sc" style="color: #5E5E5E;">~</span>location, <span class="sc" style="color: #5E5E5E;">~</span>max_prev, <span class="sc" style="color: #5E5E5E;">~</span>max_2022,</span>
+<span id="cb1-16">  <span class="st" style="color: #20794D;">"Cranwell"</span>, <span class="fl" style="color: #AD0000;">36.6</span>, <span class="fl" style="color: #AD0000;">39.9</span>,</span>
+<span id="cb1-17">  <span class="st" style="color: #20794D;">"Nottingham"</span>, <span class="fl" style="color: #AD0000;">36.0</span>, <span class="fl" style="color: #AD0000;">39.8</span>,</span>
+<span id="cb1-18">  <span class="st" style="color: #20794D;">"Bramham"</span>, <span class="fl" style="color: #AD0000;">33.5</span>, <span class="fl" style="color: #AD0000;">39.8</span>,</span>
+<span id="cb1-19">  <span class="st" style="color: #20794D;">"Sutton Boningon"</span>, <span class="fl" style="color: #AD0000;">35.9</span>, <span class="fl" style="color: #AD0000;">39.4</span>,</span>
+<span id="cb1-20">  <span class="st" style="color: #20794D;">"Sheffield"</span>, <span class="fl" style="color: #AD0000;">35.6</span>, <span class="fl" style="color: #AD0000;">39.4</span>,</span>
+<span id="cb1-21">  <span class="st" style="color: #20794D;">"Leeming"</span>, <span class="fl" style="color: #AD0000;">34.4</span>, <span class="fl" style="color: #AD0000;">38.7</span>,</span>
+<span id="cb1-22">  <span class="st" style="color: #20794D;">"Goudhurst"</span>, <span class="fl" style="color: #AD0000;">34.7</span>, <span class="fl" style="color: #AD0000;">37.9</span>,</span>
+<span id="cb1-23">  <span class="st" style="color: #20794D;">"Whitby"</span>, <span class="fl" style="color: #AD0000;">33.1</span>, <span class="fl" style="color: #AD0000;">37.8</span>,</span>
+<span id="cb1-24">  <span class="st" style="color: #20794D;">"Bradford"</span>, <span class="fl" style="color: #AD0000;">33.9</span>, <span class="fl" style="color: #AD0000;">37.8</span>,</span>
+<span id="cb1-25">  <span class="st" style="color: #20794D;">"High Mowthorpe"</span>, <span class="fl" style="color: #AD0000;">33.1</span>, <span class="fl" style="color: #AD0000;">37.2</span>,</span>
+<span id="cb1-26">  <span class="st" style="color: #20794D;">"Blackpool"</span>, <span class="fl" style="color: #AD0000;">33.6</span>, <span class="fl" style="color: #AD0000;">37.2</span>,</span>
+<span id="cb1-27">  <span class="st" style="color: #20794D;">"Durham"</span>, <span class="fl" style="color: #AD0000;">32.9</span>, <span class="fl" style="color: #AD0000;">36.9</span>,</span>
+<span id="cb1-28">  <span class="st" style="color: #20794D;">"Preston"</span>, <span class="fl" style="color: #AD0000;">33.1</span>, <span class="fl" style="color: #AD0000;">36.5</span>,</span>
+<span id="cb1-29">  <span class="st" style="color: #20794D;">"Morecambe"</span>, <span class="fl" style="color: #AD0000;">32.7</span>, <span class="fl" style="color: #AD0000;">36.4</span>,</span>
+<span id="cb1-30">  <span class="st" style="color: #20794D;">"Stonyhurst"</span>, <span class="fl" style="color: #AD0000;">32.6</span>, <span class="fl" style="color: #AD0000;">36.3</span>,</span>
+<span id="cb1-31">  <span class="st" style="color: #20794D;">"Keele"</span>, <span class="fl" style="color: #AD0000;">32.9</span>, <span class="fl" style="color: #AD0000;">36.2</span>,</span>
+<span id="cb1-32">  <span class="st" style="color: #20794D;">"Bude"</span>, <span class="fl" style="color: #AD0000;">32.2</span>, <span class="fl" style="color: #AD0000;">36.1</span>,</span>
+<span id="cb1-33">  <span class="st" style="color: #20794D;">"Buxton"</span>, <span class="fl" style="color: #AD0000;">32.7</span>, <span class="fl" style="color: #AD0000;">36.0</span>,</span>
+<span id="cb1-34">  <span class="st" style="color: #20794D;">"Kielder Castle"</span>, <span class="fl" style="color: #AD0000;">29.6</span>, <span class="fl" style="color: #AD0000;">35.0</span>,</span>
+<span id="cb1-35">  <span class="st" style="color: #20794D;">"Bala"</span>, <span class="fl" style="color: #AD0000;">31.9</span>, <span class="fl" style="color: #AD0000;">34.9</span></span>
+<span id="cb1-36">)</span>
+<span id="cb1-37"></span>
+<span id="cb1-38"><span class="co" style="color: #5E5E5E;"># Data preparation ----</span></span>
+<span id="cb1-39"></span>
+<span id="cb1-40"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## For the points ----</span></span>
+<span id="cb1-41">temperatures <span class="ot" style="color: #003B4F;">&lt;-</span> temperatures <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb1-42">  dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">max_ever =</span> <span class="fu" style="color: #4758AB;">pmax</span>(max_2022, max_prev))</span>
+<span id="cb1-43"></span>
+<span id="cb1-44">temperatures<span class="sc" style="color: #5E5E5E;">$</span>location <span class="ot" style="color: #003B4F;">&lt;-</span> forcats<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">fct_reorder</span>(<span class="fu" style="color: #4758AB;">as.factor</span>(temperatures<span class="sc" style="color: #5E5E5E;">$</span>location), <span class="at" style="color: #657422;">.x =</span> temperatures<span class="sc" style="color: #5E5E5E;">$</span>max_ever)</span>
+<span id="cb1-45"></span>
+<span id="cb1-46">temp_long <span class="ot" style="color: #003B4F;">&lt;-</span> tidyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">pivot_longer</span>(temperatures, <span class="at" style="color: #657422;">cols =</span> <span class="fu" style="color: #4758AB;">c</span>(max_2022, max_prev), <span class="at" style="color: #657422;">names_to =</span> <span class="st" style="color: #20794D;">"year"</span>,<span class="at" style="color: #657422;">values_to =</span> <span class="st" style="color: #20794D;">"temperature"</span>)</span>
+<span id="cb1-47"></span>
+<span id="cb1-48"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## For the bars ----</span></span>
+<span id="cb1-49">n_interp <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">501</span></span>
+<span id="cb1-50">temp_interpolated <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(<span class="fu" style="color: #4758AB;">rep</span>(<span class="cn" style="color: #8f5902;">NA</span>, n_interp<span class="sc" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">20</span>))</span>
+<span id="cb1-51">temp_interpolated[[<span class="dv" style="color: #AD0000;">1</span>]] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">rep</span>(temperatures<span class="sc" style="color: #5E5E5E;">$</span>location, <span class="at" style="color: #657422;">each =</span> n_interp)</span>
+<span id="cb1-52">temp_interpolated[[<span class="dv" style="color: #AD0000;">2</span>]] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">rep</span>(<span class="cn" style="color: #8f5902;">NA_real_</span>, n_interp<span class="sc" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">20</span>)</span>
+<span id="cb1-53"><span class="fu" style="color: #4758AB;">names</span>(temp_interpolated) <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"location"</span>, <span class="st" style="color: #20794D;">"interp_value"</span>)</span>
+<span id="cb1-54"><span class="cf" style="color: #003B4F;">for</span> (i <span class="cf" style="color: #003B4F;">in</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">20</span>) {</span>
+<span id="cb1-55">  temp_interpolated<span class="sc" style="color: #5E5E5E;">$</span>interp_value[(<span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">+</span> n_interp <span class="sc" style="color: #5E5E5E;">*</span> (i <span class="sc" style="color: #5E5E5E;">-</span> <span class="dv" style="color: #AD0000;">1</span>))<span class="sc" style="color: #5E5E5E;">:</span>(n_interp<span class="sc" style="color: #5E5E5E;">*</span>i)] <span class="ot" style="color: #003B4F;">&lt;-</span></span>
+<span id="cb1-56">    <span class="fu" style="color: #4758AB;">seq</span>(temperatures<span class="sc" style="color: #5E5E5E;">$</span>max_prev[i], temperatures<span class="sc" style="color: #5E5E5E;">$</span>max_2022[i], <span class="at" style="color: #657422;">length.out =</span> n_interp)</span>
+<span id="cb1-57">}</span>
+<span id="cb1-58"></span>
+<span id="cb1-59">str_wrap_break <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(x, break_limit) {</span>
+<span id="cb1-60">  <span class="co" style="color: #5E5E5E;"># Function from {usefunc} by N Rennie (https://github.com/nrennie/usefunc)</span></span>
+<span id="cb1-61">  <span class="fu" style="color: #4758AB;">sapply</span>(<span class="fu" style="color: #4758AB;">strwrap</span>(x, break_limit, <span class="at" style="color: #657422;">simplify =</span> <span class="cn" style="color: #8f5902;">FALSE</span>), paste, <span class="at" style="color: #657422;">collapse =</span> <span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\n</span><span class="st" style="color: #20794D;">"</span>)</span>
+<span id="cb1-62">}</span>
+<span id="cb1-63"></span>
+<span id="cb1-64">title_string <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"Huge breaks from previous records in 2022"</span></span>
+<span id="cb1-65">subtitle_string <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">str_wrap_break</span>(<span class="st" style="color: #20794D;">"Stations with largest gaps between previous and new records, ordered by highest new temperature"</span>,<span class="dv" style="color: #AD0000;">60</span>)</span>
+<span id="cb1-66">caption_string <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"Only includes active weather stations with at least 50 years of observations"</span></span>
+<span id="cb1-67"></span>
+<span id="cb1-68"></span>
+<span id="cb1-69"></span>
+<span id="cb1-70"></span>
+<span id="cb1-71"></span>
+<span id="cb1-72">p <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-73">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="at" style="color: #657422;">data =</span> temp_interpolated, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> interp_value, <span class="at" style="color: #657422;">y =</span> location, <span class="at" style="color: #657422;">color =</span> interp_value), <span class="at" style="color: #657422;">lwd =</span> <span class="dv" style="color: #AD0000;">3</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-74">  <span class="co" style="color: #5E5E5E;">#</span></span>
+<span id="cb1-75">  <span class="fu" style="color: #4758AB;">geom_label</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="st" style="color: #20794D;">"2022 record"</span>, <span class="at" style="color: #657422;">x =</span> <span class="fl" style="color: #AD0000;">38.7</span>, <span class="at" style="color: #657422;">y =</span> <span class="fl" style="color: #AD0000;">7.2</span>), <span class="at" style="color: #657422;">family =</span> font, <span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">6.5</span>, <span class="at" style="color: #657422;">label.size =</span> <span class="cn" style="color: #8f5902;">NA</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-76">  <span class="fu" style="color: #4758AB;">geom_curve</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> <span class="dv" style="color: #AD0000;">38</span>, <span class="at" style="color: #657422;">y =</span> <span class="fl" style="color: #AD0000;">7.9</span>, <span class="at" style="color: #657422;">xend =</span> <span class="fl" style="color: #AD0000;">36.9</span>, <span class="at" style="color: #657422;">yend =</span> <span class="fl" style="color: #AD0000;">8.9</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-77">  <span class="co" style="color: #5E5E5E;">#</span></span>
+<span id="cb1-78">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="st" style="color: #20794D;">"Previous </span><span class="sc" style="color: #5E5E5E;">\n</span><span class="st" style="color: #20794D;"> record"</span>, <span class="at" style="color: #657422;">x =</span> <span class="dv" style="color: #AD0000;">31</span>, <span class="at" style="color: #657422;">y =</span> <span class="dv" style="color: #AD0000;">11</span>), <span class="at" style="color: #657422;">family =</span> font, <span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">6.5</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-79">  <span class="fu" style="color: #4758AB;">geom_curve</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">xend =</span> <span class="dv" style="color: #AD0000;">32</span>, <span class="at" style="color: #657422;">yend =</span> <span class="dv" style="color: #AD0000;">11</span>, <span class="at" style="color: #657422;">x =</span> <span class="fl" style="color: #AD0000;">32.9</span>, <span class="at" style="color: #657422;">y =</span> <span class="fl" style="color: #AD0000;">8.9</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-80">  <span class="co" style="color: #5E5E5E;">#</span></span>
+<span id="cb1-81">  <span class="fu" style="color: #4758AB;">geom_label</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="st" style="color: #20794D;">"Biggest leap"</span>, <span class="at" style="color: #657422;">x =</span> <span class="fl" style="color: #AD0000;">33.7</span>, <span class="at" style="color: #657422;">y =</span> <span class="dv" style="color: #AD0000;">20</span>), <span class="at" style="color: #657422;">family =</span> font, <span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">6.5</span>, <span class="at" style="color: #657422;">label.size =</span> <span class="cn" style="color: #8f5902;">NA</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-82">  <span class="fu" style="color: #4758AB;">geom_label</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="st" style="color: #20794D;">"6.3C"</span>, <span class="at" style="color: #657422;">x =</span> <span class="fl" style="color: #AD0000;">34.0</span>, <span class="at" style="color: #657422;">y =</span> <span class="dv" style="color: #AD0000;">19</span>), <span class="at" style="color: #657422;">family =</span> font, <span class="at" style="color: #657422;">fontface=</span><span class="st" style="color: #20794D;">"bold"</span>, <span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">6.5</span>, <span class="at" style="color: #657422;">label.size =</span> <span class="cn" style="color: #8f5902;">NA</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-83">  <span class="fu" style="color: #4758AB;">geom_curve</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">xend =</span> <span class="fl" style="color: #AD0000;">34.7</span>, <span class="at" style="color: #657422;">yend =</span> <span class="fl" style="color: #AD0000;">19.5</span>, <span class="at" style="color: #657422;">x =</span> <span class="fl" style="color: #AD0000;">35.7</span>, <span class="at" style="color: #657422;">y =</span> <span class="dv" style="color: #AD0000;">18</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-84">  <span class="co" style="color: #5E5E5E;">#</span></span>
+<span id="cb1-85">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data =</span> temp_long, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> temperature, <span class="at" style="color: #657422;">y =</span> location, <span class="at" style="color: #657422;">fill =</span> temperature), <span class="at" style="color: #657422;">shape =</span> <span class="dv" style="color: #AD0000;">21</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">6</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-86">  <span class="co" style="color: #5E5E5E;">#</span></span>
+<span id="cb1-87">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">30</span>, <span class="dv" style="color: #AD0000;">40</span>, <span class="at" style="color: #657422;">by =</span> <span class="fl" style="color: #AD0000;">2.5</span>),<span class="at" style="color: #657422;">labels =</span> <span class="fu" style="color: #4758AB;">paste0</span>(<span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">30</span>, <span class="dv" style="color: #AD0000;">40</span>, <span class="at" style="color: #657422;">by =</span> <span class="fl" style="color: #AD0000;">2.5</span>),<span class="st" style="color: #20794D;">"C"</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-88">  <span class="co" style="color: #5E5E5E;">#</span></span>
+<span id="cb1-89">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">title =</span> title_string,</span>
+<span id="cb1-90">       <span class="at" style="color: #657422;">subtitle =</span> subtitle_string,</span>
+<span id="cb1-91">       <span class="at" style="color: #657422;">caption =</span> caption_string) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-92">  <span class="co" style="color: #5E5E5E;">#</span></span>
+<span id="cb1-93">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span>title_font,</span>
+<span id="cb1-94">                                  <span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">28</span>,</span>
+<span id="cb1-95">                                  <span class="at" style="color: #657422;">face=</span><span class="st" style="color: #20794D;">"bold"</span>,</span>
+<span id="cb1-96">                                  <span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"#222222"</span>),</span>
+<span id="cb1-97">        <span class="at" style="color: #657422;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span>font,</span>
+<span id="cb1-98">                                     <span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">18</span>,</span>
+<span id="cb1-99">                                     <span class="at" style="color: #657422;">margin=</span>ggplot2<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">margin</span>(<span class="dv" style="color: #AD0000;">9</span>,<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">9</span>,<span class="dv" style="color: #AD0000;">0</span>)),</span>
+<span id="cb1-100">        <span class="at" style="color: #657422;">plot.caption =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family =</span> font, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">14</span>,<span class="at" style="color: #657422;">hjust =</span> <span class="dv" style="color: #AD0000;">0</span>),</span>
+<span id="cb1-101">        <span class="at" style="color: #657422;">plot.title.position =</span> <span class="st" style="color: #20794D;">'plot'</span>,</span>
+<span id="cb1-102">        <span class="at" style="color: #657422;">plot.caption.position =</span> <span class="st" style="color: #20794D;">'plot'</span>,</span>
+<span id="cb1-103">        <span class="at" style="color: #657422;">axis.title =</span> ggplot2<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb1-104">        <span class="at" style="color: #657422;">axis.text =</span> ggplot2<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span>font,</span>
+<span id="cb1-105">                                          <span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">18</span>,</span>
+<span id="cb1-106">                                          <span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"grey47"</span>),</span>
+<span id="cb1-107">        <span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
+<span id="cb1-108">        <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(),</span>
+<span id="cb1-109">        <span class="at" style="color: #657422;">axis.line.x =</span> <span class="fu" style="color: #4758AB;">element_line</span>(<span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">0.7</span>, <span class="at" style="color: #657422;">linetype =</span> <span class="st" style="color: #20794D;">"solid"</span>),</span>
+<span id="cb1-110">        <span class="at" style="color: #657422;">axis.ticks.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb1-111">        <span class="at" style="color: #657422;">axis.ticks.length.x =</span> <span class="fu" style="color: #4758AB;">unit</span>(<span class="dv" style="color: #AD0000;">7</span>, <span class="at" style="color: #657422;">units =</span> <span class="st" style="color: #20794D;">"points"</span> ),</span>
+<span id="cb1-112">        <span class="at" style="color: #657422;">axis.text.x =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">margin=</span><span class="fu" style="color: #4758AB;">margin</span>(<span class="at" style="color: #657422;">t =</span> <span class="dv" style="color: #AD0000;">15</span>, <span class="at" style="color: #657422;">b =</span> <span class="dv" style="color: #AD0000;">10</span>)),</span>
+<span id="cb1-113">        <span class="at" style="color: #657422;">panel.grid.minor =</span> ggplot2<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb1-114">        <span class="at" style="color: #657422;">panel.grid.major.y =</span> ggplot2<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">element_line</span>(<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"#cbcbcb"</span>),</span>
+<span id="cb1-115">        <span class="at" style="color: #657422;">panel.grid.major.x =</span> ggplot2<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb1-116">        <span class="at" style="color: #657422;">panel.background =</span> ggplot2<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb1-117">  )</span>
+<span id="cb1-118"></span>
+<span id="cb1-119">p</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" alt="My dumbbell plot showing stations with the largest gaps between previous and new records, ordered by the highest new temperature." width="960"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>data visualisation</category>
+  <guid>https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/index.html</guid>
+  <pubDate>Fri, 14 Oct 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/zdv-temperature-records.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
   <title>Tidy Tuesday: Ravelry Yarn</title>
   <dc:creator>Zak Varty</dc:creator>
   <link>https://www.zakvarty.com/blog/2022-10-11-ravelry-tidy-tuesday/index.html</link>
