@@ -2,7 +2,7 @@
 This is where I record the books I read each year and the books I might like to read in the future. 
 
 ## Currently reading 📖
-- Data Science Ethics 
+- Data Science Ethics - David Martens
 - The Virgin Suicides - Jeffrey Eugenides
 
 ## TBR ⏲️
@@ -18,7 +18,7 @@ This is where I record the books I read each year and the books I might like to 
 ## TBR-ish ⏰❓
 - Meanwhile in Dopamine City - DBC Pierre 
 - Tyll - Daniel Kemlmann 
-- How to win fiends and influence people - Dale Carnegie 
+- How to win friends and influence people - Dale Carnegie 
 - The Mr Porter guide to a better day 
 - Professor Higgins's Problem Collection - Peter M Higgins 
 - The discomfort of Evening - Marieke Lucas Rijneveld 
@@ -40,7 +40,7 @@ This is where I record the books I read each year and the books I might like to 
 5. Wow, no thank you - Samantha Irby 
 6. Math without numbers - Milo Beckman 
 7. The Penelopiad - Margaret Atwood 
-8. Introduction to Statisitcal Learning
+8. Introduction to Statistical Learning
 9. Boy Parts - Eliza Clark
 10. How to take smart notes - Sonke Ahrens
 11. If we were villians - M. L. Rio
@@ -49,8 +49,11 @@ This is where I record the books I read each year and the books I might like to 
 14. The Windup Bird Chronicle, Book 3 - Haruki Murakami
 15. Treacle Walker - Alan Garner
 16. Immune - Philipp Dettmer (DNF)
-16. ... 
-
+17. The Beauty of Everyday Things - Seotsu Yanagi 
+18. Better Data Visualizations - Jonathan Schwabish 
+19. Scientifically Speaking - Jo Filshie Browning
+20. The Effect - Nick Huntington-Klein
+21. ...
 
 ## 2020 - 2021
 1. The authenticity project - Clare Pooley ♣️
