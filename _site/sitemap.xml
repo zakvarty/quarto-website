@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.zakvarty.com/personal/reading-record.html</loc>
-    <lastmod>2022-11-07T15:43:25.154Z</lastmod>
+    <lastmod>2022-11-07T16:51:12.810Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/professional/teaching.html</loc>
@@ -50,10 +50,18 @@
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog.html</loc>
-    <lastmod>2022-11-07T16:26:38.853Z</lastmod>
+    <lastmod>2022-11-07T16:49:23.183Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-11-ravelry-tidy-tuesday/index.html</loc>
-    <lastmod>2022-11-07T16:26:38.416Z</lastmod>
+    <lastmod>2022-11-07T16:47:06.146Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/15-10-2022-BBC-temperature-plot/index.html</loc>
+    <lastmod>2022-11-07T16:45:29.936Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/index.html</loc>
+    <lastmod>2022-11-07T16:49:22.644Z</lastmod>
   </url>
 </urlset>
