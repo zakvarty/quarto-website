@@ -10,7 +10,7 @@ image: "zdv-temperature-records.png"
 image-alt: |
     BBC dumbbell plot showing stations with the largest gaps between previous and new records, ordered by the highest new temperature.
 draft: false
-freeze: false
+freeze: true
 appendix-style: none #(default, plain, none)
 bibliography: ../library.bib
 citation: false

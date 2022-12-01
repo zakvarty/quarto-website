@@ -1,0 +1,324 @@
+---
+title: "Web Scraping with `{rvest}`"
+description: |
+    Part 1 of a mini-series on aquiring data from the web, focusing on scraping webpages using the {rvest} package. 
+date: "2022-12-01"
+categories:
+  - data science
+  - data acquisition
+  - tutorial
+code-fold: false
+image: rvest-logo.png
+image-alt: Hexagonal logo of the rvest package; a sickle cutting wheat on a red background. 
+image-cap: "{rvest}"
+draft: false
+freeze: false
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+---
+
+
+## Aquiring Data: Part 1 - Scraping webpage data using {rvest}
+
+::: medium_right
+<img style = "border-radius: 10%;" src="rvest-logo.png" alt="Hexagonal logo of the rvest package; a sickle cutting wheat on a red background.">
+:::
+
+You can't always rely on tidy, tabular data to land on your desk. Sometimes you are going to have to go out and gather data for yourself.
+
+I'm not suggesting you will need to do this manually, but you will likely need to get data from the internet that's been made publicly or privately available to you. 
+
+This might be information from a webpage that you gather yourself, or data shared with you by a collaborator using an API.
+
+In this first blog post we will cover the basics of scraping webpages, following the [vignette](https://cran.r-project.org/web/packages/rvest/vignettes/rvest.html#fnref3) for the {rvest} package. 
+
+
+## What is a webpage? 
+
+Before we can even hope to get data from a webpage, we first need to understand _what_ a webpage is. 
+
+Webpages are written in a similar way to LaTeX: the content and styling of webpages are handled separately and are coded using plain text files. 
+
+In fact, websites go one step further than LaTeX. The content and styling of websites are written in different files and in different languages. HTML (HyperText Markup Language) is used to write the content and then CSS (Cascading Style Sheets) are used to control the appearance of that content when it's displayed to the user. 
+
+## HTML
+
+A basic HTML page with no styling applied might look something like this:
+
+```{.html}
+<html>
+<head>
+  <title>Page title</title>
+</head>
+<body>
+  <h1 id='first'>A level 1 heading</h1>
+  <p>Hello World!</p>
+  <p>Here is some plain text &amp; <b>some bold text.</b></p>
+  <img src='myimg.png' width='100' height='100'>
+</body>
+```
+
+
+### HTML elements 
+
+<!-- for presentation 
+```{.html}
+#| code-line-numbers: "3"
+<html>
+<head>
+  <title>Page title</title>
+</head>
+<body>
+  <h1 id='first'>A level 1 heading</h1>
+  <p>Hello World!</p>
+  <p>Here is some plain text &amp; <b>some bold text.</b></p>
+  <img src='myimg.png' width='100' height='100'>
+</body>
+```
+--> 
+
+Just like XML data files, HTML has a hierarchical structure. This structure is crafted using HTML elements. Each HTML element is made up of of a start tag, optional attributes, an end tag. 
+
+We can see each of these in the first level header, where `<h1>` is the opening tag, `id='first'` is an additional attribute and `</h1>` is the closing tag.  Everything between the opening and closing tag are the contents of that element. There are also some special elements that consist of only a single tag and its optional attributes. An example of this is the `<img>` tag.
+
+Since `<` and `>` are used for start and end tags, you can’t write them directly in an HTML document. Instead, you have to use escape characters. This sounds fancy, but it's just an alternative way to write characters that serve some special function within a language. 
+
+You can write greater than `&gt;` and less than as `&lt;`. You might notice that those escapes use an ampersand (&). This means that if you want a literal ampersand on your webpage, you have to escape too using `&amp;`.
+
+There are a wide range of possible HTML tags and escapes. We'll cover the most common tags in this lecture and you don’t need to worry about escapes too much because `{rvest}` will automatically handle them for you.
+
+### Important HTML Elements 
+
+In all, there are in excess of 100 HTML elements. The most important ones for you to know about are:
+
+ - The `<html>` element, that must enclose every HTML page. The `<html>` element must have two child elements within it. The `<head>` element contains metadata about the document, like the page title that is shown in the browser tab and the CSS style sheet that should be applied. The `<body>` element then contains all of the content that you see in the browser.
+
+- Block elements are used to give structure to the page. These are elements like headings, sub-headings and so on from `<h1>` all the way down to `<h6>`. This category also contains paragraph elements `<p>`, ordered lists `<ol>` unordered lists `<ul>`. 
+
+- Finally, inline tags like `<b>` for bold, `<i>` for italics, and `<a>` for hyperlinks are used to format text inside block elements.
+
+
+When you come across a tag that you’ve never seen before, you can find out what it does with just a little bit of googling. A good resource here is the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML) which are produced by Mozilla, the company that makes the Firefox web browser. The [W3schools website](https://www.w3schools.com/html/default.asp) is another great resource for web development and coding resources more generally.
+
+## HTML Attributes
+
+We've seen one example of a header with an additional attribute. More generally, all tags can have named attributes. These attributes are contained within the opening tag and look something like:
+
+```{.html}
+<tag attribute1='value1' attribute2='value2'>element contents</tag>
+```
+
+Two of the most important attributes are `id` and `class`. These attributes are used in conjunction with the CSS file to control the visual appearance of the page. These are often very useful to identify the elements that you are interested in when scraping data off a page.
+
+## CSS Selectors 
+
+The Cascading Style Sheet is used to describe how your HTML content will be displayed. To do this, CSS has it's own system for selecting elements of a webpage, called CSS selectors. 
+
+CSS selectors define patterns for locating the HTML elements that a particular style should be applied to. A happy side-effect of this is that they can sometimes be very useful for scraping, because they provide a concise way of describing which elements you want to extract.
+
+CSS Selectors can work on the level of an element type, a class, or a tag and these can be used in a nested (or _cascading_) way. 
+
+- The `p` selector will select all paragraph `<p>` elements.
+
+- The `.title` selector will select all elements with class `“title”`.
+
+- The `p.special` selector will select all`<p>` elements with class `“special”`.
+
+- The `#title` selector will select the element with the id attribute `“title”`. 
+
+When you want to select a single element `id` attributes are particularly useful because that _must_ be unique within a html document. Unfortunately, this is only helpful if the developer added an `id` attribute to the element(s) you want to scrape! 
+
+If you want to learn more CSS selectors I recommend starting with the fun [CSS dinner tutorial](https://flukeout.github.io/) to build a base of knowledge and then using the [W3schools resources](https://www.w3schools.com/css/default.asp) as a reference to explore more webpages in the wild. 
+
+## Which Attributes and Selectors Do You Need?
+
+To scrape data from a webpage, you first have to identify the tag and attribute combinations that you are interested in gathering. 
+
+To find your elements of interest, you have three options. These go from hardest to easiest but also from most to least robust. 
+
+- right click + "inspect page source" (F12)
+- right click + "inspect" 
+- Rvest [Selector Gadget](https://rvest.tidyverse.org/articles/selectorgadget.html) (very useful but fallible)
+
+Inspecting the source of some familiar websites can be a useful way to get your head around these concepts. Beware though that sophisticated webpages can be quite intimidating. A good place to start is with simpler, static websites such as personal websites, rather than the dynamic webpages of online retailers or social media platforms. 
+
+## Reading HTML with `{rvest}`
+
+With `{rvest}`, reading a html page can be as simple as loading in tabular data. 
+
+```{r}
+html <- rvest::read_html("https://www.zakvarty.com/professional/teaching.html")
+```
+The `class` of the resulting object is an `xml_document`. This type of object is from the low-level package `{xml2}`, which allows you to read xml files into R.
+
+```{r}
+class(html)
+```
+
+We can see that this object is split into several components: first is some metadata on the type of document we have scraped, followed by the head and then the body of that html document. 
+
+```{r}
+html
+```
+
+We have several possible approaches to extracting information from this document. 
+
+## Extracting HTML elements 
+
+In `{rvest}` you can extract a single element with `html_element()`, or all matching elements with `html_elements()`. Both functions take a document object and one or more CSS selectors as inputs. 
+
+```{r}
+#| collapse: true
+library(rvest)
+html %>% html_elements("h1")
+html %>% html_elements("h2")
+html %>% html_elements("p")
+```
+You can also combine and nest these selectors. For example you might want to extract all links that are within paragraphs *and* all second level headers.
+
+```{r}
+html %>% html_elements("p a,h2")
+```
+
+## Extracting Data From HTML Elements 
+
+Now that we’ve got the elements we care about extracted from the complete document. But how do we get the data we need out of those elements?
+
+You’ll usually get the data from either the contents of the HTML element or else from one of it's attributes. If you're really lucky, the data you need will already be formatted for you as a HTML table or list.
+
+
+### Extracting text 
+The functions `rvest::html_text()` and `rvest::html_text2()` can be used to extract the plain text contents of an HTML element. 
+
+```{r}
+html %>% 
+  html_elements("#teaching li") %>% 
+  html_text2()
+```
+
+The difference between `html_text()` and `html_text2()` is in how they handle whitespace. In HTML whitespace and line breaks have very little influence over how the code is interpreted by the computer (this is similar to R but very different from Python). `html_text()` will extract the text as it is in the raw html, while `html_text2()` will do its best to extract the text in a way that gives you something similar to what you’d see in the browser.
+
+### Extracting Attributes 
+
+Attributes are also used to record information that you might like to collect. For example, the destination of links are stored in the `href` attribute and the source of images is stored in the `src` attribute.
+
+As an example of this, consider trying to extract the twitter link from the icon in the page footer. This is quite tricky to locate in the html source, so I used the [Selector Gadget](https://rvest.tidyverse.org/articles/selectorgadget.html) to help find the correct combination of elements.
+
+```{r}
+html %>% html_element(".compact:nth-child(1) .nav-link")
+```
+To extract the `href` attribute from the scraped element, we use the `rvest::html_attr()` function.
+
+```{r}
+html %>% 
+  html_elements(".compact:nth-child(1) .nav-link") %>% 
+  html_attr("href")
+```
+**Note:** `rvest::html_attr()` will always return a character string (or list of character strings). If you are extracting an attribute that describes a quantity, such as the width of an image, you'll need to convert this from a string to your required data type. For example, of the width is measures in pixels you might use `as.integer()`.  
+
+### Extracting tables
+
+HTML tables are composed in a similar, nested manner to LaTeX tables. 
+
+There are four main elements to know about that make up an HTML table: 
+
+- `<table>`, 
+- `<tr>` (table row),
+- `<th>` (table heading),
+- `<td>` (table data). 
+
+Here’s our simple example data, formatted as an HTML table:
+
+```{r}
+html_2 <- minimal_html("
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>3</td>
+    </tr>
+  </table>
+  ")
+```
+
+Since tables are a common way to store data, `{rvest}` includes a useful function `html_table()` that converts directly from an HTML table into a tibble.
+
+```{r}
+html_2 %>% 
+  html_element("table") %>% 
+  html_table()
+```
+
+Applying this to our real scraped data we can easily extract the table of taught courses.
+
+```{r}
+html %>% 
+  html_element("table") %>% 
+  html_table()
+```
+
+
+## Tip for Building Tibbles 
+
+When scraping data from a webpage, your end-goal is typically going to be constructing a data.frame or a tibble. 
+
+If you are following our description of tidy data, you'll want each row to correspond some repeated unit on the HTML page. In this case, you should 
+
+1. Use `html_elements()` to select the elements that contain each observation unit;
+2. Use `html_element()` to extract the variables from each of those observations.
+
+Taking this approach guarantees that you’ll get the same number of values for each variable, because `html_element()` always returns the same number of outputs as inputs. This is vital when you have missing data - when not every observation unit has a value for every variable of interest. 
+
+As an example, consider this extract of text about the [starwars dataset](https://dplyr.tidyverse.org/reference/starwars.html#ref-examples).
+
+```{r}
+starwars_html <- minimal_html("
+  <ul>
+    <li><b>C-3PO</b> is a <i>droid</i> that weighs <span class='weight'>167 kg</span></li>
+    <li><b>R2-D2</b> is a <i>droid</i> that weighs <span class='weight'>96 kg</span></li>
+    <li><b>Yoda</b> weighs <span class='weight'>66 kg</span></li>
+    <li><b>R4-P17</b> is a <i>droid</i></li>
+  </ul>
+  ")
+```
+
+This is an unordered list where each list item corresponds to one observational unit (one character from the starwars universe). The name of the character is given in bold, the character species is specified in italics and the weight of the character is denoted by the `.weight` class. However, some characters have only a subset of these variables defined: for example Yoda has no species entry. 
+
+If we try to extract each element directly, our vectors of variable values are of different lengths. We don't know where the missing values should be, so we can't line them back up to make a tibble. 
+
+```{r}
+#| collapse: true
+starwars_html %>% html_elements("b") %>% html_text2()
+starwars_html %>% html_elements("i") %>% html_text2()
+starwars_html %>% html_elements(".weight") %>% html_text2()
+```
+
+What we should do instead is start by extracting all of the list item elements using `html_elements()`. Once we have done this, we can then use `html_element()` to extract each variable for all characters. This will pad with NAs, so that we can collate them into a tibble. 
+
+```{r}
+#| collapse: true
+starwars_characters <- starwars_html %>% html_elements("li")
+
+starwars_characters %>% html_element("b") %>% html_text2()
+starwars_characters %>% html_element("i") %>% html_text2()
+starwars_characters %>% html_element(".weight") %>% html_text2()
+```
+
+```{r}
+tibble::tibble(
+  name = starwars_characters %>% html_element("b") %>% html_text2(),
+  species = starwars_characters %>% html_element("i") %>% html_text2(),
+  weight = starwars_characters %>% html_element(".weight") %>% html_text2()
+)
+```

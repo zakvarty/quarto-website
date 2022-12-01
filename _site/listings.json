@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/2022-12-01-rvest/index.html",
       "/blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html",
       "/blog/2022-10-15-BBC-temperature-plot/index.html",
       "/blog/2022-10-11-ravelry-tidy-tuesday/index.html",

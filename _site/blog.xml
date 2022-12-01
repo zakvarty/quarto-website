@@ -10,7 +10,370 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.0.38</generator>
-<lastBuildDate>Tue, 18 Oct 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 01 Dec 2022 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Web Scraping with {rvest}</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2022-12-01-rvest/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="aquiring-data-part-1---scraping-webpage-data-using-rvest" class="level2">
+<h2 class="anchored" data-anchor-id="aquiring-data-part-1---scraping-webpage-data-using-rvest">Aquiring Data: Part 1 - Scraping webpage data using {rvest}</h2>
+<div class="medium_right">
+<p><img style="border-radius: 10%;" src="https://www.zakvarty.com/blog/2022-12-01-rvest/rvest-logo.png" alt="Hexagonal logo of the rvest package; a sickle cutting wheat on a red background."></p>
+</div>
+<p>You can’t always rely on tidy, tabular data to land on your desk. Sometimes you are going to have to go out and gather data for yourself.</p>
+<p>I’m not suggesting you will need to do this manually, but you will likely need to get data from the internet that’s been made publicly or privately available to you.</p>
+<p>This might be information from a webpage that you gather yourself, or data shared with you by a collaborator using an API.</p>
+<p>In this first blog post we will cover the basics of scraping webpages, following the <a href="https://cran.r-project.org/web/packages/rvest/vignettes/rvest.html#fnref3">vignette</a> for the {rvest} package.</p>
+</section>
+<section id="what-is-a-webpage" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-webpage">What is a webpage?</h2>
+<p>Before we can even hope to get data from a webpage, we first need to understand <em>what</em> a webpage is.</p>
+<p>Webpages are written in a similar way to LaTeX: the content and styling of webpages are handled separately and are coded using plain text files.</p>
+<p>In fact, websites go one step further than LaTeX. The content and styling of websites are written in different files and in different languages. HTML (HyperText Markup Language) is used to write the content and then CSS (Cascading Style Sheets) are used to control the appearance of that content when it’s displayed to the user.</p>
+</section>
+<section id="html" class="level2">
+<h2 class="anchored" data-anchor-id="html">HTML</h2>
+<p>A basic HTML page with no styling applied might look something like this:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><span class="kw" style="color: #003B4F;">&lt;html&gt;</span></span>
+<span id="cb1-2"><span class="kw" style="color: #003B4F;">&lt;head&gt;</span></span>
+<span id="cb1-3">  <span class="kw" style="color: #003B4F;">&lt;title&gt;</span>Page title<span class="kw" style="color: #003B4F;">&lt;/title&gt;</span></span>
+<span id="cb1-4"><span class="kw" style="color: #003B4F;">&lt;/head&gt;</span></span>
+<span id="cb1-5"><span class="kw" style="color: #003B4F;">&lt;body&gt;</span></span>
+<span id="cb1-6">  <span class="kw" style="color: #003B4F;">&lt;h1</span> <span class="er" style="color: #AD0000;">id</span><span class="ot" style="color: #003B4F;">=</span><span class="st" style="color: #20794D;">'first'</span><span class="kw" style="color: #003B4F;">&gt;</span>A level 1 heading<span class="kw" style="color: #003B4F;">&lt;/h1&gt;</span></span>
+<span id="cb1-7">  <span class="kw" style="color: #003B4F;">&lt;p&gt;</span>Hello World!<span class="kw" style="color: #003B4F;">&lt;/p&gt;</span></span>
+<span id="cb1-8">  <span class="kw" style="color: #003B4F;">&lt;p&gt;</span>Here is some plain text <span class="dv" style="color: #AD0000;">&amp;amp;</span> <span class="kw" style="color: #003B4F;">&lt;b&gt;</span>some bold text.<span class="kw" style="color: #003B4F;">&lt;/b&gt;&lt;/p&gt;</span></span>
+<span id="cb1-9">  <span class="kw" style="color: #003B4F;">&lt;img</span> <span class="er" style="color: #AD0000;">src</span><span class="ot" style="color: #003B4F;">=</span><span class="st" style="color: #20794D;">'myimg.png'</span> <span class="er" style="color: #AD0000;">width</span><span class="ot" style="color: #003B4F;">=</span><span class="st" style="color: #20794D;">'100'</span> <span class="er" style="color: #AD0000;">height</span><span class="ot" style="color: #003B4F;">=</span><span class="st" style="color: #20794D;">'100'</span><span class="kw" style="color: #003B4F;">&gt;</span></span>
+<span id="cb1-10"><span class="kw" style="color: #003B4F;">&lt;/body&gt;</span></span></code></pre></div>
+<section id="html-elements" class="level3">
+<h3 class="anchored" data-anchor-id="html-elements">HTML elements</h3>
+<!-- for presentation 
+```{.html}
+#| code-line-numbers: "3"
+<html>
+<head>
+  <title>Page title</title>
+</head>
+<body>
+  <h1 id='first'>A level 1 heading</h1>
+  <p>Hello World!</p>
+  <p>Here is some plain text &amp; <b>some bold text.</b></p>
+  <img src='myimg.png' width='100' height='100'>
+</body>
+```
+-->
+<p>Just like XML data files, HTML has a hierarchical structure. This structure is crafted using HTML elements. Each HTML element is made up of of a start tag, optional attributes, an end tag.</p>
+<p>We can see each of these in the first level header, where <code>&lt;h1&gt;</code> is the opening tag, <code>id='first'</code> is an additional attribute and <code>&lt;/h1&gt;</code> is the closing tag. Everything between the opening and closing tag are the contents of that element. There are also some special elements that consist of only a single tag and its optional attributes. An example of this is the <code>&lt;img&gt;</code> tag.</p>
+<p>Since <code>&lt;</code> and <code>&gt;</code> are used for start and end tags, you can’t write them directly in an HTML document. Instead, you have to use escape characters. This sounds fancy, but it’s just an alternative way to write characters that serve some special function within a language.</p>
+<p>You can write greater than <code>&amp;gt;</code> and less than as <code>&amp;lt;</code>. You might notice that those escapes use an ampersand (&amp;). This means that if you want a literal ampersand on your webpage, you have to escape too using <code>&amp;amp;</code>.</p>
+<p>There are a wide range of possible HTML tags and escapes. We’ll cover the most common tags in this lecture and you don’t need to worry about escapes too much because <code>{rvest}</code> will automatically handle them for you.</p>
+</section>
+<section id="important-html-elements" class="level3">
+<h3 class="anchored" data-anchor-id="important-html-elements">Important HTML Elements</h3>
+<p>In all, there are in excess of 100 HTML elements. The most important ones for you to know about are:</p>
+<ul>
+<li><p>The <code>&lt;html&gt;</code> element, that must enclose every HTML page. The <code>&lt;html&gt;</code> element must have two child elements within it. The <code>&lt;head&gt;</code> element contains metadata about the document, like the page title that is shown in the browser tab and the CSS style sheet that should be applied. The <code>&lt;body&gt;</code> element then contains all of the content that you see in the browser.</p></li>
+<li><p>Block elements are used to give structure to the page. These are elements like headings, sub-headings and so on from <code>&lt;h1&gt;</code> all the way down to <code>&lt;h6&gt;</code>. This category also contains paragraph elements <code>&lt;p&gt;</code>, ordered lists <code>&lt;ol&gt;</code> unordered lists <code>&lt;ul&gt;</code>.</p></li>
+<li><p>Finally, inline tags like <code>&lt;b&gt;</code> for bold, <code>&lt;i&gt;</code> for italics, and <code>&lt;a&gt;</code> for hyperlinks are used to format text inside block elements.</p></li>
+</ul>
+<p>When you come across a tag that you’ve never seen before, you can find out what it does with just a little bit of googling. A good resource here is the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN Web Docs</a> which are produced by Mozilla, the company that makes the Firefox web browser. The <a href="https://www.w3schools.com/html/default.asp">W3schools website</a> is another great resource for web development and coding resources more generally.</p>
+</section>
+</section>
+<section id="html-attributes" class="level2">
+<h2 class="anchored" data-anchor-id="html-attributes">HTML Attributes</h2>
+<p>We’ve seen one example of a header with an additional attribute. More generally, all tags can have named attributes. These attributes are contained within the opening tag and look something like:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><span class="kw" style="color: #003B4F;">&lt;tag</span> <span class="er" style="color: #AD0000;">attribute1</span><span class="ot" style="color: #003B4F;">=</span><span class="st" style="color: #20794D;">'value1'</span> <span class="er" style="color: #AD0000;">attribute2</span><span class="ot" style="color: #003B4F;">=</span><span class="st" style="color: #20794D;">'value2'</span><span class="kw" style="color: #003B4F;">&gt;</span>element contents<span class="kw" style="color: #003B4F;">&lt;/tag&gt;</span></span></code></pre></div>
+<p>Two of the most important attributes are <code>id</code> and <code>class</code>. These attributes are used in conjunction with the CSS file to control the visual appearance of the page. These are often very useful to identify the elements that you are interested in when scraping data off a page.</p>
+</section>
+<section id="css-selectors" class="level2">
+<h2 class="anchored" data-anchor-id="css-selectors">CSS Selectors</h2>
+<p>The Cascading Style Sheet is used to describe how your HTML content will be displayed. To do this, CSS has it’s own system for selecting elements of a webpage, called CSS selectors.</p>
+<p>CSS selectors define patterns for locating the HTML elements that a particular style should be applied to. A happy side-effect of this is that they can sometimes be very useful for scraping, because they provide a concise way of describing which elements you want to extract.</p>
+<p>CSS Selectors can work on the level of an element type, a class, or a tag and these can be used in a nested (or <em>cascading</em>) way.</p>
+<ul>
+<li><p>The <code>p</code> selector will select all paragraph <code>&lt;p&gt;</code> elements.</p></li>
+<li><p>The <code>.title</code> selector will select all elements with class <code>“title”</code>.</p></li>
+<li><p>The <code>p.special</code> selector will select all<code>&lt;p&gt;</code> elements with class <code>“special”</code>.</p></li>
+<li><p>The <code>#title</code> selector will select the element with the id attribute <code>“title”</code>.</p></li>
+</ul>
+<p>When you want to select a single element <code>id</code> attributes are particularly useful because that <em>must</em> be unique within a html document. Unfortunately, this is only helpful if the developer added an <code>id</code> attribute to the element(s) you want to scrape!</p>
+<p>If you want to learn more CSS selectors I recommend starting with the fun <a href="https://flukeout.github.io/">CSS dinner tutorial</a> to build a base of knowledge and then using the <a href="https://www.w3schools.com/css/default.asp">W3schools resources</a> as a reference to explore more webpages in the wild.</p>
+</section>
+<section id="which-attributes-and-selectors-do-you-need" class="level2">
+<h2 class="anchored" data-anchor-id="which-attributes-and-selectors-do-you-need">Which Attributes and Selectors Do You Need?</h2>
+<p>To scrape data from a webpage, you first have to identify the tag and attribute combinations that you are interested in gathering.</p>
+<p>To find your elements of interest, you have three options. These go from hardest to easiest but also from most to least robust.</p>
+<ul>
+<li>right click + “inspect page source” (F12)</li>
+<li>right click + “inspect”</li>
+<li>Rvest <a href="https://rvest.tidyverse.org/articles/selectorgadget.html">Selector Gadget</a> (very useful but fallible)</li>
+</ul>
+<p>Inspecting the source of some familiar websites can be a useful way to get your head around these concepts. Beware though that sophisticated webpages can be quite intimidating. A good place to start is with simpler, static websites such as personal websites, rather than the dynamic webpages of online retailers or social media platforms.</p>
+</section>
+<section id="reading-html-with-rvest" class="level2">
+<h2 class="anchored" data-anchor-id="reading-html-with-rvest">Reading HTML with <code>{rvest}</code></h2>
+<p>With <code>{rvest}</code>, reading a html page can be as simple as loading in tabular data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">html <span class="ot" style="color: #003B4F;">&lt;-</span> rvest<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">read_html</span>(<span class="st" style="color: #20794D;">"https://www.zakvarty.com/professional/teaching.html"</span>)</span></code></pre></div>
+</div>
+<p>The <code>class</code> of the resulting object is an <code>xml_document</code>. This type of object is from the low-level package <code>{xml2}</code>, which allows you to read xml files into R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">class</span>(html)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "xml_document" "xml_node"    </code></pre>
+</div>
+</div>
+<p>We can see that this object is split into several components: first is some metadata on the type of document we have scraped, followed by the head and then the body of that html document.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">html</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{html_document}
+&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"&gt;
+[1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+[2] &lt;body class="nav-fixed"&gt;\n\n&lt;div id="quarto-search-results"&gt;&lt;/div&gt;\n  &lt;he ...</code></pre>
+</div>
+</div>
+<p>We have several possible approaches to extracting information from this document.</p>
+</section>
+<section id="extracting-html-elements" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-html-elements">Extracting HTML elements</h2>
+<p>In <code>{rvest}</code> you can extract a single element with <code>html_element()</code>, or all matching elements with <code>html_elements()</code>. Both functions take a document object and one or more CSS selectors as inputs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">library</span>(rvest)</span>
+<span id="cb8-2">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"h1"</span>)</span>
+<span id="cb8-3"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## {xml_nodeset (1)}</span></span>
+<span id="cb8-4"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] &lt;h1&gt;Teaching&lt;/h1&gt;</span></span>
+<span id="cb8-5">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"h2"</span>)</span>
+<span id="cb8-6"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## {xml_nodeset (2)}</span></span>
+<span id="cb8-7"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] &lt;h2 id="toc-title"&gt;On this page&lt;/h2&gt;</span></span>
+<span id="cb8-8"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [2] &lt;h2 class="anchored" data-anchor-id="course-history"&gt;Course History&lt;/h2&gt;</span></span>
+<span id="cb8-9">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"p"</span>)</span>
+<span id="cb8-10"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## {xml_nodeset (2)}</span></span>
+<span id="cb8-11"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] &lt;p&gt;I am fortunate to have had the opportunity to teach in a variety of ro ...</span></span>
+<span id="cb8-12"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [2] &lt;p&gt;I am an associate fellow of the Higher Education Academy, which you ca ...</span></span></code></pre></div>
+</div>
+<p>You can also combine and nest these selectors. For example you might want to extract all links that are within paragraphs <em>and</em> all second level headers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"p a,h2"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (3)}
+[1] &lt;h2 id="toc-title"&gt;On this page&lt;/h2&gt;
+[2] &lt;a href="https://www.advance-he.ac.uk/fellowship/associate-fellowship"&gt;he ...
+[3] &lt;h2 class="anchored" data-anchor-id="course-history"&gt;Course History&lt;/h2&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="extracting-data-from-html-elements" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-data-from-html-elements">Extracting Data From HTML Elements</h2>
+<p>Now that we’ve got the elements we care about extracted from the complete document. But how do we get the data we need out of those elements?</p>
+<p>You’ll usually get the data from either the contents of the HTML element or else from one of it’s attributes. If you’re really lucky, the data you need will already be formatted for you as a HTML table or list.</p>
+<section id="extracting-text" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-text">Extracting text</h3>
+<p>The functions <code>rvest::html_text()</code> and <code>rvest::html_text2()</code> can be used to extract the plain text contents of an HTML element.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"#teaching li"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;">html_text2</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "one-to-one tuition for high school students;"                                   
+[2] "running workshops and computer labs for undergraduate and postgraduate modules;"
+[3] "delivering short courses on scientific communication and LaTeX;"                
+[4] "supervising an undergraduate research project;"                                 
+[5] "developing and lecturing postgraduate modules in statistics and data science."  </code></pre>
+</div>
+</div>
+<p>The difference between <code>html_text()</code> and <code>html_text2()</code> is in how they handle whitespace. In HTML whitespace and line breaks have very little influence over how the code is interpreted by the computer (this is similar to R but very different from Python). <code>html_text()</code> will extract the text as it is in the raw html, while <code>html_text2()</code> will do its best to extract the text in a way that gives you something similar to what you’d see in the browser.</p>
+</section>
+<section id="extracting-attributes" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-attributes">Extracting Attributes</h3>
+<p>Attributes are also used to record information that you might like to collect. For example, the destination of links are stored in the <code>href</code> attribute and the source of images is stored in the <code>src</code> attribute.</p>
+<p>As an example of this, consider trying to extract the twitter link from the icon in the page footer. This is quite tricky to locate in the html source, so I used the <a href="https://rvest.tidyverse.org/articles/selectorgadget.html">Selector Gadget</a> to help find the correct combination of elements.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">".compact:nth-child(1) .nav-link"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{html_node}
+&lt;a class="nav-link" href="https://www.twitter.com/zakvarty"&gt;
+[1] &lt;i class="bi bi-twitter" role="img"&gt;\n&lt;/i&gt;</code></pre>
+</div>
+</div>
+<p>To extract the <code>href</code> attribute from the scraped element, we use the <code>rvest::html_attr()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb15-2">  <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">".compact:nth-child(1) .nav-link"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb15-3">  <span class="fu" style="color: #4758AB;">html_attr</span>(<span class="st" style="color: #20794D;">"href"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "https://www.twitter.com/zakvarty"</code></pre>
+</div>
+</div>
+<p><strong>Note:</strong> <code>rvest::html_attr()</code> will always return a character string (or list of character strings). If you are extracting an attribute that describes a quantity, such as the width of an image, you’ll need to convert this from a string to your required data type. For example, of the width is measures in pixels you might use <code>as.integer()</code>.</p>
+</section>
+<section id="extracting-tables" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-tables">Extracting tables</h3>
+<p>HTML tables are composed in a similar, nested manner to LaTeX tables.</p>
+<p>There are four main elements to know about that make up an HTML table:</p>
+<ul>
+<li><code>&lt;table&gt;</code>,</li>
+<li><code>&lt;tr&gt;</code> (table row),</li>
+<li><code>&lt;th&gt;</code> (table heading),</li>
+<li><code>&lt;td&gt;</code> (table data).</li>
+</ul>
+<p>Here’s our simple example data, formatted as an HTML table:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">html_2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">minimal_html</span>(<span class="st" style="color: #20794D;">"</span></span>
+<span id="cb17-2"><span class="st" style="color: #20794D;">  &lt;table&gt;</span></span>
+<span id="cb17-3"><span class="st" style="color: #20794D;">    &lt;tr&gt;</span></span>
+<span id="cb17-4"><span class="st" style="color: #20794D;">      &lt;th&gt;Name&lt;/th&gt;</span></span>
+<span id="cb17-5"><span class="st" style="color: #20794D;">      &lt;th&gt;Number&lt;/th&gt;</span></span>
+<span id="cb17-6"><span class="st" style="color: #20794D;">    &lt;/tr&gt;</span></span>
+<span id="cb17-7"><span class="st" style="color: #20794D;">    &lt;tr&gt;</span></span>
+<span id="cb17-8"><span class="st" style="color: #20794D;">      &lt;td&gt;A&lt;/td&gt;</span></span>
+<span id="cb17-9"><span class="st" style="color: #20794D;">      &lt;td&gt;1&lt;/td&gt;</span></span>
+<span id="cb17-10"><span class="st" style="color: #20794D;">    &lt;/tr&gt;</span></span>
+<span id="cb17-11"><span class="st" style="color: #20794D;">    &lt;tr&gt;</span></span>
+<span id="cb17-12"><span class="st" style="color: #20794D;">      &lt;td&gt;B&lt;/td&gt;</span></span>
+<span id="cb17-13"><span class="st" style="color: #20794D;">      &lt;td&gt;2&lt;/td&gt;</span></span>
+<span id="cb17-14"><span class="st" style="color: #20794D;">    &lt;/tr&gt;</span></span>
+<span id="cb17-15"><span class="st" style="color: #20794D;">    &lt;tr&gt;</span></span>
+<span id="cb17-16"><span class="st" style="color: #20794D;">      &lt;td&gt;C&lt;/td&gt;</span></span>
+<span id="cb17-17"><span class="st" style="color: #20794D;">      &lt;td&gt;3&lt;/td&gt;</span></span>
+<span id="cb17-18"><span class="st" style="color: #20794D;">    &lt;/tr&gt;</span></span>
+<span id="cb17-19"><span class="st" style="color: #20794D;">  &lt;/table&gt;</span></span>
+<span id="cb17-20"><span class="st" style="color: #20794D;">  "</span>)</span></code></pre></div>
+</div>
+<p>Since tables are a common way to store data, <code>{rvest}</code> includes a useful function <code>html_table()</code> that converts directly from an HTML table into a tibble.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">html_2 <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb18-2">  <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">"table"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb18-3">  <span class="fu" style="color: #4758AB;">html_table</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Name  Number
+  &lt;chr&gt;  &lt;int&gt;
+1 A          1
+2 B          2
+3 C          3</code></pre>
+</div>
+</div>
+<p>Applying this to our real scraped data we can easily extract the table of taught courses.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb20-2">  <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">"table"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb20-3">  <span class="fu" style="color: #4758AB;">html_table</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 25 × 3
+   Year      Course                                   Role                      
+   &lt;chr&gt;     &lt;chr&gt;                                    &lt;chr&gt;                     
+ 1 "2021-22" Supervised Learning                      Lecturer                  
+ 2 ""        Ethics in Data Science I                 Lecturer                  
+ 3 ""        Ethics in Data Science II                Lecturer                  
+ 4 "—"       —                                        —                         
+ 5 "2020-21" MATH562/582: Extreme Value Theory        Lecturer                  
+ 6 ""        MATH331: Bayesian Inference              Graduate teaching assista…
+ 7 ""        MATH330: Likelihood Inference            Graduate teaching assista…
+ 8 "2019-20" DSCI485: Introduction to LaTeX           Co-leading short course   
+ 9 ""        MATH566: Longitudinal Data Analysis      Graduate teaching assista…
+10 "2018-19" STOR-i Internship: Introduction to LaTeX Co-leading short course   
+# … with 15 more rows</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="tip-for-building-tibbles" class="level2">
+<h2 class="anchored" data-anchor-id="tip-for-building-tibbles">Tip for Building Tibbles</h2>
+<p>When scraping data from a webpage, your end-goal is typically going to be constructing a data.frame or a tibble.</p>
+<p>If you are following our description of tidy data, you’ll want each row to correspond some repeated unit on the HTML page. In this case, you should</p>
+<ol type="1">
+<li>Use <code>html_elements()</code> to select the elements that contain each observation unit;</li>
+<li>Use <code>html_element()</code> to extract the variables from each of those observations.</li>
+</ol>
+<p>Taking this approach guarantees that you’ll get the same number of values for each variable, because <code>html_element()</code> always returns the same number of outputs as inputs. This is vital when you have missing data - when not every observation unit has a value for every variable of interest.</p>
+<p>As an example, consider this extract of text about the <a href="https://dplyr.tidyverse.org/reference/starwars.html#ref-examples">starwars dataset</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">starwars_html <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">minimal_html</span>(<span class="st" style="color: #20794D;">"</span></span>
+<span id="cb22-2"><span class="st" style="color: #20794D;">  &lt;ul&gt;</span></span>
+<span id="cb22-3"><span class="st" style="color: #20794D;">    &lt;li&gt;&lt;b&gt;C-3PO&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt; that weighs &lt;span class='weight'&gt;167 kg&lt;/span&gt;&lt;/li&gt;</span></span>
+<span id="cb22-4"><span class="st" style="color: #20794D;">    &lt;li&gt;&lt;b&gt;R2-D2&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt; that weighs &lt;span class='weight'&gt;96 kg&lt;/span&gt;&lt;/li&gt;</span></span>
+<span id="cb22-5"><span class="st" style="color: #20794D;">    &lt;li&gt;&lt;b&gt;Yoda&lt;/b&gt; weighs &lt;span class='weight'&gt;66 kg&lt;/span&gt;&lt;/li&gt;</span></span>
+<span id="cb22-6"><span class="st" style="color: #20794D;">    &lt;li&gt;&lt;b&gt;R4-P17&lt;/b&gt; is a &lt;i&gt;droid&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb22-7"><span class="st" style="color: #20794D;">  &lt;/ul&gt;</span></span>
+<span id="cb22-8"><span class="st" style="color: #20794D;">  "</span>)</span></code></pre></div>
+</div>
+<p>This is an unordered list where each list item corresponds to one observational unit (one character from the starwars universe). The name of the character is given in bold, the character species is specified in italics and the weight of the character is denoted by the <code>.weight</code> class. However, some characters have only a subset of these variables defined: for example Yoda has no species entry.</p>
+<p>If we try to extract each element directly, our vectors of variable values are of different lengths. We don’t know where the missing values should be, so we can’t line them back up to make a tibble.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">starwars_html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"b"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>()</span>
+<span id="cb23-2"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] "C-3PO"  "R2-D2"  "Yoda"   "R4-P17"</span></span>
+<span id="cb23-3">starwars_html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"i"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>()</span>
+<span id="cb23-4"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] "droid" "droid" "droid"</span></span>
+<span id="cb23-5">starwars_html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">".weight"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>()</span>
+<span id="cb23-6"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] "167 kg" "96 kg"  "66 kg"</span></span></code></pre></div>
+</div>
+<p>What we should do instead is start by extracting all of the list item elements using <code>html_elements()</code>. Once we have done this, we can then use <code>html_element()</code> to extract each variable for all characters. This will pad with NAs, so that we can collate them into a tibble.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">starwars_characters <span class="ot" style="color: #003B4F;">&lt;-</span> starwars_html <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_elements</span>(<span class="st" style="color: #20794D;">"li"</span>)</span>
+<span id="cb24-2"></span>
+<span id="cb24-3">starwars_characters <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">"b"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>()</span>
+<span id="cb24-4"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] "C-3PO"  "R2-D2"  "Yoda"   "R4-P17"</span></span>
+<span id="cb24-5">starwars_characters <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">"i"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>()</span>
+<span id="cb24-6"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] "droid" "droid" NA      "droid"</span></span>
+<span id="cb24-7">starwars_characters <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">".weight"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>()</span>
+<span id="cb24-8"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## [1] "167 kg" "96 kg"  "66 kg"  NA</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">tibble</span>(</span>
+<span id="cb25-2">  <span class="at" style="color: #657422;">name =</span> starwars_characters <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">"b"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>(),</span>
+<span id="cb25-3">  <span class="at" style="color: #657422;">species =</span> starwars_characters <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">"i"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>(),</span>
+<span id="cb25-4">  <span class="at" style="color: #657422;">weight =</span> starwars_characters <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_element</span>(<span class="st" style="color: #20794D;">".weight"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">html_text2</span>()</span>
+<span id="cb25-5">)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  name   species weight
+  &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; 
+1 C-3PO  droid   167 kg
+2 R2-D2  droid   96 kg 
+3 Yoda   &lt;NA&gt;    66 kg 
+4 R4-P17 droid   &lt;NA&gt;  </code></pre>
+</div>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
+  author = {Zak Varty},
+  title = {Web {Scraping} with `\{Rvest\}`},
+  date = {2022-12-01},
+  url = {https://www.zakvarty.com/blog/2022-12-01-rvest},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
+Zak Varty. 2022. <span>“Web Scraping with `{Rvest}`.”</span> December 1,
+2022. <a href="https://www.zakvarty.com/blog/2022-12-01-rvest">https://www.zakvarty.com/blog/2022-12-01-rvest</a>.
+</div></div></section></div> ]]></description>
+  <category>data science</category>
+  <category>data acquisition</category>
+  <category>tutorial</category>
+  <guid>https://www.zakvarty.com/blog/2022-12-01-rvest/index.html</guid>
+  <pubDate>Thu, 01 Dec 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2022-12-01-rvest/rvest-logo.png" medium="image" type="image/png" height="167" width="144"/>
+</item>
 <item>
   <title>Good Enough Practices in Scientific Computing</title>
   <dc:creator>Zak Varty</dc:creator>
