@@ -1,8 +1,8 @@
 ---
-title: ""
+title: "Git: putting your new feature out into the world."
 description: |
-    Useful commands for pruning once a 
-date: "2022-12-01"
+    A git workflow to put a local feature out in the wild, then tidy up after yourself.
+date: "2022-12-13"
 categories:
   - workflows
   - git
