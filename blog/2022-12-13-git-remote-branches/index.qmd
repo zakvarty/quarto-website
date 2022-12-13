@@ -12,16 +12,20 @@ image-alt: git logo. This is a red-orange square with rounded corners, it is rot
 image-cap: ""
 draft: false
 freeze: true
-appendix-style: plain #(default, plain, none)
+appendix-style: none #(default, plain, none)
 bibliography: ../library.bib
 ---
+
+::: small_left
+<img style = "border-radius: 10%;" src="git-logo.png" alt="git logo. This is a red-orange square with rounded corners, it is rotated by 45 degrees so that it is standing on one corner and has a cut-out design representing a branching graph.">
+:::
 
 So you've added a new feature to your project. You were responsible and didn't do this in the `main` branch. Congrats on being responsible, have some brownie points.
 
 Now how the heck to you get everything moved across and delete your `new-feature` branch? 
 
 
-1. Check that your local `main` is up to date.
+## 1. Check that your local `main` is up to date.
 
 Be in the `main` branch and pull any changes to the remote `main` branch. 
 
@@ -32,7 +36,7 @@ git pull origin main
 
 This might require you to resolve some merge conflicts, but these should be pretty straightforward if you are following a branch-and-merge workflow.
 
-2. Check that you remote `new-feature` is up to date. 
+## 2. Check that you remote `new-feature` is up to date. 
 
 We might mess things up while merging. Let's make sure that if that happens we can get back to this good position with our new feature. 
 
@@ -42,7 +46,7 @@ git status
 ```
 If needed: `add`, `commit` and `push`. 
 
-3. Merge any changes to `main` into your local `new-feature` branch
+## 3. Merge any changes to `main` into your local `new-feature` branch
 
 Next, we will make sure we have any changes to `main` moved across to our local `new-feature` branch. 
 
@@ -52,7 +56,7 @@ git merge main
 
 This might again require resolving some merge conflicts. Keep calm and take tea breaks are required.
 
-4. Commit and push to remote. 
+## 4. Commit and push to remote. 
 
 Now that we have our local `new-feature` branch compatible with the remote `main` branch, lets push that to the remote. 
 
@@ -62,18 +66,18 @@ git commit -m "merge changes to main in preparation for PR"
 git push
 ```
 
-5. Open a pull request on Github
+## 5. Open a pull request on Github
 
 Wait for someone to review approve your new feature (or wait a few hours/days and do it yourself for a solo project).
 
-6. Delete the local branch 
+## 6. Delete the local branch 
 
 ```{.bash}
 git checkout main
 git branch --delete new-feature
 ```
 
-7. Delete the remote branch 
+## 7. Delete the remote branch 
 
 ```{.bash}
 git push origin --delete new-feature

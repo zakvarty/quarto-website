@@ -19,65 +19,58 @@
 
 
 
+<div class="small_left">
+<p><img style="border-radius: 10%;" src="https://www.zakvarty.com/blog/2022-12-13-git-remote-branches/git-logo.png" alt="git logo. This is a red-orange square with rounded corners, it is rotated by 45 degrees so that it is standing on one corner and has a cut-out design representing a branching graph."></p>
+</div>
 <p>So you’ve added a new feature to your project. You were responsible and didn’t do this in the <code>main</code> branch. Congrats on being responsible, have some brownie points.</p>
 <p>Now how the heck to you get everything moved across and delete your <code>new-feature</code> branch?</p>
-<ol type="1">
-<li>Check that your local <code>main</code> is up to date.</li>
-</ol>
+<section id="check-that-your-local-main-is-up-to-date." class="level2">
+<h2 class="anchored" data-anchor-id="check-that-your-local-main-is-up-to-date.">1. Check that your local <code>main</code> is up to date.</h2>
 <p>Be in the <code>main</code> branch and pull any changes to the remote <code>main</code> branch.</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;">git</span> checkout main </span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;">git</span> pull origin main</span></code></pre></div>
 <p>This might require you to resolve some merge conflicts, but these should be pretty straightforward if you are following a branch-and-merge workflow.</p>
-<ol start="2" type="1">
-<li>Check that you remote <code>new-feature</code> is up to date.</li>
-</ol>
+</section>
+<section id="check-that-you-remote-new-feature-is-up-to-date." class="level2">
+<h2 class="anchored" data-anchor-id="check-that-you-remote-new-feature-is-up-to-date.">2. Check that you remote <code>new-feature</code> is up to date.</h2>
 <p>We might mess things up while merging. Let’s make sure that if that happens we can get back to this good position with our new feature.</p>
 <pre><code>git checkout new-feature
 git status</code></pre>
 <p>If needed: <code>add</code>, <code>commit</code> and <code>push</code>.</p>
-<ol start="3" type="1">
-<li>Merge any changes to <code>main</code> into your local <code>new-feature</code> branch</li>
-</ol>
+</section>
+<section id="merge-any-changes-to-main-into-your-local-new-feature-branch" class="level2">
+<h2 class="anchored" data-anchor-id="merge-any-changes-to-main-into-your-local-new-feature-branch">3. Merge any changes to <code>main</code> into your local <code>new-feature</code> branch</h2>
 <p>Next, we will make sure we have any changes to <code>main</code> moved across to our local <code>new-feature</code> branch.</p>
 <div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="fu" style="color: #4758AB;">git</span> merge main</span></code></pre></div>
 <p>This might again require resolving some merge conflicts. Keep calm and take tea breaks are required.</p>
-<ol start="4" type="1">
-<li>Commit and push to remote.</li>
-</ol>
+</section>
+<section id="commit-and-push-to-remote." class="level2">
+<h2 class="anchored" data-anchor-id="commit-and-push-to-remote.">4. Commit and push to remote.</h2>
 <p>Now that we have our local <code>new-feature</code> branch compatible with the remote <code>main</code> branch, lets push that to the remote.</p>
 <div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="fu" style="color: #4758AB;">git</span> add <span class="op" style="color: #5E5E5E;">&lt;</span>YOUR_FILES_TO_COMMIT<span class="op" style="color: #5E5E5E;">&gt;</span></span>
 <span id="cb4-2"><span class="fu" style="color: #4758AB;">git</span> commit <span class="at" style="color: #657422;">-m</span> <span class="st" style="color: #20794D;">"merge changes to main in preparation for PR"</span></span>
 <span id="cb4-3"><span class="fu" style="color: #4758AB;">git</span> push</span></code></pre></div>
-<ol start="5" type="1">
-<li>Open a pull request on Github</li>
-</ol>
+</section>
+<section id="open-a-pull-request-on-github" class="level2">
+<h2 class="anchored" data-anchor-id="open-a-pull-request-on-github">5. Open a pull request on Github</h2>
 <p>Wait for someone to review approve your new feature (or wait a few hours/days and do it yourself for a solo project).</p>
-<ol start="6" type="1">
-<li>Delete the local branch</li>
-</ol>
+</section>
+<section id="delete-the-local-branch" class="level2">
+<h2 class="anchored" data-anchor-id="delete-the-local-branch">6. Delete the local branch</h2>
 <div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;">git</span> checkout main</span>
 <span id="cb5-2"><span class="fu" style="color: #4758AB;">git</span> branch <span class="at" style="color: #657422;">--delete</span> new-feature</span></code></pre></div>
-<ol start="7" type="1">
-<li>Delete the remote branch</li>
-</ol>
+</section>
+<section id="delete-the-remote-branch" class="level2">
+<h2 class="anchored" data-anchor-id="delete-the-remote-branch">7. Delete the remote branch</h2>
 <div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="fu" style="color: #4758AB;">git</span> push origin <span class="at" style="color: #657422;">--delete</span> new-feature</span></code></pre></div>
 <p>On older versions of git (&lt; 1.7.0) you might need to use the alternative syntax below. This is effectively pushing nothing to the new-feature branch of origin.</p>
 <div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="fu" style="color: #4758AB;">git</span> push origin :new-feature</span></code></pre></div>
 <p>Bam! You did it! Your <code>new-feature</code> is out there in the wild, making the world a marginally better place.</p>
 
 
+</section>
 
-<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
-  author = {Zak Varty},
-  title = {Git: Putting Your New Feature Out into the World.},
-  date = {2022-12-13},
-  url = {https://www.zakvarty.com/blog/2022-12-13-git-remote-branches},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas">
-Zak Varty. 2022. <span>“Git: Putting Your New Feature Out into the
-World.”</span> December 13, 2022. <a href="https://www.zakvarty.com/blog/2022-12-13-git-remote-branches">https://www.zakvarty.com/blog/2022-12-13-git-remote-branches</a>.
-</div></div></section></div> ]]></description>
+ ]]></description>
   <category>workflows</category>
   <category>git</category>
   <guid>https://www.zakvarty.com/blog/2022-12-13-git-remote-branches/index.html</guid>

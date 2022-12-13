@@ -179,7 +179,56 @@
     "href": "blog/2022-12-13-git-remote-branches/index.html",
     "title": "Git: putting your new feature out into the world.",
     "section": "",
-    "text": "Now how the heck to you get everything moved across and delete your new-feature branch?\n\nCheck that your local main is up to date.\n\nBe in the main branch and pull any changes to the remote main branch.\ngit checkout main \ngit pull origin main\nThis might require you to resolve some merge conflicts, but these should be pretty straightforward if you are following a branch-and-merge workflow.\n\nCheck that you remote new-feature is up to date.\n\nWe might mess things up while merging. Let’s make sure that if that happens we can get back to this good position with our new feature.\ngit checkout new-feature\ngit status\nIf needed: add, commit and push.\n\nMerge any changes to main into your local new-feature branch\n\nNext, we will make sure we have any changes to main moved across to our local new-feature branch.\ngit merge main\nThis might again require resolving some merge conflicts. Keep calm and take tea breaks are required.\n\nCommit and push to remote.\n\nNow that we have our local new-feature branch compatible with the remote main branch, lets push that to the remote.\ngit add <YOUR_FILES_TO_COMMIT>\ngit commit -m \"merge changes to main in preparation for PR\"\ngit push\n\nOpen a pull request on Github\n\nWait for someone to review approve your new feature (or wait a few hours/days and do it yourself for a solo project).\n\nDelete the local branch\n\ngit checkout main\ngit branch --delete new-feature\n\nDelete the remote branch\n\ngit push origin --delete new-feature\nOn older versions of git (< 1.7.0) you might need to use the alternative syntax below. This is effectively pushing nothing to the new-feature branch of origin.\ngit push origin :new-feature\nBam! You did it! Your new-feature is out there in the wild, making the world a marginally better place.\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{varty2022,\n  author = {Zak Varty},\n  title = {Git: Putting Your New Feature Out into the World.},\n  date = {2022-12-13},\n  url = {https://www.zakvarty.com/blog/2022-12-13-git-remote-branches},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nZak Varty. 2022. “Git: Putting Your New Feature Out into the\nWorld.” December 13, 2022. https://www.zakvarty.com/blog/2022-12-13-git-remote-branches."
+    "text": "So you’ve added a new feature to your project. You were responsible and didn’t do this in the main branch. Congrats on being responsible, have some brownie points.\nNow how the heck to you get everything moved across and delete your new-feature branch?"
+  },
+  {
+    "objectID": "blog/2022-12-13-git-remote-branches/index.html#check-that-your-local-main-is-up-to-date.",
+    "href": "blog/2022-12-13-git-remote-branches/index.html#check-that-your-local-main-is-up-to-date.",
+    "title": "Git: putting your new feature out into the world.",
+    "section": "1. Check that your local main is up to date.",
+    "text": "1. Check that your local main is up to date.\nBe in the main branch and pull any changes to the remote main branch.\ngit checkout main \ngit pull origin main\nThis might require you to resolve some merge conflicts, but these should be pretty straightforward if you are following a branch-and-merge workflow."
+  },
+  {
+    "objectID": "blog/2022-12-13-git-remote-branches/index.html#check-that-you-remote-new-feature-is-up-to-date.",
+    "href": "blog/2022-12-13-git-remote-branches/index.html#check-that-you-remote-new-feature-is-up-to-date.",
+    "title": "Git: putting your new feature out into the world.",
+    "section": "2. Check that you remote new-feature is up to date.",
+    "text": "2. Check that you remote new-feature is up to date.\nWe might mess things up while merging. Let’s make sure that if that happens we can get back to this good position with our new feature.\ngit checkout new-feature\ngit status\nIf needed: add, commit and push."
+  },
+  {
+    "objectID": "blog/2022-12-13-git-remote-branches/index.html#merge-any-changes-to-main-into-your-local-new-feature-branch",
+    "href": "blog/2022-12-13-git-remote-branches/index.html#merge-any-changes-to-main-into-your-local-new-feature-branch",
+    "title": "Git: putting your new feature out into the world.",
+    "section": "3. Merge any changes to main into your local new-feature branch",
+    "text": "3. Merge any changes to main into your local new-feature branch\nNext, we will make sure we have any changes to main moved across to our local new-feature branch.\ngit merge main\nThis might again require resolving some merge conflicts. Keep calm and take tea breaks are required."
+  },
+  {
+    "objectID": "blog/2022-12-13-git-remote-branches/index.html#commit-and-push-to-remote.",
+    "href": "blog/2022-12-13-git-remote-branches/index.html#commit-and-push-to-remote.",
+    "title": "Git: putting your new feature out into the world.",
+    "section": "4. Commit and push to remote.",
+    "text": "4. Commit and push to remote.\nNow that we have our local new-feature branch compatible with the remote main branch, lets push that to the remote.\ngit add <YOUR_FILES_TO_COMMIT>\ngit commit -m \"merge changes to main in preparation for PR\"\ngit push"
+  },
+  {
+    "objectID": "blog/2022-12-13-git-remote-branches/index.html#open-a-pull-request-on-github",
+    "href": "blog/2022-12-13-git-remote-branches/index.html#open-a-pull-request-on-github",
+    "title": "Git: putting your new feature out into the world.",
+    "section": "5. Open a pull request on Github",
+    "text": "5. Open a pull request on Github\nWait for someone to review approve your new feature (or wait a few hours/days and do it yourself for a solo project)."
+  },
+  {
+    "objectID": "blog/2022-12-13-git-remote-branches/index.html#delete-the-local-branch",
+    "href": "blog/2022-12-13-git-remote-branches/index.html#delete-the-local-branch",
+    "title": "Git: putting your new feature out into the world.",
+    "section": "6. Delete the local branch",
+    "text": "6. Delete the local branch\ngit checkout main\ngit branch --delete new-feature"
+  },
+  {
+    "objectID": "blog/2022-12-13-git-remote-branches/index.html#delete-the-remote-branch",
+    "href": "blog/2022-12-13-git-remote-branches/index.html#delete-the-remote-branch",
+    "title": "Git: putting your new feature out into the world.",
+    "section": "7. Delete the remote branch",
+    "text": "7. Delete the remote branch\ngit push origin --delete new-feature\nOn older versions of git (< 1.7.0) you might need to use the alternative syntax below. This is effectively pushing nothing to the new-feature branch of origin.\ngit push origin :new-feature\nBam! You did it! Your new-feature is out there in the wild, making the world a marginally better place."
   },
   {
     "objectID": "blog/2022-10-07-rhetorical-precis/index.html",
