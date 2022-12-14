@@ -208,7 +208,7 @@ We could use the following code to tell R our credentials, but we absolutely sho
 options(geonamesUsername="example_username")
 ```
 
-This would save our username as an environment variable, but it _also_ puts our API credentials directly into the script. If we share the script with our others (internally, externally or publicly) we would be sharing our credentials too. Not good!
+This would save our username as an environment variable, but it _also_ puts our API credentials directly into the script. If we share the script with others (internally, externally or publicly) we would be sharing our credentials too. Not good!
 :::
 
 ## Keep it Secret, Keep it Safe
