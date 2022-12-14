@@ -12,7 +12,7 @@ image: rvest-logo.png
 image-alt: Hexagonal logo of the rvest package; a sickle cutting wheat on a red background. 
 image-cap: "{rvest}"
 draft: false
-freeze: false
+freeze: true
 appendix-style: plain #(default, plain, none)
 bibliography: ../library.bib
 ---

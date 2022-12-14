@@ -11,7 +11,7 @@ image: "2022-10-11-tidy-tuesday-ravelry.png"
 image-alt: |
     Stacked bar chart of yarn weights on Ravelry. Bars are descending order by their fequency, with yarn-type labels written within the bars and count values to the right of the bars. Annotations indicate that the most popular yarn weights are Fingering and Double Knit, and that there were more missing yarn weights than in all remaining categories combined.
 draft: false
-freeze: false
+freeze: true
 appendix-style: none #(default, plain, none)
 bibliography: ../library.bib
 citation: false

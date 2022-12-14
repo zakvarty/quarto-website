@@ -4,7 +4,7 @@
 freeze: auto
 
 # Make a big title block
-title-block-banner: true
+title-block-banner: false
 
 # long dates
 date-format: long
@@ -22,10 +22,7 @@ author:
 # citation
 citation: true
 
-
-title-block-banner: false
-
 # Enable CC licence appendix
-license: "CC BY" 
+license: "CC BY"
 
 bibliography: ../library.bib
