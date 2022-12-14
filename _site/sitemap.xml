@@ -2,70 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.zakvarty.com/personal/reading-record.html</loc>
-    <lastmod>2022-12-13T11:06:19.105Z</lastmod>
+    <lastmod>2022-12-14T17:34:17.787Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/professional/teaching.html</loc>
-    <lastmod>2022-12-13T11:06:19.443Z</lastmod>
+    <lastmod>2022-12-14T17:34:18.163Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/professional/research.html</loc>
-    <lastmod>2022-12-13T11:06:19.833Z</lastmod>
+    <lastmod>2022-12-14T17:34:18.533Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/professional/talks.html</loc>
-    <lastmod>2022-12-13T11:06:20.202Z</lastmod>
+    <lastmod>2022-12-14T17:34:18.900Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/professional/bookmarks.html</loc>
-    <lastmod>2022-12-13T11:06:20.690Z</lastmod>
+    <lastmod>2022-12-14T17:34:19.447Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/index.html</loc>
-    <lastmod>2022-12-13T11:06:21.355Z</lastmod>
+    <lastmod>2022-12-14T17:34:20.169Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/index.html</loc>
+    <lastmod>2022-12-14T17:34:23.184Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-12-01-rvest/index.html</loc>
-    <lastmod>2022-12-13T11:06:24.342Z</lastmod>
+    <lastmod>2022-12-14T17:34:24.138Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-11-ravelry-tidy-tuesday/index.html</loc>
-    <lastmod>2022-12-13T11:06:32.387Z</lastmod>
+    <lastmod>2022-12-14T17:34:24.728Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/index.html</loc>
-    <lastmod>2022-12-13T11:06:32.870Z</lastmod>
+    <lastmod>2022-12-14T17:34:25.302Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/index.html</loc>
-    <lastmod>2022-12-13T11:06:33.515Z</lastmod>
+    <lastmod>2022-12-14T17:34:25.911Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-09-26-hello-world/index.html</loc>
-    <lastmod>2022-12-13T11:06:34.023Z</lastmod>
+    <lastmod>2022-12-14T17:34:26.444Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-10-statistics-books/index.html</loc>
-    <lastmod>2022-12-13T11:06:34.690Z</lastmod>
+    <lastmod>2022-12-14T17:34:27.148Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html</loc>
-    <lastmod>2022-12-13T11:06:35.436Z</lastmod>
+    <lastmod>2022-12-14T17:34:27.862Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-12-13-git-remote-branches/index.html</loc>
-    <lastmod>2022-12-13T11:06:35.856Z</lastmod>
+    <lastmod>2022-12-14T17:34:28.231Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis/index.html</loc>
-    <lastmod>2022-12-13T11:06:36.419Z</lastmod>
+    <lastmod>2022-12-14T17:34:28.853Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/about.html</loc>
-    <lastmod>2022-12-13T11:06:36.745Z</lastmod>
+    <lastmod>2022-12-14T17:34:29.180Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog.html</loc>
-    <lastmod>2022-12-13T11:06:37.257Z</lastmod>
+    <lastmod>2022-12-14T17:34:29.721Z</lastmod>
   </url>
 </urlset>
