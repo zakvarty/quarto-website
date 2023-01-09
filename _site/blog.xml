@@ -9,7 +9,7 @@
 <link>https://www.zakvarty.com/blog.html</link>
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.2.269</generator>
+<generator>quarto-1.0.38</generator>
 <lastBuildDate>Fri, 06 Jan 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Data Wrangling</title>
@@ -822,7 +822,8 @@ logical: returning NA</code></pre>
 <section id="be-aware-date-times" class="level2">
 <h2 class="anchored" data-anchor-id="be-aware-date-times">Be Aware: Date-Times</h2>
 <p>Remember all the fuss we made about storing dates in the ISO standard format? That was because dates and times are complicated enough to work with before adding extra ambiguity.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20%5Ctext%7BYYYY%7D%20-%20%5Ctext%7BMM%7D%20-%20%5Ctext%7BDD%7D"> Dates, times and time intervals have to reconcile two factors: the physical orbit of the Earth around the sun and the social and geopolitical mechanisms that determine how we measure and record the passing of time. This makes the history of date and time records fascinating and can make working with this type of data complicated.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Ctext%7BYYYY%7D%20-%20%5Ctext%7BMM%7D%20-%20%5Ctext%7BDD%7D"></p>
+<p>Dates, times and time intervals have to reconcile two factors: the physical orbit of the Earth around the sun and the social and geopolitical mechanisms that determine how we measure and record the passing of time. This makes the history of date and time records fascinating and can make working with this type of data complicated.</p>
 <p>Moving from larger to smaller time spans: leap years alter the number of days in a year, months are of variable length (with February’s length changing from year to year). If your data are measured in a place that uses daylight saving, then one day a year will be 23 hours long and another will be 25 hours long. To make things worse, the dates and the hour at which the clocks change are not uniform across countries, which might be in distinct time zones that themselves change over time.</p>
 <p>Even at the level of minutes and seconds we aren’t safe - since the Earth’s orbit is gradually slowing down a leap second is added approximately every 21 months. Nor are things any better when looking at longer time scales or across cultures, where we might have to account for different calendars: months are added removed and altered over time, other calendar systems still take different approaches to measuring time and using different units and origin points.</p>
 <p>With all of these issues you have to be very careful when working with date and time data. Functions to help you with this can be found in the <code>{lubridate}</code> package, with examples in the <a href="https://r4ds.had.co.nz/dates-and-times.html#dates-and-times">dates and times</a> chapter of R for data science.</p>
@@ -1916,10 +1917,14 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
 </div>
 <p>There were a few things that still have me stumped, that I might revisit at some later date:</p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="">Left aligning title and caption (Thanks to Jack Davison for this!)</li>
-<li><input type="checkbox" disabled="">Using gradients on multiple parts of the plot</li>
-<li><input type="checkbox" disabled="">Using the YeOrRd gradient, rather than default blues</li>
-<li><input type="checkbox" disabled="">Adding a non-BBC logo to the bottom right.</li>
+<li><input type="checkbox" disabled="" checked="">
+Left aligning title and caption (Thanks to Jack Davison for this!)</li>
+<li><input type="checkbox" disabled="">
+Using gradients on multiple parts of the plot</li>
+<li><input type="checkbox" disabled="">
+Using the YeOrRd gradient, rather than default blues</li>
+<li><input type="checkbox" disabled="">
+Adding a non-BBC logo to the bottom right.</li>
 </ul>
 <p>If anyone with superior ggplot skills would like to help with those or give pointers, then I would be most grateful!</p>
 <p>Code and figure down below ↓</p>
@@ -2283,7 +2288,7 @@ Kendall, Maurice George, Alan Stuart, and J Keith Ord. 1987. <em>Kendall’s Adv
 Kirkwood, Betty R, and Jonathan AC Sterne. 2010. <em>Essential Medical Statistics</em>. John Wiley &amp; Sons.
 </div>
 <div id="ref-ohagan2004kendall" class="csl-entry">
-O’Hagan, Anthony, and Jonathan J Forster. 2004. <em>Kendall’s Advanced Theory of Statistics, Volume 2B: Bayesian Inference</em>. Vol. 2b. Arnold.
+O’Hagan, Anthony, and Jonathan J Forster. 2004. <em>Kendall’s Advanced Theory of Statistics, Volume 2b: Bayesian Inference</em>. Vol. 2b. Arnold.
 </div>
 <div id="ref-pawitan2001all" class="csl-entry">
 Pawitan, Yudi. 2001. <em>In All Likelihood: Statistical Modelling and Inference Using Likelihood</em>. Oxford University Press.

@@ -177,7 +177,7 @@ In both functions you list what you would like to retain. Filter and select call
 
 ```{r}
 penguins %>% 
-  select(species, island,body_mass_g)
+  select(species, island, body_mass_g)
 ```
 
 ```{r}
@@ -186,7 +186,7 @@ penguins %>%
   filter(body_mass_g > 6000)
 ```
 
-Subsetting rows can be inverted by negating the `filter()` statement.
+Subsetting rows can be inverted by negating the `filter()` statement
 
 ```{r}
 penguins %>% 
@@ -277,9 +277,9 @@ cars %>%
 
 ## Summaries 
 
-The `summarise()` function allows you to collapse a data frame into a single row, which gives a summary statistic of your choosing. 
+The `summarise()` function allows you to collapse a data frame into a single row, using a summary statistic of your choosing. 
 
-This can be used to calculate a single summary 
+We can calculate the average bill length of all penguins in a single `summarise()` function call.
 
 ```{r}
 summarise(penguins, average_bill_length_mm = mean(bill_length_mm))
@@ -359,7 +359,7 @@ class(penguin_summary_stats)
 
 Since we have grouped by two variables, R expects us to use two summaries before returning a data frame (or tibble) that is not grouped. One way to satisfy this is to use apply a second summary at the species level of grouping. 
 
-```{r}
+```{r, warning=FALSE}
 penguin_summary_stats %>% 
   summarise_all(mean, na.rm = TRUE)
 ```
@@ -474,7 +474,7 @@ Again, unless you plan to work extensively with text data, I would recommend tha
 Remember all the fuss we made about storing dates in the ISO standard format? That was because dates and times are complicated enough to work with before adding extra ambiguity.
 
 $$ \text{YYYY} - \text{MM} - \text{DD}$$
-Dates, times and time intervals have to reconcile two factors: the physical orbit of the Earth around the sun and the social and geopolitical mechanisms that determine how we measure and record the passing of time. This makes the history of date and time records fascinating and can make working with this type of data complicated.
+Dates, times and time intervals have to reconcile two factors: the physical orbit of the Earth around the Sun and the social and geopolitical mechanisms that determine how we measure and record the passing of time. This makes the history of date and time records fascinating and can make working with this type of data complicated.
 
 Moving from larger to smaller time spans: leap years alter the number of days in a year, months are of variable length (with February's length changing from year to year). If your data are measured in a place that uses daylight saving, then one day a year will be 23 hours long and another will be 25 hours long. To make things worse, the dates and the hour at which the clocks change are not uniform across countries, which might be in distinct time zones that themselves change over time.
 
@@ -511,10 +511,10 @@ You might instead want to keep all units from the primary table but pad with NAs
 
 Conversely, you might keep all units from the second table but pad with NAs where there is not a corresponding foreign key in the primary table. This is imaginatively named an __(outer) right-join__. 
 
-The final common join type is an outer join, in which all observational units from either table are retained and all missing values are padded with NAs. This is known as an __(outer) full join__.
+In the __(outer) full join__, all observational units from either table are retained and all missing values are padded with NAs.
 
 
-Things get more complicated when keys do not uniquely identify observational units in one or both tables. I'd recommend you start exploring these ideas with the [relational data]() chapter of R for Data Science. 
+Things get more complicated when keys do not uniquely identify observational units in one or both tables. I'd recommend you start exploring these ideas with the [relational data](https://r4ds.had.co.nz/relational-data.html) chapter of R for Data Science. 
 
 #### Why and where to learn more
 
