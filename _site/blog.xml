@@ -1916,14 +1916,10 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
 </div>
 <p>There were a few things that still have me stumped, that I might revisit at some later date:</p>
 <ul class="task-list">
-<li><input type="checkbox" disabled="" checked="">
-Left aligning title and caption (Thanks to Jack Davison for this!)</li>
-<li><input type="checkbox" disabled="">
-Using gradients on multiple parts of the plot</li>
-<li><input type="checkbox" disabled="">
-Using the YeOrRd gradient, rather than default blues</li>
-<li><input type="checkbox" disabled="">
-Adding a non-BBC logo to the bottom right.</li>
+<li><input type="checkbox" disabled="" checked="">Left aligning title and caption (Thanks to Jack Davison for this!)</li>
+<li><input type="checkbox" disabled="">Using gradients on multiple parts of the plot</li>
+<li><input type="checkbox" disabled="">Using the YeOrRd gradient, rather than default blues</li>
+<li><input type="checkbox" disabled="">Adding a non-BBC logo to the bottom right.</li>
 </ul>
 <p>If anyone with superior ggplot skills would like to help with those or give pointers, then I would be most grateful!</p>
 <p>Code and figure down below ↓</p>
@@ -2287,7 +2283,7 @@ Kendall, Maurice George, Alan Stuart, and J Keith Ord. 1987. <em>Kendall’s Adv
 Kirkwood, Betty R, and Jonathan AC Sterne. 2010. <em>Essential Medical Statistics</em>. John Wiley &amp; Sons.
 </div>
 <div id="ref-ohagan2004kendall" class="csl-entry">
-O’Hagan, Anthony, and Jonathan J Forster. 2004. <em>Kendall’s Advanced Theory of Statistics, Volume 2b: Bayesian Inference</em>. Vol. 2b. Arnold.
+O’Hagan, Anthony, and Jonathan J Forster. 2004. <em>Kendall’s Advanced Theory of Statistics, Volume 2B: Bayesian Inference</em>. Vol. 2b. Arnold.
 </div>
 <div id="ref-pawitan2001all" class="csl-entry">
 Pawitan, Yudi. 2001. <em>In All Likelihood: Statistical Modelling and Inference Using Likelihood</em>. Oxford University Press.
