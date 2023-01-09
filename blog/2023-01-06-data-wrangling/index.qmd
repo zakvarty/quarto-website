@@ -21,16 +21,16 @@ bibliography: ../library.bib
 ## What is Data Wrangling?
 
 ::: medium_right
-<img style = "border-radius: 10%;" src="horst-wrangle-monsters.jpg" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labeled “TIDY.”">
+<img style = "border-radius: 10%;" src="horst-wrangle-monsters.jpg" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labelled “TIDY.”">
 :::
 
 Okay, so you've got some data. Great start! 
 
 You might have had it handed to you by a collaborator, [requested it via an API](https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/) or [scraped it from the raw html of a webpage](https://www.zakvarty.com/blog/2022-12-01-rvest/). In the worst case scenario, you're an _actual_ scientist (not just a _data_ one) and you spent the last several months of your life painstakingly measuring flower petals or car parts. Now we really want to do something useful with that data. 
 
-We've seen already how you can load the data into R and pivot between wider and longer formats, but that probably isn't enough to satisfy your curisity. You want to be able to view your data, manipulate and subset it, create new variables from exisiting ones and cross-reference your dataset with others. All of these are things possible in R and are known under various collective names including data manipulation, data munging and data wrangling. 
+We've seen already how you can load the data into R and pivot between wider and longer formats, but that probably isn't enough to satisfy your curiosity. You want to be able to view your data, manipulate and subset it, create new variables from existing ones and cross-reference your dataset with others. All of these are things possible in R and are known under various collective names including data manipulation, data munging and data wrangling. 
 
-I've decided to use the term data wranging here. That's because data manipulation sounds boring a.f. and data munging is both unpleasant to say and makes me imagine we are squelching through some sort of information swamp. 
+I've decided to use the term data wrangling here. That's because data manipulation sounds boring a.f. and data munging is both unpleasant to say and makes me imagine we are squelching through some sort of information swamp. 
 
 In what follows I'll give a fly-by tour of tools for data wrangling in R, showing some examples along the way. I'll focus on some of the most common and useful operations and link out to some more extensive guides for wrangling your data in R, that you can refer back to as you need them. 
 
@@ -49,7 +49,7 @@ cars <- datasets::mtcars
 ## Viewing Your Data 
 
 ### `View()`
-The `View()` function can be used to crease a spreadsheet-like view of your data. In RStudio this will open as a new tab. 
+The `View()` function can be used to create a spreadsheet-like view of your data. In RStudio this will open as a new tab. 
 
 `View()` will work for any "matrix-like" R object, such as a tibble, data frame, vector or matrix. Note the capital letter - the function is called `View()`, not `view()`.
 
@@ -98,7 +98,7 @@ In the `cars` data, the car model are stored as the row names. This doesn't real
 
 ### `colnames()`
 
-The function `colnames()` can be used to set as well as to retrieve column names.
+The function `colnames()` can be used to set, as well as to retrieve, column names.
 
 ```{r}
 cars_renamed <- cars 
@@ -107,9 +107,10 @@ colnames(cars_renamed)
 ```
 
 ### `dplyr::rename()`
+
 We can also use functions from `{dplyr}` to rename columns. Let's alter the second column name.
 
-```{r}
+```{r, warning=FALSE}
 library(dplyr)
 cars_renamed <- rename(.data = cars_renamed, cylinders = cyl)
 colnames(cars_renamed)
@@ -166,7 +167,7 @@ pengins[ , "species"]
 penguins$species
 ```
 
-Since `penguins` is a tibble, these return different types of object. Sub-setting a tibble with bracket syntax will return a tibble, while extracting a column using the dollar syntax returns a vector of values. 
+Since `penguins` is a tibble, these return different types of object. Subsetting a tibble with bracket syntax will return a tibble, while extracting a column using the dollar syntax returns a vector of values. 
 
 ### `filter()` and `select()`
 
@@ -256,7 +257,7 @@ cars %>%
   head(n = 5)
 ```
 
-There\s a neat function called `rownames_to_column()` in `{tibble}` which will add this as the first column and remove the row names all in one step. 
+There's a neat function called `rownames_to_column()` in `{tibble}` which will add this as the first column and remove the row names all in one step. 
 
 ```{r}
 cars %>% 
@@ -283,6 +284,7 @@ This can be used to calculate a single summary
 ```{r}
 summarise(penguins, average_bill_length_mm = mean(bill_length_mm))
 ```
+
 Since we have missing values, we might instead want to calculate the mean of the recorded values. 
 
 ```{r}
@@ -367,6 +369,7 @@ However, we won't always want to do apply another summary. In that case, we can 
 ```{r}
 ungroup(penguin_summary_stats)
 ```
+
 There's an alternative method to achieve the same thing in a single step when using `{dplyr}` versions 1.0.0 and above. This is to to set the `.groups` parameter of the `summarise()` function call, which determines the grouping of the returned data frame.
 
 The `.groups` parameter and can take 4 possible values: 
@@ -382,7 +385,7 @@ The `.groups` parameter and can take 4 possible values:
 By default, "drop_last" is used if all the results have 1 row and "keep" is used otherwise.
 
 
-### Reordering Factors 
+## Reordering Factors 
 
 R stored factors as integer values, which it then maps to a set of labels. Only factor levels that appear in your data will be assigned a coded integer value and the mapping between factor levels and integers will depend on the order that the labels appear in your data.
 
@@ -396,6 +399,7 @@ tshirts <- tibble::tibble(
 
 levels(tshirts$size)
 ```
+
 Annoyingly, the sizes aren't in order and extra large is not included because it is not included in the sample. This leads to awkward summary tables (and plots). 
 
 ```{r}
@@ -451,6 +455,7 @@ head(poorly_named_df)
 ```{r}
 stringr::str_extract(names(poorly_named_df), pattern = "(?<=_)([a-zA-Z]+)")
 ```
+
 Alternatively, can avoid using regular expressions. We can split each column name at the underscore and keep only the second part of each string. 
 
 ```{r}
@@ -512,7 +517,6 @@ The final common join type is an outer join, in which all observational units fr
 Things get more complicated when keys do not uniquely identify observational units in one or both tables. I'd recommend you start exploring these ideas with the [relational data]() chapter of R for Data Science. 
 
 #### Why and where to learn more
-
 
 Working with relational data is essential to getting any data science up and running out in the wilds of reality. This is because businesses and companies don't store all of their data in a huge single csv file. For one this isn't very efficient, because most cells would be empty. Secondly, it's not a very secure approach, since you can't grant partial access to the data.  That's why information is usually stored in many data frames (more generically known as tables) within one or more databases. 
 
