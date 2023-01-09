@@ -9,8 +9,893 @@
 <link>https://www.zakvarty.com/blog.html</link>
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.0.38</generator>
-<lastBuildDate>Wed, 14 Dec 2022 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.269</generator>
+<lastBuildDate>Fri, 06 Jan 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Data Wrangling</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2023-01-06-data-wrangling/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="what-is-data-wrangling" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-data-wrangling">What is Data Wrangling?</h2>
+<div class="medium_right">
+<p><img style="border-radius: 10%;" src="https://www.zakvarty.com/blog/2023-01-06-data-wrangling/horst-wrangle-monsters.jpg" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labeled “TIDY.”"></p>
+</div>
+<p>Okay, so you’ve got some data. Great start!</p>
+<p>You might have had it handed to you by a collaborator, <a href="https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/">requested it via an API</a> or <a href="https://www.zakvarty.com/blog/2022-12-01-rvest/">scraped it from the raw html of a webpage</a>. In the worst case scenario, you’re an <em>actual</em> scientist (not just a <em>data</em> one) and you spent the last several months of your life painstakingly measuring flower petals or car parts. Now we really want to do something useful with that data.</p>
+<p>We’ve seen already how you can load the data into R and pivot between wider and longer formats, but that probably isn’t enough to satisfy your curisity. You want to be able to view your data, manipulate and subset it, create new variables from exisiting ones and cross-reference your dataset with others. All of these are things possible in R and are known under various collective names including data manipulation, data munging and data wrangling.</p>
+<p>I’ve decided to use the term data wranging here. That’s because data manipulation sounds boring a.f. and data munging is both unpleasant to say and makes me imagine we are squelching through some sort of information swamp.</p>
+<p>In what follows I’ll give a fly-by tour of tools for data wrangling in R, showing some examples along the way. I’ll focus on some of the most common and useful operations and link out to some more extensive guides for wrangling your data in R, that you can refer back to as you need them.</p>
+</section>
+<section id="example-data-sets" class="level2">
+<h2 class="anchored" data-anchor-id="example-data-sets">Example Data Sets</h2>
+<p>To demonstrate some standard skills we will use some standard datasets that come built into any R installation. These are the <code>penguins</code> data set from <code>{palmerpenguins}</code> and the <code>mtcars</code> data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(palmerpenguins)</span>
+<span id="cb1-2">pengins <span class="ot" style="color: #003B4F;">&lt;-</span> palmerpenguins<span class="sc" style="color: #5E5E5E;">::</span>penguins</span>
+<span id="cb1-3">cars <span class="ot" style="color: #003B4F;">&lt;-</span> datasets<span class="sc" style="color: #5E5E5E;">::</span>mtcars</span></code></pre></div>
+</div>
+</section>
+<section id="viewing-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="viewing-your-data">Viewing Your Data</h2>
+<section id="view" class="level3">
+<h3 class="anchored" data-anchor-id="view"><code>View()</code></h3>
+<p>The <code>View()</code> function can be used to crease a spreadsheet-like view of your data. In RStudio this will open as a new tab.</p>
+<p><code>View()</code> will work for any “matrix-like” R object, such as a tibble, data frame, vector or matrix. Note the capital letter - the function is called <code>View()</code>, not <code>view()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">View</span>(penguins)</span></code></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.zakvarty.com/blog/2023-01-06-data-wrangling/view-penguins-screenshot.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Screenshot of RStduio files pane, containg a spreadsheet view of the palmer penguins data set.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="head" class="level3">
+<h3 class="anchored" data-anchor-id="head"><code>head()</code></h3>
+<p>For large data sets, you might not want (or be able to) view it all at once. You can then use <code>head()</code> to view the first few rows. The integer argument <code>n</code> specifies the number of rows you would like to return.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">head</span>(<span class="at" style="color: #657422;">x =</span> pengins, <span class="at" style="color: #657422;">n =</span> <span class="dv" style="color: #AD0000;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 8
+  species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+2 Adelie  Torgersen           39.5          17.4         186    3800 fema…  2007
+3 Adelie  Torgersen           40.3          18           195    3250 fema…  2007
+# … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</code></pre>
+</div>
+</div>
+</section>
+<section id="str" class="level3">
+<h3 class="anchored" data-anchor-id="str"><code>str()</code></h3>
+<p>An alternative way to view the a large data set, or one with a complicated format is to examine its structure with <code>str()</code>. This is a useful way to inspect the structure of list-like objects, particularly when they’ve got a nested structure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">str</span>(penguins)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+ $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+ $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+ $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="names" class="level3">
+<h3 class="anchored" data-anchor-id="names"><code>names()</code></h3>
+<p>Finally, if you just want to access the variable names you can do so with the <code>names()</code> function from base R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">names</span>(penguins)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "species"           "island"            "bill_length_mm"   
+[4] "bill_depth_mm"     "flipper_length_mm" "body_mass_g"      
+[7] "sex"               "year"             </code></pre>
+</div>
+</div>
+<p>Similarly, you can explicitly access the row and column names of a data frame or tibble using <code>colnames()</code> or <code>rownames()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;">colnames</span>(cars)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+[11] "carb"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;">rownames</span>(cars)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Mazda RX4"           "Mazda RX4 Wag"       "Datsun 710"         
+ [4] "Hornet 4 Drive"      "Hornet Sportabout"   "Valiant"            
+ [7] "Duster 360"          "Merc 240D"           "Merc 230"           
+[10] "Merc 280"            "Merc 280C"           "Merc 450SE"         
+[13] "Merc 450SL"          "Merc 450SLC"         "Cadillac Fleetwood" 
+[16] "Lincoln Continental" "Chrysler Imperial"   "Fiat 128"           
+[19] "Honda Civic"         "Toyota Corolla"      "Toyota Corona"      
+[22] "Dodge Challenger"    "AMC Javelin"         "Camaro Z28"         
+[25] "Pontiac Firebird"    "Fiat X1-9"           "Porsche 914-2"      
+[28] "Lotus Europa"        "Ford Pantera L"      "Ferrari Dino"       
+[31] "Maserati Bora"       "Volvo 142E"         </code></pre>
+</div>
+</div>
+<p>In the <code>cars</code> data, the car model are stored as the row names. This doesn’t really jive with our idea of tidy data - we’ll see how to fix that shortly.</p>
+</section>
+</section>
+<section id="renaming-variables" class="level2">
+<h2 class="anchored" data-anchor-id="renaming-variables">Renaming Variables</h2>
+<section id="colnames" class="level3">
+<h3 class="anchored" data-anchor-id="colnames"><code>colnames()</code></h3>
+<p>The function <code>colnames()</code> can be used to set as well as to retrieve column names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">cars_renamed <span class="ot" style="color: #003B4F;">&lt;-</span> cars </span>
+<span id="cb13-2"><span class="fu" style="color: #4758AB;">colnames</span>(cars_renamed)[<span class="dv" style="color: #AD0000;">1</span>] <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"miles_per_gallon"</span></span>
+<span id="cb13-3"><span class="fu" style="color: #4758AB;">colnames</span>(cars_renamed)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "miles_per_gallon" "cyl"              "disp"             "hp"              
+ [5] "drat"             "wt"               "qsec"             "vs"              
+ [9] "am"               "gear"             "carb"            </code></pre>
+</div>
+</div>
+</section>
+<section id="dplyrrename" class="level3">
+<h3 class="anchored" data-anchor-id="dplyrrename"><code>dplyr::rename()</code></h3>
+<p>We can also use functions from <code>{dplyr}</code> to rename columns. Let’s alter the second column name.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">cars_renamed <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">rename</span>(<span class="at" style="color: #657422;">.data =</span> cars_renamed, <span class="at" style="color: #657422;">cylinders =</span> cyl)</span>
+<span id="cb19-2"><span class="fu" style="color: #4758AB;">colnames</span>(cars_renamed)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "miles_per_gallon" "cylinders"        "disp"             "hp"              
+ [5] "drat"             "wt"               "qsec"             "vs"              
+ [9] "am"               "gear"             "carb"            </code></pre>
+</div>
+</div>
+<p>This could be done as part of a pipe, if we were making many alterations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">cars_renamed <span class="ot" style="color: #003B4F;">&lt;-</span> cars_renamed <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb21-2">  <span class="fu" style="color: #4758AB;">rename</span>(<span class="at" style="color: #657422;">displacement =</span> disp) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb21-3">  <span class="fu" style="color: #4758AB;">rename</span>(<span class="at" style="color: #657422;">horse_power =</span> hp) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb21-4">  <span class="fu" style="color: #4758AB;">rename</span>(<span class="at" style="color: #657422;">rear_axel_ratio =</span> drat)</span>
+<span id="cb21-5"></span>
+<span id="cb21-6"><span class="fu" style="color: #4758AB;">colnames</span>(cars_renamed)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "miles_per_gallon" "cylinders"        "displacement"     "horse_power"     
+ [5] "rear_axel_ratio"  "wt"               "qsec"             "vs"              
+ [9] "am"               "gear"             "carb"            </code></pre>
+</div>
+</div>
+<p>When using the dplyr function you have to remember the format <code>new_name = old_name</code>. This matches the format used to create a data frame or tibble, but is the opposite order to the python function of the same name and often catches people out.</p>
+<p>In the section (#creating-new-variables) on creating new variables, we will see an alternative way of doing this by copying the column and then deleting the original.</p>
+</section>
+</section>
+<section id="subsetting" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting">Subsetting</h2>
+<section id="base-r" class="level3">
+<h3 class="anchored" data-anchor-id="base-r">Base R</h3>
+<p>In base R you can extract rows, columns and combinations thereof using index notation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="co" style="color: #5E5E5E;"># First row</span></span>
+<span id="cb23-2">penguins[<span class="dv" style="color: #AD0000;">1</span>, ]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+# … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="co" style="color: #5E5E5E;"># First Column </span></span>
+<span id="cb25-2">penguins[ , <span class="dv" style="color: #AD0000;">1</span>]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 1
+   species
+   &lt;fct&gt;  
+ 1 Adelie 
+ 2 Adelie 
+ 3 Adelie 
+ 4 Adelie 
+ 5 Adelie 
+ 6 Adelie 
+ 7 Adelie 
+ 8 Adelie 
+ 9 Adelie 
+10 Adelie 
+# … with 334 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="co" style="color: #5E5E5E;"># Rows 2-3 of columns 1, 2 and 4</span></span>
+<span id="cb27-2">penguins[<span class="dv" style="color: #AD0000;">2</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">3</span>, <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">4</span>)]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  species island    bill_depth_mm
+  &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;
+1 Adelie  Torgersen          17.4
+2 Adelie  Torgersen          18  </code></pre>
+</div>
+</div>
+<p>Using negative indexing you can remove rows or columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><span class="co" style="color: #5E5E5E;"># Drop all but first row</span></span>
+<span id="cb29-2">penguins[<span class="sc" style="color: #5E5E5E;">-</span>(<span class="dv" style="color: #AD0000;">2</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">344</span>), ]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  species island    bill_length_mm bill_depth_mm flipper_l…¹ body_…² sex    year
+  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;       &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+1 Adelie  Torgersen           39.1          18.7         181    3750 male   2007
+# … with abbreviated variable names ¹​flipper_length_mm, ²​body_mass_g</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><span class="co" style="color: #5E5E5E;"># Drop all but first column </span></span>
+<span id="cb31-2">penguins[ , <span class="sc" style="color: #5E5E5E;">-</span>(<span class="dv" style="color: #AD0000;">2</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">8</span>)]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 1
+   species
+   &lt;fct&gt;  
+ 1 Adelie 
+ 2 Adelie 
+ 3 Adelie 
+ 4 Adelie 
+ 5 Adelie 
+ 6 Adelie 
+ 7 Adelie 
+ 8 Adelie 
+ 9 Adelie 
+10 Adelie 
+# … with 334 more rows</code></pre>
+</div>
+</div>
+<p>You can also select rows or columns by their names. This can be done using the bracket syntax (<code>[ ]</code>) or the dollar syntax (<code>$</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1">pengins[ , <span class="st" style="color: #20794D;">"species"</span>]</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 1
+   species
+   &lt;fct&gt;  
+ 1 Adelie 
+ 2 Adelie 
+ 3 Adelie 
+ 4 Adelie 
+ 5 Adelie 
+ 6 Adelie 
+ 7 Adelie 
+ 8 Adelie 
+ 9 Adelie 
+10 Adelie 
+# … with 334 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1">penguins<span class="sc" style="color: #5E5E5E;">$</span>species</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+  [8] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [15] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [22] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [29] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [36] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [43] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [50] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [57] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [64] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [71] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [78] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [85] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [92] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+ [99] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[106] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[113] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[120] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[127] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[134] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[141] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   
+[148] Adelie    Adelie    Adelie    Adelie    Adelie    Gentoo    Gentoo   
+[155] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[162] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[169] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[176] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[183] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[190] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[197] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[204] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[211] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[218] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[225] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[232] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[239] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[246] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[253] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[260] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[267] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   
+[274] Gentoo    Gentoo    Gentoo    Chinstrap Chinstrap Chinstrap Chinstrap
+[281] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[288] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[295] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[302] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[309] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[316] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[323] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[330] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[337] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap
+[344] Chinstrap
+Levels: Adelie Chinstrap Gentoo</code></pre>
+</div>
+</div>
+<p>Since <code>penguins</code> is a tibble, these return different types of object. Sub-setting a tibble with bracket syntax will return a tibble, while extracting a column using the dollar syntax returns a vector of values.</p>
+</section>
+<section id="filter-and-select" class="level3">
+<h3 class="anchored" data-anchor-id="filter-and-select"><code>filter()</code> and <code>select()</code></h3>
+<p><code>{dplyr}</code> has two functions for subsetting, <code>filter()</code> subsets by rows and <code>select()</code> subsets by column.</p>
+<p>In both functions you list what you would like to retain. Filter and select calls can be piped together to subset based on row and column values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1">penguins <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb37-2">  <span class="fu" style="color: #4758AB;">select</span>(species, island,body_mass_g)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 3
+   species island    body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt;
+ 1 Adelie  Torgersen        3750
+ 2 Adelie  Torgersen        3800
+ 3 Adelie  Torgersen        3250
+ 4 Adelie  Torgersen          NA
+ 5 Adelie  Torgersen        3450
+ 6 Adelie  Torgersen        3650
+ 7 Adelie  Torgersen        3625
+ 8 Adelie  Torgersen        4675
+ 9 Adelie  Torgersen        3475
+10 Adelie  Torgersen        4250
+# … with 334 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1">penguins <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb39-2">  <span class="fu" style="color: #4758AB;">select</span>(species, island, body_mass_g) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb39-3">  <span class="fu" style="color: #4758AB;">filter</span>(body_mass_g <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">6000</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  species island body_mass_g
+  &lt;fct&gt;   &lt;fct&gt;        &lt;int&gt;
+1 Gentoo  Biscoe        6300
+2 Gentoo  Biscoe        6050</code></pre>
+</div>
+</div>
+<p>Subsetting rows can be inverted by negating the <code>filter()</code> statement.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1">penguins <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb41-2">  <span class="fu" style="color: #4758AB;">select</span>(species, island, body_mass_g) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb41-3">  <span class="fu" style="color: #4758AB;">filter</span>(<span class="sc" style="color: #5E5E5E;">!</span>(body_mass_g <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">6000</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 340 × 3
+   species island    body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;           &lt;int&gt;
+ 1 Adelie  Torgersen        3750
+ 2 Adelie  Torgersen        3800
+ 3 Adelie  Torgersen        3250
+ 4 Adelie  Torgersen        3450
+ 5 Adelie  Torgersen        3650
+ 6 Adelie  Torgersen        3625
+ 7 Adelie  Torgersen        4675
+ 8 Adelie  Torgersen        3475
+ 9 Adelie  Torgersen        4250
+10 Adelie  Torgersen        3300
+# … with 330 more rows</code></pre>
+</div>
+</div>
+<p>and dropping columns can done by selecting all columns except the one(s) you want to drop.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1">penguins <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb43-2">  <span class="fu" style="color: #4758AB;">select</span>(species, island, body_mass_g) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb43-3">  <span class="fu" style="color: #4758AB;">filter</span>(<span class="sc" style="color: #5E5E5E;">!</span>(body_mass_g <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">6000</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb43-4">  <span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">!</span><span class="fu" style="color: #4758AB;">c</span>(species, island))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 340 × 1
+   body_mass_g
+         &lt;int&gt;
+ 1        3750
+ 2        3800
+ 3        3250
+ 4        3450
+ 5        3650
+ 6        3625
+ 7        4675
+ 8        3475
+ 9        4250
+10        3300
+# … with 330 more rows</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="creating-new-variables" class="level2">
+<h2 class="anchored" data-anchor-id="creating-new-variables">Creating New Variables</h2>
+<section id="base-r-1" class="level3">
+<h3 class="anchored" data-anchor-id="base-r-1">Base R</h3>
+<p>We can create new variables in base R by assigning a vector of the correct length to a new column name.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1">cars_renamed<span class="sc" style="color: #5E5E5E;">$</span>weight <span class="ot" style="color: #003B4F;">&lt;-</span> cars_renamed<span class="sc" style="color: #5E5E5E;">$</span>wt</span></code></pre></div>
+</div>
+<p>If we then drop the original column from the data frame, this gives us an alternative way of renaming columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1">cars_renamed <span class="ot" style="color: #003B4F;">&lt;-</span> cars_renamed[ ,<span class="sc" style="color: #5E5E5E;">-</span><span class="fu" style="color: #4758AB;">which</span>(<span class="fu" style="color: #4758AB;">names</span>(cars_renamed) <span class="sc" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"wt"</span>)]</span>
+<span id="cb46-2"><span class="fu" style="color: #4758AB;">head</span>(cars_renamed, <span class="at" style="color: #657422;">n =</span> <span class="dv" style="color: #AD0000;">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  miles_per_gallon cylinders displacement horse_power
+Mazda RX4                     21.0         6          160         110
+Mazda RX4 Wag                 21.0         6          160         110
+Datsun 710                    22.8         4          108          93
+Hornet 4 Drive                21.4         6          258         110
+Hornet Sportabout             18.7         8          360         175
+                  rear_axel_ratio  qsec vs am gear carb weight
+Mazda RX4                    3.90 16.46  0  1    4    4  2.620
+Mazda RX4 Wag                3.90 17.02  0  1    4    4  2.875
+Datsun 710                   3.85 18.61  1  1    4    1  2.320
+Hornet 4 Drive               3.08 19.44  1  0    3    1  3.215
+Hornet Sportabout            3.15 17.02  0  0    3    2  3.440</code></pre>
+</div>
+</div>
+<p>One thing to be aware of is that this operation does not preserve column ordering.</p>
+<p>Generally speaking, code that relies on columns being in a specific order is fragile - it breaks easily. If possible, you should try to write your code in another way that’s robust to column reordering. I’ve done that here when removing the <code>wt</code> column by looking up the column index as part of my code, rather than assuming it will always be the fourth column.</p>
+</section>
+<section id="dplyrmutate" class="level3">
+<h3 class="anchored" data-anchor-id="dplyrmutate"><code>dplyr::mutate()</code></h3>
+<p>The function from <code>{dplyr}</code> to create new columns is <code>mutate()</code>. Let’s create another column that has the car’s weight in kilogrammes rather than tonnes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1">cars_renamed <span class="ot" style="color: #003B4F;">&lt;-</span> cars_renamed <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb48-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">weight_kg =</span> weight <span class="sc" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">1000</span>)</span>
+<span id="cb48-3"></span>
+<span id="cb48-4">cars_renamed <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb48-5">  <span class="fu" style="color: #4758AB;">select</span>(miles_per_gallon, cylinders, displacement, weight, weight_kg) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb48-6">  <span class="fu" style="color: #4758AB;">head</span>(<span class="at" style="color: #657422;">n =</span> <span class="dv" style="color: #AD0000;">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  miles_per_gallon cylinders displacement weight weight_kg
+Mazda RX4                     21.0         6          160  2.620      2620
+Mazda RX4 Wag                 21.0         6          160  2.875      2875
+Datsun 710                    22.8         4          108  2.320      2320
+Hornet 4 Drive                21.4         6          258  3.215      3215
+Hornet Sportabout             18.7         8          360  3.440      3440</code></pre>
+</div>
+</div>
+<p>You can also create new columns that combine multiple other columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1">cars_renamed <span class="ot" style="color: #003B4F;">&lt;-</span> cars_renamed <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb50-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">cylinder_adjusted_mpg =</span> miles_per_gallon <span class="sc" style="color: #5E5E5E;">/</span> cylinders)</span></code></pre></div>
+</div>
+</section>
+<section id="rownames_to_column" class="level3">
+<h3 class="anchored" data-anchor-id="rownames_to_column"><code>rownames_to_column()</code></h3>
+<p>One useful example of adding an additional row to a data frame is to convert its row names to a column of the data fame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1">cars <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb51-2">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">model =</span> <span class="fu" style="color: #4758AB;">rownames</span>(cars_renamed)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb51-3">  <span class="fu" style="color: #4758AB;">select</span>(mpg, cyl, model) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb51-4">  <span class="fu" style="color: #4758AB;">head</span>(<span class="at" style="color: #657422;">n =</span> <span class="dv" style="color: #AD0000;">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl             model
+Mazda RX4         21.0   6         Mazda RX4
+Mazda RX4 Wag     21.0   6     Mazda RX4 Wag
+Datsun 710        22.8   4        Datsun 710
+Hornet 4 Drive    21.4   6    Hornet 4 Drive
+Hornet Sportabout 18.7   8 Hornet Sportabout</code></pre>
+</div>
+</div>
+<p>Therea neat function called <code>rownames_to_column()</code> in <code>{tibble}</code> which will add this as the first column and remove the row names all in one step.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1">cars <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb53-2">  tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">rownames_to_column</span>(<span class="at" style="color: #657422;">var =</span> <span class="st" style="color: #20794D;">"model"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb53-3">  <span class="fu" style="color: #4758AB;">head</span>(<span class="at" style="color: #657422;">n =</span> <span class="dv" style="color: #AD0000;">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              model  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+</div>
+</div>
+</section>
+<section id="rowids_to_column" class="level3">
+<h3 class="anchored" data-anchor-id="rowids_to_column"><code>rowids_to_column()</code></h3>
+<p>Another function from <code>{tibble}</code> adds the row id of each observation as a new column. This is often useful when ordering or combining tables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1">cars <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb55-2">  tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">rowid_to_column</span>(<span class="at" style="color: #657422;">var =</span> <span class="st" style="color: #20794D;">"row_id"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb55-3">  <span class="fu" style="color: #4758AB;">head</span>(<span class="at" style="color: #657422;">n =</span> <span class="dv" style="color: #AD0000;">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  row_id  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+1      1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+2      2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+3      3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+4      4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+5      5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="summaries" class="level2">
+<h2 class="anchored" data-anchor-id="summaries">Summaries</h2>
+<p>The <code>summarise()</code> function allows you to collapse a data frame into a single row, which gives a summary statistic of your choosing.</p>
+<p>This can be used to calculate a single summary</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><span class="fu" style="color: #4758AB;">summarise</span>(penguins, <span class="at" style="color: #657422;">average_bill_length_mm =</span> <span class="fu" style="color: #4758AB;">mean</span>(bill_length_mm))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  average_bill_length_mm
+                   &lt;dbl&gt;
+1                     NA</code></pre>
+</div>
+</div>
+<p>Since we have missing values, we might instead want to calculate the mean of the recorded values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><span class="fu" style="color: #4758AB;">summarise</span>(penguins, <span class="at" style="color: #657422;">average_bill_length_mm =</span> <span class="fu" style="color: #4758AB;">mean</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  average_bill_length_mm
+                   &lt;dbl&gt;
+1                   43.9</code></pre>
+</div>
+</div>
+<p>We can also use <code>summarise()</code> to gather multiple summaries in a single data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1">bill_length_mm_summary <span class="ot" style="color: #003B4F;">&lt;-</span> penguins <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb61-2">  <span class="fu" style="color: #4758AB;">summarise</span>(</span>
+<span id="cb61-3">    <span class="at" style="color: #657422;">mean =</span> <span class="fu" style="color: #4758AB;">mean</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb61-4">    <span class="at" style="color: #657422;">median =</span> <span class="fu" style="color: #4758AB;">median</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb61-5">    <span class="at" style="color: #657422;">min =</span> <span class="fu" style="color: #4758AB;">max</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb61-6">    <span class="at" style="color: #657422;">q_0 =</span> <span class="fu" style="color: #4758AB;">min</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb61-7">    <span class="at" style="color: #657422;">q_1 =</span> <span class="fu" style="color: #4758AB;">quantile</span>(bill_length_mm, <span class="at" style="color: #657422;">prob =</span> <span class="fl" style="color: #AD0000;">0.25</span>, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb61-8">    <span class="at" style="color: #657422;">q_2 =</span> <span class="fu" style="color: #4758AB;">median</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb61-9">    <span class="at" style="color: #657422;">q_3 =</span> <span class="fu" style="color: #4758AB;">quantile</span>(bill_length_mm, <span class="at" style="color: #657422;">prob =</span> <span class="fl" style="color: #AD0000;">0.25</span>, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb61-10">    <span class="at" style="color: #657422;">q_4 =</span> <span class="fu" style="color: #4758AB;">max</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>))</span>
+<span id="cb61-11"></span>
+<span id="cb61-12">bill_length_mm_summary</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+   mean median   min   q_0   q_1   q_2   q_3   q_4
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  43.9   44.4  59.6  32.1  39.2  44.4  39.2  59.6</code></pre>
+</div>
+</div>
+<p>In all this isn’t overly exciting. You might, rightly, wonder why you’d want to use these <code>summarise()</code> calls when we could just use the simpler base R calls directly.</p>
+<p>One benefit is that the summarise calls ensure consistent output. However, the main advantage comes when you want to apply these summaries to distinct subgroups of the data.</p>
+</section>
+<section id="grouped-operations" class="level2">
+<h2 class="anchored" data-anchor-id="grouped-operations">Grouped Operations</h2>
+<p>The real benefit of <code>summarise()</code> comes from its combination with <code>group_by()</code>. This allows to you calculate the same summary statistics for each level of a factor with only one additional line of code. Here we’re re-calculating the same set of summary statistics we just found for all penguins, but for each individual species.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1">penguins <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb63-2">  <span class="fu" style="color: #4758AB;">group_by</span>(species) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb63-3">  <span class="fu" style="color: #4758AB;">summarise</span>(</span>
+<span id="cb63-4">    <span class="at" style="color: #657422;">mean =</span> <span class="fu" style="color: #4758AB;">mean</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb63-5">    <span class="at" style="color: #657422;">median =</span> <span class="fu" style="color: #4758AB;">median</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb63-6">    <span class="at" style="color: #657422;">min =</span> <span class="fu" style="color: #4758AB;">max</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb63-7">    <span class="at" style="color: #657422;">q_0 =</span> <span class="fu" style="color: #4758AB;">min</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb63-8">    <span class="at" style="color: #657422;">q_1 =</span> <span class="fu" style="color: #4758AB;">quantile</span>(bill_length_mm, <span class="at" style="color: #657422;">prob =</span> <span class="fl" style="color: #AD0000;">0.25</span>, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb63-9">    <span class="at" style="color: #657422;">q_2 =</span> <span class="fu" style="color: #4758AB;">median</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb63-10">    <span class="at" style="color: #657422;">q_3 =</span> <span class="fu" style="color: #4758AB;">quantile</span>(bill_length_mm, <span class="at" style="color: #657422;">prob =</span> <span class="fl" style="color: #AD0000;">0.25</span>, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb63-11">    <span class="at" style="color: #657422;">q_4 =</span> <span class="fu" style="color: #4758AB;">max</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 9
+  species    mean median   min   q_0   q_1   q_2   q_3   q_4
+  &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Adelie     38.8   38.8  46    32.1  36.8  38.8  36.8  46  
+2 Chinstrap  48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+3 Gentoo     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</code></pre>
+</div>
+</div>
+<p>You can group by multiple factors to calculate summaries for each distinct combination of levels within your data set. Here we group by combinations of species and the island to which they belong.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1">penguin_summary_stats <span class="ot" style="color: #003B4F;">&lt;-</span> penguins <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb65-2">  <span class="fu" style="color: #4758AB;">group_by</span>(species, island) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb65-3">  <span class="fu" style="color: #4758AB;">summarise</span>(</span>
+<span id="cb65-4">    <span class="at" style="color: #657422;">mean =</span> <span class="fu" style="color: #4758AB;">mean</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb65-5">    <span class="at" style="color: #657422;">median =</span> <span class="fu" style="color: #4758AB;">median</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb65-6">    <span class="at" style="color: #657422;">min =</span> <span class="fu" style="color: #4758AB;">max</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb65-7">    <span class="at" style="color: #657422;">q_0 =</span> <span class="fu" style="color: #4758AB;">min</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb65-8">    <span class="at" style="color: #657422;">q_1 =</span> <span class="fu" style="color: #4758AB;">quantile</span>(bill_length_mm, <span class="at" style="color: #657422;">prob =</span> <span class="fl" style="color: #AD0000;">0.25</span>, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb65-9">    <span class="at" style="color: #657422;">q_2 =</span> <span class="fu" style="color: #4758AB;">median</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb65-10">    <span class="at" style="color: #657422;">q_3 =</span> <span class="fu" style="color: #4758AB;">quantile</span>(bill_length_mm, <span class="at" style="color: #657422;">prob =</span> <span class="fl" style="color: #AD0000;">0.25</span>, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>),</span>
+<span id="cb65-11">    <span class="at" style="color: #657422;">q_4 =</span> <span class="fu" style="color: #4758AB;">max</span>(bill_length_mm, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'species'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1">penguin_summary_stats</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 10
+# Groups:   species [3]
+  species   island     mean median   min   q_0   q_1   q_2   q_3   q_4
+  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Adelie    Biscoe     39.0   38.7  45.6  34.5  37.7  38.7  37.7  45.6
+2 Adelie    Dream      38.5   38.6  44.1  32.1  36.8  38.6  36.8  44.1
+3 Adelie    Torgersen  39.0   38.9  46    33.5  36.7  38.9  36.7  46  
+4 Chinstrap Dream      48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+5 Gentoo    Biscoe     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</code></pre>
+</div>
+</div>
+<section id="ungrouping" class="level3">
+<h3 class="anchored" data-anchor-id="ungrouping">Ungrouping</h3>
+<p>By default, each call to <code>summarise()</code> will undo one level of grouping. This means that our previous result was still grouped by species.</p>
+<p>(We can see this by examining the structure of the returned data frame. The first line tells us that this this is an S3 object of class “grouped_df”, which inherits its properties from a “tbl_df”, whose properties in turn come from “tbl” and “data.frame” objects.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><span class="fu" style="color: #4758AB;">class</span>(penguin_summary_stats)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "grouped_df" "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+</div>
+<p>Since we have grouped by two variables, R expects us to use two summaries before returning a data frame (or tibble) that is not grouped. One way to satisfy this is to use apply a second summary at the species level of grouping.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1">penguin_summary_stats <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb71-2">  <span class="fu" style="color: #4758AB;">summarise_all</span>(mean, <span class="at" style="color: #657422;">na.rm =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in mean.default(island, na.rm = TRUE): argument is not numeric or
+logical: returning NA
+
+Warning in mean.default(island, na.rm = TRUE): argument is not numeric or
+logical: returning NA
+
+Warning in mean.default(island, na.rm = TRUE): argument is not numeric or
+logical: returning NA</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 10
+  species   island  mean median   min   q_0   q_1   q_2   q_3   q_4
+  &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Adelie        NA  38.8   38.7  45.2  33.4  37.0  38.7  37.0  45.2
+2 Chinstrap     NA  48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+3 Gentoo        NA  47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</code></pre>
+</div>
+</div>
+<p>However, we won’t always want to do apply another summary. In that case, we can undo the grouping using <code>ungroup()</code>. Remembering to ungroup is a gotcha and cause of confusion when working with multiple-group summaries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><span class="fu" style="color: #4758AB;">ungroup</span>(penguin_summary_stats)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 10
+  species   island     mean median   min   q_0   q_1   q_2   q_3   q_4
+  &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Adelie    Biscoe     39.0   38.7  45.6  34.5  37.7  38.7  37.7  45.6
+2 Adelie    Dream      38.5   38.6  44.1  32.1  36.8  38.6  36.8  44.1
+3 Adelie    Torgersen  39.0   38.9  46    33.5  36.7  38.9  36.7  46  
+4 Chinstrap Dream      48.8   49.6  58    40.9  46.3  49.6  46.3  58  
+5 Gentoo    Biscoe     47.5   47.3  59.6  40.9  45.3  47.3  45.3  59.6</code></pre>
+</div>
+</div>
+<p>There’s an alternative method to achieve the same thing in a single step when using <code>{dplyr}</code> versions 1.0.0 and above. This is to to set the <code>.groups</code> parameter of the <code>summarise()</code> function call, which determines the grouping of the returned data frame.</p>
+<p>The <code>.groups</code> parameter and can take 4 possible values:</p>
+<ul>
+<li><p>“drop_last”: dropping the last level of grouping (The only option before v1.0.0);</p></li>
+<li><p>“drop”: All levels of grouping are dropped;</p></li>
+<li><p>“keep”: Same grouping structure as <code>.data</code>;</p></li>
+<li><p>“rowwise”: Each row is its own group.</p></li>
+</ul>
+<p>By default, “drop_last” is used if all the results have 1 row and “keep” is used otherwise.</p>
+</section>
+<section id="reordering-factors" class="level3">
+<h3 class="anchored" data-anchor-id="reordering-factors">Reordering Factors</h3>
+<p>R stored factors as integer values, which it then maps to a set of labels. Only factor levels that appear in your data will be assigned a coded integer value and the mapping between factor levels and integers will depend on the order that the labels appear in your data.</p>
+<p>This can be annoying, particularly when your factor levels relate to properties that aren’t numerical but do have an inherent ordering to them. In the example below, we have the t-shirt size of twelve people.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1">tshirts <span class="ot" style="color: #003B4F;">&lt;-</span> tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">tibble</span>(</span>
+<span id="cb76-2">  <span class="at" style="color: #657422;">id =</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">12</span>, </span>
+<span id="cb76-3">  <span class="at" style="color: #657422;">size =</span> <span class="fu" style="color: #4758AB;">as.factor</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"L"</span>, <span class="cn" style="color: #8f5902;">NA</span>, <span class="st" style="color: #20794D;">"M"</span>, <span class="st" style="color: #20794D;">"S"</span>, <span class="st" style="color: #20794D;">"XS"</span>, <span class="st" style="color: #20794D;">"M"</span>, <span class="st" style="color: #20794D;">"XXL"</span>, <span class="st" style="color: #20794D;">"L"</span>, <span class="st" style="color: #20794D;">"XS"</span>, <span class="st" style="color: #20794D;">"M"</span>, <span class="st" style="color: #20794D;">"L"</span>, <span class="st" style="color: #20794D;">"S"</span>))</span>
+<span id="cb76-4">)</span>
+<span id="cb76-5"></span>
+<span id="cb76-6"><span class="fu" style="color: #4758AB;">levels</span>(tshirts<span class="sc" style="color: #5E5E5E;">$</span>size)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "L"   "M"   "S"   "XS"  "XXL"</code></pre>
+</div>
+</div>
+<p>Annoyingly, the sizes aren’t in order and extra large is not included because it is not included in the sample. This leads to awkward summary tables (and plots).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1">tshirts <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">group_by</span>(size) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">count =</span> <span class="fu" style="color: #4758AB;">n</span>())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  size  count
+  &lt;fct&gt; &lt;int&gt;
+1 L         3
+2 M         3
+3 S         2
+4 XS        2
+5 XXL       1
+6 &lt;NA&gt;      1</code></pre>
+</div>
+</div>
+<p>We can fix this by creating a new variable with the factors explicitly coded in the correct order. We also need to sepecify that we should not drop empty groups as part of <code>group_by()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1">tidy_tshirt_levels <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"XS"</span>, <span class="st" style="color: #20794D;">"S"</span>, <span class="st" style="color: #20794D;">"M"</span>, <span class="st" style="color: #20794D;">"L"</span>, <span class="st" style="color: #20794D;">"XL"</span>, <span class="st" style="color: #20794D;">"XXL"</span>, <span class="cn" style="color: #8f5902;">NA</span>)</span>
+<span id="cb80-2"></span>
+<span id="cb80-3">tshirts <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb80-4">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">size_tidy =</span> <span class="fu" style="color: #4758AB;">factor</span>(size, <span class="at" style="color: #657422;">levels =</span> tidy_tshirt_levels)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb80-5">  <span class="fu" style="color: #4758AB;">group_by</span>(size_tidy, <span class="at" style="color: #657422;">.drop =</span> <span class="cn" style="color: #8f5902;">FALSE</span> ) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb80-6">  <span class="fu" style="color: #4758AB;">summarise</span>(<span class="at" style="color: #657422;">count =</span> <span class="fu" style="color: #4758AB;">n</span>())</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 2
+  size_tidy count
+  &lt;fct&gt;     &lt;int&gt;
+1 XS            2
+2 S             2
+3 M             3
+4 L             3
+5 XL            0
+6 XXL           1
+7 &lt;NA&gt;          1</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="be-aware-factors" class="level2">
+<h2 class="anchored" data-anchor-id="be-aware-factors">Be Aware: Factors</h2>
+<p>As we have seen a little already, categorical variables can cause issues when wrangling and presenting data in R. All of these problems are solvable using base R techniques but the <code>{forcats}</code> package provides tools for the most common of these problems. This includes functions for changing the order of factor levels or the values with which they are associated.</p>
+<p>Some examples functions from the package include:</p>
+<ul>
+<li><code>fct_reorder()</code>: Reordering a factor by another variable.</li>
+<li><code>fct_infreq()</code>: Reordering a factor by the frequency of values.</li>
+<li><code>fct_relevel()</code>: Changing the order of a factor by hand.</li>
+<li><code>fct_lump()</code>: Collapsing the least/most frequent values of a factor into “other”.</li>
+</ul>
+<p>Examples of each of these can be found in the <a href="https://forcats.tidyverse.org/articles/forcats.html">forcats vignette</a> or the <a href="(https://r4ds.had.co.nz/factors.html)">factors chapter</a> of R for data science.</p>
+</section>
+<section id="be-aware-strings" class="level2">
+<h2 class="anchored" data-anchor-id="be-aware-strings">Be Aware: Strings</h2>
+<p>Working with and analysing text data is a skill unto itself. However, it is useful to be able to do some basic manipulation of character strings programatically.</p>
+<p>Because R was developed as a statistical programming language, it is well suited to the computational and modelling aspects of working with text data but the base R string manipulation functions can be a bit unwieldy at times.</p>
+<p>The <code>{stringr}</code> package aims to combat this by providing useful helper functions for a range of text management problems. Even when not analysing text data these can be useful, for example to remove prefixes on a lot of column names.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `as_data_frame()` was deprecated in tibble 2.0.0.
+ℹ Please use `as_tibble()` instead.
+ℹ The signature and semantics have changed, see `?as_tibble`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `x` argument of `as_tibble.matrix()` must have unique column names if
+`.name_repair` is omitted as of tibble 2.0.0.
+ℹ Using compatibility `.name_repair`.
+ℹ The deprecated feature was likely used in the tibble package.
+  Please report the issue at &lt;]8;;https://github.com/tidyverse/tibble/issueshttps://github.com/tidyverse/tibble/issues]8;;&gt;.</code></pre>
+</div>
+</div>
+<p>Suppose we wanted to keep only the text following an underscore in these column names. We could do that by using a regular expression to extract lower-case or upper-case letters which follow an underscore.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><span class="fu" style="color: #4758AB;">head</span>(poorly_named_df)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 11
+  observatio…¹   V1_A   V2_B   V3_C    V4_D    V5_E   V6_F   V7_G   V8_H    V9_I
+         &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+1            1 -0.199 -0.729  1.14   0.0205 -0.714  -1.14  0.786  -0.926 -0.740 
+2            2 -0.956 -1.71  -0.184  1.44   -1.97   -0.470 0.0393  1.42  -2.49  
+3            3  0.585 -1.06  -1.43   0.361   0.0141  0.585 1.01   -1.90  -0.0825
+4            4  0.624  1.17   0.263  1.72   -0.0808  0.707 1.93   -0.675  0.448 
+5            5  0.425 -0.190 -0.360 -0.443   0.134  -0.339 0.0577  1.21  -1.38  
+6            6  0.169  1.40   1.82  -0.999   1.14   -0.377 0.471   0.934  0.604 
+# … with 1 more variable: V10_J &lt;dbl&gt;, and abbreviated variable name
+#   ¹​observation_id</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1">stringr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">str_extract</span>(<span class="fu" style="color: #4758AB;">names</span>(poorly_named_df), <span class="at" style="color: #657422;">pattern =</span> <span class="st" style="color: #20794D;">"(?&lt;=_)([a-zA-Z]+)"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "id" "A"  "B"  "C"  "D"  "E"  "F"  "G"  "H"  "I"  "J" </code></pre>
+</div>
+</div>
+<p>Alternatively, can avoid using regular expressions. We can split each column name at the underscore and keep only the second part of each string.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><span class="co" style="color: #5E5E5E;"># split column names at underscores and inspect structure of resuting object</span></span>
+<span id="cb88-2">split_strings <span class="ot" style="color: #003B4F;">&lt;-</span> stringr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">str_split</span>(<span class="fu" style="color: #4758AB;">names</span>(poorly_named_df), <span class="at" style="color: #657422;">pattern =</span> <span class="st" style="color: #20794D;">"_"</span>)</span>
+<span id="cb88-3"><span class="fu" style="color: #4758AB;">str</span>(split_strings)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 11
+ $ : chr [1:2] "observation" "id"
+ $ : chr [1:2] "V1" "A"
+ $ : chr [1:2] "V2" "B"
+ $ : chr [1:2] "V3" "C"
+ $ : chr [1:2] "V4" "D"
+ $ : chr [1:2] "V5" "E"
+ $ : chr [1:2] "V6" "F"
+ $ : chr [1:2] "V7" "G"
+ $ : chr [1:2] "V8" "H"
+ $ : chr [1:2] "V9" "I"
+ $ : chr [1:2] "V10" "J"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><span class="co" style="color: #5E5E5E;"># keep only the second element of each character vector in the list</span></span>
+<span id="cb90-2">purrr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">map_chr</span>(split_strings, <span class="cf" style="color: #003B4F;">function</span>(x){x[<span class="dv" style="color: #AD0000;">2</span>]})</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "id" "A"  "B"  "C"  "D"  "E"  "F"  "G"  "H"  "I"  "J" </code></pre>
+</div>
+</div>
+<p>Again, unless you plan to work extensively with text data, I would recommend that you look up such string manipulations as you need them. The <a href="https://r4ds.had.co.nz/strings.html#strings">strings</a> section of R for Data Science is a useful starting point.</p>
+</section>
+<section id="be-aware-date-times" class="level2">
+<h2 class="anchored" data-anchor-id="be-aware-date-times">Be Aware: Date-Times</h2>
+<p>Remember all the fuss we made about storing dates in the ISO standard format? That was because dates and times are complicated enough to work with before adding extra ambiguity.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Ctext%7BYYYY%7D%20-%20%5Ctext%7BMM%7D%20-%20%5Ctext%7BDD%7D"> Dates, times and time intervals have to reconcile two factors: the physical orbit of the Earth around the sun and the social and geopolitical mechanisms that determine how we measure and record the passing of time. This makes the history of date and time records fascinating and can make working with this type of data complicated.</p>
+<p>Moving from larger to smaller time spans: leap years alter the number of days in a year, months are of variable length (with February’s length changing from year to year). If your data are measured in a place that uses daylight saving, then one day a year will be 23 hours long and another will be 25 hours long. To make things worse, the dates and the hour at which the clocks change are not uniform across countries, which might be in distinct time zones that themselves change over time.</p>
+<p>Even at the level of minutes and seconds we aren’t safe - since the Earth’s orbit is gradually slowing down a leap second is added approximately every 21 months. Nor are things any better when looking at longer time scales or across cultures, where we might have to account for different calendars: months are added removed and altered over time, other calendar systems still take different approaches to measuring time and using different units and origin points.</p>
+<p>With all of these issues you have to be very careful when working with date and time data. Functions to help you with this can be found in the <code>{lubridate}</code> package, with examples in the <a href="https://r4ds.had.co.nz/dates-and-times.html#dates-and-times">dates and times</a> chapter of R for data science.</p>
+<!--
+- How many days are there in a year? (365-366)
+- How many months days are there in a month? (28-31)
+- How many hours are there in a day? (23-25)
+- How many seconds are there in a minute? (60-61)
+- What calendar are you using?
+  - How many months are there in the year? 
+  - When does a year begin?
+-->
+</section>
+<section id="be-aware-relational-data" class="level2">
+<h2 class="anchored" data-anchor-id="be-aware-relational-data">Be Aware: Relational Data</h2>
+<p>When the data you need are stored across two or more data frames you need to be able to cross-reference those and match up values for observational unit. This sort of data is know as relational data, and is used extensively in data science.</p>
+<p>The variables you use to match observational units across data frames are known as <em>keys</em>. The primary key belongs to the first table and the foreign key belongs to the secondary table. There are various ways to join these data frames, depending on if you want to retain.</p>
+<section id="join-types" class="level4">
+<h4 class="anchored" data-anchor-id="join-types">Join types</h4>
+<p>You might want to keep only observational units that have key variables values in both data frames, this is known as an inner join.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.zakvarty.com/blog/2023-01-06-data-wrangling/join-inner.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Inner join diagram. Source: R for Data Science</figcaption><p></p>
+</figure>
+</div>
+<p>You might instead want to keep all units from the primary table but pad with NAs where there is not a corresponding foreign key in the second table. This results in an <strong>(outer) left-join</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.zakvarty.com/blog/2023-01-06-data-wrangling/join-left-right-full.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Diagram for left, right and outer joins. Source: R for Data Science</figcaption><p></p>
+</figure>
+</div>
+<p>Conversely, you might keep all units from the second table but pad with NAs where there is not a corresponding foreign key in the primary table. This is imaginatively named an <strong>(outer) right-join</strong>.</p>
+<p>The final common join type is an outer join, in which all observational units from either table are retained and all missing values are padded with NAs. This is known as an <strong>(outer) full join</strong>.</p>
+<p>Things get more complicated when keys do not uniquely identify observational units in one or both tables. I’d recommend you start exploring these ideas with the <a href="">relational data</a> chapter of R for Data Science.</p>
+</section>
+<section id="why-and-where-to-learn-more" class="level4">
+<h4 class="anchored" data-anchor-id="why-and-where-to-learn-more">Why and where to learn more</h4>
+<p>Working with relational data is essential to getting any data science up and running out in the wilds of reality. This is because businesses and companies don’t store all of their data in a huge single csv file. For one this isn’t very efficient, because most cells would be empty. Secondly, it’s not a very secure approach, since you can’t grant partial access to the data. That’s why information is usually stored in many data frames (more generically known as tables) within one or more databases.</p>
+<p>These data silos are created, maintained, accessed and destroyed using a relational data base management system. These management systems use code to manage and access the stored data, just like we have seen in the dplyr commands above. You might well have heard of the SQL programming language (and its many variants), which is a popular language for data base management and is the inspiration for the dplyr package and verbs.</p>
+<p>If you’d like to learn more then there are many excellent introductory SQL books and courses, I’d recommend picking one that focuses on data analysis or data science unless you really want to dig into efficient storage and querying of databases.</p>
+</section>
+</section>
+<section id="wrapping-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping up</h2>
+<p>We have:</p>
+<ul>
+<li><p>Learned how to wrangle tabular data in R with <code>{dplyr}</code></p></li>
+<li><p>Met the idea of relational data and <code>{dplyr}</code>’s relationship to SQL</p></li>
+<li><p>Become aware of some tricky data types and packages that can help.</p></li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2023,
+  author = {Zak Varty},
+  title = {Data {Wrangling}},
+  date = {2023-01-06},
+  url = {https://www.zakvarty.com/blog/2023-01-06-data-wrangling},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2023" class="csl-entry quarto-appendix-citeas">
+Zak Varty. 2023. <span>“Data Wrangling.”</span> January 6, 2023. <a href="https://www.zakvarty.com/blog/2023-01-06-data-wrangling">https://www.zakvarty.com/blog/2023-01-06-data-wrangling</a>.
+</div></div></section></div> ]]></description>
+  <category>data science</category>
+  <category>data wrangling</category>
+  <category>tutorial</category>
+  <guid>https://www.zakvarty.com/blog/2023-01-06-data-wrangling/index.html</guid>
+  <pubDate>Fri, 06 Jan 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2023-01-06-data-wrangling/horst-wrangle-monsters.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Aquiring Data via an API</title>
   <dc:creator>Zak Varty</dc:creator>
