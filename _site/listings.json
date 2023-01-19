@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/2023-01-16-minimal-R-package/index.html",
       "/blog/2023-01-06-data-wrangling/index.html",
       "/blog/2022-12-14-apis-and-httr/index.html",
       "/blog/2022-12-13-git-remote-branches/index.html",
