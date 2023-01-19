@@ -237,7 +237,7 @@ Authors@R:
     person(
     given = c("Zak","D"),
     family = "Varty",
-    email = "z.varty@imperial.ac.uk",
+    email = "my.email@imperial.ac.uk",
     role = c("aut", "cre"))
 Description: A minimal example R package created during the first lives session 
     of Effective Data Science 2022-23. This countains a simple function to 
