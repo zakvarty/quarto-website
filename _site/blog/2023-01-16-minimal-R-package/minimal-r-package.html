@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zak Varty">
+
+<title>Zak Varty - minimal-r-package</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/00_favicon/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-326407710"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-326407710', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<meta name="twitter:title" content="Zak Varty - minimal-r-package">
+<meta name="twitter:description" content="In this tutorial will guide you through the creation your first R package using the {usethis} and {testthat} packages.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Zak Varty</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-professional" role="button" data-bs-toggle="dropdown" aria-expanded="false">Professional</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-professional">    
+        <li>
+    <a class="dropdown-item" href="../../professional/research.html">
+ <span class="dropdown-text">Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/teaching.html">
+ <span class="dropdown-text">Teaching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/talks.html">
+ <span class="dropdown-text">Talks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/bookmarks.html">
+ <span class="dropdown-text">Bookmarks</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-personal" role="button" data-bs-toggle="dropdown" aria-expanded="false">Personal</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-personal">    
+        <li>
+    <a class="dropdown-item" href="../../personal/reading-record.html">
+ <span class="dropdown-text">Reading record 📚</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zakvarty"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#what-is-a-package" id="toc-what-is-a-package" class="nav-link" data-scroll-target="#what-is-a-package">What is a package</a></li>
+  <li><a href="#principle" id="toc-principle" class="nav-link" data-scroll-target="#principle">20:80 Principle</a></li>
+  <li><a href="#tools-to-build-a-minimal-r-package" id="toc-tools-to-build-a-minimal-r-package" class="nav-link" data-scroll-target="#tools-to-build-a-minimal-r-package">Tools to build a minimal R package</a></li>
+  <li><a href="#create-a-template-directory" id="toc-create-a-template-directory" class="nav-link" data-scroll-target="#create-a-template-directory">Create a template directory</a></li>
+  <li><a href="#what-to-call-your-package" id="toc-what-to-call-your-package" class="nav-link" data-scroll-target="#what-to-call-your-package">What to call your package?</a></li>
+  <li><a href="#adding-a-first-function" id="toc-adding-a-first-function" class="nav-link" data-scroll-target="#adding-a-first-function">Adding a first function</a></li>
+  <li><a href="#try-it-out" id="toc-try-it-out" class="nav-link" data-scroll-target="#try-it-out">Try it out</a></li>
+  <li><a href="#adding-documentation" id="toc-adding-documentation" class="nav-link" data-scroll-target="#adding-documentation">Adding Documentation</a></li>
+  <li><a href="#install-your-package" id="toc-install-your-package" class="nav-link" data-scroll-target="#install-your-package">Install your package</a>
+  <ul class="collapse">
+  <li><a href="#aside-on-setting-installation-path" id="toc-aside-on-setting-installation-path" class="nav-link" data-scroll-target="#aside-on-setting-installation-path">Aside on setting installation path</a></li>
+  </ul></li>
+  <li><a href="#functions-with-dependencies" id="toc-functions-with-dependencies" class="nav-link" data-scroll-target="#functions-with-dependencies">Functions with dependencies</a>
+  <ul class="collapse">
+  <li><a href="#within-package-dependencies" id="toc-within-package-dependencies" class="nav-link" data-scroll-target="#within-package-dependencies">Within package dependencies</a></li>
+  <li><a href="#between-package-dependencies" id="toc-between-package-dependencies" class="nav-link" data-scroll-target="#between-package-dependencies">Between package dependencies</a></li>
+  <li><a href="#example-imports" id="toc-example-imports" class="nav-link" data-scroll-target="#example-imports">Example imports</a></li>
+  <li><a href="#an-import-exception" id="toc-an-import-exception" class="nav-link" data-scroll-target="#an-import-exception">An import exception</a></li>
+  </ul></li>
+  <li><a href="#adding-tests" id="toc-adding-tests" class="nav-link" data-scroll-target="#adding-tests">Adding Tests</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping up</a></li>
+  <li><a href="#follow-up-tasks" id="toc-follow-up-tasks" class="nav-link" data-scroll-target="#follow-up-tasks">Follow up Tasks</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">minimal-r-package</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zak Varty </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this tutorial will guide you through the creation your first R package using the <code>{usethis}</code> and <code>{testthat}</code> packages.</p>
+<p>We’ll walk through the steps of setting up a new R package, adding functions and documentation, and creating tests to ensure your package is reliable and easy to use. Whether you’re a seasoned R programmer or just getting started, this tutorial will provide you with the tools you need to create your own R package and share your work with others.</p>
+</section>
+<section id="what-is-a-package" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-package">What is a package</h2>
+<p>An R package is a collection of R functions, data, and documentation that can be easily shared with and installed by others.</p>
+<p>Packages let you extending the functionality of the base R system, and are a fundamental unit of reproducible research. They can be created by anyone, and are easily distributable to others through the CRAN or GitHub.</p>
+<p>The packages you create can be imported and used across multiple R scripts, making them an ideal way to share and use functions and data across projects. They can also be a good way to organize and structure your code, making it easier to test, document and maintain.</p>
+<p>In this session I hope to convince you that if you can write an R function, you can write an R package.</p>
+</section>
+<section id="principle" class="level2">
+<h2 class="anchored" data-anchor-id="principle">20:80 Principle</h2>
+<p>Programming and package development are huge topics. In this session we will not even cover 20% of everything there is to know. However, by focusing on the most important and the most common aspects of package development we will rapidly get a minimal package up and running.</p>
+<p>These basics will cover ~80% of everything you ever need to do during package development. Resources that were used to develop this tutorial, and which will support that last ~20%, are listed below.</p>
+<ul>
+<li><p><a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hilary Parker blog post</a></p></li>
+<li><p><a href="https://kbroman.org/pkg_primer/">Karl Broman primer</a></p></li>
+<li><p><a href="https://www.pipinghotdata.com/posts/2020-10-25-your-first-r-package-in-1-hour/">Shannon Pileggi blog post</a></p></li>
+<li><p><a href="https://r-pkgs.org/whole-game.html">R packages</a> by Wickham and Bryan (Ch 2)</p></li>
+<li><p><a href="https://cran.r-project.org/doc/manuals/R-exts.html">Writing R extensions</a> CRAN</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/horst-R-over-time.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Artworkd by <span class="citation" data-cites="allison_horst">(<a href="#ref-allison_horst" role="doc-biblioref"><strong>allison_horst?</strong></a>)</span></figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="tools-to-build-a-minimal-r-package" class="level2">
+<h2 class="anchored" data-anchor-id="tools-to-build-a-minimal-r-package">Tools to build a minimal R package</h2>
+<p>You will need:</p>
+<ul>
+<li>R and Rstudio</li>
+<li><code>{devtools}</code></li>
+<li><code>{usethis}</code></li>
+<li><code>{testthat}</code></li>
+<li><code>{roxygen2}</code></li>
+</ul>
+<p>This collection of software and R packages makes it easy to create, develop, document, test, check and share the packages you create.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the “hardcore” folks you can do all of this by hand, but it is an absolute pain. These tools were developed for a reason.</p>
+</div>
+</div>
+</section>
+<section id="create-a-template-directory" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-template-directory">Create a template directory</h2>
+<p>Once per package</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="at">path =</span> <span class="st">"~/path/to_your_package/packageName"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This should be:</p>
+<ul>
+<li>In your home directory, near where your other projects live;</li>
+<li><strong>Not</strong> in an existing project, package or git repo;</li>
+<li><strong>Not</strong> your R library where your packages are installed.</li>
+</ul>
+<p>You can find out where your R packages are installed using <code>.libpaths()</code>. This is where <code>install.packages()</code> saves packages and where <code>library()</code> looks for them by default.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/zakvarty/R_libraries/4.2/cran"                          
+[2] "/Users/zakvarty/R_libraries/4.2/github"                        
+[3] "/Users/zakvarty/R_libraries/4.2/personal"                      
+[4] "/Library/Frameworks/R.framework/Versions/4.2/Resources/library"</code></pre>
+</div>
+</div>
+<p>Note that yours will probably only return one entry. I’ve set things up to keep my R packages separated according to where they came from and so that they save to the CRAN folder by default, because this is where I get most of my packages.</p>
+</section>
+<section id="what-to-call-your-package" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-call-your-package">What to call your package?</h2>
+<p>Naming things in hard.</p>
+<p>Aim for something short, speakable. Snake, camel and pascal case are all acceptable, but aim for simplicity.</p>
+<p>Since packages group code, the package name should describe the group in some way.</p>
+<ul>
+<li>Personal: <code>zvtools</code>, <code>broman</code>, <code>ralph</code></li>
+<li>Colours: <code>rColourBrewer</code>, <code>PrettyCols</code>, <code>wesanderson</code></li>
+<li>Data/Analysis type: <code>lubridate</code>, <code>sp</code>, <code>spatstat</code>, <code>ismev</code></li>
+</ul>
+<p>I’ll follow the inspiration of <code>{ismev}</code> and name my minimal package <code>eds</code>.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="at">path =</span> <span class="st">"~/Work/teaching/2022_data_science/eds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will</p>
+<ol type="1">
+<li>Create a new R project at the specified path,</li>
+<li>Creates a template package within that project directory,</li>
+<li>Opens the project in a new RStudio session.</li>
+</ol>
+<p>It will also output something like the following in the console:</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'/Users/zakvarty/Work/teaching/2022_data_science/eds/'</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'/Users/zakvarty/Work/teaching/2022_data_science/eds'</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'R/'</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'DESCRIPTION'</span>Package<span class="sc">:</span> eds</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> What the Package <span class="fu">Does</span> (One Line, Title Case)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span><span class="fu">R</span> (parsed)<span class="sc">:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="er">*</span> First Last <span class="sc">&lt;</span>first.last<span class="sc">@</span>example.com<span class="sc">&gt;</span> [aut, cre] (YOUR<span class="sc">-</span>ORCID<span class="sc">-</span>ID)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> What the package <span class="fu">does</span> (one paragraph).</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> <span class="st">`</span><span class="at">use_mit_license()</span><span class="st">`</span>, <span class="st">`</span><span class="at">use_gpl3_license()</span><span class="st">`</span> or friends to</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    pick a license</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">2.3</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'NAMESPACE'</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'eds.Rproj'</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^eds</span><span class="sc">\\</span><span class="st">.Rproj$'</span> to <span class="st">'.Rbuildignore'</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'.Rproj.user'</span> to <span class="st">'.gitignore'</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^</span><span class="sc">\\</span><span class="st">.Rproj</span><span class="sc">\\</span><span class="st">.user$'</span> to <span class="st">'.Rbuildignore'</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>✔ Opening <span class="st">'/Users/zakvarty/Work/teaching/2022_data_science/eds/'</span> <span class="cf">in</span> new RStudio session</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'&lt;no active project&gt;'</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="at">path =</span> <span class="st">"~/Work/teaching/2022_data_science/eds"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'/Users/zakvarty/Work/teaching/2022_data_science/eds'</span>Package<span class="sc">:</span> eds</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> What the Package <span class="fu">Does</span> (One Line, Title Case)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span><span class="fu">R</span> (parsed)<span class="sc">:</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="er">*</span> First Last <span class="sc">&lt;</span>first.last<span class="sc">@</span>example.com<span class="sc">&gt;</span> [aut, cre] (YOUR<span class="sc">-</span>ORCID<span class="sc">-</span>ID)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> What the package <span class="fu">does</span> (one paragraph).</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> <span class="st">`</span><span class="at">use_mit_license()</span><span class="st">`</span>, <span class="st">`</span><span class="at">use_gpl3_license()</span><span class="st">`</span> or friends to</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    pick a license</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">2.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we now look in the “files” pane, we will see that this template is very different from what we recommended for a general project. Before we get familiar with the structure of a package directory, let’s first check our package with <code>devtools::check()</code>. This function forms a key part of the package development workflow and does several things.</p>
+<ul>
+<li>Updates documentation for the package and its contents</li>
+<li>Builds the package</li>
+<li>Checks the structure and content of the built package</li>
+<li>Returns errors, warnings and notes to guide your next steps.</li>
+</ul>
+<p>You should check your package often during development. It takes a bit of time but it is much easier to correct a few points at a time than to diagnose why a huge package is not building.</p>
+<p>Let’s take that advice and perform our first check.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will see a lot of output as the function works its way through over 50 different checks. Finally, the output ends with only one warning, telling us that we have not specified a (standard) license for our project within the DESCRIPTION file.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>── R CMD check results ───────────────────────────────────── eds <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span> ────</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Duration<span class="sc">:</span> <span class="fl">5.3</span>s</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>❯ checking DESCRIPTION meta<span class="sc">-</span>information ... WARNING</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  Non<span class="sc">-</span>standard license specification<span class="sc">:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">use_mit_license()</span><span class="st">`</span>, <span class="st">`</span><span class="at">use_gpl3_license()</span><span class="st">`</span> or friends to pick a</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    license</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  Standardizable<span class="sc">:</span> <span class="cn">FALSE</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> errors ✔ <span class="sc">|</span> <span class="dv">1</span> warning ✖ <span class="sc">|</span> <span class="dv">0</span> notes ✔</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The license file specifies how others may use our code. We will use the permissive <a href="https://choosealicense.com/licenses/mit/">MIT license</a>, which we will add using another function from <code>{usethis}</code>. There are similar helper functions to add other licenses, which you can investigate further at <a href="https://choosealicense.com/">choosealicense.com</a></p>
+<p>The <code>{usethis}</code> helper function will add a markdown and plain text version of the license to our directory and reference these in the DESCRIPTION.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_mit_license</span>(<span class="at">copyright_holder =</span> <span class="st">"Zak Varty"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'/Users/zakvarty/Work/teaching/2022_data_science/eds'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>✔ Setting License field <span class="cf">in</span> DESCRIPTION to <span class="st">'MIT + file LICENSE'</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'LICENSE'</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'LICENSE.md'</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^LICENSE</span><span class="sc">\\</span><span class="st">.md$'</span> to <span class="st">'.Rbuildignore'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Our DESCRIPTION file should now look something like this.</p>
+<div class="cell" data-filename="DESCRIPTION">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> eds</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> What the Package <span class="fu">Does</span> (One Line, Title Case)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">person</span>(<span class="st">"First"</span>, <span class="st">"Last"</span>, , <span class="st">"first.last@example.com"</span>, <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"aut"</span>, <span class="st">"cre"</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">comment =</span> <span class="fu">c</span>(<span class="at">ORCID =</span> <span class="st">"YOUR-ORCID-ID"</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> What the package <span class="fu">does</span> (one paragraph).</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">2.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>While we are here we can fill out a few additional details. Where the template used argument order to define a <code>person()</code>, I have named these explicitly and removed the ORCID field.</p>
+<p>The package <code>Title</code> should be short and in title case, while the package <code>Description</code> can be more detailed (a single paragraph) and split over multiple lines. Anything beyond the first line should be indented with four spaces (<em>note:</em> four spaces != 1 tab).</p>
+<div class="cell" data-filename="DESCRIPTION">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> eds</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> Helper Functions <span class="cf">for</span> Effective Data Science <span class="dv">2022-23</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span>R<span class="sc">:</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">person</span>(</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">given =</span> <span class="fu">c</span>(<span class="st">"Zak"</span>,<span class="st">"D"</span>),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"Varty"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">email =</span> <span class="st">"z.varty@imperial.ac.uk"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"aut"</span>, <span class="st">"cre"</span>))</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> A minimal example R package created during the first lives session </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    of Effective Data Science <span class="dv">2022</span><span class="fl">-23.</span> This countains a simple <span class="cf">function</span> to </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    calculate a moving average.</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> MIT <span class="sc">+</span> file LICENSE</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">2.3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s now check the package again and see that this has resolved our issues</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>✔  checking loading without being on the library search path ...</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>─  checking examples ... NONE</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>✔  checking <span class="cf">for</span> non<span class="sc">-</span>standard things <span class="cf">in</span> the check directory</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>✔  checking <span class="cf">for</span> detritus <span class="cf">in</span> the temp directory</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>── R CMD check results ─────────────────────────────────────────── eds <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span> ────</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>Duration<span class="sc">:</span> <span class="fl">5.5</span>s</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> errors ✔ <span class="sc">|</span> <span class="dv">0</span> warnings ✔ <span class="sc">|</span> <span class="dv">0</span> notes ✔</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Fantastic! Our package has no errors, warnings or notes.</p>
+</section>
+<section id="adding-a-first-function" class="level2">
+<h2 class="anchored" data-anchor-id="adding-a-first-function">Adding a first function</h2>
+<p>The first function we will add to the package is the helper function I wrote to left- and right-pad a vector with NAs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pad_with_NAs <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n_left, n_right){</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, n_left), x, <span class="fu">rep</span>(<span class="cn">NA</span>, n_right))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To add this function to <code>eds</code>, we save it within the <code>R/</code> directory. Until your package becomes large, it is good form to save each function in its own R file, named after the function. If the package becomes large, you can then think about refactoring your code to have one script for each family or group of functions.</p>
+<p>We can create <code>R/pad_with_NAs.R</code> manually, or with a helper function from <code>{usethis}</code>. The helper function is useful because it will either open an existing R file or create one if it does not yet exist.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">"pad_with_NAs"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#• Modify 'R/pad_with_NAs.R'</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#• Call `use_test()` to create a matching test file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then paste our function definition into this file and save it.</p>
+<div class="cell" data-filename="R/pad_with_NAs.R">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pad_with_NAs <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n_left, n_right){</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, n_left), x, <span class="fu">rep</span>(<span class="cn">NA</span>, n_right))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="try-it-out" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-out">Try it out</h2>
+<p>To try out our padding function, we need to make it available in our current R session. One way we could do this is to call <code>source(R/pad_with_NAs.R)</code>. This doesn’t match with our experience of loading a package though - it would make <code>pad_with_NAs()</code> appear in our global environment pane.</p>
+<p>Instead, we can load all functions from the package using <code>load_all()</code>. This simulates the process of building, installing and loading <code>{eds}</code>, but is much faster than actually doing so. This speed difference becomes more and more beneficial as your package grows, allowing you to get an accurate sense of how users will experience your package even when you have functions that depend on each other or depend on functions from other packages.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">load_all</span>()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#ℹ Loading eds</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n_left =</span> <span class="dv">2</span>, <span class="at">n_right =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA NA  1  2  3  4  5 NA</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="adding-documentation">Adding Documentation</h2>
+<p>It would be great if we had handy pop-ups to explain our function arguments and help pages to explain what our function does. We can add these using {roxygen2}. This package allows you to write markdown-like comments above function definitions that are automatically converted into documentation files in the <code>man/</code> directory.</p>
+<p>To add skeleton documentation, go to the menu and select Code &gt; Insert Roxygen Skeleton. (This can also be done using the keyboard shortcut on that menu button when your cursor is inside the curly braces of the function.)</p>
+<p>Now our function padding function file should look something like this:</p>
+<div class="cell" data-filename="R/pad_with_NAs.R">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Title</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x </span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n_left </span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n_right </span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>pad_with_NAs <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n_left, n_right){</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, n_left), x, <span class="fu">rep</span>(<span class="cn">NA</span>, n_right))</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Filling out the relevant fields, we get something like this.</p>
+<div class="cell" data-filename="pad_with_NAs.R">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Add NAs to a vector</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Vector to which NAs will be added.</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n_left Number of NAs to add before x.</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n_right Number of NAs to add after x.</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return A vector containing x with the requested number of NA values before and after.</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' pad_with_NAs(1:5, n_left = 0, n_right = 3)</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' pad_with_NAs(c("spider", "mouse", "cat", "dog"), n_left = 1, n_right = 2)</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>pad_with_NAs <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n_left, n_right){</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, n_left), x, <span class="fu">rep</span>(<span class="cn">NA</span>, n_right))</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The final step is to save these changes and then convert the comments to documentation using <code>document()</code>.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Updating eds documentation</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Loading eds</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Writing pad_with_NAs.Rd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will allow you to preview the help file for <code>pad_with_NAs()</code>. I say preview here, rather than view because the documentation really only gets made when you build the package (which also adds things like links between help files and a package index). This is what the “Rendering development documentation …”” message is trying to remind you.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>?pad_with_NAs</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Rendering development documentation for "pad_with_NAs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="install-your-package" class="level2">
+<h2 class="anchored" data-anchor-id="install-your-package">Install your package</h2>
+<p>Now that we have a minimum viable package with a single function, let’s install the eds package. We do this using <code>devtools::install()</code>.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>?devtools<span class="sc">::</span><span class="fu">install</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now load and use <code>{eds}</code> just like any other package.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eds)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"spider"</span>, <span class="st">"mouse"</span>,<span class="st">"cat"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pad_with_NAs</span>(animals, <span class="at">n_left =</span> <span class="dv">1</span>,<span class="at">n_right =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA       "spider" "mouse"  "cat"   </code></pre>
+</div>
+</div>
+<section id="aside-on-setting-installation-path" class="level3">
+<h3 class="anchored" data-anchor-id="aside-on-setting-installation-path">Aside on setting installation path</h3>
+<p>If, like me, you want to install this to a non-default location then you can do this using <code>withr::with_libpaths()</code>.</p>
+<p>I would like to install this to my sub-folder for personal R packages, which is the third element of my <code>.libPaths</code> vector.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "/Users/zakvarty/R_libraries/4.2/cran"                          
+[2] "/Users/zakvarty/R_libraries/4.2/github"                        
+[3] "/Users/zakvarty/R_libraries/4.2/personal"                      
+[4] "/Library/Frameworks/R.framework/Versions/4.2/Resources/library"</code></pre>
+</div>
+</div>
+<p>I can do this by using <code>{withr}</code> to execute the same code but with my library paths temporarily replaced by only a single path, pointing to the personal packages sub-folder.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>withr<span class="sc">::</span><span class="fu">with_libpaths</span>(<span class="at">new =</span> <span class="fu">.libPaths</span>()[<span class="dv">3</span>], <span class="at">code =</span> devtools<span class="sc">::</span><span class="fu">install</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is a bit of a handful to type repeatedly, so I’ve made a wrapper function for it in my eds package: <code>eds::install_local()</code>.</p>
+</section>
+</section>
+<section id="functions-with-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="functions-with-dependencies">Functions with dependencies</h2>
+<section id="within-package-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="within-package-dependencies">Within package dependencies</h3>
+<p>The excellent thing about having a functions in a package is that they are all loaded together and don’t clutter the workspace.</p>
+<p>I created <code>pad_with_NAs()</code> as a helper function for <code>rolling_average()</code>. Whenever I loaded <code>rolling_average()</code> using <code>src()</code>, I had to remember to also source the padding function. Putting both functions in a package saves this worry. It also keeps my working environment focused on the problem I am solving (the data I want to smooth) rather than the tools I am using to solve that problem (functions and their helpers).</p>
+</section>
+<section id="between-package-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="between-package-dependencies">Between package dependencies</h3>
+<p>We’ve seen that functions within a package recognise each other and that we can make functions within our package available to users using the <code>@export</code> Roxygen tag. (It did this by adding <code>export(pad_with_NAs)</code> to the NAMESPACE file. Check if you don’t believe me.)</p>
+<p>What happens if we want to use another package’s functions in our package? We have three options, depending how many functions we want to use and how often we use them.</p>
+<ol type="1">
+<li><p>Run <code>usethis::use_package("package_name")</code> to declare a dependency in the DESCRIPTION file. Then use the <code>::</code> notation to clearly specify the namespace (package) of the function you want to use. (I’ve been doing this same thing above to make it clear to you that some function are from <code>devtools</code> and others are from <code>withr</code>.)</p></li>
+<li><p>In the Roxygen section of your function, use <code>#' @importFrom pkg fun1 fun2</code> - if you prefer this over using <code>::</code>. This can be useful if you use a couple of functions frequently to keep your code shorter and easier to read.</p></li>
+<li><p>In the Roxygen section of your function, <code>#' @import pkg</code> - this imports all functions from a package and should be used very sparingly because it makes your package bulkier and increases the chance of namespace conflicts (where there is a function of the same name in two loaded packages).</p></li>
+</ol>
+<div class="{callout-note}">
+<p>If you are submitting your package to CRAN you need to delcalre all <em>ALL</em> other packages your code depends on. This includes the packages that come as standard with R (other than <code>{base}</code>), for example <code>{stats}</code>, <code>{MASS}</code>, and <code>{graphics}</code>.</p>
+</div>
+</section>
+<section id="example-imports" class="level3">
+<h3 class="anchored" data-anchor-id="example-imports">Example imports</h3>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">"stats"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-filename="R/rnorm_rounded.R">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Simulate rounded Gaussian random variates</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n Number of observations. If length(n) &gt; 1, the length is taken to be the number required.</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param mu Vector of means.</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param sigma Vector of standard deviations.</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param digits Integer indicating the number of decimal places to be used in rounding. Negative values are used to round to a power of ten, so for example `digits = -2` rounds to the nearest hundred. (See 'Details' of `base::round()`).</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return Vector of Gaussian random variates, rounded to to specified number of decimal places.</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' rnorm_rounded(n = 10)</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>rnorm_rounded <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">sigma =</span> <span class="dv">1</span>, <span class="at">digits =</span> <span class="dv">0</span>){ </span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  raw_values <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  rounded_values <span class="ot">&lt;-</span> base<span class="sc">::</span><span class="fu">round</span>(raw_values, digits)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rounded_values)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We do not need to explicitly declare that <code>round()</code> is from base, or include in in a list of imported functions.</p>
+<div class="cell" data-filename="R/rnorm_rounded.R">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Simulate rounded Gaussian random variates</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n Number of observations. If length(n) &gt; 1, the length is taken to be the number required.</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param mu Vector of means.</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param sigma Vector of standard deviations.</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param digits Integer indicating the number of decimal places to be used in rounding. Negative values are used to round to a power of ten, so for example `digits = -2` rounds to the nearest hundred. (See 'Details' of `base::round()`).</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return Vector of Gaussian random variates, rounded to to specified number of decimal places.</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom stats rnorm</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co">#"</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' rnorm_rounded(n = 10)</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>rnorm_rounded <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">sigma =</span> <span class="dv">1</span>, <span class="at">digits =</span> <span class="dv">0</span>){ </span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>  raw_values <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>  rounded_values <span class="ot">&lt;-</span> <span class="fu">round</span>(raw_values, digits)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rounded_values)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Importing the entire stats package would be overkill when we use only one function.</p>
+<div class="cell" data-filename="R/rnorm_rounded.R">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Simulate rounded Gaussian random variates</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n Number of observations. If length(n) &gt; 1, the length is taken to be the number required.</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param mu Vector of means.</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param sigma Vector of standard deviations.</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param digits Integer indicating the number of decimal places to be used in rounding. Negative values are used to round to a power of ten, so for example `digits = -2` rounds to the nearest hundred. (See 'Details' of `base::round()`).</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return Vector of Gaussian random variates, rounded to to specified number of decimal places.</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @import stats</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">#"</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' rnorm_rounded(n = 10)</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>rnorm_rounded <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">sigma =</span> <span class="dv">1</span>, <span class="at">digits =</span> <span class="dv">0</span>){ </span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  raw_values <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  rounded_values <span class="ot">&lt;-</span> <span class="fu">round</span>(raw_values, digits)</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rounded_values)</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="an-import-exception" class="level3">
+<h3 class="anchored" data-anchor-id="an-import-exception">An import exception</h3>
+<p>An exception to the import procedure is the pipe from <code>{magrittr}</code></p>
+<p>You may want to import this to pipe within your function definitions, but having <code>magritr::'%&gt;%'</code> in your code looks a right mess and defeats the readability benefits of piping.</p>
+<p>Instead, we have to take two steps.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pipe</span>()  <span class="co"># Creates R/utils-pipe.R and adds magrittr to DESCRIPTION</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>() <span class="co"># Adds the pipe to your package's NAMESPACE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="adding-tests" class="level2">
+<h2 class="anchored" data-anchor-id="adding-tests">Adding Tests</h2>
+<p>We can also add tests to the functions within our package. These tests will stay in a new directory called <code>tests/</code> and will be run each time the package is built. This helps us to ensure that they currently work as we expect and that we do not break them when making alterations in the future.</p>
+<p>To write and keep track of these tests, we will use <code>{testthat}</code>. To get started we will use the helper function <code>usethis::use_testthat()</code> to:</p>
+<ul>
+<li>create <code>⁠tests/testthat</code></li>
+<li>create <code>tests/testthat.R</code></li>
+<li>add <code>{testthat}</code> to the Suggests field of our package.</li>
+</ul>
+<p>This needs to be done only once per package.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_testthat</span>()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ✔ Adding 'testthat' to Suggests field in DESCRIPTION</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ✔ Setting Config/testthat/edition field in DESCRIPTION to '3'</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ✔ Creating 'tests/testthat/'</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ✔ Writing 'tests/testthat.R'</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># • Call `use_test()` to initialize a basic test file and open it for editing.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Each of our files of tests will live in the tests/testthat subdirectory in a file named after the function. We can create this file of tests by running <code>usethis::use_test()</code> while we have any of our package functions open. This will either open or create the relevant text file for us to edit or populate.</p>
+<p>This needs to be done (at least) once for each function that we want to write tests for. Let’s focus on writing tests for <code>pad_with_NAs()</code>.</p>
+<p>With <code>R/pad_with_NAs.R</code> open, run <code>usethis::use_test()</code> to create and open a file to store the tests. Note that the naming convention here is different to our previous convention.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_test</span>()</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ✔ Writing 'tests/testthat/test-pad_with_NAs.R'</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># • Modify 'tests/testthat/test-pad_with_NAs.R'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will have a dummy test included by default.</p>
+<div class="cell" data-filename="tests/testthat/test-pad_with-NAs.R">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s change this to match one of our examples and add another test to match the other example. To try out these tests as you write them, you’ll want to attach <code>{testthat}</code> to the current R session and make your package function available with <code>load_all()</code>.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">load_all</span>()</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ℹ Loading eds</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you then try running the dummy test you should get something like:</p>
+<div class="cell" data-filename="tests/testthat/test-pad_with-NAs.R">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Test passed 😀</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can replace this by some simple checks that the funciton behaves as expected when given examples we wrote in the documentation and when we pad with zero NAs.</p>
+<div class="cell" data-filename="tests/testthat/test-pad_with-NAs.R">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"padding by 0 works"</span>, {</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">0</span>), <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">n_left =</span> <span class="dv">0</span>, <span class="at">n_right =</span> <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>))</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"examples work"</span>, {</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">object =</span> <span class="fu">pad_with_NAs</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n_left =</span> <span class="dv">0</span>, <span class="at">n_right =</span> <span class="dv">3</span>), </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">expected =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">object =</span> <span class="fu">pad_with_NAs</span>(<span class="fu">c</span>(<span class="st">"spider"</span>, <span class="st">"mouse"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>), <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">2</span>),</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">expected =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">"spider"</span>, <span class="st">"mouse"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="cn">NA</span>)</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can run these tests individually, as we did before, or we can run all test in the file using the <code>testthat::test_file()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>testthat<span class="sc">::</span><span class="fu">test_file</span>(<span class="st">"tests/testthat/test-pad_with_NAs.R"</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [ FAIL 1 | WARN 0 | SKIP 0 | PASS 3 ]</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ── Failure (test-pad_with_NAs.R:10): examples work ─────────────────────────────</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="co"># pad_with_NAs(...) (`actual`) not equal to </span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="co"># c(NA, "spider", "mouse", "cat", "dog", NA) (`expected`).</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># `actual[4:7]`:   "cat" "dog" NA NA</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="co"># `expected[4:6]`: "cat" "dog" NA   </span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># [ FAIL 1 | WARN 0 | SKIP 0 | PASS 3 ]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From the test output, we can see that three of the tests are passing but one is failing. Using the additional output, we can figure out that I forgot the second <code>NA</code> in the test of the string example. Let’s add that back in.</p>
+<div class="cell" data-filename="tests/testthat/test-pad_with-NAs.R">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"padding by 0 works"</span>, {</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">0</span>), <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">n_left =</span> <span class="dv">0</span>, <span class="at">n_right =</span> <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>))</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"examples work"</span>, {</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">object =</span> <span class="fu">pad_with_NAs</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n_left =</span> <span class="dv">0</span>, <span class="at">n_right =</span> <span class="dv">3</span>), </span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">expected =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">object =</span> <span class="fu">pad_with_NAs</span>(<span class="fu">c</span>(<span class="st">"spider"</span>, <span class="st">"mouse"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>), <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">2</span>),</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">expected =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">"spider"</span>, <span class="st">"mouse"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also add some input checks to the function, in case the user tries to do something unexpected. We’ll add input checks to cover two cases where the user tries to:</p>
+<ul>
+<li>use negative indexing to pad <em>inwards</em> with NAs;</li>
+<li>pad an object that is not a vector.</li>
+</ul>
+<p>To do this we will use the <code>stopifnot()</code> function. This is a useful shorthand to <code>stop()</code> function execution and return an error message based on a logical statement. For more detailed control of the error message or for less serious failings, which require only a <code>warning()</code> or a <code>message()</code>. Learn more about these in the Advanced R <a href="https://adv-r.hadley.nz/conditions.html">conditions chapter</a>.</p>
+<div class="cell" data-filename="R/pad_with_NAs.R">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Add NAs to a vector</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x Vector to which NAs will be added.</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n_left Number of NAs to add before x.</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param n_right Number of NAs to add after x.</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @return A vector containing x with the requested number of NA values before and after.</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' pad_with_NAs(1:5, n_left = 0, n_right = 3)</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">#' pad_with_NAs(c("spider", "mouse", "cat", "dog"), n_left = 1, n_right = 2)</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>pad_with_NAs <span class="ot">&lt;-</span> <span class="cf">function</span>(x, n_left, n_right){</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Input checks</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(n_left <span class="sc">&gt;=</span> <span class="dv">0</span>)</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(n_right <span class="sc">&gt;=</span> <span class="dv">0</span>)</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">class</span>(x) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"character"</span>, <span class="st">"complex"</span>, <span class="st">"integer"</span>, <span class="st">"logical"</span>, <span class="st">"numeric"</span>, <span class="st">"factor"</span>))</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Function Body</span></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fu">rep</span>(<span class="cn">NA</span>, n_left), x, <span class="fu">rep</span>(<span class="cn">NA</span>, n_right))</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then add additional tests to confirm that we get errors, warnings or messages where we expect them. As our test file grows, we might want to organise our tests according to their purpose.</p>
+<div class="cell" data-filename="tests/testthat/test-pad_with-NAs.R">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Typical Behaviour</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"examples work"</span>, {</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">object =</span> <span class="fu">pad_with_NAs</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n_left =</span> <span class="dv">0</span>, <span class="at">n_right =</span> <span class="dv">3</span>),</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">expected =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="cn">NA</span>))</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">object =</span> <span class="fu">pad_with_NAs</span>(<span class="fu">c</span>(<span class="st">"spider"</span>, <span class="st">"mouse"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>), <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">2</span>),</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">expected =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">"spider"</span>, <span class="st">"mouse"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>, <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Edge Cases</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"padding by 0 works"</span>, {</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">0</span>), <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">n_left =</span> <span class="dv">0</span>, <span class="at">n_right =</span> <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="cn">NA</span>))</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Malformed Inputs</span></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"negative padding produces error"</span>, {</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n_left =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">1</span>))</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="sc">-</span><span class="dv">1</span>))</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"giving non-vector x produces error"</span>, {</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>  matrix_input <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>  list_input <span class="ot">&lt;-</span> x <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="st">"cat"</span>)</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> matrix_input, <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">1</span>))</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">pad_with_NAs</span>(<span class="at">x =</span> list_input, <span class="at">n_left =</span> <span class="dv">1</span>, <span class="at">n_right =</span> <span class="dv">1</span>))</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can continue to run test files individually, but they will all be run when we call <code>devtools::check()</code>.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>testthat<span class="sc">::</span><span class="fu">test_file</span>(<span class="st">"tests/testthat/test-pad_with_NAs.R"</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [ FAIL 0 | WARN 0 | SKIP 0 | PASS 8 ]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="wrapping-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrapping-up">Wrapping up</h2>
+<p>To wrap up let’s run one last check and install the package.</p>
+<div class="cell" data-filename="Console">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ─ R CMD check results ─────────────────────────────────── eds 0.0.0.9000 ────</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Duration: 12.1s</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 0 errors ✔ | 0 warnings ✔ | 0 notes ✔</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Congratulations, you’ve created your first R package!</p>
+<p>You should now have a solid understanding of how to set up a new R package, add functions and documentation by using <code>{usethis}</code> and <code>{devtools}</code>. You also know how to use <code>{testthat}</code> and <code>{roxygen22}</code> to create tests to ensure your package is reliable and easy to use.</p>
+<p>You should now be able to create your own R package and might want to consider using <a href="https://r-pkgs.org/whole-game.html#use_git">git</a> to track its development and <a href="https://r-pkgs.org/whole-game.html#use_github">sharing it with others on Github</a>.</p>
+<p>Remember, creating an R package is an iterative process, and it may take several rounds of testing and editing before you are satisfied with the final product. But with a little patience and persistence, you’ll be able to create a package that you and others can use with confidence.</p>
+</section>
+<section id="follow-up-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="follow-up-tasks">Follow up Tasks</h2>
+<ul>
+<li>Add input checks and tests for my rolling_mean function.</li>
+<li>Add your own function for finding the geometric mean of a vector.</li>
+<li>Add a readme file for your package, using <code>usethis::use_readme_rmd()</code> and the relevant section of the <a href="https://r-pkgs.org/whole-game.html#use_readme_rmd">R packages book</a> for guidance.</li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty,
+  author = {Zak Varty and Zak Varty},
+  title = {Minimal-r-Package},
+  url = {https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/minimal-r-package.html},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
+Zak Varty, and Zak Varty. n.d. <span>“Minimal-r-Package.”</span> <a href="https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/minimal-r-package.html">https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/minimal-r-package.html</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022, Zak Varty.</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zakvarty">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=3H4vg4cAAAAJ&amp;hl=en&amp;oi=ao">
+      <i class="bi bi-google" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

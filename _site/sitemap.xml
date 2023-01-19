@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://www.zakvarty.com/index.html</loc>
-    <lastmod>2023-01-13T13:25:09.872Z</lastmod>
+    <lastmod>2023-01-19T15:17:26.193Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/index.html</loc>
@@ -74,6 +74,14 @@
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog.html</loc>
-    <lastmod>2023-01-13T13:25:18.222Z</lastmod>
+    <lastmod>2023-01-19T15:20:49.143Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/index.html</loc>
+    <lastmod>2023-01-19T15:20:48.496Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/minimal-r-package.html</loc>
+    <lastmod>2023-01-19T15:09:30.914Z</lastmod>
   </url>
 </urlset>
