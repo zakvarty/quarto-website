@@ -1,7 +1,7 @@
 ---
 title: "Packaging your R code"
 description: |
-    A minimal tutorial to guide you as you make your first (or hundredth) R package. 
+    A  tutorial to guide you as you make your first (or hundredth) minimal R package. 
 date: "2023-01-19"
 categories:
   - R
