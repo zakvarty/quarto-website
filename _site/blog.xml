@@ -24,7 +24,7 @@
 </div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this tutorial will guide you through the creation your first R package using the <code>{usethis}</code> and <code>{testthat}</code> packages.</p>
+<p>This tutorial will guide you through the creation your first R package using the <code>{usethis}</code> and <code>{testthat}</code> packages.</p>
 <p>We’ll walk through the steps of setting up a new R package, adding functions and documentation, and creating tests to ensure your package is reliable and easy to use. Whether you’re a seasoned R programmer or just getting started, this tutorial will provide you with the tools you need to create your own R package and share your work with others.</p>
 </section>
 <section id="what-is-a-package" class="level2">
@@ -47,7 +47,7 @@
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/images/horst-R-over-time.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/horst-R-over-time.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Artwork by Ailson Horst</figcaption><p></p>
 </figure>
 </div>
@@ -7851,7 +7851,7 @@ Zak Varty. 2022. <span>“Setting up a Quarto Blog.”</span> September 26,
 <span id="cb11-5">    <span class="fu" style="color: #4758AB;">person</span>(</span>
 <span id="cb11-6">    <span class="at" style="color: #657422;">given =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"Zak"</span>,<span class="st" style="color: #20794D;">"D"</span>),</span>
 <span id="cb11-7">    <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Varty"</span>,</span>
-<span id="cb11-8">    <span class="at" style="color: #657422;">email =</span> <span class="st" style="color: #20794D;">"z.varty@imperial.ac.uk"</span>,</span>
+<span id="cb11-8">    <span class="at" style="color: #657422;">email =</span> <span class="st" style="color: #20794D;">"my.email@imperial.ac.uk"</span>,</span>
 <span id="cb11-9">    <span class="at" style="color: #657422;">role =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"aut"</span>, <span class="st" style="color: #20794D;">"cre"</span>))</span>
 <span id="cb11-10">Description<span class="sc" style="color: #5E5E5E;">:</span> A minimal example R package created during the first lives session </span>
 <span id="cb11-11">    of Effective Data Science <span class="dv" style="color: #AD0000;">2022</span><span class="fl" style="color: #AD0000;">-23.</span> This countains a simple <span class="cf" style="color: #003B4F;">function</span> to </span>

@@ -57,7 +57,7 @@ Resources that were used to develop this tutorial, and which will support that l
 - [Writing R extensions](https://cran.r-project.org/doc/manuals/R-exts.html) CRAN
 
 
-![Artwork by Ailson Horst](images/horst-R-over-time.png) 
+![Artwork by Ailson Horst](horst-R-over-time.png) 
 
 
 ## Tools to build a minimal R package 
@@ -237,7 +237,7 @@ Authors@R:
     person(
     given = c("Zak","D"),
     family = "Varty",
-    email = "z.varty@imperial.ac.uk",
+    email = "my.email@imperial.ac.uk",
     role = c("aut", "cre"))
 Description: A minimal example R package created during the first lives session 
     of Effective Data Science 2022-23. This countains a simple function to 
