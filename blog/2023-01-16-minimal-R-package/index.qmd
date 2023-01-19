@@ -23,7 +23,7 @@ bibliography: ../library.bib
 
 ## Introduction 
 
-In this tutorial will guide you through the creation your first R package using the `{usethis}` and `{testthat}` packages. 
+This tutorial will guide you through the creation your first R package using the `{usethis}` and `{testthat}` packages. 
 
 We'll walk through the steps of setting up a new R package, adding functions and documentation, and creating tests to ensure your package is reliable and easy to use. Whether you're a seasoned R programmer or just getting started, this tutorial will provide you with the tools you need to create your own R package and share your work with others. 
 
