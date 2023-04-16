@@ -2,8 +2,10 @@
 This is where I record the books I read each year and the books I might like to read in the future. 
 
 ## Currently reading 📖
-- Data Science Ethics - David Martens
-- The Virgin Suicides - Jeffrey Eugenides
+
+- Statistical Analysis of Spatial Point Patterns - Diggle
+- Klara and The Sun - Kazuo Ishiguro
+- The Goldfinch - Donna Tartt
 
 ## TBR ⏲️
 - How to do nothing - Jenny Odell
@@ -31,6 +33,19 @@ This is where I record the books I read each year and the books I might like to 
 - The Outsiders - S. E. Hinton
 - Micro Avdentures - Alastair Humphreys
 - Decline and Fall - Evelyn Waugh
+
+## 2022 - 2023
+
+1. The Virgin Suicides - Jeffrey Eugenides
+2. Data Science Ethics - David Martens
+3. Weapons of Math Destruction - Cathy O'Neil
+4. Either/Or - Elif Batuman
+5. Goodbye, things -  Fumio Sasaki
+6. Four thousand weeks - Oliver Burkeman
+7. My Year of Rest and Relaxation - Ottessa Moshfegh
+8. Earthlings - Sayaka Murata
+9. The Elements of Academic Style - Eric Hayot
+10. ...
 
 ## 2021 - 2022
 1. The Secret History - Donna Tartt

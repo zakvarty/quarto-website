@@ -1,5 +1,11 @@
 # Research 
 
+## Research Interests 
+
+My research interests lie in the intersection between applied and methodological statistics. 
+
+I am interested in modelling the rich, complex data sets that arise from environmental and industrial processes. I have a particular interest in developing efficient inference methods for non-standard data generating mechanisms. My past projects focused on missing data, predictive analytics, extreme value analysis and point process modelling.  
+
 ## PhD research
 My research focused on developing statistical models to describe and understand earthquakes that are caused by gas extraction in the Netherlands. 
 
@@ -20,6 +26,7 @@ You can find a copy of my thesis on [github](https://github.com/zakvarty/varty_t
 
 | Date      | Event | Location |
 |-----------|:-----------------|------------------:|
+| Sep 2022  | Royal Statistical Society conference | Aberdeen, UK. |
 | Jun 2022  | M\_max workshop | Amsterdam, NL. |
 | Jan 2021  | CRG Extremes workshop | Remote. |
 | May 2020 | STOR-i time-series and spatial statistics workshop | Remote. | 
