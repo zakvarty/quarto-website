@@ -7,7 +7,15 @@ website:
   favicon: "assets/00_favicon/favicon.ico"
   twitter-card: true
 #    creator: "@zakvarty"
-  google-analytics: "G-326407710"
+  cookie-consent:
+    type: express
+    style: simple
+    palette: light
+  #prefs-text: "This site uses Google Analytics to analyse website traffic and improve your expreience of the site."
+  google-analytics:
+    tracking-id: "G-29RLTHLZB5"
+    anonymize-ip: true
+
   navbar:
     background: primary
     #foreground: "#f7f8fc"
