@@ -1,46 +1,71 @@
 /*-- scss:defaults --*/
-//@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@200;300;400;500;600;700&display=swap'&display=swap");
+// Define Fonts
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@200;300;400;500;600;700&display=swap');
+
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
 
-$body-color: #202020;
-$primary: #202020; // #302a28; // #023047;
-$link-color: #E87800;
-$body-bg: #FAFAFA;
+$title-font-family: 'Oswald', Georgia, serif !important;
+$body-font-family: 'Oxygen', Arial, sans-serif !important;
+$body-font-weight: 300;
+
+$font-size-base: 0.95rem;
 $code-block-font-size: 0.7rem;
-$code-block-bg: #EEEEEE;
-$code-block-border-color: #222222;
-$code-color: #C81E78;// #C81E78;
 $nav-link-active-weight: 600;
-$font-size-base: 0.9rem;
 
-// Colours
-// #202020; off-black
-// #FAFAFA; off-white
-// #EEEEEE; off-grey
-// #0AB3C7; teal
-// #C81E87; fuchia
-// #3D52D5; imperial blue
-// #E87800; dark orange
+// Define Colours
+$zv-black:  #202020;
+$zv-white:  #FAFAFA;
+$zv-grey:   #EEEEEE;
+$zv-teal:   #0AB3C7;
+$zv-fuchia: #C81E87;
+$zv-blue:   #3D52D5;
+$zv-orange: #E87800;
+$zv-navy:   #003E74;
 
+// SCSS variables
+$body-color: $zv-black;
+$primary: $zv-black;
+$link-color: $zv-orange;
+$body-bg: $zv-white;
+$code-block-bg: $zv-grey;
+$code-block-border-color: $zv-black;
+$code-color: $zv-fuchia;
+
+
+// Custom CSS styling
+
+// -- Text
 p{
-  font-family: Atkinson-Hyperlegible, Sans-Serif !important;
-  font-weight: 300;
-}
-
-.navbar-brand, .nav-link{
-      font-size: larger;
-      // xx-small, x-small, small, medium, large, larger, x-large, xx-large
+  font-family: $body-font-family;
+  font-weight: $body-font-weight;
 }
 
 h1, h2, .navbar {
-  font-family: 'Oswald', serif;
+  font-family: $title-font-family
 }
 
+.navbar-brand, .nav-link{
+      font-size: larger; // xx-small, x-small, small, medium, large, larger,
+                         // x-large, xx-large
+}
+
+
+// -- Navbar interactive color. (Hacky - return to later.)
+.navbar-title:hover, .nav-link:hover, .nav-link.active {color: $zv-orange !important;}
+
+#navbarCollapse:hover, #navbarCollapse:active {color: $zv-orange !important;}
+
+a.dropdown-item:hover{color: $zv-orange !important}
+.aa-SubmitIcon:hover {fill: $zv-orange !important}
+
+//.nav-menu-professional.nav-link.dropdown-toggle.show {colour: $zv-orange !important;}
+
+
+
+// -- Custom floats
 .small_right, .small_left {
   display: inline-block;
   width: 33%;
@@ -76,12 +101,3 @@ h1, h2, .navbar {
   max-width: 100%;
 }
 
-
-// Base document colors
-//$body-bg: #F4F5FF;
-//$body-color: white;
-//$primary: #4B5853;
-//$link-color: #75AADB;
-
-// Code Blocks
-//$code-block-bg-alpha: -0.8;

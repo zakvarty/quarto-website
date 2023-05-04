@@ -19,7 +19,7 @@ I am an associate fellow of the Higher Education Academy, which you can learn mo
 
 | Year    | Course                    |    Role   |
 |---------|:-----------------------------|-----------:|
-|2022-23  | Data Science                                | Lecturer  |
+|2022-23  | [Data Science](https://eds-notes.zakvarty.com/)                               | Lecturer  |
 |         | Ethics in Data Science I, II and III        | Lecturer  |
 |         | Data Ethics for Digital Chemistry           | Lecturer  |
 |         | Y1 research projects: point process models  | Lecturer  |

@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Oswald
+- Font Author: Copyright 2016 The Oswald Project Authors (https://github.com/googlefonts/OswaldFont)
+- Font Source: http://fonts.gstatic.com/s/oswald/v49/TK3_WkUHHAIjg75cFRf3bXL8LICs18NvgUFoZAaRliE.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

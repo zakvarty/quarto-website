@@ -18,7 +18,6 @@ website:
 
   navbar:
     background: primary
-    #foreground: "#f7f8fc"
     search: true
     #left:
     #  - href: index.qmd
