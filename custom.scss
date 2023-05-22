@@ -18,7 +18,8 @@ $nav-link-active-weight: 600;
 // Define Colours
 $zv-black:  #202020;
 $zv-white:  #FAFAFA;
-$zv-grey:   #EEEEEE;
+$zv-light-grey: #EEEEEE;
+$zv-mid-grey: #555555;
 $zv-teal:   #0AB3C7;
 $zv-fuchia: #C81E87;
 $zv-blue:   #3D52D5;
@@ -27,10 +28,10 @@ $zv-navy:   #003E74;
 
 // SCSS variables
 $body-color: $zv-black;
-$primary: $zv-black;
+$primary: $zv-mid-grey;
 $link-color: $zv-orange;
 $body-bg: $zv-white;
-$code-block-bg: $zv-grey;
+$code-block-bg: $zv-light-grey;
 $code-block-border-color: $zv-black;
 $code-color: $zv-fuchia;
 
