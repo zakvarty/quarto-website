@@ -1,0 +1,30 @@
+# Research Project Supervision
+
+## PhD 
+
+Conor Murphy (Oct 2021 - Present) 
+
+## MSc 
+
+- Ash Bellett - TBC. Topics in complex data generating processes.
+- Christian Liman - TBC. Topics in complex data generating processes.
+- Li Vern Teo - TBC. Topics in complex data generating processes.
+- Minjian Wu - TBC. Topics in complex data generating processes.
+
+
+- Paula Cordero Encinar - Representing ignorance about extreme earthquake magnitudes.
+- Lucy He - Including measurement error in earthquake modelling
+
+
+- Diana Xu - An Extreme Value Mixture Model for Natural Gas Prices
+- Hugo Barnett - Hypothesis testing with the self-inhibiting Hawkes Process
+- Nan Zhou - Self-driving Vehicles Road Safety Analysis By Application of Extreme Value Theory
+- Xuan Hou - An Extreme Value Analysis of Rainfall in London
+
+- Conor Murphy - Assessment of Hazard and Risk due to Induced Seismicity for Underground CO2 Storage and Oil and Gas Production Assets.
+
+
+## Undergraduate and MSci
+
+- Natalie Young - Point pattern analysis in statistical ecology
+- Peter Greenstreet - Self-exciting point process models
