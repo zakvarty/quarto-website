@@ -1,20 +1,24 @@
 ---
 title: ""
-image: assets/ZV_270_270.jpg
+image: assets/00
 ---
 
 ## Summary
 
-::: small_right
-<img style = "border-radius: 10%;" src="assets/00_avatars/ZV_270_270.jpg" alt="Headshot Zak Varty">
+::: small_left
+<img style = "border-radius: 3%;" src="assets/00_avatars/zv_c_grey-background.png" alt="Headshot Zak Varty">
 :::
+
+
+<br>
+
 Zak Varty is a statistician, data scientist and educator. 
 
 He is a Teaching Fellow in Statistics at Imperial College London where he teaches courses and supervises research projects in statistics, data science and data ethics.
 
 Outside of work, Zak enjoys spending time reading, running and baking tasty treats.
  
-
+<br> <br>
 
 ## Education
 

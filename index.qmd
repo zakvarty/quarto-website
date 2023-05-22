@@ -19,8 +19,8 @@ freeze: true
 
 :::{#hero-heading}
 
-::: medium_right
-<img style = "border-radius: 10%;" src="assets/00_avatars/ZV_270_270.jpg" alt="Headshot Zak Varty">
+::: small_right
+<img style = "border-radius: 3%;" src="assets/00_avatars/zv_c_grey-background.png" alt="Headshot Zak Varty">
 :::
 I am a __statistician__, __data scientist__  and __educator__. 
 
@@ -33,5 +33,5 @@ Previously, I completed my PhD in Statistics and Operational Research within the
 When I am not in front of my computer, I enjoy distance running `r emo::ji("running")` and I love to read `r emo::ji("book")`. Ideally, these activities are accompanied by a good cup of coffee and a large slice of cake.
 
 
-Feel free to contact me if you have any questions!
+<!-- Feel free to contact me if you have any questions! --> 
 :::
