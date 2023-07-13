@@ -1,30 +1,30 @@
 # Research Project Supervision
 
+I have had the good fortune to supervise some exceptional early career researchers in their postgraduate and undergraduate research projects. Below is a list of the students I have supervised along with their project titles.
+
 ## PhD 
 
-Conor Murphy (Oct 2021 - Present) 
-
-## MSc 
-
-- Ash Bellett - TBC. Topics in complex data generating processes.
-- Christian Liman - TBC. Topics in complex data generating processes.
-- Li Vern Teo - TBC. Topics in complex data generating processes.
-- Minjian Wu - TBC. Topics in complex data generating processes.
+- __Conor Murphy__ (Oct 2021 - Present) Assessment of hazard and risk due to induced seismicity for underground CO2 Storage and oil and gas production assets. 
 
 
-- Paula Cordero Encinar - Representing ignorance about extreme earthquake magnitudes.
-- Lucy He - Including measurement error in earthquake modelling
+## MSc and MSci
+
+- __Wanchen Yue__ - Evolution of statistical earthquake models to account for measurement errors and dependence.
+- __Ash Bellett__ - Topics in complex data generating processes (title TBC).
+- __Christian Liman__ - Topics in complex data generating processes (title TBC).
+- __Li Vern Teo__ - Topics in complex data generating processes (title TBC).
+- __Minjian Wu__ - Topics in complex data generating processes (title TBC).
+- __Paula Cordero Encinar__ - Representing ignorance about extreme earthquake magnitudes.
+- __Lucy He__ - Including measurement error in earthquake modelling.
+- __Shantianfang Gao__ - Inhomogeneous Poisson point process estimation using spline methods.
+- __Diana Xu__ - An extreme value mixture model for natural gas prices.
+- __Hugo Barnett__ - Hypothesis testing with the self-inhibiting Hawkes process.
+- __Nan Zhou__ - Self-driving vehicles road safety analysis by application of extreme value theory.
+- __Xuan Hou__ - An extreme value analysis of rainfall in London.
+- __Conor Murphy__ - Assessment of hazard and risk due to induced seismicity for underground CO2 Storage and oil and gas production assets.
 
 
-- Diana Xu - An Extreme Value Mixture Model for Natural Gas Prices
-- Hugo Barnett - Hypothesis testing with the self-inhibiting Hawkes Process
-- Nan Zhou - Self-driving Vehicles Road Safety Analysis By Application of Extreme Value Theory
-- Xuan Hou - An Extreme Value Analysis of Rainfall in London
+## Undergraduate
 
-- Conor Murphy - Assessment of Hazard and Risk due to Induced Seismicity for Underground CO2 Storage and Oil and Gas Production Assets.
-
-
-## Undergraduate and MSci
-
-- Natalie Young - Point pattern analysis in statistical ecology
-- Peter Greenstreet - Self-exciting point process models
+- __Natalie Young__ - Point pattern analysis in statistical ecology.
+- __Peter Greenstreet__ - Self-exciting point process models.
