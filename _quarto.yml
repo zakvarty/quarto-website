@@ -33,6 +33,8 @@ website:
       - text: Professional
         menu:
           - professional/research.qmd
+          - text: Supervision
+            href: professional/project-supervision.qmd
           - professional/teaching.qmd
           - professional/talks.qmd
           - professional/bookmarks.qmd
