@@ -48,7 +48,7 @@ website:
   page-footer:
     #background: light
     border: true
-    left: "Copyright 2022, Zak Varty."
+    left: "Copyright 2022-2023, Zak Varty."
     center: ""
     right:
       - icon: twitter
