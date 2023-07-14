@@ -10,7 +10,40 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.353</generator>
-<lastBuildDate>Thu, 19 Jan 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 13 Jul 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Counting the Countless</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2023-07-14-counting-the-countless/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="medium_right">
+<p><img style="border-radius: 3%;" src="https://www.zakvarty.com/blog/2023-07-14-counting-the-countless/counting-the-countless-screenshot.png" alt="Article headline from Real Life - counting the countless, why data science is a profound treat for queer people."></p>
+</div>
+<p><code>keyes2019counting</code></p>
+<p><span class="citation" data-cites="keyes2019counting">Keyes (2019)</span></p>
+<p><strong>Title:</strong> <em>Counting the Countless. {2019}.</em></p>
+<p><strong>Authors:</strong> <em>Os Keyes</em></p>
+<p><strong>Key words:</strong> <em>Data Ethics</em>, <em>Data Science</em>.</p>
+<p>In “Counting the Countless” (2019), Os Keyes argues that data science poses a significant threat to queer people because it does not allow for the autonomy, contextuality and fluidity that can both define queerness and keep queer people safe. Keyes asserts this point by describing how “data violence” is inflicted upon individuals by reducing complex human traits (like race and gender) down to something that can be counted and used for decision making; they do this through an analogy to administrative violence, which already suppresses and allows the targeting of the poor, immigrants and people of colour. The author aims to convince the reader that data science is inherently reductive, harmful and incompatible with queerness, by criticising current attempt at reform and arguing that further, better surveillance serves only to “make violent systems more efficiently violent”. Keyes is addressing queer or otherwise minoritised people who are interested or work in in data science and acknowledges that “people need to eat to survive” so each individual must “make the decision that is right for [their] ethics of care”.</p>
+
+
+
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-keyes2019counting" class="csl-entry">
+Keyes, Os. 2019. <span>“Counting the Countless.”</span> <a href="https://reallifemag.com/counting-the-countless/">https://reallifemag.com/counting-the-countless/</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div> ]]></description>
+  <category>reading summary</category>
+  <category>data ethics</category>
+  <category>data science</category>
+  <guid>https://www.zakvarty.com/blog/2023-07-14-counting-the-countless/index.html</guid>
+  <pubDate>Thu, 13 Jul 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2023-07-14-counting-the-countless/counting-the-countless-screenshot.png" medium="image" type="image/png" height="68" width="144"/>
+</item>
 <item>
   <title>Packaging your R code</title>
   <dc:creator>Zak Varty</dc:creator>

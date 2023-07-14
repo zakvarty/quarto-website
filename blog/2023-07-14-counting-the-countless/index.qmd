@@ -1,0 +1,35 @@
+---
+title: "Counting the Countless"
+description: |
+    Is data science compatible with queerness?
+date: "2023-07-14"
+categories:
+  - reading summary
+  - data ethics
+  - data science
+code-fold: true
+image: counting-the-countless-screenshot.png
+image-alt: Article headline from Real Life - counting the countless, why data science is a profound treat for queer people.
+#image-cap: Image caption
+draft: false
+freeze: true
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: false
+---
+
+::: medium_right
+<img style = "border-radius: 3%;" src="counting-the-countless-screenshot.png" alt="Article headline from Real Life - counting the countless, why data science is a profound treat for queer people.">
+:::
+
+`keyes2019counting`
+
+@keyes2019counting
+
+**Title:** *Counting the Countless. {2019}.*
+
+**Authors:** *Os Keyes*
+
+**Key words:** *Data Ethics*, *Data Science*.
+
+In "Counting the Countless" (2019), Os Keyes argues that data science poses a significant threat to queer people because it does not allow for the autonomy, contextuality and fluidity that can both define queerness and keep queer people safe. Keyes asserts this point by describing how "data violence" is inflicted upon individuals by reducing complex human traits (like race and gender) down to something that can be counted and used for decision making; they do this through an analogy to administrative violence, which already suppresses and allows the targeting of the poor, immigrants and people of colour. The author aims to convince the reader that data science is inherently reductive, harmful and incompatible with queerness, by criticising current attempt at reform and arguing that further, better surveillance serves only to "make violent systems more efficiently violent". Keyes is addressing queer or otherwise minoritised people who are interested or work in in data science and acknowledges that "people need to eat to survive" so each individual must "make the decision that is right for \[their\] ethics of care".
