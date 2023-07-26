@@ -10,7 +10,52 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.353</generator>
-<lastBuildDate>Thu, 13 Jul 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 25 Jul 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>The Mundanity of Excellence</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2023-07-26-mundanity-of-excellence/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="medium_right">
+<figure class="figure">
+<img style="border-radius: 3%;" src="https://www.zakvarty.com/blog/2023-07-26-mundanity-of-excellence/unsplash-swimming.jpg" alt="Six swimmers in a swimming pool, competing in a race. One swimmer is leading by quite some way." class="figure-img">
+<figcaption class="figure-caption">
+Image credit: <a href="https://unsplash.com/@serenarepice">Serena Repice Lentini</a>.
+</figcaption>
+</figure>
+</div>
+<p><code>chambliss1989mundanity</code></p>
+<p><span class="citation" data-cites="chambliss1989mundanity">Chambliss (1989)</span></p>
+<p><strong>Title:</strong> <em>The Mundanity of Excellence: An Ethnographic Report on Stratification and Olympic Swimmers. {1989}.</em></p>
+<p><strong>Authors:</strong> <em>Daniel F. Chambliss</em></p>
+<p><strong>Key words:</strong> <em>Workflows</em>, <em>Data Science</em>.</p>
+<p>Daniel Chambliss, a sociologist writing in the 1980s, asserts three main points in this essay:</p>
+<ul>
+<li>excellence in any field is the result of qualitative not quantitative changes in behaviour;</li>
+<li>talent is a retrospective explanation for success, used to account for unexplained variability in performance when only final outcomes are observed;</li>
+<li>achieving excellence is the combination of initial privilege and mundane actions.</li>
+</ul>
+<p>These claims are expanded upon based on a qualitative, longitudinal study of competitive swimmers at a range of “levels” from casual competitors to Olympic athletes, with the relevance of the findings to other disciplines signposted throughout the text.</p>
+<p>The text highlights more nuanced alternative to the common view that everyone should progress linearly through progressive “levels” of an activity, and do so simply by increasing the quantity of their current activities. The essay is delivered in conversational tone and is exceptionally easy to read (particularly in comparison to statistics papers); it falls into the happy middle ground between academic rigour and self-help readability.</p>
+
+
+
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-chambliss1989mundanity" class="csl-entry">
+Chambliss, Daniel F. 1989. <span>“The Mundanity of Excellence: An Ethnographic Report on Stratification and Olympic Swimmers.”</span> <em>Sociological Theory</em> 7 (1): 70–86.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div> ]]></description>
+  <category>reading summary</category>
+  <category>workflows</category>
+  <category>data science</category>
+  <guid>https://www.zakvarty.com/blog/2023-07-26-mundanity-of-excellence/index.html</guid>
+  <pubDate>Tue, 25 Jul 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2023-07-26-mundanity-of-excellence/unsplash-swimming.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Counting the Countless</title>
   <dc:creator>Zak Varty</dc:creator>
