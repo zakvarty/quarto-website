@@ -10,10 +10,10 @@ I have had the good fortune to supervise some exceptional early career researche
 ## MSc and MSci
 
 - __Wanchen Yue__ - Evolution of statistical earthquake models to account for measurement errors and dependence.
-- __Ash Bellett__ - Topics in complex data generating processes (title TBC).
-- __Christian Liman__ - Topics in complex data generating processes (title TBC).
+- __Ash Bellett__ - Contextual bandits with non-stationary Gaussian process rewards.
+- __Christian Liman__ - Multiple imputation for tree-based models.
 - __Li Vern Teo__ - Topics in complex data generating processes (title TBC).
-- __Minjian Wu__ - Topics in complex data generating processes (title TBC).
+- __Minjian Wu__ - Outlier detection and adaptation under covariate shift.
 - __Paula Cordero Encinar__ - Representing ignorance about extreme earthquake magnitudes.
 - __Lucy He__ - Including measurement error in earthquake modelling.
 - __Shantianfang Gao__ - Inhomogeneous Poisson point process estimation using spline methods.
