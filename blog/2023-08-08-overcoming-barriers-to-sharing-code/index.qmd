@@ -1,0 +1,44 @@
+---
+title: "Overcoming Barriers to Sharing Code"
+description: |
+    Talk summary from the Toronto Workshop on Reproducibility in February 2023.
+date: "2023-08-08"
+categories:
+  - reading summary
+  - data science
+  - reproducibility
+  - pedagogy
+code-fold: true
+image: reproducibility-workshop-banner.png
+image-alt: "Stylised combination of the CN tower and data icons in purple and orange"
+draft: false
+freeze: true
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: false
+---
+
+::: medium_right
+<figure>
+<img style = "border-radius: 3%;" src="reproducibility-workshop-banner.png" alt="Stylised combination of the CN tower and data icons in purple and orange" >
+<figcaption>Image credit: <a href="https://canssiontario.utoronto.ca/event/toronto-workshop-on-reproducibility-2023/">Toronto Workshop on Reproducibility</a>.</figcaption>
+</figure>
+:::
+
+`alexander2023overcoming` 
+
+[[pdf notes]](./alexander-2023-overcoming-notes-2.pdf)
+
+<!--@alexander2023overcoming-->
+
+**Title:** *Overcoming barriers to sharing code. {2023}.*
+
+**Author:** *[Monica Alexander](https://www.monicaalexander.com/)*
+
+**Key words:** *Data Science*, *Reproducibility*, *Pedagogy*.
+
+In this [conference talk](https://youtu.be/yvM2C6aZ94k), Monica Alexander discusses the structural and psychological barriers that prevent people from sharing their code. Drawing from her lived- and teaching-experience, Alexander argues that the most common reasons are low confidence and lack of exposure to open and reproducible workflows; she suggests how each of these could be built into existing teaching and research project workflows. These adaptations are important because people develop skills through imitation and repetition, overcoming their fear with each successful iteration: leading by example  and creating opportunities for success both encourage code sharing. Experienced data scientists or course leaders are the intended audience for this talk, but its candid and supportive tone mean that it accessible to learners too. 
+
+
+
+
