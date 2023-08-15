@@ -30,7 +30,7 @@ citation: false
 <figure><img src="improve-your-relationship.png" alt="Title page of Bowers and Voors (2016)." style="border-radius: 3%;"/></figure>
 :::
 
-Bowers and Voors introduce seven principles to guide the reader in their move toward reproducible research. Based around their own workflows, they justify and give examples of how each of these principles can be put into practice. Although many of these principles are widely known, it can take many iterations for an individual to implement them; the authors seek to ammeliorate the reader's journey toward current best practices. The article focuses mainly on the implementation of best practices, rather than justifying them, and so is aimed at data scientists and data analysts who are aware of the need for reproducibility but don't know where to get started.
+Bowers and Voors introduce seven principles to guide the reader in their move toward reproducible research. Based around their own workflows, they justify and give examples of how each of these principles can be put into practice. Although many of these principles are widely known, it can take many iterations for an individual to implement them; the authors seek to ameliorate the reader's journey toward current best practices. The article focuses mainly on the implementation of best practices, rather than justifying them, and so is aimed at data scientists and data analysts who are aware of the need for reproducibility but don't know where to get started.
 
 ## Notes
 
@@ -40,13 +40,13 @@ The seven principles introduced are:
 2.  No data analyst is an island for long.
 3.  The territory of data analysis requires maps.
 4.  Version control prevents clobbering, reconciles history and helps organise work.
-5.  Testing minises error.
+5.  Testing minimises error.
 6.  Work *can* be reproducible.
 7.  Research ought to be credible communication.
 
 There is a large crossover between these and (REF good enough practices in scientific communication)
 
--   "In another study, 29 research teams recently collaborated on a project focusing on applied statistics to see if the same answers would emarge from re-analyses of the same dataset [@silberzahn2015]. They don't."
+-   "In another study, 29 research teams recently collaborated on a project focusing on applied statistics to see if the same answers would emerge from re-analyses of the same dataset [@silberzahn2015]. They don't."
 
 -   Coding scales better and reproduces better than using a GUI.
 
@@ -78,6 +78,6 @@ There is a large crossover between these and (REF good enough practices in scien
 
 -   Section 6 ends with a nice quote to motivate practice:
 
-> "We all learn by doing. When we create a reproducible workflow and share reporducible materials we improve both cumulation of knowledge and our methos for doing social science."
+> "We all learn by doing. When we create a reproducible workflow and share reproducible materials we improve both cumulation of knowledge and our methods for doing social science."
 >
 > [@freese2007; @king1995replication]
