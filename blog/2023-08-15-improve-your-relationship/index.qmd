@@ -1,0 +1,83 @@
+---
+title: "How to Improve Your Relationship with Your Future Self"
+description: |
+    Reproducible workflows are not just good for science.
+date: "2023-08-15"
+categories:
+  - reading summary
+  - reproducibility
+  - workflows
+  - data science
+image: improve-your-relationship.png
+image-alt: "Title page of Bowers and Voors (2016)."
+draft: false
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: false
+---
+
+## Reading Summary
+
+`bowers2016improve` [@bowers2016improve]
+
+**Title:** *How to Improve Your Relationship with Your Future Self. {Revista de Ciencia Politica, 2016} (19 pages).*
+
+**Authors:** *Jake Bowers and Maarten Voors. (University of Illinois, Wageningen University)*
+
+**Key words:** *Reproducibility*, *Workflows*, *Data Science*.
+
+::: medium_right
+<figure><img src="improve-your-relationship.png" alt="Title page of Bowers and Voors (2016)." style="border-radius: 3%;"/></figure>
+:::
+
+Bowers and Voors introduce seven principles to guide the reader in their move toward reproducible research. Based around their own workflows, they justify and give examples of how each of these principles can be put into practice. Although many of these principles are widely known, it can take many iterations for an individual to implement them; the authors seek to ammeliorate the reader's journey toward current best practices. The article focuses mainly on the implementation of best practices, rather than justifying them, and so is aimed at data scientists and data analysts who are aware of the need for reproducibility but don't know where to get started.
+
+## Notes
+
+The seven principles introduced are:
+
+1.  Data analysis is computer programming.
+2.  No data analyst is an island for long.
+3.  The territory of data analysis requires maps.
+4.  Version control prevents clobbering, reconciles history and helps organise work.
+5.  Testing minises error.
+6.  Work *can* be reproducible.
+7.  Research ought to be credible communication.
+
+There is a large crossover between these and (REF good enough practices in scientific communication)
+
+-   "In another study, 29 research teams recently collaborated on a project focusing on applied statistics to see if the same answers would emarge from re-analyses of the same dataset [@silberzahn2015]. They don't."
+
+-   Coding scales better and reproduces better than using a GUI.
+
+-   Scripting reduces the opportunity for mistakes and makes them faster to correct.
+
+-   Use human-friendly file names and directory structures.
+
+-   Split projects into modular tasks, each gets its own script. This allows parallel working without conflicts.
+
+-   Data Science is just a series of decisions. Document the options you have and why you make the choice that you do.
+
+-   Write your code for other people, not yourself. This holds you accountable for its quality and to writing clear code.
+
+> Let us change our traditional attitude to the construction of programs: instead of imagining that our main task is to instruct a computer what to do, let us concentrate on explaining to human beings what we want a computer to do.
+>
+> @knuth1984literate
+
+-   Literate programming allows mixing of code and description, helping code and report to be seen as one thing. Misses the difficulties of scaling and automation with notebooks.
+
+-   Write portable file paths from the root directory of your project.
+
+-   Section 4 opens with an excellent and concise description of *why* we want version control.
+
+-   Learning version control takes time, energy and lots of mistakes. Make these mistakes early and on low-stakes projects - you can burn it all to the ground if you need to!
+
+-   The paper was written reproducibly: source code available at <https://github.com/jbowers/workflow>. Could be a useful example for data science course.
+
+-   A formal example of the fork and pull-request workflow is given in this [gist by Chase Pettit](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
+
+-   Section 6 ends with a nice quote to motivate practice:
+
+> "We all learn by doing. When we create a reproducible workflow and share reporducible materials we improve both cumulation of knowledge and our methos for doing social science."
+>
+> [@freese2007; @king1995replication]

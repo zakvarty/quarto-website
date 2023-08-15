@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zak Varty">
-<meta name="dcterms.date" content="2022-09-26">
-<meta name="description" content="Adding a blog within a quarto website">
+<meta name="dcterms.date" content="2023-08-15">
+<meta name="description" content="Reproducible workflows are not just good for science.">
 
-<title>Zak Varty - Setting up a quarto blog</title>
+<title>Zak Varty - How to Improve Your Relationship with Your Future Self</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,10 +106,12 @@ cookieconsent.run({
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<meta name="twitter:title" content="Zak Varty - Setting up a quarto blog">
-<meta name="twitter:description" content="Adding a blog within a quarto website">
-<meta name="twitter:image" content="https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg">
-<meta name="twitter:image:alt" content="Mechanical typewriter on white background.">
+<meta name="twitter:title" content="Zak Varty - How to Improve Your Relationship with Your Future Self">
+<meta name="twitter:description" content="Reproducible workflows are not just good for science.">
+<meta name="twitter:image" content="https://www.zakvarty.com/blog/2023-08-15-improve-your-relationship/improve-your-relationship.png">
+<meta name="twitter:image-height" content="1388">
+<meta name="twitter:image-width" content="1650">
+<meta name="twitter:image:alt" content="Title page of Bowers and Voors (2016).">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -195,9 +197,8 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-am-i-trying-to-do" id="toc-what-am-i-trying-to-do" class="nav-link active" data-scroll-target="#what-am-i-trying-to-do">What am I trying to do?</a></li>
-  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
-  <li><a href="#checking-that-references-work" id="toc-checking-that-references-work" class="nav-link" data-scroll-target="#checking-that-references-work">Checking that references work</a></li>
+  <li><a href="#reading-summary" id="toc-reading-summary" class="nav-link active" data-scroll-target="#reading-summary">Reading Summary</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
     </div>
@@ -206,16 +207,18 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Setting up a quarto blog</h1>
+<h1 class="title">How to Improve Your Relationship with Your Future Self</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">quarto</div>
-    <div class="quarto-category">tutorial</div>
+    <div class="quarto-category">reading summary</div>
+    <div class="quarto-category">reproducibility</div>
+    <div class="quarto-category">workflows</div>
+    <div class="quarto-category">data science</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    <p>Adding a blog <em>within</em> a quarto website</p>
+    <p>Reproducible workflows are not just good for science.</p>
   </div>
 </div>
 
@@ -232,7 +235,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 26, 2022</p>
+      <p class="date">August 15, 2023</p>
     </div>
   </div>
     
@@ -241,62 +244,80 @@ cookieconsent.run({
 
 </header>
 
-<section id="what-am-i-trying-to-do" class="level1">
-<h1>What am I trying to do?</h1>
+<section id="reading-summary" class="level2">
+<h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
+<p><code>bowers2016improve</code> <span class="citation" data-cites="bowers2016improve">(<a href="#ref-bowers2016improve" role="doc-biblioref">Bowers and Voors 2016</a>)</span></p>
+<p><strong>Title:</strong> <em>How to Improve Your Relationship with Your Future Self. {Revista de Ciencia Politica, 2016} (19 pages).</em></p>
+<p><strong>Authors:</strong> <em>Jake Bowers and Maarten Voors. (University of Illinois, Wageningen University)</em></p>
+<p><strong>Key words:</strong> <em>Reproducibility</em>, <em>Workflows</em>, <em>Data Science</em>.</p>
 <div class="medium_right">
-<p><img style="border-radius: 10%;" src="florian-klauer-mk7D-4UCfmg-unsplash.jpg" alt="Mechanical typewriter on white background"></p>
+<figure class="figure">
+<img src="improve-your-relationship.png" alt="Title page of Bowers and Voors (2016)." style="border-radius: 3%;" class="figure-img">
+</figure>
 </div>
-<p>My aim here is to set up a blog within an existing quarto website. I want the blog to be a sub-domain of the main site (<code>zakvarty.com/blog</code>) and for it to inherit the styling of that site.</p>
-<p>It probably would have been easier to make the blog a sub domain (<code>blog.zakvarty.com</code>) and use two separate but matching style files to make those sites look coherent. However, I wanted to make the most of the built in search features on quarto websites and am a glutton for punishment.</p>
-<p>Credit to <a href="https://ddimmery.com/">Drew Dimmery</a>, whose website I used alongside the <a href="https://quarto.org/docs/guide/">quarto docs</a> to work out how to get all these pieces working together.</p>
+<p>Bowers and Voors introduce seven principles to guide the reader in their move toward reproducible research. Based around their own workflows, they justify and give examples of how each of these principles can be put into practice. Although many of these principles are widely known, it can take many iterations for an individual to implement them; the authors seek to ammeliorate the reader’s journey toward current best practices. The article focuses mainly on the implementation of best practices, rather than justifying them, and so is aimed at data scientists and data analysts who are aware of the need for reproducibility but don’t know where to get started.</p>
 </section>
-<section id="steps" class="level1">
-<h1>Steps</h1>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p>The seven principles introduced are:</p>
 <ol type="1">
-<li>Create a subdirectory of the website called <code>blog/</code>. This has sub-folders for each blog post and will contain the files of metadata that are common to all blog posts (e.g.&nbsp;default settings for YAML headers information and a bibliography file). <!-- --></li>
-<li>Create a <a href="https://quarto.org/docs/websites/website-listings.html">listing page</a> called <code>blog.qmd</code> in the root directory. This will become the blog “landing page” and what we will point to from the website header. <!-- --></li>
-<li>Add a “Blog” header item to the <code>_quarto.yml</code> file for the website and set the <code>link:</code> for this to be <code>blog.qmd</code> <!-- --></li>
-<li>Added a simple example post to the <code>blog/</code> directory. See for example my <a href="https://www.github.com/zakvarty/quarto-website/blog/hello-world/">hello-world</a> post. <!-- --></li>
-<li>Adjust the default YAML parameters for the blog posts by making the file <code>blog/_metadata.yml</code>. These default values can be overwritten by specifying them again in the YAML header at the top of any individual post. For examples of what you might want to include see <a href="https://www.github.com/zakvarty/quarto-website/blog/_metadata.yml">my file</a> or the <a href="https://quarto.org/docs/projects/quarto-projects.html">projects section</a> of the quarto docs. <!-- --></li>
-<li>Add a simple bibliography file, called <code>library.bib</code> or similar to the <code>blog/</code> directory. Set this as the default bibliography file for each blog post by adding <code>bibliography: ../library.bib</code> to <code>blog/_metadata.yml</code>. <!-- --></li>
-<li>(optional) Create a post template so that you don’t have to memorise header fields. <!-- --></li>
-<li>Set your “Hello, World!” and template posts to have <code>draft: true</code> in their headers. This will prevent them from showing up on your website. <!-- --></li>
-<li>Set your “Hello, World!” and template posts to have <code>freeze: true</code> in their headers. This will prevent any code in them from re-running each time the website is rendered.</li>
+<li>Data analysis is computer programming.</li>
+<li>No data analyst is an island for long.</li>
+<li>The territory of data analysis requires maps.</li>
+<li>Version control prevents clobbering, reconciles history and helps organise work.</li>
+<li>Testing minises error.</li>
+<li>Work <em>can</em> be reproducible.</li>
+<li>Research ought to be credible communication.</li>
 </ol>
-<p>Freezing the code within posts will improve the build speed, as well as make the website more stable and portable. See the quarto docs on <a href="https://quarto.org/docs/websites/website-blog.html#freezing-posts">freezing posts</a> for more details. My current plan is to have this as <code>false</code> by default and change to <code>true</code> on publication of each post.</p>
-</section>
-<section id="checking-that-references-work" class="level1">
-<h1>Checking that references work</h1>
-<p>I have set up a single bibtex file in which to store references for all posts. This lives in the <code>blog/</code> directory and is set as the default <code>bibliography</code> parameter for each post in the file <code>blog/_metadata.yml</code>.</p>
-<p>This is an in-line reference to <span class="citation" data-cites="wan2020network">Wan et al. (<a href="#ref-wan2020network" role="doc-biblioref">2020</a>)</span> written as <code>@citationkey</code>. Parenthetical references, such as <span class="citation" data-cites="wan2020network">(<a href="#ref-wan2020network" role="doc-biblioref">Wan et al. 2020</a>)</span>, are written using <code>[@citationkey]</code>. These can be strung together by separating each citation key with a semicolon, for example <span class="citation" data-cites="wan2020network wan2020network">(<a href="#ref-wan2020network" role="doc-biblioref">Wan et al. 2020</a>, <a href="#ref-wan2020network" role="doc-biblioref">2020</a>)</span>.</p>
-<p>To let people know the license your work is under and how they should cite your blog posts you can use the <code>appendix-style</code> argument. This can be added to the YAML header of individual blog posts or you can specify a default value in <code>blog/_metadata.yml</code>. There are three options for this parameter:</p>
+<p>There is a large crossover between these and (REF good enough practices in scientific communication)</p>
 <ul>
-<li><code>default</code> does some nice formatting and makes the text a bit smaller than the rest of the article;</li>
-<li><code>plain</code> matches the style of the rest of your post;</li>
-<li><code>none</code> does not add any citation details to the end of your post.</li>
+<li><p>“In another study, 29 research teams recently collaborated on a project focusing on applied statistics to see if the same answers would emarge from re-analyses of the same dataset <span class="citation" data-cites="silberzahn2015">(<a href="#ref-silberzahn2015" role="doc-biblioref">Silberzahn and Uhlmann 2015</a>)</span>. They don’t.”</p></li>
+<li><p>Coding scales better and reproduces better than using a GUI.</p></li>
+<li><p>Scripting reduces the opportunity for mistakes and makes them faster to correct.</p></li>
+<li><p>Use human-friendly file names and directory structures.</p></li>
+<li><p>Split projects into modular tasks, each gets its own script. This allows parallel working without conflicts.</p></li>
+<li><p>Data Science is just a series of decisions. Document the options you have and why you make the choice that you do.</p></li>
+<li><p>Write your code for other people, not yourself. This holds you accountable for its quality and to writing clear code.</p></li>
 </ul>
-<p>I’m currently using some pretty hacky CSS to style this website so am limited to the latter two options for now. In the process of writing this article I stumbled across some neat SCSS that I hope will fix this issue that I have made for myself! [Update: I changed to SCSS and this is now fixed!]</p>
-<p><em>Note: When adding references to your posts, make sure that the <code>site-URL</code> field in your website’s <code>quarto.yml</code> does not have a trailing slash - this will be copied into the reference and break the links.</em></p>
+<blockquote class="blockquote">
+<p>Let us change our traditional attitude to the construction of programs: instead of imagining that our main task is to instruct a computer what to do, let us concentrate on explaining to human beings what we want a computer to do.</p>
+<p><span class="citation" data-cites="knuth1984literate">Knuth (<a href="#ref-knuth1984literate" role="doc-biblioref">1984</a>)</span></p>
+</blockquote>
+<ul>
+<li><p>Literate programming allows mixing of code and description, helping code and report to be seen as one thing. Misses the difficulties of scaling and automation with notebooks.</p></li>
+<li><p>Write portable file paths from the root directory of your project.</p></li>
+<li><p>Section 4 opens with an excellent and concise description of <em>why</em> we want version control.</p></li>
+<li><p>Learning version control takes time, energy and lots of mistakes. Make these mistakes early and on low-stakes projects - you can burn it all to the ground if you need to!</p></li>
+<li><p>The paper was written reproducibly: source code available at <a href="https://github.com/jbowers/workflow" class="uri">https://github.com/jbowers/workflow</a>. Could be a useful example for data science course.</p></li>
+<li><p>A formal example of the fork and pull-request workflow is given in this <a href="https://gist.github.com/Chaser324/ce0505fbed06b947d962">gist by Chase Pettit</a></p></li>
+<li><p>Section 6 ends with a nice quote to motivate practice:</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>“We all learn by doing. When we create a reproducible workflow and share reporducible materials we improve both cumulation of knowledge and our methos for doing social science.”</p>
+<p><span class="citation" data-cites="freese2007 king1995replication">(<a href="#ref-freese2007" role="doc-biblioref">Freese 2007</a>; <a href="#ref-king1995replication" role="doc-biblioref">King 1995</a>)</span></p>
+</blockquote>
 
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-wan2020network" class="csl-entry" role="doc-biblioentry">
-Wan, Phyllis, Tiandong Wang, Richard A Davis, and Sidney I Resnick. 2020. <span>“Are Extreme Value Estimation Methods Useful for Network Data?”</span> <em>Extremes</em> 23 (1): 171–95.
+<div id="quarto-appendix"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-bowers2016improve" class="csl-entry" role="doc-biblioentry">
+Bowers, Jake, and Maarten Voors. 2016. <span>“How to Improve Your Relationship with Your Future Self.”</span> <em>Revista de Ciencia Política</em> 36 (3): 829–48. <a href="https://doi.org/10.4067/S0718-090X2016000300011">https://doi.org/10.4067/S0718-090X2016000300011</a>.
 </div>
-</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
-  author = {Zak Varty},
-  title = {Setting up a Quarto Blog},
-  date = {2022-09-26},
-  url = {https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2022" class="csl-entry quarto-appendix-citeas" role="doc-biblioentry">
-Zak Varty. 2022. <span>“Setting up a Quarto Blog.”</span> September 26,
-2022. <a href="https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog">https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog</a>.
-</div></div></section></div></main> <!-- /main -->
+<div id="ref-freese2007" class="csl-entry" role="doc-biblioentry">
+Freese, Jeremy. 2007. <span>“Replication Standards for Quantitative Social Science: Why Not Sociology?”</span> <em>Sociological Methods &amp; Research</em> 36 (2): 153–72. <a href="https://doi.org/10.1177/0049124107306659">https://doi.org/10.1177/0049124107306659</a>.
+</div>
+<div id="ref-king1995replication" class="csl-entry" role="doc-biblioentry">
+King, Gary. 1995. <span>“Replication, Replication.”</span> <em>PS: Political Science &amp; Politics</em> 28 (3): 444452.
+</div>
+<div id="ref-knuth1984literate" class="csl-entry" role="doc-biblioentry">
+Knuth, D. E. 1984. <span>“Literate Programming.”</span> <em>The Computer Journal</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div>
+<div id="ref-silberzahn2015" class="csl-entry" role="doc-biblioentry">
+Silberzahn, Raphael, and Eric L. Uhlmann. 2015. <span>“Crowdsourced Research: Many Hands Make Tight Work.”</span> <em>Nature</em> 526 (7572): 189–91. <a href="https://doi.org/10.1038/526189a">https://doi.org/10.1038/526189a</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
