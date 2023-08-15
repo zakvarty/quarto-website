@@ -44,7 +44,7 @@ The seven principles introduced are:
 6.  Work *can* be reproducible.
 7.  Research ought to be credible communication.
 
-There is a large crossover between these and (REF good enough practices in scientific communication)
+There is a large crossover between these and @wilson2017good.
 
 -   "In another study, 29 research teams recently collaborated on a project focusing on applied statistics to see if the same answers would emerge from re-analyses of the same dataset [@silberzahn2015]. They don't."
 
