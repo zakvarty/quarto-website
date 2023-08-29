@@ -4,10 +4,10 @@ description: |
     Reading Summary of Wilson et al. (2017).
 date: "2022-10-19"
 categories:
+  - reading summary
+  - reproduciblity
   - academic skills
   - computing
-  - reproducible research
-  - reading summary
 code-fold: false
 image: gepisc-image.png
 image-alt: "Header section of a PLOS Comptational Biology perspective paper titled 'Good Enough Practices in Scientific Computing'."
