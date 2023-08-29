@@ -10,7 +10,75 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.0.38</generator>
-<lastBuildDate>Mon, 14 Aug 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 16 Aug 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Why is My Classifier Discrimanatory?</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="reading-summary" class="level2">
+<h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
+<p><code>chen2018why</code> <span class="citation" data-cites="chen2018why">(Chen, Johansson, and Sontag 2018)</span></p>
+<p><strong>Title:</strong> <em>Why is My Classifier Discriminatory? {ArXiV preprint, 2018} (9 pages).</em></p>
+<p><strong>Authors:</strong> <em>Irene E. Chen, Fredrik D. Johansson and David Sontag. (Massachusetts Institute of Technology)</em></p>
+<p><strong>Key words:</strong> <em>Fairness</em>, <em>Data Ethics</em>, <em>Data Science</em>.</p>
+<div class="medium_right">
+<figure class="figure">
+<img src="https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png" alt="Plot from Chen, Johansson and Sontag (2018). The expected loss for each subgroup of a protected characteristic is shown as power-law function of their sample size. This can be used to inform which subgroups to collect further samples from, and how many further samples to collect." style="border-radius: 3%;" class="figure-img">
+</figure>
+</div>
+<p>Fairness is often viewed as a secondary objective in machine learning, which must be bought at some cost to a model’s predictive performance. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (2018)</span> argue that when machine learning is applied in areas such as medicine, finance or criminal justice, any misclassification will have serious and lasting consequences for the individuals involved and therefore any such compromises are not acceptable.</p>
+<p>The authors argue that we should instead try to understand the source of the unfairness within a classifier and how this might be addressed by targeted collection of additional data. The authors decompose common loss functions into three components (which they call bias, variance and noise) and use these to advise on the collection of additional data.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<section id="identifying-unfairness-through-loss-decomposition" class="level3">
+<h3 class="anchored" data-anchor-id="identifying-unfairness-through-loss-decomposition">Identifying unfairness through loss-decomposition</h3>
+<p>If we use predictors <img src="https://latex.codecogs.com/png.latex?X"> to model an outcome <img src="https://latex.codecogs.com/png.latex?y">, resulting in predictions <img src="https://latex.codecogs.com/png.latex?%5Chat%20y">, then the loss function may be considered as the sum of three terms:</p>
+<ul>
+<li><strong>Bias</strong> is the loss contribution caused by using a particular model and a finite dataset to approximate the joint distribution <img src="https://latex.codecogs.com/png.latex?%5Cpi(X,y)"> as <img src="https://latex.codecogs.com/png.latex?%5Chat%5Cpi(X,y)">.</li>
+<li><strong>Variance</strong> is the expected loss contribution caused by <em>sampling variability in model predictions</em> under a particular model (<img src="https://latex.codecogs.com/png.latex?L(X,y)"> vs <img src="https://latex.codecogs.com/png.latex?L(X%5E%5Cprime,y%5E%5Cprime)">).</li>
+<li><strong>Noise</strong> is then remaining loss that is independent of the model used, caused by <em>variability in the response that cannot be attributed to any of the measured predictors</em>.</li>
+</ul>
+<p>Such a loss-decomposition for each level of a protected attribute, across which we want to ensure fairness.</p>
+<ul>
+<li><strong>Differences in bias</strong> indicate that the model is insufficiently flexible to approximate <img src="https://latex.codecogs.com/png.latex?%5Cpi(X,y%7CA=a_i)"> for all levels of the protected attribute. Differences in bias between protected subgroups could be addressed by considering a more flexible model, or separate models for each subgroup.</li>
+<li><strong>Differences in variance</strong> might be caused by differences in sample size (e.g.&nbsp;<img src="https://latex.codecogs.com/png.latex?n_%7Ba_i%7D%20%3E%3E%20n_%7Ba_j%7D">) or differences in predictor variability between groups (e.g.&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Ctext%7BVar%7D(X%7CA=a_i)%20%3E%3E%20%5Ctext%7BVar%7D(X%7CA=a_j)">). Differences in variance might be addressed by targeted collection of further observations from under-represented or highly variable subgroups (i.e., adding rows to the data).</li>
+<li><strong>Differences in the noise term</strong> suggest that, for some level(s) of the protected attribute, there is additional variability in <img src="https://latex.codecogs.com/png.latex?y"> that cannot be described by the measured set of predictors. Differences in the noise contribution are unrelated to the model choice or dataset size and “may only be reduced by measuring additional variables” (i.e., adding columns to the data).</li>
+</ul>
+</section>
+<section id="the-cliche-of-more-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-cliche-of-more-data">The cliche of more data</h3>
+<p>Improving model performance by collecting more data is far from an original suggestion. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (2018)</span> provide novelty by suggesting <em>what</em> data and <em>how much</em> of it to collect, in order to improve the fairness of the resulting classifier.</p>
+<ul>
+<li><p>When there are large difference in the variance term between subgroups, we must decide how many additional observations to make in each protected subgroup. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (2018)</span> model the expected prediction loss within each subgroup (<img src="https://latex.codecogs.com/png.latex?a%20%5Cin%20A">) as a function of sample size using a shifted inverse power-law distribution:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Cbar%20L_%7B%5Ctext%7Bpred%7D%7D(n_a)%20=%20%5Calpha_a%20n_a%5E%7B-%5Cbeta_a%7D%20+%20%5Cdelta_a,"></p>
+<p>where <img src="https://latex.codecogs.com/png.latex?(%5Calpha_a,%20%5Cbeta_a,%20%5Cdelta_a)"> are subgroup-specific parameters that are to be estimated. The fitted power-law functions are extrapolated in <img src="https://latex.codecogs.com/png.latex?n_a"> to identify the subgroups in which further data collection would be most impactful.</p></li>
+<li><p>When there are large differences in the error term between subgroups, we aim to collect additional predictors to describe variation in the response that is unexplained by the current predictors. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (2018)</span> suggest a method of identifying additional predictors. The data are clustered based on the current predictor set and discrimination is quantified within each cluster. Expert opinion can then be elicited to suggest additional predictors could further distinguish between outcomes for members of these clusters.</p></li>
+</ul>
+<p>The authors go on to demonstrate these methods on three example datasets: predicting income using demographic information, predicting mortality using the text in clinical notes, and predicting book ratings using review text.</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-chen2018why" class="csl-entry">
+Chen, Irene, Fredrik D Johansson, and David Sontag. 2018. <span>“Why Is My Classifier Discriminatory?”</span> In. Vol. 31. Curran Associates, Inc. <a href="https://proceedings.neurips.cc/paper/2018/hash/1f1baa5b8edac74eb4eaa329f14a0361-Abstract.html">https://proceedings.neurips.cc/paper/2018/hash/1f1baa5b8edac74eb4eaa329f14a0361-Abstract.html</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div> ]]></description>
+  <category>reading summary</category>
+  <category>fairness</category>
+  <category>data ethics</category>
+  <category>data science</category>
+  <guid>https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html</guid>
+  <pubDate>Wed, 16 Aug 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png" medium="image" type="image/png" height="105" width="144"/>
+</item>
 <item>
   <title>How to Improve Your Relationship with Your Future Self</title>
   <dc:creator>Zak Varty</dc:creator>

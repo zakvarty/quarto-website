@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zak Varty">
+<meta name="dcterms.date" content="2023-08-17">
+<meta name="description" content="A fresh view on understanding and addressing unfairness in classification (and regression) models.">
+
+<title>Zak Varty - Why is My Classifier Discrimanatory?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/00_favicon/favicon.ico" rel="icon">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-29RLTHLZB5"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-29RLTHLZB5', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Zak Varty - Why is My Classifier Discrimanatory?">
+<meta name="twitter:description" content="A fresh view on understanding and addressing unfairness in classification (and regression) models.">
+<meta name="twitter:image" content="https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png">
+<meta name="twitter:image-height" content="844">
+<meta name="twitter:image-width" content="1162">
+<meta name="twitter:image:alt" content="Plot from Chen, Johansson and Sontag (2018). The expected loss for each subgroup of a protected characteristic is shown as power-law function of their sample size. This can be used to inform which subgroups to collect further samples from, and how many further samples to collect.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Zak Varty</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-professional" role="button" data-bs-toggle="dropdown" aria-expanded="false">Professional</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-professional">    
+        <li>
+    <a class="dropdown-item" href="../../professional/research.html">
+ <span class="dropdown-text">Research</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/project-supervision.html">
+ <span class="dropdown-text">Supervision</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/teaching.html">
+ <span class="dropdown-text">Teaching</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/talks.html">
+ <span class="dropdown-text">Talks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../professional/bookmarks.html">
+ <span class="dropdown-text">Bookmarks</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-personal" role="button" data-bs-toggle="dropdown" aria-expanded="false">Personal</a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-personal">    
+        <li>
+    <a class="dropdown-item" href="../../personal/reading-record.html">
+ <span class="dropdown-text">Reading record 📚</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zakvarty"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reading-summary" id="toc-reading-summary" class="nav-link active" data-scroll-target="#reading-summary">Reading Summary</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a>
+  <ul class="collapse">
+  <li><a href="#identifying-unfairness-through-loss-decomposition" id="toc-identifying-unfairness-through-loss-decomposition" class="nav-link" data-scroll-target="#identifying-unfairness-through-loss-decomposition">Identifying unfairness through loss-decomposition</a></li>
+  <li><a href="#the-cliche-of-more-data" id="toc-the-cliche-of-more-data" class="nav-link" data-scroll-target="#the-cliche-of-more-data">The cliche of more data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why is My Classifier Discrimanatory?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">reading summary</div>
+    <div class="quarto-category">fairness</div>
+    <div class="quarto-category">data ethics</div>
+    <div class="quarto-category">data science</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>A fresh view on understanding and addressing unfairness in classification (and regression) models.</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zak Varty </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 17, 2023</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<section id="reading-summary" class="level2">
+<h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
+<p><code>chen2018why</code> <span class="citation" data-cites="chen2018why">(<a href="#ref-chen2018why" role="doc-biblioref">Chen, Johansson, and Sontag 2018</a>)</span></p>
+<p><strong>Title:</strong> <em>Why is My Classifier Discriminatory? {ArXiV preprint, 2018} (9 pages).</em></p>
+<p><strong>Authors:</strong> <em>Irene E. Chen, Fredrik D. Johansson and David Sontag. (Massachusetts Institute of Technology)</em></p>
+<p><strong>Key words:</strong> <em>Fairness</em>, <em>Data Ethics</em>, <em>Data Science</em>.</p>
+<div class="medium_right">
+<figure class="figure">
+<img src="chen-2018-loss-vs-training-size.png" alt="Plot from Chen, Johansson and Sontag (2018). The expected loss for each subgroup of a protected characteristic is shown as power-law function of their sample size. This can be used to inform which subgroups to collect further samples from, and how many further samples to collect." style="border-radius: 3%;" class="figure-img">
+</figure>
+</div>
+<p>Fairness is often viewed as a secondary objective in machine learning, which must be bought at some cost to a model’s predictive performance. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> argue that when machine learning is applied in areas such as medicine, finance or criminal justice, any misclassification will have serious and lasting consequences for the individuals involved and therefore any such compromises are not acceptable.</p>
+<p>The authors argue that we should instead try to understand the source of the unfairness within a classifier and how this might be addressed by targeted collection of additional data. The authors decompose common loss functions into three components (which they call bias, variance and noise) and use these to advise on the collection of additional data.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<section id="identifying-unfairness-through-loss-decomposition" class="level3">
+<h3 class="anchored" data-anchor-id="identifying-unfairness-through-loss-decomposition">Identifying unfairness through loss-decomposition</h3>
+<p>If we use predictors <span class="math inline">\(X\)</span> to model an outcome <span class="math inline">\(y\)</span>, resulting in predictions <span class="math inline">\(\hat y\)</span>, then the loss function may be considered as the sum of three terms:</p>
+<ul>
+<li><strong>Bias</strong> is the loss contribution caused by using a particular model and a finite dataset to approximate the joint distribution <span class="math inline">\(\pi(X,y)\)</span> as <span class="math inline">\(\hat\pi(X,y)\)</span>.</li>
+<li><strong>Variance</strong> is the expected loss contribution caused by <em>sampling variability in model predictions</em> under a particular model (<span class="math inline">\(L(X,y)\)</span> vs <span class="math inline">\(L(X^\prime,y^\prime)\)</span>).</li>
+<li><strong>Noise</strong> is then remaining loss that is independent of the model used, caused by <em>variability in the response that cannot be attributed to any of the measured predictors</em>.</li>
+</ul>
+<p>Such a loss-decomposition for each level of a protected attribute, across which we want to ensure fairness.</p>
+<ul>
+<li><strong>Differences in bias</strong> indicate that the model is insufficiently flexible to approximate <span class="math inline">\(\pi(X,y|A=a_i)\)</span> for all levels of the protected attribute. Differences in bias between protected subgroups could be addressed by considering a more flexible model, or separate models for each subgroup.</li>
+<li><strong>Differences in variance</strong> might be caused by differences in sample size (e.g.&nbsp;<span class="math inline">\(n_{a_i} &gt;&gt; n_{a_j}\)</span>) or differences in predictor variability between groups (e.g.&nbsp;<span class="math inline">\(\text{Var}(X|A=a_i) &gt;&gt; \text{Var}(X|A=a_j)\)</span>). Differences in variance might be addressed by targeted collection of further observations from under-represented or highly variable subgroups (i.e., adding rows to the data).</li>
+<li><strong>Differences in the noise term</strong> suggest that, for some level(s) of the protected attribute, there is additional variability in <span class="math inline">\(y\)</span> that cannot be described by the measured set of predictors. Differences in the noise contribution are unrelated to the model choice or dataset size and “may only be reduced by measuring additional variables” (i.e., adding columns to the data).</li>
+</ul>
+</section>
+<section id="the-cliche-of-more-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-cliche-of-more-data">The cliche of more data</h3>
+<p>Improving model performance by collecting more data is far from an original suggestion. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> provide novelty by suggesting <em>what</em> data and <em>how much</em> of it to collect, in order to improve the fairness of the resulting classifier.</p>
+<ul>
+<li><p>When there are large difference in the variance term between subgroups, we must decide how many additional observations to make in each protected subgroup. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> model the expected prediction loss within each subgroup (<span class="math inline">\(a \in A\)</span>) as a function of sample size using a shifted inverse power-law distribution:</p>
+<p><span class="math display">\[ \bar L_{\text{pred}}(n_a) = \alpha_a n_a^{-\beta_a} + \delta_a,\]</span></p>
+<p>where <span class="math inline">\((\alpha_a, \beta_a, \delta_a)\)</span> are subgroup-specific parameters that are to be estimated. The fitted power-law functions are extrapolated in <span class="math inline">\(n_a\)</span> to identify the subgroups in which further data collection would be most impactful.</p></li>
+<li><p>When there are large differences in the error term between subgroups, we aim to collect additional predictors to describe variation in the response that is unexplained by the current predictors. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> suggest a method of identifying additional predictors. The data are clustered based on the current predictor set and discrimination is quantified within each cluster. Expert opinion can then be elicited to suggest additional predictors could further distinguish between outcomes for members of these clusters.</p></li>
+</ul>
+<p>The authors go on to demonstrate these methods on three example datasets: predicting income using demographic information, predicting mortality using the text in clinical notes, and predicting book ratings using review text.</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-chen2018why" class="csl-entry" role="doc-biblioentry">
+Chen, Irene, Fredrik D Johansson, and David Sontag. 2018. <span>“Why Is My Classifier Discriminatory?”</span> In. Vol. 31. Curran Associates, Inc. <a href="https://proceedings.neurips.cc/paper/2018/hash/1f1baa5b8edac74eb4eaa329f14a0361-Abstract.html">https://proceedings.neurips.cc/paper/2018/hash/1f1baa5b8edac74eb4eaa329f14a0361-Abstract.html</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022-2023, Zak Varty.</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zakvarty">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=3H4vg4cAAAAJ&amp;hl=en&amp;oi=ao">
+      <i class="bi bi-google" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
