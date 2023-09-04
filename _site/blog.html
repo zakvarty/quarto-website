@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
 </style>
 
 
@@ -55,7 +60,8 @@ ul.task-list{list-style: none;}
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -113,10 +119,14 @@ cookieconsent.run({
 </script> 
   
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="alternate" type="application/rss+xml" title="Zak Varty" href="blog.xml"><meta name="twitter:title" content="Zak Varty - Blog">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png">
+<meta name="twitter:image-height" content="844">
+<meta name="twitter:image-width" content="1162">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -125,69 +135,80 @@ cookieconsent.run({
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Zak Varty</span>
-  </a>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Home</a>
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html">About</a>
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page">Blog</a>
+    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-professional" role="button" data-bs-toggle="dropdown" aria-expanded="false">Professional</a>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-professional" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Professional</span>
+    </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-professional">    
         <li>
-    <a class="dropdown-item" href="./professional/research.html">
+    <a class="dropdown-item" href="./professional/research.html" rel="" target="">
  <span class="dropdown-text">Research</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./professional/project-supervision.html">
+    <a class="dropdown-item" href="./professional/project-supervision.html" rel="" target="">
  <span class="dropdown-text">Supervision</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./professional/teaching.html">
+    <a class="dropdown-item" href="./professional/teaching.html" rel="" target="">
  <span class="dropdown-text">Teaching</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./professional/talks.html">
+    <a class="dropdown-item" href="./professional/talks.html" rel="" target="">
  <span class="dropdown-text">Talks</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./professional/bookmarks.html">
+    <a class="dropdown-item" href="./professional/bookmarks.html" rel="" target="">
  <span class="dropdown-text">Bookmarks</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-personal" role="button" data-bs-toggle="dropdown" aria-expanded="false">Personal</a>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-personal" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Personal</span>
+    </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-personal">    
         <li>
-    <a class="dropdown-item" href="./personal/reading-record.html">
+    <a class="dropdown-item" href="./personal/reading-record.html" rel="" target="">
  <span class="dropdown-text">Reading record 📚</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.twitter.com/zakvarty"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/zakvarty"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/zakvarty" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -212,6 +233,7 @@ cookieconsent.run({
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -224,9 +246,9 @@ cookieconsent.run({
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="reading summary,fairness,data ethics,data science" data-listing-date-sort="1692226800000" data-listing-file-modified-sort="1693325780193" data-listing-reading-time-sort="3.63">
+<div class="quarto-post image-right" data-index="0" data-categories="reading summary,fairness,data ethics,data science" data-listing-date-sort="1692226800000" data-listing-file-modified-sort="1693325780193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
-<p><a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html"> <img src="./blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png" class="thumnail-image" alt="Plot from Chen, Johansson and Sontag (2018). The expected loss for each subgroup of a protected characteristic is shown as power-law function of their sample size. This can be used to inform which subgroups to collect further samples from, and how many further samples to collect."> </a></p>
+<p><a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html"> <img src="./blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png" class="thumbnail-image" alt="Plot from Chen, Johansson and Sontag (2018). The expected loss for each subgroup of a protected characteristic is shown as power-law function of their sample size. This can be used to inform which subgroups to collect further samples from, and how many further samples to collect."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html">
@@ -268,9 +290,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="reading summary,reproducibility,workflows,data science" data-listing-date-sort="1692054000000" data-listing-file-modified-sort="1692113318636" data-listing-reading-time-sort="2.81">
+<div class="quarto-post image-right" data-index="1" data-categories="reading summary,reproducibility,workflows,data science" data-listing-date-sort="1692054000000" data-listing-file-modified-sort="1692113318636" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
 <div class="thumbnail">
-<p><a href="./blog/2023-08-15-improve-your-relationship/index.html"> <img src="./blog/2023-08-15-improve-your-relationship/improve-your-relationship.png" class="thumnail-image" alt="Title page of Bowers and Voors (2016)."> </a></p>
+<p><a href="./blog/2023-08-15-improve-your-relationship/index.html"> <img src="./blog/2023-08-15-improve-your-relationship/improve-your-relationship.png" class="thumbnail-image" alt="Title page of Bowers and Voors (2016)."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2023-08-15-improve-your-relationship/index.html">
@@ -312,9 +334,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="reading summary,data science,reproducibility,pedagogy" data-listing-date-sort="1691449200000" data-listing-file-modified-sort="1691600132628" data-listing-reading-time-sort="0.8">
+<div class="quarto-post image-right" data-index="2" data-categories="reading summary,data science,reproducibility,pedagogy" data-listing-date-sort="1691449200000" data-listing-file-modified-sort="1691600132628" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html"> <img src="./blog/2023-08-08-overcoming-barriers-to-sharing-code/reproducibility-workshop-banner.png" class="thumnail-image" alt="Stylised combination of the CN tower and data icons in purple and orange"> </a></p>
+<p><a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html"> <img src="./blog/2023-08-08-overcoming-barriers-to-sharing-code/reproducibility-workshop-banner.png" class="thumbnail-image" alt="Stylised combination of the CN tower and data icons in purple and orange"> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html">
@@ -356,9 +378,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="reading summary,workflows,data science" data-listing-date-sort="1690326000000" data-listing-file-modified-sort="1690376462416" data-listing-reading-time-sort="1.065">
+<div class="quarto-post image-right" data-index="3" data-categories="reading summary,workflows,data science" data-listing-date-sort="1690326000000" data-listing-file-modified-sort="1690376462416" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./blog/2023-07-26-mundanity-of-excellence/index.html"> <img src="./blog/2023-07-26-mundanity-of-excellence/unsplash-swimming.jpg" class="thumnail-image" alt="Six swimmers in a swimming pool, competing in a race. One swimmer is leading by quite some way."> </a></p>
+<p><a href="./blog/2023-07-26-mundanity-of-excellence/index.html"> <img src="./blog/2023-07-26-mundanity-of-excellence/unsplash-swimming.jpg" class="thumbnail-image" alt="Six swimmers in a swimming pool, competing in a race. One swimmer is leading by quite some way."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2023-07-26-mundanity-of-excellence/index.html">
@@ -397,9 +419,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="reading summary,data ethics,data science" data-listing-date-sort="1689289200000" data-listing-file-modified-sort="1689332051323" data-listing-reading-time-sort="1.065">
+<div class="quarto-post image-right" data-index="4" data-categories="reading summary,data ethics,data science" data-listing-date-sort="1689289200000" data-listing-file-modified-sort="1689332051323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./blog/2023-07-14-counting-the-countless/index.html"> <img src="./blog/2023-07-14-counting-the-countless/counting-the-countless-screenshot.png" class="thumnail-image" alt="Article headline from Real Life - counting the countless, why data science is a profound treat for queer people."> </a></p>
+<p><a href="./blog/2023-07-14-counting-the-countless/index.html"> <img src="./blog/2023-07-14-counting-the-countless/counting-the-countless-screenshot.png" class="thumbnail-image" alt="Article headline from Real Life - counting the countless, why data science is a profound treat for queer people."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2023-07-14-counting-the-countless/index.html">
@@ -438,9 +460,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="R,data science,tutorial" data-listing-date-sort="1674086400000" data-listing-file-modified-sort="1674144321842" data-listing-reading-time-sort="22.095">
+<div class="quarto-post image-right" data-index="5" data-categories="R,data science,tutorial" data-listing-date-sort="1674086400000" data-listing-file-modified-sort="1674144321842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23">
 <div class="thumbnail">
-<p><a href="./blog/2023-01-16-minimal-R-package/index.html"> <img src="./blog/2023-01-16-minimal-R-package/horst-amazing-function.png" class="thumnail-image" alt="Drawing of two people, the first proundly displays a screen full of code while saying  “Behold an Amazing Function!”. The second person looks a bit scared and replies  “I would rather not behold...”."> </a></p>
+<p><a href="./blog/2023-01-16-minimal-R-package/index.html"> <img src="./blog/2023-01-16-minimal-R-package/horst-amazing-function.png" class="thumbnail-image" alt="Drawing of two people, the first proundly displays a screen full of code while saying  “Behold an Amazing Function!”. The second person looks a bit scared and replies  “I would rather not behold...”."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2023-01-16-minimal-R-package/index.html">
@@ -479,9 +501,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="data science,data wrangling,tutorial" data-listing-date-sort="1672963200000" data-listing-file-modified-sort="1673284155988" data-listing-reading-time-sort="17.285">
+<div class="quarto-post image-right" data-index="6" data-categories="data science,data wrangling,tutorial" data-listing-date-sort="1672963200000" data-listing-file-modified-sort="1673284155988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18">
 <div class="thumbnail">
-<p><a href="./blog/2023-01-06-data-wrangling/index.html"> <img src="./blog/2023-01-06-data-wrangling/horst-wrangle-monsters.jpg" class="thumnail-image" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labeled “TIDY.”"> </a></p>
+<p><a href="./blog/2023-01-06-data-wrangling/index.html"> <img src="./blog/2023-01-06-data-wrangling/horst-wrangle-monsters.jpg" class="thumbnail-image" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labeled “TIDY.”"> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2023-01-06-data-wrangling/index.html">
@@ -520,9 +542,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1670976000000" data-listing-file-modified-sort="1671211207640" data-listing-reading-time-sort="13.815">
+<div class="quarto-post image-right" data-index="7" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1670976000000" data-listing-file-modified-sort="1671211207640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14">
 <div class="thumbnail">
-<p><a href="./blog/2022-12-14-apis-and-httr/index.html"> <img src="./blog/2022-12-14-apis-and-httr/apis-and-httr.png" class="thumnail-image" alt="The text APIs and httr, written on a black hexagon."> </a></p>
+<p><a href="./blog/2022-12-14-apis-and-httr/index.html"> <img src="./blog/2022-12-14-apis-and-httr/apis-and-httr.png" class="thumbnail-image" alt="The text APIs and httr, written on a black hexagon."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2022-12-14-apis-and-httr/index.html">
@@ -561,9 +583,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="workflows,git" data-listing-date-sort="1670889600000" data-listing-file-modified-sort="1670929952018" data-listing-reading-time-sort="1.765">
+<div class="quarto-post image-right" data-index="8" data-categories="workflows,git" data-listing-date-sort="1670889600000" data-listing-file-modified-sort="1670929952018" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
-<p><a href="./blog/2022-12-13-git-remote-branches/index.html"> <img src="./blog/2022-12-13-git-remote-branches/git-logo.png" class="thumnail-image" alt="git logo. This is a red-orange square with rounded corners, it is rotated by 45 degrees so that it is standing on one corner and has a cut-out design representing a branching graph."> </a></p>
+<p><a href="./blog/2022-12-13-git-remote-branches/index.html"> <img src="./blog/2022-12-13-git-remote-branches/git-logo.png" class="thumbnail-image" alt="git logo. This is a red-orange square with rounded corners, it is rotated by 45 degrees so that it is standing on one corner and has a cut-out design representing a branching graph."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2022-12-13-git-remote-branches/index.html">
@@ -599,9 +621,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1669852800000" data-listing-file-modified-sort="1671039607715" data-listing-reading-time-sort="11.245">
+<div class="quarto-post image-right" data-index="9" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1669852800000" data-listing-file-modified-sort="1671039607715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12">
 <div class="thumbnail">
-<p><a href="./blog/2022-12-01-rvest/index.html"> <img src="./blog/2022-12-01-rvest/rvest-logo.png" class="thumnail-image" alt="Hexagonal logo of the rvest package; a sickle cutting wheat on a red background."> </a></p>
+<p><a href="./blog/2022-12-01-rvest/index.html"> <img src="./blog/2022-12-01-rvest/rvest-logo.png" class="thumbnail-image" alt="Hexagonal logo of the rvest package; a sickle cutting wheat on a red background."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2022-12-01-rvest/index.html">
@@ -640,9 +662,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="reading summary,reproduciblity,academic skills,computing" data-listing-date-sort="1666134000000" data-listing-file-modified-sort="1693326230310" data-listing-reading-time-sort="4.975">
+<div class="quarto-post image-right" data-index="10" data-categories="reading summary,reproduciblity,academic skills,computing" data-listing-date-sort="1666134000000" data-listing-file-modified-sort="1693326230310" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html"> <img src="./blog/2022-10-19-good-enough-practices-in-scientific-computing/gepisc-image.png" class="thumnail-image" alt="Header section of a PLOS Comptational Biology perspective paper titled &amp;#039;Good Enough Practices in Scientific Computing'."> </a></p>
+<p><a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html"> <img src="./blog/2022-10-19-good-enough-practices-in-scientific-computing/gepisc-image.png" class="thumbnail-image" alt="Header section of a PLOS Comptational Biology perspective paper titled &amp;#039;Good Enough Practices in Scientific Computing'."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html">
@@ -684,9 +706,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="data visualisation" data-listing-date-sort="1665788400000" data-listing-file-modified-sort="1669918090501" data-listing-reading-time-sort="5.9">
+<div class="quarto-post image-right" data-index="11" data-categories="data visualisation" data-listing-date-sort="1665788400000" data-listing-file-modified-sort="1669918090501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-15-BBC-temperature-plot/index.html"> <img src="./blog/2022-10-15-BBC-temperature-plot/zdv-temperature-records.png" class="thumnail-image" alt="BBC dumbbell plot showing stations with the largest gaps between previous and new records, ordered by the highest new temperature.
+<p><a href="./blog/2022-10-15-BBC-temperature-plot/index.html"> <img src="./blog/2022-10-15-BBC-temperature-plot/zdv-temperature-records.png" class="thumbnail-image" alt="BBC dumbbell plot showing stations with the largest gaps between previous and new records, ordered by the highest new temperature.
 "> </a></p>
 </div>
 <div class="body">
@@ -720,9 +742,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="data visualisation,tidy tuesday" data-listing-date-sort="1665529200000" data-listing-file-modified-sort="1671039607715" data-listing-reading-time-sort="4.745">
+<div class="quarto-post image-right" data-index="12" data-categories="data visualisation,tidy tuesday" data-listing-date-sort="1665529200000" data-listing-file-modified-sort="1671039607715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html"> <img src="./blog/2022-10-11-ravelry-tidy-tuesday/2022-10-11-tidy-tuesday-ravelry.png" class="thumnail-image" alt="Stacked bar chart of yarn weights on Ravelry. Bars are descending order by their fequency, with yarn-type labels written within the bars and count values to the right of the bars. Annotations indicate that the most popular yarn weights are Fingering and Double Knit, and that there were more missing yarn weights than in all remaining categories combined.
+<p><a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html"> <img src="./blog/2022-10-11-ravelry-tidy-tuesday/2022-10-11-tidy-tuesday-ravelry.png" class="thumbnail-image" alt="Stacked bar chart of yarn weights on Ravelry. Bars are descending order by their fequency, with yarn-type labels written within the bars and count values to the right of the bars. Annotations indicate that the most popular yarn weights are Fingering and Double Knit, and that there were more missing yarn weights than in all remaining categories combined.
 "> </a></p>
 </div>
 <div class="body">
@@ -759,9 +781,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="academic skills,reading" data-listing-date-sort="1665356400000" data-listing-file-modified-sort="1665623364621" data-listing-reading-time-sort="4.135">
+<div class="quarto-post image-right" data-index="13" data-categories="academic skills,reading" data-listing-date-sort="1665356400000" data-listing-file-modified-sort="1665623364621" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-10-statistics-books/index.html"> <img src="./blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" class="thumnail-image" alt="Photograph of the mathematics section of Blackwell&amp;#039;s book shop in Oxford."> </a></p>
+<p><a href="./blog/2022-10-10-statistics-books/index.html"> <img src="./blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" class="thumbnail-image" alt="Photograph of the mathematics section of Blackwell&amp;#039;s book shop in Oxford."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2022-10-10-statistics-books/index.html">
@@ -797,9 +819,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="academic skills,writing,reading" data-listing-date-sort="1665097200000" data-listing-file-modified-sort="1666188672967" data-listing-reading-time-sort="4.23">
+<div class="quarto-post image-right" data-index="14" data-categories="academic skills,writing,reading" data-listing-date-sort="1665097200000" data-listing-file-modified-sort="1666188672967" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-07-rhetorical-precis/index.html"> <img src="./blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" class="thumnail-image" alt="Photograph of a filing cabinet filled with library index cards."> </a></p>
+<p><a href="./blog/2022-10-07-rhetorical-precis/index.html"> <img src="./blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" class="thumbnail-image" alt="Photograph of a filing cabinet filled with library index cards."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2022-10-07-rhetorical-precis/index.html">
@@ -838,9 +860,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="quarto,tutorial" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1665162093927" data-listing-reading-time-sort="3.515">
+<div class="quarto-post image-right" data-index="15" data-categories="quarto,tutorial" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1665162093927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
-<p><a href="./blog/2022-09-26-adding-a-quarto-blog/index.html"> <img src="./blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" class="thumnail-image" alt="Mechanical typewriter on white background."> </a></p>
+<p><a href="./blog/2022-09-26-adding-a-quarto-blog/index.html"> <img src="./blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" class="thumbnail-image" alt="Mechanical typewriter on white background."> </a></p>
 </div>
 <div class="body">
 <a href="./blog/2022-09-26-adding-a-quarto-blog/index.html">
@@ -876,9 +898,9 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="Quarto,Templates" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1666197114031" data-listing-reading-time-sort="0.65">
+<div class="quarto-post image-right" data-index="16" data-categories="Quarto,Templates" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1666197114031" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
-<p><a href="./blog/2022-09-26-hello-world/index.html"> <img src="./blog/2022-09-26-hello-world/hello-world-image.jpg" class="thumnail-image" alt="The text Hello, World` written in red monospaced font inside curly braces on a grey background.
+<p><a href="./blog/2022-09-26-hello-world/index.html"> <img src="./blog/2022-09-26-hello-world/hello-world-image.jpg" class="thumbnail-image" alt="The text Hello, World` written in red monospaced font inside curly braces on a grey background.
 "> </a></p>
 </div>
 <div class="body">
@@ -947,9 +969,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -961,7 +997,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -989,31 +1042,136 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
@@ -1021,6 +1179,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">Copyright 2022-2023, Zak Varty.</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

@@ -22,7 +22,10 @@ This talk will focus on the ways that reproducibility interacts with three aspec
 :::{.callout-warning appearance="minimal" collapse=true}
 ## Go Figure!
 
-<!--<a href="../assets/talks/slides/RSS_2022_slides_zak_varty.pdf" class="btn btn-outline-primary folat-end">Slides <span class="bi bi-file-pdf"></span></a>-->
+<a href="../assets/talks/slides/2023-RSS-go-figure.pdf" class="btn btn-outline-primary float-end">Slides <span class="bi bi-file-pdf"></span></a>
+
+<a href="../assets/talks/slides/2023-RSS-go-figure.html" class="btn btn-outline-primary float-end" target="_blank">Slides <span class="bi bi-filetype-html"></span></a>
+
 
 __Abstract:__
 
