@@ -7,7 +7,7 @@
 :::{.callout-warning appearance="minimal" collapse=true}
 ## Getting Your Work to Work in Academia (and Beyond) 
 
-<!--<a href="../assets/talks/slides/2023-RSS-go-figure.pdf" class="btn btn-outline-primary float-end">Slides <span class="bi bi-file-pdf"></span></a>-->
+<a href="../assets/talks/slides/2023-RSS-getting-your-work-to-work.pdf" class="btn btn-outline-primary float-end">Slides <span class="bi bi-file-pdf"></span></a>
 
 <a href="../assets/talks/slides/2023-RSS-getting-your-work-to-work.html" class="btn btn-outline-primary float-end" target="_blank">Slides <span class="bi bi-filetype-html"></span></a>
 
