@@ -7,15 +7,23 @@
 :::{.callout-warning appearance="minimal" collapse=true}
 ## Getting Your Work to Work in Academia (and Beyond) 
 
-<a href="../assets/talks/slides/2023-RSS-getting-your-work-to-work.pdf" class="btn btn-outline-primary float-end">Slides <span class="bi bi-file-pdf"></span></a>
+__Slides__: 
+<!-- -->
+<a href="../assets/talks/slides/2023-RSS-getting-your-work-to-work.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- -->
+<a href="../assets/talks/slides/2023-RSS-getting-your-work-to-work.pdf" class="btn btn-outline-primary m-1">PDF <span class="bi bi-file-pdf"></span></a>
+<!-- 
+<a href="https://github.com/zakvarty/talks/tree/5fdd96b55b1ef42b91396223b5a29db3f865643f/2023-RSS-go-figure" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
+-->
 
-<a href="../assets/talks/slides/2023-RSS-getting-your-work-to-work.html" class="btn btn-outline-primary float-end" target="_blank">Slides <span class="bi bi-filetype-html"></span></a>
 
 __Abstract:__
 
 You can't solve a hard problem all in one go. One example of this is the ongoing replication crisis faced by the academic world, where published results can't be verified by independent repetition of the original study. So, what do we do when we can't solve a hard problem straight away? We find a sub-problem that we can solve and use that as a steppingstone towards our final goal. In the case of the replication crisis, we can narrow our scope to reproducibility: given the same experimental or observational data can the original results be recovered?
 
 This talk will focus on the ways that reproducibility interacts with three aspects of academic (and non-academic) work: research, teaching, and the training our future colleagues. I'll share my experiences of moving toward a more reproducible way of working and argue that the individual and collective benefits of working reproducibility more than justify the extra effort this requires.
+
+
 :::
 
 
@@ -24,9 +32,14 @@ This talk will focus on the ways that reproducibility interacts with three aspec
 :::{.callout-warning appearance="minimal" collapse=true}
 ## Go Figure!
 
-<a href="../assets/talks/slides/2023-RSS-go-figure.pdf" class="btn btn-outline-primary float-end">Slides <span class="bi bi-file-pdf"></span></a>
+__Slides:__ 
+<!-- -->
+<a href="../assets/talks/slides/2023-RSS-go-figure.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- -->
+<a href="../assets/talks/slides/2023-RSS-go-figure.pdf" class="btn btn-outline-primary m-1">PDF <span class="bi bi-file-pdf"></span></a>
+<!-- -->
+<a href="https://github.com/zakvarty/talks/tree/5fdd96b55b1ef42b91396223b5a29db3f865643f/2023-RSS-go-figure" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
 
-<a href="../assets/talks/slides/2023-RSS-go-figure.html" class="btn btn-outline-primary float-end" target="_blank">Slides <span class="bi bi-filetype-html"></span></a>
 
 
 __Abstract:__
@@ -56,7 +69,6 @@ Data ethics is a rapidly developing area within data science, covering a wide ra
 - Once models are in production and impacting people's lives, how do we ensure those models remain relevant and how do we prevent our models from perpetuating historical biases? 
 
 We will take loan applications as an example to explore some of the challenges you might face when you have to answer these questions about your own work.
-
 :::
 
 
