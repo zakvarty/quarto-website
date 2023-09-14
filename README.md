@@ -21,8 +21,8 @@ Quarto provides a unified approach to literate programming in a range of languag
 If you've not heard of Quarto before, I'd encourage you to have a play around with it. Some starter projects, building in difficulty.
 
 1. [Install Quarto](https://quarto.org/docs/get-started/) - it's easy, I promise. 
-2. Try making [your first Quarto document](https://quarto.org/docs/get-started/hello/text-editor.html).
-3. Jazz things up and try [making some slides](https://quarto.org/docs/presentations/) (Pretty from the start but even better with a little HTML and CSS knowledge).
+2. Try making [your first Quarto document](https://quarto.org/docs/get-started/hello/text-editor.html). (Bonus points for html + pdf output)
+3. Jazz things up and try [making some slides](https://quarto.org/docs/presentations/) (Pretty from the start, gorgeous with a little HTML and CSS knowledge).
 4. Create (or revamp) your [personal website](https://quarto.org/docs/websites/).
 5. Add a blog to that website, perhaps by [following my tutorial](https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/)!
 
