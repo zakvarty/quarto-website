@@ -4,8 +4,8 @@ description: |
     A minimal first post
 date: "2022-09-26"
 categories:
-  - Quarto
-  - Templates
+  - quarto
+  - templates
 code-fold: true
 image: hello-world-image.jpg
 image-alt: |
