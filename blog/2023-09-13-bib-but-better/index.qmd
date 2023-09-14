@@ -1,0 +1,329 @@
+---
+title: "Bib but Better"
+description: |
+    Templates for all the bib entries you never knew you needed.
+date: "2023-09-13"
+categories:
+  - templates
+  - writing
+image: bibtex-logo.jpg
+image-alt: "BibTeX written on an green background."
+draft: false
+freeze: true
+appendix-style: default #(default, plain, none)
+citation: true
+bibliography: ../library.bib
+csl: ../jrss.csl
+no-cite: |
+    @chavez2005estimating
+    @morgan2019spline
+    @james2021introduction
+    @isham2010spatial
+    @capinski2004measure
+    @nam2016addendum
+    @varty2021statistical
+    @varty2016computer
+    @nam2017infosite
+    @lee2021extreme
+    @varty2023email
+    @rennie2023pretty
+    @r2023language
+    @varty2023working
+---
+
+Bib files and BibTeX are awesome tools for managing your references when writing in LaTeX or Quarto. The problem is, I can never remember the all the required fields in a bibtex entry for anything more complicated than an article.
+
+::: medium_right
+<figure><img src="bibtex-logo.jpg" alt="BibTeX written on an green background." style="border-radius: 3%;"/></figure>
+:::
+
+
+Honestly, even for an article I struggle to list these in a consistent order. I'm saying "no more!" to this nonsense; I _will_ have beautiful bib files if it kills me. To make that happen, I've put together this list of just about any entry I might ever need and listed them as easily copied code snippets.  
+
+I know that reference managers exist to hide some of this under the rug of a nice GUI, but I have trust issues. I can't convince myself that whichever one I pick won't die or move to a subscription model in the medium-term future. Bib files are pain text so they have the benefit of longevity, portability and working wonderfully with version control. 
+
+This will definitely be helpful for future me, and I hope it is useful for you too. 
+
+## Papers 
+
+### `@article`
+
+An article entry is the bread and butter of academic referencing, used for published journal articles.
+
+_Required fields:_ `author`, `title`, `journal`, `year`.
+
+```{.bib}
+@article{chavez2005estimating,
+	author = {Valerie Chavez-Demoulin and Anthony C Davison and Alexander J McNeil},
+	title = {Estimating value-at-risk: a point process approach},
+	journal = {Quantitative Finance},
+	year = {2005},
+	% optional below here
+	volume = {5},
+	number = {2},	  	
+	pages = {227--234},
+	publisher = {Taylor \& Francis}
+}
+```
+
+> __Note:__ BibTeX accepts both `forename surname` and `surname, forename` formats for names. I find the former more readable but this does cause issues with multi-word surnames. `Chevez-Demoulin` is handled correctly because it is hypenated. However, `John {von Neumann}` or `Amy {Berrington de Gonzalez}` require additional braces that clearly identify which words belong to the surname, as opposed to being middle names or initials.
+
+### `@inproceedings`
+
+For a paper that has been published in conference proceedings, rather than in a journal, use `@inproceedings`.
+
+```{.bib}
+@inproceedings{morgan2019spline,
+  author = {Lucy E Morgan and Barry L Nelson and Andrew C Titman and David J Worthington},
+  title  = {A spline-based method for modelling and generating a nonhomogeneous {P}oisson process},
+  booktitle = {2019 {W}inter simulation conference},
+  year  = {2019},
+  pages = {356--367},
+  doi = {10.1109/WSC40007.2019.9004867}
+}
+```
+
+## Books 
+
+### `@book`
+The other staple of an academic diet are books. 
+
+_Required Fields:_ `author`, `title`, `publisher`, `year`.
+
+A stand-alone book, where you want to reference the entire work gets a `@book` entry.
+
+```{.bib}
+@book{james2021introduction,
+    author = {Gareth James and Daniela Witten and Trevor Hastie and Robert Tibshirani},
+    title = {An introduction to statistical learning},
+    publisher = {Springer},
+    year = {2021},
+    % optional below here
+    subtitle = {with applications in {R}},
+    edition = {2}
+}
+```
+
+
+### `@inbook`
+
+If you just want to reference a particular section, chapter or page of a book, then using an `@inbook` entry with the additional `chapter` and/or `pages` arguments is more appropriate. 
+
+```{.bib}
+@inbook{james2021resampling,
+    author = {Gareth James and Daniela Witten and Trevor Hastie and Robert Tibshirani},
+    title = {An introduction to statistical learning},
+    chapter = {Resampling methods},
+    publisher = {Springer},
+    year = {2021},
+    % optional below here
+    subtitle = {with applications in {R}},
+    edition = {2}
+    pages = {197--223}
+}
+```
+
+### `@incollection`
+
+A _collection_ is like the academic version of a book of short stories. All chapters focus on the same over-arching theme but each chapter is a titled, stand-alone paper where each paper will typically have different authors . To cite a single paper/chapter from within such a collection, use an `@incollection` entry.
+
+_Required fields:_ `author`, `title`, `publisher`, `year`, `booktitle`, `editor`
+
+(Note: editor not required if also the author)
+
+```{.bib}
+@incollection{isham2010spatial,
+    author = {Valerie Isham},
+    title = {Spatial point process models},
+    publisher = {CRC Press},
+    year = {2010},
+    booktitle = {Handbook of spatial statistics},
+    editor = {Alan E Gelfand and Peter J Diggle and Montserrat Fuentes and Peter Guttorp},
+    pages = {283--298}
+}
+```
+
+
+### `@series`
+
+Finally, if the book is part of a larger `series` then this can be acknowledged too. One nice example of these is the SUMS collection by Springer. 
+
+```{.bib}
+@book{capinski2004measure,
+    author = {Marek Capi{\'n}ski and Ekkehard Kopp},
+    title = {Measure, integral and probability},
+    publisher = {Springer},
+    year = {2004},
+    series = {Springer undergraduate mathematics series},
+    volume = {14},
+    edition = {2}
+}
+```
+
+
+## Reports 
+
+### `@techreport` 
+
+Published documents appear in many other places besides academic journals. These might be technical reports written buy businesses, official guidelines written by governing bodies or annual reports of charities. All of these documents are best suited to a `techreport` entry. 
+
+_Required fields:_ `author`, `title`, `publisher`, `year`. 
+
+```{.bib}
+@techreport{nam2016addendum,
+    author = {NAM},
+    title = {Technical addendum to the {W}inningsplan {G}rongingen 2016},
+    institution = {Nederlandse Aardolie Maatschappij},
+    year = {2016},
+    % optional below here
+    subtitle = {Summary and production},
+    volume = {1}
+}
+```
+
+
+### `@phdthesis` 
+
+Thesis and dissertation documents can be valuable sources of information that never makes it into another form of publication, whether that is due to page limits or the researcher graduating and having better things to do with their time. But that is no excuse not to give proper attribution to their work, which can be done using a `phdthesis` or `mastersthesis` entry. 
+
+> Note the "s": it is a "masters thesis" not a "master thesis".
+
+_Required fields:_ `author`, `title`, `publisher`, `year`. 
+
+```{.bib}
+@phdthesis{varty2021statistical,
+    author = {Zak Varty},
+    title = {Statistical Modelling of Induced Earthquakes},
+    publisher = {Lancaster University},
+    year = {2021},
+    % optional below here
+    address = {United Kingdom},
+    doi = {10.17635/lancaster/thesis/1436}
+}
+```
+
+```{.bib}
+@mastersthesis{varty2016computer,
+    author = {Zak Varty},
+    title = {Computer intensive methods for modelling household epidemics},
+    publisher = {Lancaster University},
+    year = {2016},
+    % optional below here
+    address = {United Kingdom},
+}
+```
+
+
+## Other Entries
+
+### `@misc` 
+
+Websites and lecture notes tend to be secondary sources of information and we should seek out the primary sources where possible. Sometimes though, these are the best we can do. I those cases we should still reference them using the highly flexible `misc` entry. 
+
+(`misc` is a contraction of miscellaneous, which is difficult to spell correctly.)   
+
+_Required fields:_ none. 
+
+```{.bib}
+@misc{nam2017infosite,
+    author = {NAM},
+    title = {English information site},
+    institution = {Nederlandse Aardolie Maatschappij},
+    year = {2017},
+    howpublished = {Available at \url{https://www.nam.nl/english-information.html}. (Accessed: 2017-07-26.)},
+}
+```
+
+> __Note:__ For websites and html lecture notes, if you are using BibLaTeX a similar `@online` entry can also be used.
+>
+> ```{.bib}
+> @online{nam2017infosite,
+>  author = {NAM},
+>  title = {English information site},
+>  year = {2017},
+>  url = {https://www.nam.nl/english-information.html},
+>  urldate = {2017-07-26}
+> }
+>```
+>
+```{.bib}
+@misc{lee2021extreme,
+    author = {Clement Lee and Zak Varty},
+    title = {Extreme Value Theory},
+    organization = {Lancaster University},
+    year = {2021},
+    howpublished = {Lecutre notes, 2020/21}
+}
+```
+
+A primary source that also uses the `misc` entry is personal communications, whether that is in person conversation, a recorded interview or an online exchange.
+
+```{.bib}
+@misc{varty2023email,
+    author = {Zak Varty},
+    month = {September},
+    year = {2023},
+    howpublished = {Personal communication}
+}
+```
+
+### `@manual`
+
+The documentation and manuals that come with software and hardware can be valuable sources of information. 
+
+Citing the open source projects (languages, packages and software) that you use is a great way of showing your support for these projects. This allows the developers to demonstrate the impact their work is having and to justify continued work on that project. Of course, contributing your own time / money is a better form of support, but realistically people are miserly by nature and don't like to pay for things.
+
+In R, you can get citations for most packages using `citation(packagename)`. 
+
+```{r pretty-cols-citation}
+citation("PrettyCols")
+```
+
+```{.bib}
+@manual{r2023language,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2023},
+    url = {https://www.R-project.org/},
+  }
+```
+
+### `@unpublished` 
+
+You can also reference unpublished work, by replacing the `publisher` field with a `note`. 
+
+- for work that has not be submitted to a journal for review this should read `Unpublished manuscript`. 
+- For work that has been submitted but not yet accepted, this should read `Manuscript submitted for publication`.
+- For work that has been accepted but not yet published, this should read `(in press)` and the `journal` field should be included too. 
+
+
+```{.bib}
+@unpublished{varty2023working,
+    author = {Zak Varty},
+    title = {Working title of paper},
+    note = {Unpublished manuscript}, 
+    year = {2023}
+}
+```
+
+## BibTeX Tips and Tricks
+
+- All author names are separated by ` and `, not just the last one. 
+
+- Special characters must be "escaped" using a backslash, for example an ampersand `\&`.
+
+- Use additional curly braces to ensure that capitalisation of proper nouns and acronyms are maintained.
+<!--
+- If writing in markdown, use `[link](hyperlink)` syntax rather than the latex version (`\url{hyperlink}`). -->
+
+- For specific advice on bibliography management, see the corresponding section of the [LaTeX wiki](https://en.m.wikibooks.org/wiki/LaTeX/Bibliography_Management) or the Quarto docs on [citations and footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html). 
+
+<!-- 
+#### Session Information 
+
+```{r session-info}
+pander::pander(sessionInfo())
+```
+-->

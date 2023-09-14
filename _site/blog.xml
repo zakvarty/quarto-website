@@ -10,7 +10,643 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Wed, 16 Aug 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 12 Sep 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Bib but Better</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2023-09-13-bib-but-better/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Bib files and BibTeX are awesome tools for managing your references when writing in LaTeX or Quarto. The problem is, I can never remember the all the required fields in a bibtex entry for anything more complicated than an article.</p>
+<div class="medium_right">
+<figure class="figure">
+<img src="https://www.zakvarty.com/blog/2023-09-13-bib-but-better/bibtex-logo.jpg" alt="BibTeX written on an green background." style="border-radius: 3%;" class="figure-img">
+</figure>
+</div>
+<p>Honestly, even for an article I struggle to list these in a consistent order. I’m saying “no more!” to this nonsense; I <em>will</em> have beautiful bib files if it kills me. To make that happen, I’ve put together this list of just about any entry I might ever need and listed them as easily copied code snippets.</p>
+<p>I know that reference managers exist to hide some of this under the rug of a nice GUI, but I have trust issues. I can’t convince myself that whichever one I pick won’t die or move to a subscription model in the medium-term future. Bib files are pain text so they have the benefit of longevity, portability and working wonderfully with version control.</p>
+<p>This will definitely be helpful for future me, and I hope it is useful for you too.</p>
+<section id="papers" class="level2">
+<h2 class="anchored" data-anchor-id="papers">Papers</h2>
+<section id="article" class="level3">
+<h3 class="anchored" data-anchor-id="article"><code>@article</code></h3>
+<p>An article entry is the bread and butter of academic referencing, used for published journal articles.</p>
+<p><em>Required fields:</em> <code>author</code>, <code>title</code>, <code>journal</code>, <code>year</code>.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@article</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">chavez2005estimating</span>,</span>
+<span id="cb1-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Valerie Chavez-Demoulin and Anthony C Davison and Alexander J McNeil},</span>
+<span id="cb1-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Estimating value-at-risk: a point process approach},</span>
+<span id="cb1-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">journal</span> = {Quantitative Finance},</span>
+<span id="cb1-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2005},</span>
+<span id="cb1-6">    <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">optional</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">below</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">here</span></span>
+<span id="cb1-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">volume</span> = {5},</span>
+<span id="cb1-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">number</span> = {2},       </span>
+<span id="cb1-9">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">pages</span> = {227--234},</span>
+<span id="cb1-10">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">publisher</span> = {Taylor <span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\&amp;</span> Francis}</span>
+<span id="cb1-11">}</span></code></pre></div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> BibTeX accepts both <code>forename surname</code> and <code>surname, forename</code> formats for names. I find the former more readable but this does cause issues with multi-word surnames. <code>Chevez-Demoulin</code> is handled correctly because it is hypenated. However, <code>John {von Neumann}</code> or <code>Amy {Berrington de Gonzalez}</code> require additional braces that clearly identify which words belong to the surname, as opposed to being middle names or initials.</p>
+</blockquote>
+</section>
+<section id="inproceedings" class="level3">
+<h3 class="anchored" data-anchor-id="inproceedings"><code>@inproceedings</code></h3>
+<p>For a paper that has been published in conference proceedings, rather than in a journal, use <code>@inproceedings</code>.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb2-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@inproceedings</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">morgan2019spline</span>,</span>
+<span id="cb2-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Lucy E Morgan and Barry L Nelson and Andrew C Titman and David J Worthington},</span>
+<span id="cb2-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span>  = {A spline-based method for modelling and generating a nonhomogeneous {P}oisson process},</span>
+<span id="cb2-4">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">booktitle</span> = {2019 {W}inter simulation conference},</span>
+<span id="cb2-5">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span>  = {2019},</span>
+<span id="cb2-6">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">pages</span> = {356--367},</span>
+<span id="cb2-7">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">doi</span> = {10.1109/WSC40007.2019.9004867}</span>
+<span id="cb2-8">}</span></code></pre></div>
+</section>
+</section>
+<section id="books" class="level2">
+<h2 class="anchored" data-anchor-id="books">Books</h2>
+<section id="book" class="level3">
+<h3 class="anchored" data-anchor-id="book"><code>@book</code></h3>
+<p>The other staple of an academic diet are books.</p>
+<p><em>Required Fields:</em> <code>author</code>, <code>title</code>, <code>publisher</code>, <code>year</code>.</p>
+<p>A stand-alone book, where you want to reference the entire work gets a <code>@book</code> entry.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb3-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@book</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">james2021introduction</span>,</span>
+<span id="cb3-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Gareth James and Daniela Witten and Trevor Hastie and Robert Tibshirani},</span>
+<span id="cb3-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {An introduction to statistical learning},</span>
+<span id="cb3-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">publisher</span> = {Springer},</span>
+<span id="cb3-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2021},</span>
+<span id="cb3-6">    <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">optional</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">below</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">here</span></span>
+<span id="cb3-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">subtitle</span> = {with applications in {R}},</span>
+<span id="cb3-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">edition</span> = {2}</span>
+<span id="cb3-9">}</span></code></pre></div>
+</section>
+<section id="inbook" class="level3">
+<h3 class="anchored" data-anchor-id="inbook"><code>@inbook</code></h3>
+<p>If you just want to reference a particular section, chapter or page of a book, then using an <code>@inbook</code> entry with the additional <code>chapter</code> and/or <code>pages</code> arguments is more appropriate.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb4-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@inbook</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">james2021resampling</span>,</span>
+<span id="cb4-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Gareth James and Daniela Witten and Trevor Hastie and Robert Tibshirani},</span>
+<span id="cb4-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {An introduction to statistical learning},</span>
+<span id="cb4-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">chapter</span> = {Resampling methods},</span>
+<span id="cb4-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">publisher</span> = {Springer},</span>
+<span id="cb4-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2021},</span>
+<span id="cb4-7">    <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">optional</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">below</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">here</span></span>
+<span id="cb4-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">subtitle</span> = {with applications in {R}},</span>
+<span id="cb4-9">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">edition</span> = {2}</span>
+<span id="cb4-10">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">pages</span> = {197--223}</span>
+<span id="cb4-11">}</span></code></pre></div>
+</section>
+<section id="incollection" class="level3">
+<h3 class="anchored" data-anchor-id="incollection"><code>@incollection</code></h3>
+<p>A <em>collection</em> is like the academic version of a book of short stories. All chapters focus on the same over-arching theme but each chapter is a titled, stand-alone paper where each paper will typically have different authors . To cite a single paper/chapter from within such a collection, use an <code>@incollection</code> entry.</p>
+<p><em>Required fields:</em> <code>author</code>, <code>title</code>, <code>publisher</code>, <code>year</code>, <code>booktitle</code>, <code>editor</code></p>
+<p>(Note: editor not required if also the author)</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb5-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@incollection</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">isham2010spatial</span>,</span>
+<span id="cb5-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Valerie Isham},</span>
+<span id="cb5-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Spatial point process models},</span>
+<span id="cb5-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">publisher</span> = {CRC Press},</span>
+<span id="cb5-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2010},</span>
+<span id="cb5-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">booktitle</span> = {Handbook of spatial statistics},</span>
+<span id="cb5-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">editor</span> = {Alan E Gelfand and Peter J Diggle and Montserrat Fuentes and Peter Guttorp},</span>
+<span id="cb5-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">pages</span> = {283--298}</span>
+<span id="cb5-9">}</span></code></pre></div>
+</section>
+<section id="series" class="level3">
+<h3 class="anchored" data-anchor-id="series"><code>@series</code></h3>
+<p>Finally, if the book is part of a larger <code>series</code> then this can be acknowledged too. One nice example of these is the SUMS collection by Springer.</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb6-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@book</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">capinski2004measure</span>,</span>
+<span id="cb6-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Marek Capi{<span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\'</span>n}ski and Ekkehard Kopp},</span>
+<span id="cb6-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Measure, integral and probability},</span>
+<span id="cb6-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">publisher</span> = {Springer},</span>
+<span id="cb6-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2004},</span>
+<span id="cb6-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">series</span> = {Springer undergraduate mathematics series},</span>
+<span id="cb6-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">volume</span> = {14},</span>
+<span id="cb6-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">edition</span> = {2}</span>
+<span id="cb6-9">}</span></code></pre></div>
+</section>
+</section>
+<section id="reports" class="level2">
+<h2 class="anchored" data-anchor-id="reports">Reports</h2>
+<section id="techreport" class="level3">
+<h3 class="anchored" data-anchor-id="techreport"><code>@techreport</code></h3>
+<p>Published documents appear in many other places besides academic journals. These might be technical reports written buy businesses, official guidelines written by governing bodies or annual reports of charities. All of these documents are best suited to a <code>techreport</code> entry.</p>
+<p><em>Required fields:</em> <code>author</code>, <code>title</code>, <code>publisher</code>, <code>year</code>.</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb7-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@techreport</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">nam2016addendum</span>,</span>
+<span id="cb7-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {NAM},</span>
+<span id="cb7-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Technical addendum to the {W}inningsplan {G}rongingen 2016},</span>
+<span id="cb7-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">institution</span> = {Nederlandse Aardolie Maatschappij},</span>
+<span id="cb7-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2016},</span>
+<span id="cb7-6">    <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">optional</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">below</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">here</span></span>
+<span id="cb7-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">subtitle</span> = {Summary and production},</span>
+<span id="cb7-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">volume</span> = {1}</span>
+<span id="cb7-9">}</span></code></pre></div>
+</section>
+<section id="phdthesis" class="level3">
+<h3 class="anchored" data-anchor-id="phdthesis"><code>@phdthesis</code></h3>
+<p>Thesis and dissertation documents can be valuable sources of information that never makes it into another form of publication, whether that is due to page limits or the researcher graduating and having better things to do with their time. But that is no excuse not to give proper attribution to their work, which can be done using a <code>phdthesis</code> or <code>mastersthesis</code> entry.</p>
+<blockquote class="blockquote">
+<p>Note the “s”: it is a “masters thesis” not a “master thesis”.</p>
+</blockquote>
+<p><em>Required fields:</em> <code>author</code>, <code>title</code>, <code>publisher</code>, <code>year</code>.</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb8-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@phdthesis</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">varty2021statistical</span>,</span>
+<span id="cb8-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Zak Varty},</span>
+<span id="cb8-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Statistical Modelling of Induced Earthquakes},</span>
+<span id="cb8-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">publisher</span> = {Lancaster University},</span>
+<span id="cb8-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2021},</span>
+<span id="cb8-6">    <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">optional</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">below</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">here</span></span>
+<span id="cb8-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">address</span> = {United Kingdom},</span>
+<span id="cb8-8">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">doi</span> = {10.17635/lancaster/thesis/1436}</span>
+<span id="cb8-9">}</span></code></pre></div>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb9-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@mastersthesis</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">varty2016computer</span>,</span>
+<span id="cb9-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Zak Varty},</span>
+<span id="cb9-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Computer intensive methods for modelling household epidemics},</span>
+<span id="cb9-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">publisher</span> = {Lancaster University},</span>
+<span id="cb9-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2016},</span>
+<span id="cb9-6">    <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">%</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">optional</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">below</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">here</span></span>
+<span id="cb9-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">address</span> = {United Kingdom},</span>
+<span id="cb9-8">}</span></code></pre></div>
+</section>
+</section>
+<section id="other-entries" class="level2">
+<h2 class="anchored" data-anchor-id="other-entries">Other Entries</h2>
+<section id="misc" class="level3">
+<h3 class="anchored" data-anchor-id="misc"><code>@misc</code></h3>
+<p>Websites and lecture notes tend to be secondary sources of information and we should seek out the primary sources where possible. Sometimes though, these are the best we can do. I those cases we should still reference them using the highly flexible <code>misc</code> entry.</p>
+<p>(<code>misc</code> is a contraction of miscellaneous, which is difficult to spell correctly.)</p>
+<p><em>Required fields:</em> none.</p>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb10-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@misc</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">nam2017infosite</span>,</span>
+<span id="cb10-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {NAM},</span>
+<span id="cb10-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {English information site},</span>
+<span id="cb10-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">institution</span> = {Nederlandse Aardolie Maatschappij},</span>
+<span id="cb10-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2017},</span>
+<span id="cb10-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">howpublished</span> = {Available at <span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\url</span>{https://www.nam.nl/english-information.html}. (Accessed: 2017-07-26.)},</span>
+<span id="cb10-7">}</span></code></pre></div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> For websites and html lecture notes, if you are using BibLaTeX a similar <code>@online</code> entry can also be used.</p>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb11-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@online</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">nam2017infosite</span>,</span>
+<span id="cb11-2"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {NAM},</span>
+<span id="cb11-3"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {English information site},</span>
+<span id="cb11-4"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2017},</span>
+<span id="cb11-5"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">url</span> = {https://www.nam.nl/english-information.html},</span>
+<span id="cb11-6"> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">urldate</span> = {2017-07-26}</span>
+<span id="cb11-7">}</span></code></pre></div>
+</blockquote>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb12-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@misc</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">lee2021extreme</span>,</span>
+<span id="cb12-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Clement Lee and Zak Varty},</span>
+<span id="cb12-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Extreme Value Theory},</span>
+<span id="cb12-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">organization</span> = {Lancaster University},</span>
+<span id="cb12-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2021},</span>
+<span id="cb12-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">howpublished</span> = {Lecutre notes, 2020/21}</span>
+<span id="cb12-7">}</span></code></pre></div>
+<p>A primary source that also uses the <code>misc</code> entry is personal communications, whether that is in person conversation, a recorded interview or an online exchange.</p>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb13-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@misc</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">varty2023email</span>,</span>
+<span id="cb13-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Zak Varty},</span>
+<span id="cb13-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">month</span> = {September},</span>
+<span id="cb13-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2023},</span>
+<span id="cb13-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">howpublished</span> = {Personal communication}</span>
+<span id="cb13-6">}</span></code></pre></div>
+</section>
+<section id="manual" class="level3">
+<h3 class="anchored" data-anchor-id="manual"><code>@manual</code></h3>
+<p>The documentation and manuals that come with software and hardware can be valuable sources of information.</p>
+<p>Citing the open source projects (languages, packages and software) that you use is a great way of showing your support for these projects. This allows the developers to demonstrate the impact their work is having and to justify continued work on that project. Of course, contributing your own time / money is a better form of support, but realistically people are miserly by nature and don’t like to pay for things.</p>
+<p>In R, you can get citations for most packages using <code>citation(packagename)</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">citation</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"PrettyCols"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>To cite package 'PrettyCols' in publications use:
+
+  Rennie N (2023). _PrettyCols: Pretty Colour Palettes_. R package
+  version 1.0.1, &lt;https://CRAN.R-project.org/package=PrettyCols&gt;.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {PrettyCols: Pretty Colour Palettes},
+    author = {Nicola Rennie},
+    year = {2023},
+    note = {R package version 1.0.1},
+    url = {https://CRAN.R-project.org/package=PrettyCols},
+  }</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb16-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@manual</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">r2023language</span>,</span>
+<span id="cb16-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {R: A Language and Environment for Statistical Computing},</span>
+<span id="cb16-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {{R Core Team}},</span>
+<span id="cb16-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">organization</span> = {R Foundation for Statistical Computing},</span>
+<span id="cb16-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">address</span> = {Vienna, Austria},</span>
+<span id="cb16-6">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2023},</span>
+<span id="cb16-7">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">url</span> = {https://www.R-project.org/},</span>
+<span id="cb16-8">  }</span></code></pre></div>
+</section>
+<section id="unpublished" class="level3">
+<h3 class="anchored" data-anchor-id="unpublished"><code>@unpublished</code></h3>
+<p>You can also reference unpublished work, by replacing the <code>publisher</code> field with a <code>note</code>.</p>
+<ul>
+<li>for work that has not be submitted to a journal for review this should read <code>Unpublished manuscript</code>.</li>
+<li>For work that has been submitted but not yet accepted, this should read <code>Manuscript submitted for publication</code>.</li>
+<li>For work that has been accepted but not yet published, this should read <code>(in press)</code> and the <code>journal</code> field should be included too.</li>
+</ul>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode bib code-with-copy"><code class="sourceCode bibtex"><span id="cb17-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@unpublished</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">varty2023working</span>,</span>
+<span id="cb17-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span> = {Zak Varty},</span>
+<span id="cb17-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span> = {Working title of paper},</span>
+<span id="cb17-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">note</span> = {Unpublished manuscript}, </span>
+<span id="cb17-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span> = {2023}</span>
+<span id="cb17-6">}</span></code></pre></div>
+</section>
+</section>
+<section id="bibtex-tips-and-tricks" class="level2">
+<h2 class="anchored" data-anchor-id="bibtex-tips-and-tricks">BibTeX Tips and Tricks</h2>
+<ul>
+<li><p>All author names are separated by <code>and</code>, not just the last one.</p></li>
+<li><p>Special characters must be “escaped” using a backslash, for example an ampersand <code>\&amp;</code>.</p></li>
+<li><p>Use additional curly braces to ensure that capitalisation of proper nouns and acronyms are maintained. <!--
+- If writing in markdown, use `[link](hyperlink)` syntax rather than the latex version (`\url{hyperlink}`). --></p></li>
+<li><p>For specific advice on bibliography management, see the corresponding section of the <a href="https://en.m.wikibooks.org/wiki/LaTeX/Bibliography_Management">LaTeX wiki</a> or the Quarto docs on <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html">citations and footnotes</a>.</p></li>
+</ul>
+<!-- 
+#### Session Information 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+pander::pander(sessionInfo())
+```
+
+::: {.cell-output-display}
+**R version 4.3.1 (2023-06-16)**
+
+**Platform:** x86_64-apple-darwin20 (64-bit) 
+
+**locale:**
+en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8
+
+**attached base packages:** 
+_stats_, _graphics_, _grDevices_, _utils_, _datasets_, _methods_ and _base_
+
+**loaded via a namespace (and not attached):** 
+_htmlwidgets(v.1.6.2)_, _compiler(v.4.3.1)_, _fastmap(v.1.1.1)_, _cli(v.3.6.1)_, _tools(v.4.3.1)_, _htmltools(v.0.5.6)_, _rstudioapi(v.0.15.0)_, _yaml(v.2.3.7)_, _Rcpp(v.1.0.11)_, _pander(v.0.6.5)_, _rmarkdown(v.2.24)_, _knitr(v.1.43)_, _jsonlite(v.1.8.7)_, _xfun(v.0.40)_, _digest(v.0.6.33)_, _rlang(v.1.1.1)_ and _evaluate(v.0.21)_
+:::
+:::
+
+-->
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-capinski2004measure" class="csl-entry">
+Capiński, M. and Kopp, E. (2004) <em>Measure, Integral and Probability</em>. 2nd ed. Springer undergraduate mathematics series. Springer.
+</div>
+<div id="ref-chavez2005estimating" class="csl-entry">
+Chavez-Demoulin, V., Davison, A. C. and McNeil, A. J. (2005) Estimating value-at-risk: A point process approach. <em>Quantitative Finance</em>, <strong>5</strong>, 227–234. Taylor &amp; Francis.
+</div>
+<div id="ref-isham2010spatial" class="csl-entry">
+Isham, V. (2010) Spatial point process models. In <em>Handbook of Spatial Statistics</em> (eds. A. E. Gelfand, P. J. Diggle, M. Fuentes,et al.), pp. 283–298. CRC Press.
+</div>
+<div id="ref-james2021introduction" class="csl-entry">
+James, G., Witten, D., Hastie, T., et al. (2021) <em>An Introduction to Statistical Learning: With Applications in <span>R</span></em>. 2nd ed. Springer.
+</div>
+<div id="ref-lee2021extreme" class="csl-entry">
+Lee, C. and Varty, Z. (2021) Extreme value theory. Lancaster University; Lecutre notes, 2020/21.
+</div>
+<div id="ref-morgan2019spline" class="csl-entry">
+Morgan, L. E., Nelson, B. L., Titman, A. C., et al. (2019) A spline-based method for modelling and generating a nonhomogeneous <span>P</span>oisson process. In: <em>2019 <span>W</span>inter simulation conference</em>, 2019, pp. 356–367. DOI: <a href="https://doi.org/10.1109/WSC40007.2019.9004867">10.1109/WSC40007.2019.9004867</a>.
+</div>
+<div id="ref-nam2016addendum" class="csl-entry">
+NAM (2016) <em>Technical addendum to the <span>W</span>inningsplan <span>G</span>rongingen 2016: Summary and production</em>. Nederlandse Aardolie Maatschappij.
+</div>
+<div id="ref-nam2017infosite" class="csl-entry">
+NAM (2017) English information site. Nederlandse Aardolie Maatschappij. Available at: <a href="https://www.nam.nl/english-information.html">https://www.nam.nl/english-information.html</a> (accessed 26 July 2017).
+</div>
+<div id="ref-r2023language" class="csl-entry">
+R Core Team (2023) <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. Available at: <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-rennie2023pretty" class="csl-entry">
+Rennie, N. (2023) <em>PrettyCols: Pretty Colour Palettes</em>. Available at: <a href="https://CRAN.R-project.org/package=PrettyCols">https://CRAN.R-project.org/package=PrettyCols</a>.
+</div>
+<div id="ref-varty2016computer" class="csl-entry">
+Varty, Z. (2016) <em>Computer intensive methods for modelling household epidemics</em>. Master’s thesis. Lancaster University, United Kingdom.
+</div>
+<div id="ref-varty2021statistical" class="csl-entry">
+Varty, Z. (2021) <em>Statistical modelling of induced earthquakes</em>. PhD thesis. Lancaster University, United Kingdom. DOI: <a href="https://doi.org/10.17635/lancaster/thesis/1436">10.17635/lancaster/thesis/1436</a>.
+</div>
+<div id="ref-varty2023working" class="csl-entry">
+Varty, Z. (2023a) Working title of paper.
+</div>
+<div id="ref-varty2023email" class="csl-entry">
+Varty, Z. (2023b) Personal communication.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2023,
+  author = {Varty, Zak},
+  title = {Bib but {Better}},
+  date = {2023-09-13},
+  url = {https://www.zakvarty.com/blog/2023-09-13-bib-but-better},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-varty2023" class="csl-entry quarto-appendix-citeas">
+Varty, Z. (2023) Bib but Better. Available at: <a href="https://www.zakvarty.com/blog/2023-09-13-bib-but-better">https://www.zakvarty.com/blog/2023-09-13-bib-but-better</a>.
+</div></div></section></div> ]]></description>
+  <category>templates</category>
+  <category>writing</category>
+  <guid>https://www.zakvarty.com/blog/2023-09-13-bib-but-better/index.html</guid>
+  <pubDate>Tue, 12 Sep 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2023-09-13-bib-but-better/bibtex-logo.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Why is My Classifier Discrimanatory?</title>
   <dc:creator>Zak Varty</dc:creator>
