@@ -8,6 +8,8 @@ Have a speaking opportunity that you think I'd be great for? [Let me know about 
 
 ## Archive 
 
+### 2023
+
 #### Royal Statistical Society Conference 2023
 
 :::{.callout-warning appearance="minimal" collapse=true}
@@ -55,9 +57,8 @@ As the saying goes, a picture is worth a thousand words. If that’s true then t
 We’ll begin with some design principles to help your figures to clearly convey your intended meaning. We’ll then develop strategies to adapt your figures for different audiences and introduce tools to make them accessible to a broader audience. To put your new-found knowledge to the test, we’ll conclude the session with a game of broken picture telephone (including prizes for the winners!).
 :::
 
-### 2023
 
-#### Imperial Inspirartional Lecture Series: Ethics in Mathematics + Panel Discussion
+#### Imperial Inspirational Lecture Series: Ethics in Mathematics + Panel Discussion
 
 :::{.callout-warning appearance="minimal" collapse=true}
 ## Ethical Considerations in Data Science
