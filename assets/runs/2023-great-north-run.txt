@@ -1,0 +1,24 @@
+Time: 1:56:52 
+
+https://www.greatrun.org/results/1191/?search=Varty 
+
+5k	00:27:27
+10k	00:55:44
+15k 	01:23:33
+20k	01:51:32
+
+1	00:08:45
+2	00:17:50
+3	00:26:38
+4	00:35:53
+5	00:45:21
+6	00:53:57
+7	01:02:29
+8	01:11:21
+9	01:20:44
+10	01:29:47
+11	01:39:22
+12	01:48:03
+13	01:56:06
+
+IDEA: Webscraping projects getting splits for all runners in GNR.
