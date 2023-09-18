@@ -51,6 +51,7 @@
 - [Book](https://themissingreadme.com/) The missing readme by Chris Riccomini and Dmitriy Ryaboy
 - [Paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007142) Ten Simple Rules for Taking Advantage of Git and GitHub
 - [Sildes](https://aosmith16.github.io/spring-r-topics/slides/week07_more_git.html#1) by Ariel Muldoon (@aosmith16) on "More git and github - collaborators, merege conflicts and pull requests"
+- [Docs](https://rstudio.github.io/renv/articles/renv.html) for `{renv}`
 
 ### Docker  
 
@@ -101,6 +102,7 @@
 
 - [Tweet](https://twitter.com/realstevebauman/status/1537879545272971266) by Steve Bauman (@realstevebauman) pointing out that Github's markdown now supports note and warning blockquotes
 - [Tweet](https://twitter.com/zevross/status/1519318012846817282) by Zev Ross on using the character ├ to get aesthetically pleasing subsections in RStudio
+- [Tutorial](https://help.mentimeter.com/en/articles/410896-embed-your-presentation-on-a-webpage) on embedding mentimeter into webpages (try with html slides???)
 
 ### Memes 
 
