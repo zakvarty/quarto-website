@@ -1,0 +1,68 @@
+---
+title: "Notably Inaccessible"
+description: |
+    A data driven investigation into the (in)accessibility of data science notebooks.
+date: "2023-10-03"
+categories:
+  - workflows
+  - data science
+  - computing
+  - accessibility
+  - reading summary
+image: notably-inaccessible-flowchart.png
+image-alt: "Flow chart showing the stages of preprocessing and analysis used by Potluri et al to quantify data science notebook accessibility."
+draft: false
+freeze: false
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: false
+---
+
+```{r}
+#| echo: false
+image_path <- "notably-inaccessible-flowchart.png"
+image_alt <- "Flow chart showing the stages of preprocessing and analysis used by Potluri et al to quantify data science notebook accessibility."
+```
+
+## Reading Summary
+
+`potluri2023notably` [@potluri2023notably]
+
+**Title:** _Notably Inaccessible - Data driven understanding of data science notebook (in)accessibility. {ArXiv preprint, 2023} (19 pages)._
+
+**Authors:** _Venkatesh Potluri, Sudheesh Singanamalla, Nussara Tieanklin and Jennifer Mankoff. (University of Washington)_
+
+**Key words:** _data science_, _workflows_, _computing_, _accessibility_. 
+
+::: medium_right
+<figure><img src="`r image_path`" alt="`r image_alt`" style="border-radius: 3%;"/></figure>
+:::
+
+In this paper, the authors explore accessibility of literate programming approaches to blind and visually impaired users, both for the authoring and consumption of data science notebooks. 
+They do this by conducting the first large-scale, empirical investigation into how notebooks are created and used _in the wild_, focusing strongly on Python-based analyses collated by @rule2018exploration. 
+This study is of interest data scientists and IDE developers who care about improving the accessibility of our workflows. 
+The key findings suggest that the most immediate, individual impact can be made through consistent use of existing HTML tools, for example by providing alt-text for all generated figures and by using heading tags to facilitate document navigation.
+
+
+
+## Notes
+
+- The study makes a holistic assessment of the use of notebooks, investigating accessibility of:
+
+  - the integrated development environments used when authoring,
+  - the analysis and outputs performed within the notebooks,
+  - how those are presented in html format.
+
+-  " @elavsky2022accessible extend web accessibility guidelines to make data visualizations accessible." - Potential further reading. 
+
+- [pa11y](https://pa11y.org/) accessibility scanning infrastructure, interesting for further investigation. I think this was one of the topics in a previous Tidy Tuesday visualisation challenge. 
+
+- "Only studying notebooks that are presentation-ready assumes that BVI people's involvement only as consumers of these notebooks and limits discovery of the extent of notebook accessibility problems." - Yes! Strongly agree. 
+
+- The authors use "a fully connected conventional neural network combined with a Fisher-Vector Convolution Neural Network, pre-trained on the [DocFigure](https://ieeexplore.ieee.org/document/8892905) data set" to classify the chart types in the notebooks. A replication of this might be a fun exercise / mini-project in deep learning. 
+
+- `nbconvert` is a pythonic, more focused version of pandoc. 
+
+
+
+
