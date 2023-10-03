@@ -10,7 +10,68 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Tue, 12 Sep 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 02 Oct 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Notably Inaccessible</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2023-10-03-notably-inaccessible/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="reading-summary" class="level2">
+<h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
+<p><code>potluri2023notably</code> <span class="citation" data-cites="potluri2023notably">(Potluri et al. 2023)</span></p>
+<p><strong>Title:</strong> <em>Notably Inaccessible - Data driven understanding of data science notebook (in)accessibility. {ArXiv preprint, 2023} (19 pages).</em></p>
+<p><strong>Authors:</strong> <em>Venkatesh Potluri, Sudheesh Singanamalla, Nussara Tieanklin and Jennifer Mankoff. (University of Washington)</em></p>
+<p><strong>Key words:</strong> <em>data science</em>, <em>workflows</em>, <em>computing</em>, <em>accessibility</em>.</p>
+<div class="medium_right">
+<figure class="figure">
+<img src="https://www.zakvarty.com/blog/2023-10-03-notably-inaccessible/notably-inaccessible-flowchart.png" alt="Flow chart showing the stages of preprocessing and analysis used by Potluri et al to quantify data science notebook accessibility." style="border-radius: 3%;" class="figure-img">
+</figure>
+</div>
+<p>In this paper, the authors explore accessibility of literate programming approaches to blind and visually impaired users, both for the authoring and consumption of data science notebooks. They do this by conducting the first large-scale, empirical investigation into how notebooks are created and used <em>in the wild</em>, focusing strongly on Python-based analyses collated by <span class="citation" data-cites="rule2018exploration">Rule, Tabard, and Hollan (2018)</span>. This study is of interest data scientists and IDE developers who care about improving the accessibility of our workflows. The key findings suggest that the most immediate, individual impact can be made through consistent use of existing HTML tools, for example by providing alt-text for all generated figures and by using heading tags to facilitate document navigation.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li><p>The study makes a holistic assessment of the use of notebooks, investigating accessibility of:</p>
+<ul>
+<li>the integrated development environments used when authoring,</li>
+<li>the analysis and outputs performed within the notebooks,</li>
+<li>how those are presented in html format.</li>
+</ul></li>
+<li><p>” <span class="citation" data-cites="elavsky2022accessible">Elavsky, Bennett, and Moritz (2022)</span> extend web accessibility guidelines to make data visualizations accessible.” - Potential further reading.</p></li>
+<li><p><a href="https://pa11y.org/">pa11y</a> accessibility scanning infrastructure, interesting for further investigation. I think this was one of the topics in a previous Tidy Tuesday visualisation challenge.</p></li>
+<li><p>“Only studying notebooks that are presentation-ready assumes that BVI people’s involvement only as consumers of these notebooks and limits discovery of the extent of notebook accessibility problems.” - Yes! Strongly agree.</p></li>
+<li><p>The authors use “a fully connected conventional neural network combined with a Fisher-Vector Convolution Neural Network, pre-trained on the <a href="https://ieeexplore.ieee.org/document/8892905">DocFigure</a> data set” to classify the chart types in the notebooks. A replication of this might be a fun exercise / mini-project in deep learning.</p></li>
+<li><p><code>nbconvert</code> is a pythonic, more focused version of pandoc.</p></li>
+</ul>
+
+
+
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-elavsky2022accessible" class="csl-entry">
+Elavsky, Frank, Cynthia Bennett, and Dominik Moritz. 2022. <span>“How Accessible Is My Visualization? Evaluating Visualization Accessibility with Chartability.”</span> In <em>Computer Graphics Forum</em>, 41:57–70. 3. Wiley Online Library. <a href="https://doi.org/10.1111/cgf.14522">https://doi.org/10.1111/cgf.14522</a>.
+</div>
+<div id="ref-potluri2023notably" class="csl-entry">
+Potluri, Venkatesh, Sudheesh Singanamalla, Nussara Tieanklin, and Jennifer Mankoff. 2023. <span>“Notably Inaccessible: Data Driven Understanding of Data Science Notebook (In)accessibility.”</span> <em>arXiv Preprint arXiv:2308.03241v1</em>.
+</div>
+<div id="ref-rule2018exploration" class="csl-entry">
+Rule, Adam, Aurélien Tabard, and James D. Hollan. 2018. <span>“Exploration and Explanation in Computational Notebooks.”</span> In <em>Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems</em>, 1--12. CHI ’18. Montreal QC, Canada: Association for Computing Machinery. <a href="https://doi.org/10.1145/3173574.3173606">https://doi.org/10.1145/3173574.3173606</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div> ]]></description>
+  <category>workflows</category>
+  <category>data science</category>
+  <category>computing</category>
+  <category>accessibility</category>
+  <category>reading summary</category>
+  <guid>https://www.zakvarty.com/blog/2023-10-03-notably-inaccessible/index.html</guid>
+  <pubDate>Mon, 02 Oct 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2023-10-03-notably-inaccessible/notably-inaccessible-flowchart.png" medium="image" type="image/png" height="99" width="144"/>
+</item>
 <item>
   <title>Bib but Better</title>
   <dc:creator>Zak Varty</dc:creator>
