@@ -2,9 +2,36 @@
 
 ## Upcoming
 
+<!--
 No upcoming talks currently scheduled. 
 
 Have a speaking opportunity that you think I'd be great for? [Let me know about it](](https://twitter.com/messages/compose?recipient_id={4708109019}))!
+-->
+
+#### RSS Local Group Meeting - University of Bath
+:::{.callout-warning appearance="minimal" collapse=true}
+## Shaking Things Up: Statistical Modelling of Earthquakes
+
+Thursday 16 November 2023 (15:15 - 16:15) [Register](https://rss.org.uk/training-events/events/events-2023/local-groups/rss-avon-local-group-agm-and-talk-on-earthquake-mo/#eventoverview)
+
+<!--
+__Slides__: 
+<!-- 
+<a href="../assets/talks/2023-RSS-getting-your-work-to-work.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- 
+<a href="../assets/talks/2023-RSS-getting-your-work-to-work.pdf" class="btn btn-outline-primary m-1">PDF <span class="bi bi-file-pdf"></span></a>
+<!-- 
+<a href="https://github.com/zakvarty/talks/tree/main/2023-RSS-getting-your-work-to-work" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
+-->
+
+__Abstract:__
+
+Earthquakes are among the most unpredictable of natural disasters and can have a profound impact on both human society and the built environment. Understanding the processes underlying seismic events is crucial to being able to map and mitigate against the hazards that they present.
+
+In this talk, we'll start by introducing some basic seismology principles and the data that can be collected through monitoring networks. We'll then investigate some of the statistical models commonly used to describe earthquake behaviour, from simple point processes to more complex branching process representations and extreme value statistics. Along the way, we'll discuss the challenges of applying these models to real earthquake data and highlight the growing role of machine learning in earthquake research.
+
+We'll explore recent approaches that address the limitations and uncertainties in earthquake modelling, so that by the end of this talk you'll have both a solid understanding of the fundamental models in statistical seismology and an insight into their potential future developments.
+:::
 
 ## Archive 
 
