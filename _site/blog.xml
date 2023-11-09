@@ -10,7 +10,121 @@
 <atom:link href="https://www.zakvarty.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 02 Oct 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 09 Nov 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Method of Moments Estimation for Ransomised Response Surveys</title>
+  <dc:creator>Zak Varty</dc:creator>
+  <link>https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="what-is-a-moment" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-moment">What is a moment?</h2>
+<div class="medium_right">
+<figure class="figure">
+<img src="https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/method-of-moments-scales.png" alt="Method of moments for randomised responses, overlaid on an image of a set of scales." style="border-radius: 3%;" class="figure-img">
+</figure>
+</div>
+<p>For a random variable <img src="https://latex.codecogs.com/png.latex?X">, the <img src="https://latex.codecogs.com/png.latex?r%5E%7Bth%7D"> moment <img src="https://latex.codecogs.com/png.latex?%5Cmu_r"> is given by <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5BX%5Er%5D">.</p>
+<p>For a discrete random variable with sample space <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BX%7D">, we may calculate this as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Cmu_r%20=%20%5Cmathbb%7BE%7D%5BX%5Er%5D%20=%20%5Csum_%7Bx%20%5Cin%20%5Cmathcal%7BX%7D%7D%20x%5Er%20%5CPr(X%20=%20x)."></p>
+<p>For a continuous random variable with probability density function <img src="https://latex.codecogs.com/png.latex?f_X(x)">, we may calculate this as:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cmu_r%20=%20%5Cmathbb%7BE%7D%5BX%5Er%5D%20=%20%5Cint_%7Bx%20%5Cin%20%5Cmathcal%7BX%7D%7D%20x%5Er%20f_X(x)%20%5Cmathrm%7Bd%7Dx."></p>
+</section>
+<section id="what-is-the-method-of-moments" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-the-method-of-moments">What is the method of moments?</h2>
+<p>Suppose we have observed values <img src="https://latex.codecogs.com/png.latex?x_1,%20%5Cldots,%20x_n">, which we wish to model as realisations from a collection of <img src="https://latex.codecogs.com/png.latex?n"> independent and identically distributed (i.i.d) random variables <img src="https://latex.codecogs.com/png.latex?X_1,%20%5Cldots,%20X_n">.</p>
+<p>We might assume a parametric model for the probability density function <img src="https://latex.codecogs.com/png.latex?f_X(x;%5Ctheta)">, so that the distribution of the <img src="https://latex.codecogs.com/png.latex?X_i">’s is entirely described by one or more unknown parameter(s) <img src="https://latex.codecogs.com/png.latex?%5Ctheta">.</p>
+<p>The method of moments gives us a way to estimate the parameters <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> based on the observed values <img src="https://latex.codecogs.com/png.latex?x_1,%20%5Cldots,%20x_n">. We do this by equating the moments of the sample and of the assumed parametric model.</p>
+</section>
+<section id="example-1-exponential-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-exponential-distribution">Example 1: Exponential distribution</h2>
+<p>Suppose that <img src="https://latex.codecogs.com/png.latex?X_1,%20%5Cldots,%20X_n%20%5C%20%5Coverset%7B%5Ctext%7Bi.i.d%7D%7D%7B%5Csim%7D%20%5C%20%20%5Ctext%7BExp%7D(%5Clambda)"> with probability density function</p>
+<p><img src="https://latex.codecogs.com/png.latex?f_X(x)%20=%20%5Clambda%20%5Cexp%5C%7B-%5Clambda%20x%5C%7D%20%5Cmathbb%7BI%7D%5Bx%3E0%5D,"></p>
+<p>and that we observe a sample of values <img src="https://latex.codecogs.com/png.latex?x_1,%20%5Cldots%20,x_n"> with mean <img src="https://latex.codecogs.com/png.latex?%5Cbar%20x%20=%203.25%20=%20%5Cfrac%7B13%7D%7B4%7D">.</p>
+<p>To estimate the single parameter <img src="https://latex.codecogs.com/png.latex?%5Clambda"> for this model, we can equate the first moment of the Exponential model with the first moment of our sample.</p>
+<p>You might already know the expectation of an exponential variable is <img src="https://latex.codecogs.com/png.latex?%5Clambda%5E%7B-1%7D">. If not, you might derive it for yourself:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%20%20%20%20%5Cmu_1%20=%20%5Cmathbb%7BE%7D%5BX%5D%20&amp;=%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20x%20f_X(x)%20%5Cmathrm%7Bd%7Dx%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20x%20%5Clambda%20%5Cexp%5C%7B-%5Clambda%20x%5C%7D%20%5Cmathbb%7BI%7D%5Bx%3E0%5D%20%5Cmathrm%7Bd%7Dx%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cint_%7B0%7D%5E%7B%5Cinfty%7D%20x%20%5Clambda%20%5Cexp%5C%7B-%5Clambda%20x%5C%7D%20%5Cmathrm%7Bd%7Dx%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cleft%5B-x%20%5Cexp%5C%7B-%5Clambda%20x%5C%7D%5Cright%5D_%7B0%7D%5E%7B%5Cinfty%7D%20-%20%5Cint_0%5E%7B%5Cinfty%7D%20-%20%5Cexp%5C%7B-%5Clambda%20x%5C%7D%20%5Cmathrm%7Bd%7Dx%20%5C%5C%0A%20%20%20%20&amp;=%20(0%20-%200)%20+%20%5Cfrac%7B1%7D%7B%5Clambda%7D%20%5Cint_0%5E%7B%5Cinfty%7D%20%5Clambda%20%5Cexp%5C%7B-%5Clambda%20x%5C%7D%20%5Cmathrm%7Bd%7Dx%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cfrac%7B1%7D%7B%5Clambda%7D.%0A%5Cend%7Balign*%7D"></p>
+<p>Equating this first moment of the probabiltiy model to the first sample moment, <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi=1%7D%5E%7Bn%7D%20x_i%20=%20%5Cbar%20x%20=%20%5Cfrac%7B13%7D%7B4%7D,"> we can find the method of moments estimate <img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Clambda"> for <img src="https://latex.codecogs.com/png.latex?%5Clambda">.</p>
+<p>This gives us <img src="https://latex.codecogs.com/png.latex?%20%5Cfrac%7B1%7D%7B%5Chat%5Clambda%7D%20=%20%5Cbar%20x%20%5Cquad%20%5CRightarrow%20%5Cquad%20%5Chat%20%5Clambda%20=%20%5Cbar%20x%20%5E%7B-1%7D%20=%20%5Cfrac%7B4%7D%7B13%7D."></p>
+</section>
+<section id="example-2---gamma-distribution." class="level2">
+<h2 class="anchored" data-anchor-id="example-2---gamma-distribution.">Example 2 - Gamma Distribution.</h2>
+<p>Suppose instead that we had a two parameter model for our data generating process, such as the gamma distribution. In this case, we proceed in much the same way, but to estimate the <em>two</em> parameters of this model we must equate the first <em>two</em> moments of the sample and the model, and then solve those equations simultaneously.</p>
+<p>If <img src="https://latex.codecogs.com/png.latex?Y_1,%20%5Cldots,%20Y_n%20%5Coverset%7B%5Csim%7D%7B%5Ctext%7Bi.i.d.%7D%7D%20%5Ctext%7BGamma%7D(%5Calpha,%20%5Cbeta)">, then</p>
+<p><img src="https://latex.codecogs.com/png.latex?f_X(x)%20=%20%5Cfrac%7B%5Cbeta%20%5E%20%5Calpha%7D%7B%5CGamma(%5Calpha)%7D%20x%5E%7B%5Calpha%20-%201%7D%20%5Cexp%7B-%5Cbeta%20x%7D%20%5Cmathbb%7BI%7D%5Bx%20%3E%200%5D."></p>
+<p>We can calculate the first two moments of the gamma distribution directly using this probability density function. Alternatively, we might obtain these using the known closed forms for the mean and variance of a Gamma random variable:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cmu_1%20=%20%5Cmathbb%7BE%7D%5BY%5D%20=%20%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%7D;"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Cmu_2%20=%20%5Cmathbb%7BE%7D%5BY%5E2%5D%20&amp;=%20%5Ctext%7BVar%7D(Y)%20+%20%5Cmathbb%7BE%7D%5BY%5D%5E2%20%5C%5C%0A&amp;=%20%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%5E2%7D%20+%20%5Cleft(%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%7D%5Cright)%5E2%20%5C%5C%0A&amp;=%20%5Cfrac%7B%5Calpha%20+%20%5Calpha%5E2%7D%7B%5Cbeta%5E2%7D.%0A%5Cend%7Balign*%7D"></p>
+<p>Equating these to the sample moments we get the system of simultaneous equations that we need to solve:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bequation%7D%0A%5Cbar%20x%20=%20%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%7D%20%5Cquad%20%5Cquad%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi=1%7D%5E%7Bn%7D%20x_i%5E2%20=%20%5Cfrac%7B%5Calpha%20+%20%5Calpha%5E2%7D%7B%5Cbeta%5E2%7D.%0A%5Cend%7Bequation%7D"></p>
+<p>Suppose <img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Calpha"> and <img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Cbeta"> satisfy both of these equations. By rearrangement of the first equation we can express <img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Calpha%20=%20%5Chat%20%5Cbeta%20%5Cbar%20x">. Substituting this into the second equation we find that:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign*%7D%0A%5Cfrac%7B1%7D%7Bn%7D%20%5Csum_%7Bi=1%7D%5E%7Bn%7D%20x_i%20%5E2%20=%20%5Cfrac%7B%5Chat%20%5Cbeta%20%5Cbar%20x%20+%20(%5Chat%20%5Cbeta%20%5Cbar%20x)%5E2%7D%7B%5Chat%20%5Cbeta%5E2%7D%0A%5Cquad%0A%5CRightarrow%0A%5Cquad%0A%5Chat%5Cbeta%20=%20%5Cfrac%7B%5Cbar%20x%7D%7B%5Csum_%7Bi=1%7D%5E%7Bn%7D%20x_i%5E2%20-%20%5Cbar%20x%5E2%7D.%0A%5Cend%7Balign*%7D"></p>
+<p>This can then be substituted back into the fist equation to find that</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Calpha%20=%20%5Cfrac%7B%5Cbar%20x%5E2%7D%7B%5Csum_%7Bi=1%7D%5E%7Bn%7D%20x_i%5E2%20-%20%5Cbar%20x%5E2%7D."></p>
+<p>And so, we have found the method of moments estimators <img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Calpha"> and <img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Cbeta"> for our two model parameters <img src="https://latex.codecogs.com/png.latex?%5Calpha"> and <img src="https://latex.codecogs.com/png.latex?%5Cbeta">.</p>
+</section>
+<section id="example-3---beta-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="example-3---beta-distribution">Example 3 - Beta Distribution</h2>
+<p>Suppose instead that we had observations <img src="https://latex.codecogs.com/png.latex?z_1,%20%5Cldots,%20z_n"> which we model as realisations of <img src="https://latex.codecogs.com/png.latex?Z_1,%20%5Cldots,%20Z_n"> which are i.i.d. random variables from a beta distribution. This is another two parameter family of probability distributions, characterised by probability density functions of the form</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20f_Z(z)%20=%20%5Cfrac%7B%5CGamma(%5Calpha%20+%20%5Cbeta)%7D%7B%5CGamma(%5Calpha)%5CGamma(%5Cbeta)%20x%5E%7B%5Calpha%20-%201%7D%20(1-%20x)%5E%7B%5Cbeta%20-%201%7D%7D."></p>
+<p>We can show that</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Cmathbb%7BE%7D%5BZ%5D%20=%20%5Cfrac%7B%5Calpha%7D%7B%5Calpha%20+%20%5Cbeta%7D"></p>
+<p>and</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Cmathbb%7BE%7D%5BZ%5E2%5D%20=%20%5Ctext%7BVar%7D(Z)%20+%20%5Cmathbb%7BE%7D%5BZ%5D%5E2%20%20%0A%20%20%20%20%20%20%20%20=%20%5Cfrac%7B%5Calpha%20%5Cbeta%7D%7B(%5Calpha%20+%20%5Cbeta)%5E2(%5Calpha%20+%20%5Cbeta%20+%201)%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20+%20%5Cleft%5B%5Cfrac%7B%5Calpha%7D%7B%5Calpha%20+%20%5Cbeta%7D%5Cright%5D%5E2%20%5C%5C%0A%20%20%20%20%20%20%20%20=%20%5Cfrac%7B%5Calpha%20%5Cbeta%20+%20%5Calpha%5E2(%5Calpha%20+%20%5Cbeta%20+%201)%7D%7B(%5Calpha%20+%20%5Cbeta)%5E2(%5Calpha%20+%20%5Cbeta%20+%201)%7D."></p>
+<p>So the system of equations that we wish to solve simultaneously for <img src="https://latex.codecogs.com/png.latex?%5Chat%20%5Calpha"> and <img src="https://latex.codecogs.com/png.latex?%5Chat%5Cbeta"> are</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20z_i%20=%20%5Cfrac%7B%5Chat%5Calpha%7D%7B%5Chat%5Calpha%20+%20%5Chat%5Cbeta%7D"></p>
+<p>and</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Csum_%7Bi=1%7D%5En%20z_i%5E2%20=%20%5Cfrac%7B%5Chat%5Calpha%20%5Chat%5Cbeta%20+%20%5Chat%5Calpha%5E2(%5Chat%5Calpha%20+%20%5Chat%5Cbeta%20+%201)%7D%7B(%5Chat%5Calpha%20+%20%5Chat%5Cbeta)%5E2(%5Chat%5Calpha%20+%20%5Chat%5Cbeta%20+%201)%7D."></p>
+<p>This system of equations has no closed-form solution but could be solved using numerically to optimisation to produce the method of moments estimates for a particular data set.</p>
+<p>This points out that while the method of moments is conceptually simple, actually obtaining the estimates for a given data generating model is not always straightforward.</p>
+</section>
+<section id="example-4---binomial-distribution-direct-response" class="level2">
+<h2 class="anchored" data-anchor-id="example-4---binomial-distribution-direct-response">Example 4 - Binomial Distribution (Direct Response)</h2>
+<p>Suppose we are estimating some population proportion <img src="https://latex.codecogs.com/png.latex?p"> of people with a postgraduate degree. Assuming that we can take a representative sample of size <img src="https://latex.codecogs.com/png.latex?m"> from the population, we might model the number of survey respondents who have a postgraduate degree as <img src="https://latex.codecogs.com/png.latex?N%20%5Csim%20%5Ctext%7BBin%7D(m,%20p)">.</p>
+<p>In that case <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5BN%5D%20=%20mp"> and since we only run the survey once, our sample mean is simply the one observed count.</p>
+<p>Equating the fist moments of the sample and the model, we have <img src="https://latex.codecogs.com/png.latex?n%20=%20m%20%5Chat%20p"> and so <img src="https://latex.codecogs.com/png.latex?%5Chat%20p%20=%20%5Cfrac%7Bn%7D%7Bm%7D">.</p>
+<p>Therefore, under this direct-response survey design, the method of moments estimate for the population proportion of people with a postgraduate degree is simply the sample proportion.</p>
+</section>
+<section id="example-5---binomial-distribution-random-response" class="level2">
+<h2 class="anchored" data-anchor-id="example-5---binomial-distribution-random-response">Example 5 - Binomial Distribution (Random Response)</h2>
+<p>Suppose instead that we were interested in the proportion of the population who have illegally downloaded content from the internet. We will denote the true population proportion that we wish to estimate as <img src="https://latex.codecogs.com/png.latex?p">.</p>
+<p>If we use a direct response surey, some respondents might be reluctant to admit thier bad behaviour, this might cause non-response or dishonest responses from some participants. To alleviate this issue, we can use a randomised response survey to provide respondents with plausible deniability. We will add some element of randomisation to the survey design, so that for an individual respondent who replies in the affirmative we will no longer be certain that they have illegal downloads.</p>
+<p>In particular, if a participant has not downloaded content from the internet, they will declare as such with probability 0.75 and with probability 0.25 they will declare that they do indeed have illegal downloads. Therefore, a respondent might reply in the affirmative to this survey <strong>either</strong> if they have truly downloaded illegal content <strong>or</strong> if they have not and happen to do so because of their random allocation. The probability of an affirmative response is given by <img src="https://latex.codecogs.com/png.latex?%5Ctheta%20=%20p%20+%20(1-p)/4">.</p>
+<p>The expectation of our total number of affirmative responses <img src="https://latex.codecogs.com/png.latex?N"> could, as in the direct response design, be modelled using a binomial distribution with <img src="https://latex.codecogs.com/png.latex?m"> trials. However, for this randomised response design the “success” probability is <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> rather than <img src="https://latex.codecogs.com/png.latex?p">.</p>
+<p>Therefore the first moment of our affirmative response count <img src="https://latex.codecogs.com/png.latex?N"> is</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5BN%5D%20=%20%20m%20%5Ctheta%20=%20m%20%5Cleft%5B%20p%20+%20(1%20-%20p)/4%20%5Cright%5D,"></p>
+<p>which we can equate to the sample mean (i.e.&nbsp;the observed count)</p>
+<p><img src="https://latex.codecogs.com/png.latex?m%20%5Cleft%5B%20%5Chat%20p%20+%20(1%20-%20%5Chat%20p)/4%20%5Cright%5D%20=%20n."></p>
+<p>Rearranging this equality results in the following method of moments estimate for <img src="https://latex.codecogs.com/png.latex?p">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%20p%20=%20%5Cfrac%7B4%7D%7B3%7D%5Cleft(%5Cfrac%7Bn%7D%7Bm%7D%20-%20%5Cfrac%7B1%7D%7B4%7D%5Cright)%20=%20%5Cfrac%7B4n%7D%7B3m%7D%20-%20%5Cfrac%7B1%7D%7B3%7D."></p>
+<p>We can use this expression to get an unbiased estimate of the population proportion of people who illegally download content, based on our deliberately corrupted responses that provide individuals with plausible deniability.</p>
+</section>
+<section id="session-information" class="level2">
+<h2 class="anchored" data-anchor-id="session-information">Session Information</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><strong>R version 4.3.1 (2023-06-16)</strong></p>
+<p><strong>Platform:</strong> x86_64-apple-darwin20 (64-bit)</p>
+<p><strong>locale:</strong> en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8</p>
+<p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>utils</em>, <em>datasets</em>, <em>methods</em> and <em>base</em></p>
+<p><strong>loaded via a namespace (and not attached):</strong> <em>htmlwidgets(v.1.6.2)</em>, <em>compiler(v.4.3.1)</em>, <em>fastmap(v.1.1.1)</em>, <em>cli(v.3.6.1)</em>, <em>tools(v.4.3.1)</em>, <em>htmltools(v.0.5.6)</em>, <em>rstudioapi(v.0.15.0)</em>, <em>yaml(v.2.3.7)</em>, <em>Rcpp(v.1.0.11)</em>, <em>pander(v.0.6.5)</em>, <em>rmarkdown(v.2.24)</em>, <em>knitr(v.1.43)</em>, <em>jsonlite(v.1.8.7)</em>, <em>xfun(v.0.40)</em>, <em>digest(v.0.6.33)</em>, <em>rlang(v.1.1.1)</em> and <em>evaluate(v.0.21)</em></p>
+</div>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div> ]]></description>
+  <category>privacy</category>
+  <category>estimation</category>
+  <category>statistics</category>
+  <category>tutorial</category>
+  <guid>https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html</guid>
+  <pubDate>Thu, 09 Nov 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/method-of-moments-scales.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Notably Inaccessible</title>
   <dc:creator>Zak Varty</dc:creator>

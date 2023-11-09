@@ -2,118 +2,122 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.zakvarty.com/blog.html</loc>
-    <lastmod>2023-11-05T16:18:55.457Z</lastmod>
+    <lastmod>2023-11-09T12:15:25.585Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html</loc>
-    <lastmod>2023-11-05T16:18:53.215Z</lastmod>
+    <lastmod>2023-11-09T12:15:23.103Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-12-13-git-remote-branches/index.html</loc>
-    <lastmod>2023-11-05T16:18:51.928Z</lastmod>
+    <lastmod>2023-11-09T12:15:21.767Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2023-01-16-minimal-R-package/index.html</loc>
-    <lastmod>2023-11-05T16:18:51.031Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2022-10-10-statistics-books/index.html</loc>
-    <lastmod>2023-11-05T16:18:48.611Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/index.html</loc>
-    <lastmod>2023-11-05T16:18:47.227Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2023-07-14-counting-the-countless/index.html</loc>
-    <lastmod>2023-11-05T16:18:44.773Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/index.html</loc>
-    <lastmod>2023-11-05T16:18:44.016Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2022-10-11-ravelry-tidy-tuesday/index.html</loc>
-    <lastmod>2023-11-05T16:18:42.004Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/index.html</loc>
-    <lastmod>2023-11-05T16:18:40.172Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html</loc>
-    <lastmod>2023-11-05T16:18:37.642Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/professional/talks.html</loc>
-    <lastmod>2023-11-05T16:18:35.800Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/professional/research.html</loc>
-    <lastmod>2023-11-05T16:18:34.810Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/professional/ethics-reading-list.html</loc>
-    <lastmod>2023-11-05T16:18:33.631Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/personal/reading-record.html</loc>
-    <lastmod>2023-11-05T16:18:32.686Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/professional/teaching.html</loc>
-    <lastmod>2023-11-05T16:18:34.276Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/professional/project-supervision.html</loc>
-    <lastmod>2023-11-05T16:18:35.227Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/professional/bookmarks.html</loc>
-    <lastmod>2023-11-05T16:18:36.543Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/index.html</loc>
-    <lastmod>2023-11-05T16:18:37.211Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2023-09-13-bib-but-better/index.html</loc>
-    <lastmod>2023-11-05T16:18:38.767Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2022-12-01-rvest/index.html</loc>
-    <lastmod>2023-11-05T16:18:41.310Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2023-10-03-notably-inaccessible/index.html</loc>
-    <lastmod>2023-11-05T16:18:43.263Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2023-07-26-mundanity-of-excellence/index.html</loc>
-    <lastmod>2023-11-05T16:18:44.423Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2023-01-06-data-wrangling/index.html</loc>
-    <lastmod>2023-11-05T16:18:46.431Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/blog/2022-09-26-hello-world/index.html</loc>
-    <lastmod>2023-11-05T16:18:47.849Z</lastmod>
+    <lastmod>2023-11-09T12:15:20.742Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html</loc>
-    <lastmod>2023-11-05T16:18:49.461Z</lastmod>
+    <lastmod>2023-11-09T12:15:17.330Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-09-26-hello-world/index.html</loc>
+    <lastmod>2023-11-09T12:15:15.757Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-01-06-data-wrangling/index.html</loc>
+    <lastmod>2023-11-09T12:15:14.443Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-07-26-mundanity-of-excellence/index.html</loc>
+    <lastmod>2023-11-09T12:15:12.549Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-10-03-notably-inaccessible/index.html</loc>
+    <lastmod>2023-11-09T12:15:11.460Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-12-01-rvest/index.html</loc>
+    <lastmod>2023-11-09T12:15:09.684Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-09-13-bib-but-better/index.html</loc>
+    <lastmod>2023-11-09T12:15:07.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/index.html</loc>
+    <lastmod>2023-11-09T12:15:05.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/professional/bookmarks.html</loc>
+    <lastmod>2023-11-09T12:15:04.947Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/professional/project-supervision.html</loc>
+    <lastmod>2023-11-09T12:15:03.655Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/professional/teaching.html</loc>
+    <lastmod>2023-11-09T12:15:02.840Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/personal/reading-record.html</loc>
+    <lastmod>2023-11-09T12:15:01.559Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/professional/ethics-reading-list.html</loc>
+    <lastmod>2023-11-09T12:15:02.304Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/professional/research.html</loc>
+    <lastmod>2023-11-09T12:15:03.280Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/professional/talks.html</loc>
+    <lastmod>2023-11-09T12:15:04.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html</loc>
+    <lastmod>2023-11-09T12:15:06.059Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/index.html</loc>
+    <lastmod>2023-11-09T12:15:08.552Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-10-11-ravelry-tidy-tuesday/index.html</loc>
+    <lastmod>2023-11-09T12:15:10.276Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-09-26-adding-a-quarto-blog/index.html</loc>
+    <lastmod>2023-11-09T12:15:12.155Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-07-14-counting-the-countless/index.html</loc>
+    <lastmod>2023-11-09T12:15:12.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-10-15-BBC-temperature-plot/index.html</loc>
+    <lastmod>2023-11-09T12:15:15.170Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-10-10-statistics-books/index.html</loc>
+    <lastmod>2023-11-09T12:15:16.507Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html</loc>
+    <lastmod>2023-11-09T12:15:19.116Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2023-08-15-improve-your-relationship/index.html</loc>
-    <lastmod>2023-11-05T16:18:51.524Z</lastmod>
+    <lastmod>2023-11-09T12:15:21.303Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-07-rhetorical-precis/index.html</loc>
-    <lastmod>2023-11-05T16:18:52.658Z</lastmod>
+    <lastmod>2023-11-09T12:15:22.586Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/about.html</loc>
-    <lastmod>2023-11-05T16:18:53.622Z</lastmod>
+    <lastmod>2023-11-09T12:15:23.510Z</lastmod>
   </url>
 </urlset>
