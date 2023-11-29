@@ -12,7 +12,7 @@ categories:
 image: notably-inaccessible-flowchart.png
 image-alt: "Flow chart showing the stages of preprocessing and analysis used by Potluri et al to quantify data science notebook accessibility."
 draft: false
-freeze: false
+freeze: true
 appendix-style: plain #(default, plain, none)
 bibliography: ../library.bib
 citation: false

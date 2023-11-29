@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-11-09">
 <meta name="description" content="Method of moments estimation for common data models and randomised response designs.">
 
-<title>Zak Varty - Method of Moments Estimation for Ransomised Response Surveys</title>
+<title>Zak Varty - Method of Moments Estimation for Randomised Response Surveys</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +95,7 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Zak Varty - Method of Moments Estimation for Ransomised Response Surveys">
+<meta name="twitter:title" content="Zak Varty - Method of Moments Estimation for Randomised Response Surveys">
 <meta name="twitter:description" content="Method of moments estimation for common data models and randomised response designs.">
 <meta name="twitter:image" content="https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/method-of-moments-scales.png">
 <meta name="twitter:image-height" content="400">
@@ -213,7 +213,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Method of Moments Estimation for Ransomised Response Surveys</h1>
+<h1 class="title">Method of Moments Estimation for Randomised Response Surveys</h1>
   <div class="quarto-categories">
     <div class="quarto-category">privacy</div>
     <div class="quarto-category">estimation</div>
@@ -291,7 +291,7 @@ cookieconsent.run({
 <section id="example-2---gamma-distribution." class="level2">
 <h2 class="anchored" data-anchor-id="example-2---gamma-distribution.">Example 2 - Gamma Distribution.</h2>
 <p>Suppose instead that we had a two parameter model for our data generating process, such as the gamma distribution. In this case, we proceed in much the same way, but to estimate the <em>two</em> parameters of this model we must equate the first <em>two</em> moments of the sample and the model, and then solve those equations simultaneously.</p>
-<p>If <span class="math inline">\(Y_1, \ldots, Y_n \overset{\sim}{\text{i.i.d.}} \text{Gamma}(\alpha, \beta)\)</span>, then</p>
+<p>If <span class="math inline">\(Y_1, \ldots, Y_n \overset{\text{i.i.d.}}{\sim} \text{Gamma}(\alpha, \beta)\)</span>, then</p>
 <p><span class="math display">\[f_X(x) = \frac{\beta ^ \alpha}{\Gamma(\alpha)} x^{\alpha - 1} \exp{-\beta x} \mathbb{I}[x &gt; 0].\]</span></p>
 <p>We can calculate the first two moments of the gamma distribution directly using this probability density function. Alternatively, we might obtain these using the known closed forms for the mean and variance of a Gamma random variable:</p>
 <p><span class="math display">\[\mu_1 = \mathbb{E}[Y] = \frac{\alpha}{\beta};\]</span></p>
@@ -319,7 +319,7 @@ cookieconsent.run({
 <section id="example-3---beta-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="example-3---beta-distribution">Example 3 - Beta Distribution</h2>
 <p>Suppose instead that we had observations <span class="math inline">\(z_1, \ldots, z_n\)</span> which we model as realisations of <span class="math inline">\(Z_1, \ldots, Z_n\)</span> which are i.i.d. random variables from a beta distribution. This is another two parameter family of probability distributions, characterised by probability density functions of the form</p>
-<p><span class="math display">\[ f_Z(z) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta) x^{\alpha - 1} (1- x)^{\beta - 1}}.\]</span></p>
+<p><span class="math display">\[ f_Z(z; \alpha, \beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1- x)^{\beta - 1}.\]</span></p>
 <p>We can show that</p>
 <p><span class="math display">\[ \mathbb{E}[Z] = \frac{\alpha}{\alpha + \beta}\]</span></p>
 <p>and</p>
@@ -361,9 +361,9 @@ cookieconsent.run({
 <div class="cell-output-display">
 <p><strong>R version 4.3.1 (2023-06-16)</strong></p>
 <p><strong>Platform:</strong> x86_64-apple-darwin20 (64-bit)</p>
-<p><strong>locale:</strong> en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8</p>
+<p><strong>locale:</strong> en_GB.UTF-8||en_GB.UTF-8||en_GB.UTF-8||C||en_GB.UTF-8||en_GB.UTF-8</p>
 <p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>utils</em>, <em>datasets</em>, <em>methods</em> and <em>base</em></p>
-<p><strong>loaded via a namespace (and not attached):</strong> <em>htmlwidgets(v.1.6.2)</em>, <em>compiler(v.4.3.1)</em>, <em>fastmap(v.1.1.1)</em>, <em>cli(v.3.6.1)</em>, <em>tools(v.4.3.1)</em>, <em>htmltools(v.0.5.6)</em>, <em>rstudioapi(v.0.15.0)</em>, <em>yaml(v.2.3.7)</em>, <em>Rcpp(v.1.0.11)</em>, <em>pander(v.0.6.5)</em>, <em>rmarkdown(v.2.24)</em>, <em>knitr(v.1.43)</em>, <em>jsonlite(v.1.8.7)</em>, <em>xfun(v.0.40)</em>, <em>digest(v.0.6.33)</em>, <em>rlang(v.1.1.1)</em> and <em>evaluate(v.0.21)</em></p>
+<p><strong>loaded via a namespace (and not attached):</strong> <em>htmlwidgets(v.1.6.2)</em>, <em>compiler(v.4.3.1)</em>, <em>fastmap(v.1.1.1)</em>, <em>cli(v.3.6.1)</em>, <em>tools(v.4.3.1)</em>, <em>htmltools(v.0.5.6)</em>, <em>rstudioapi(v.0.15.0)</em>, <em>yaml(v.2.3.7)</em>, <em>Rcpp(v.1.0.11)</em>, <em>pander(v.0.6.5)</em>, <em>rmarkdown(v.2.24)</em>, <em>knitr(v.1.43)</em>, <em>jsonlite(v.1.8.7)</em>, <em>xfun(v.0.40)</em>, <em>digest(v.0.6.33)</em>, <em>rlang(v.1.1.2)</em> and <em>evaluate(v.0.21)</em></p>
 </div>
 </div>
 

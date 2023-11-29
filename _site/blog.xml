@@ -12,7 +12,7 @@
 <generator>quarto-1.3.450</generator>
 <lastBuildDate>Thu, 09 Nov 2023 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>Method of Moments Estimation for Ransomised Response Surveys</title>
+  <title>Method of Moments Estimation for Randomised Response Surveys</title>
   <dc:creator>Zak Varty</dc:creator>
   <link>https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html</link>
   <description><![CDATA[ 
@@ -52,7 +52,7 @@
 <section id="example-2---gamma-distribution." class="level2">
 <h2 class="anchored" data-anchor-id="example-2---gamma-distribution.">Example 2 - Gamma Distribution.</h2>
 <p>Suppose instead that we had a two parameter model for our data generating process, such as the gamma distribution. In this case, we proceed in much the same way, but to estimate the <em>two</em> parameters of this model we must equate the first <em>two</em> moments of the sample and the model, and then solve those equations simultaneously.</p>
-<p>If <img src="https://latex.codecogs.com/png.latex?Y_1,%20%5Cldots,%20Y_n%20%5Coverset%7B%5Csim%7D%7B%5Ctext%7Bi.i.d.%7D%7D%20%5Ctext%7BGamma%7D(%5Calpha,%20%5Cbeta)">, then</p>
+<p>If <img src="https://latex.codecogs.com/png.latex?Y_1,%20%5Cldots,%20Y_n%20%5Coverset%7B%5Ctext%7Bi.i.d.%7D%7D%7B%5Csim%7D%20%5Ctext%7BGamma%7D(%5Calpha,%20%5Cbeta)">, then</p>
 <p><img src="https://latex.codecogs.com/png.latex?f_X(x)%20=%20%5Cfrac%7B%5Cbeta%20%5E%20%5Calpha%7D%7B%5CGamma(%5Calpha)%7D%20x%5E%7B%5Calpha%20-%201%7D%20%5Cexp%7B-%5Cbeta%20x%7D%20%5Cmathbb%7BI%7D%5Bx%20%3E%200%5D."></p>
 <p>We can calculate the first two moments of the gamma distribution directly using this probability density function. Alternatively, we might obtain these using the known closed forms for the mean and variance of a Gamma random variable:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cmu_1%20=%20%5Cmathbb%7BE%7D%5BY%5D%20=%20%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%7D;"></p>
@@ -68,7 +68,7 @@
 <section id="example-3---beta-distribution" class="level2">
 <h2 class="anchored" data-anchor-id="example-3---beta-distribution">Example 3 - Beta Distribution</h2>
 <p>Suppose instead that we had observations <img src="https://latex.codecogs.com/png.latex?z_1,%20%5Cldots,%20z_n"> which we model as realisations of <img src="https://latex.codecogs.com/png.latex?Z_1,%20%5Cldots,%20Z_n"> which are i.i.d. random variables from a beta distribution. This is another two parameter family of probability distributions, characterised by probability density functions of the form</p>
-<p><img src="https://latex.codecogs.com/png.latex?%20f_Z(z)%20=%20%5Cfrac%7B%5CGamma(%5Calpha%20+%20%5Cbeta)%7D%7B%5CGamma(%5Calpha)%5CGamma(%5Cbeta)%20x%5E%7B%5Calpha%20-%201%7D%20(1-%20x)%5E%7B%5Cbeta%20-%201%7D%7D."></p>
+<p><img src="https://latex.codecogs.com/png.latex?%20f_Z(z;%20%5Calpha,%20%5Cbeta)%20=%20%5Cfrac%7B%5CGamma(%5Calpha%20+%20%5Cbeta)%7D%7B%5CGamma(%5Calpha)%5CGamma(%5Cbeta)%7D%20x%5E%7B%5Calpha%20-%201%7D%20(1-%20x)%5E%7B%5Cbeta%20-%201%7D."></p>
 <p>We can show that</p>
 <p><img src="https://latex.codecogs.com/png.latex?%20%5Cmathbb%7BE%7D%5BZ%5D%20=%20%5Cfrac%7B%5Calpha%7D%7B%5Calpha%20+%20%5Cbeta%7D"></p>
 <p>and</p>
@@ -107,9 +107,9 @@
 <div class="cell-output-display">
 <p><strong>R version 4.3.1 (2023-06-16)</strong></p>
 <p><strong>Platform:</strong> x86_64-apple-darwin20 (64-bit)</p>
-<p><strong>locale:</strong> en_US.UTF-8||en_US.UTF-8||en_US.UTF-8||C||en_US.UTF-8||en_US.UTF-8</p>
+<p><strong>locale:</strong> en_GB.UTF-8||en_GB.UTF-8||en_GB.UTF-8||C||en_GB.UTF-8||en_GB.UTF-8</p>
 <p><strong>attached base packages:</strong> <em>stats</em>, <em>graphics</em>, <em>grDevices</em>, <em>utils</em>, <em>datasets</em>, <em>methods</em> and <em>base</em></p>
-<p><strong>loaded via a namespace (and not attached):</strong> <em>htmlwidgets(v.1.6.2)</em>, <em>compiler(v.4.3.1)</em>, <em>fastmap(v.1.1.1)</em>, <em>cli(v.3.6.1)</em>, <em>tools(v.4.3.1)</em>, <em>htmltools(v.0.5.6)</em>, <em>rstudioapi(v.0.15.0)</em>, <em>yaml(v.2.3.7)</em>, <em>Rcpp(v.1.0.11)</em>, <em>pander(v.0.6.5)</em>, <em>rmarkdown(v.2.24)</em>, <em>knitr(v.1.43)</em>, <em>jsonlite(v.1.8.7)</em>, <em>xfun(v.0.40)</em>, <em>digest(v.0.6.33)</em>, <em>rlang(v.1.1.1)</em> and <em>evaluate(v.0.21)</em></p>
+<p><strong>loaded via a namespace (and not attached):</strong> <em>htmlwidgets(v.1.6.2)</em>, <em>compiler(v.4.3.1)</em>, <em>fastmap(v.1.1.1)</em>, <em>cli(v.3.6.1)</em>, <em>tools(v.4.3.1)</em>, <em>htmltools(v.0.5.6)</em>, <em>rstudioapi(v.0.15.0)</em>, <em>yaml(v.2.3.7)</em>, <em>Rcpp(v.1.0.11)</em>, <em>pander(v.0.6.5)</em>, <em>rmarkdown(v.2.24)</em>, <em>knitr(v.1.43)</em>, <em>jsonlite(v.1.8.7)</em>, <em>xfun(v.0.40)</em>, <em>digest(v.0.6.33)</em>, <em>rlang(v.1.1.2)</em> and <em>evaluate(v.0.21)</em></p>
 </div>
 </div>
 

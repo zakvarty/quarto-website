@@ -2,11 +2,16 @@
 
 ## Upcoming
 
-<!--
+
 No upcoming talks currently scheduled. 
 
 Have a speaking opportunity that you think I'd be great for? [Let me know about it](](https://twitter.com/messages/compose?recipient_id={4708109019}))!
--->
+
+
+
+## Archive 
+
+### 2023
 
 #### RSS Local Group Meeting - University of Bath
 :::{.callout-warning appearance="minimal" collapse=true}
@@ -14,15 +19,15 @@ Have a speaking opportunity that you think I'd be great for? [Let me know about 
 
 Thursday 16 November 2023 (15:15 - 16:15) [Register](https://rss.org.uk/training-events/events/events-2023/local-groups/rss-avon-local-group-agm-and-talk-on-earthquake-mo/#eventoverview)
 
-<!--
+
 __Slides__: 
-<!-- 
-<a href="../assets/talks/2023-RSS-getting-your-work-to-work.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
-<!-- 
-<a href="../assets/talks/2023-RSS-getting-your-work-to-work.pdf" class="btn btn-outline-primary m-1">PDF <span class="bi bi-file-pdf"></span></a>
-<!-- 
-<a href="https://github.com/zakvarty/talks/tree/main/2023-RSS-getting-your-work-to-work" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
--->
+
+<a href="../assets/talks/2023-RSS-shaking-things-up.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- -->
+<a href="../assets/talks/2023-RSS-shaking-things-up.pdf" class="btn btn-outline-primary m-1">PDF <span class="bi bi-file-pdf"></span></a>
+<!-- -->
+<a href="https://github.com/zakvarty/talks/tree/main/2023-RSS-shaking-things-up" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
+
 
 __Abstract:__
 
@@ -32,10 +37,6 @@ In this talk, we'll start by introducing some basic seismology principles and th
 
 We'll explore recent approaches that address the limitations and uncertainties in earthquake modelling, so that by the end of this talk you'll have both a solid understanding of the fundamental models in statistical seismology and an insight into their potential future developments.
 :::
-
-## Archive 
-
-### 2023
 
 #### Royal Statistical Society Conference 2023
 

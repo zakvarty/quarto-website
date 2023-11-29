@@ -1,5 +1,5 @@
 ---
-title: "Method of Moments Estimation for Ransomised Response Surveys"
+title: "Method of Moments Estimation for Randomised Response Surveys"
 description: |
     Method of moments estimation for common data models and randomised response designs.
 date: "2023-11-09"
@@ -11,7 +11,7 @@ categories:
 image: method-of-moments-scales.png
 image-alt: "Method of moments for randomised responses, overlaid on an image of a set of scales."
 draft: false
-freeze: false
+freeze: true
 appendix-style: plain #(default, plain, none)
 bibliography: ../library.bib
 citation: false
@@ -85,7 +85,7 @@ $$ \frac{1}{\hat\lambda} = \bar x \quad \Rightarrow \quad \hat \lambda = \bar x 
 
 Suppose instead that we had a two parameter model for our data generating process, such as the gamma distribution. In this case, we proceed in much the same way, but to estimate the _two_ parameters of this model we must equate the first _two_ moments of the sample and the model, and then solve those equations simultaneously. 
 
-If $Y_1, \ldots, Y_n \overset{\sim}{\text{i.i.d.}} \text{Gamma}(\alpha, \beta)$, then 
+If $Y_1, \ldots, Y_n \overset{\text{i.i.d.}}{\sim} \text{Gamma}(\alpha, \beta)$, then 
 
 $$f_X(x) = \frac{\beta ^ \alpha}{\Gamma(\alpha)} x^{\alpha - 1} \exp{-\beta x} \mathbb{I}[x > 0].$$
 
@@ -126,7 +126,7 @@ And so, we have found the method of moments estimators $\hat \alpha$ and $\hat \
 
 Suppose instead that we had observations $z_1, \ldots, z_n$ which we model as realisations of $Z_1, \ldots, Z_n$ which are i.i.d. random variables from a beta distribution. This is another two parameter family of probability distributions, characterised by probability density functions of the form 
 
-$$ f_Z(z) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta) x^{\alpha - 1} (1- x)^{\beta - 1}}.$$
+$$ f_Z(z; \alpha, \beta) = \frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)} x^{\alpha - 1} (1- x)^{\beta - 1}.$$
 
 We can show that 
 
