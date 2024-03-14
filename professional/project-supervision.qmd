@@ -23,7 +23,7 @@ I have had the good fortune to supervise some exceptional early career researche
 
 
 <!-- AY 2022-2023 -->
-#### Academic Year 2023-24
+#### Academic Year 2022-23
 - __Wanchen Yue__ - Statistical earthquake models to account for measurement errors and dependence.
 - __Ash Bellett__ - Contextual bandits with non-stationary Gaussian process rewards.
 - __Christian Liman__ - Multiple imputation for tree-based models.
@@ -35,7 +35,7 @@ synthetic content.
 - __Shantianfang Gao__ - Inhomogeneous Poisson point process estimation using spline methods.
 
 <!-- AY 2021-2022 -->
-#### Academic Year 2023-24
+#### Academic Year 2021-22
 - __Diana Xu__ - An extreme value mixture model for natural gas prices.
 - __Hugo Barnett__ - Hypothesis testing with the self-inhibiting Hawkes process.
 - __Nan Zhou__ - Self-driving vehicles road safety analysis by application of extreme value theory.
