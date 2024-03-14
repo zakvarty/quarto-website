@@ -19,7 +19,7 @@ You can find a copy of my thesis on [github](https://github.com/zakvarty/varty_t
 ## PhD outputs
 
 ### Publications 
-*Varty, Z.*, Tawn J.A., Atkinson P.M. and Bierman S. (2021). Inference for extreme earthquake mangitudes accounting for a time-varying measurement process. (Submitted, preprint on [arXiv](https://arxiv.org/abs/2102.00884))
+**Varty, Z.**, Tawn J.A., Atkinson P.M. and Bierman S. (2021). Inference for extreme earthquake mangitudes accounting for a time-varying measurement process. (Preprint on [arXiv](https://arxiv.org/abs/2102.00884))
 
 
 ### Conferences and workshop contributions

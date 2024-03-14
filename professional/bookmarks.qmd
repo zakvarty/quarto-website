@@ -1,5 +1,7 @@
 # Bookmarks 
 
+A collection of helpful resources that I might want to find again in the future or point other people towards.
+
 ### Advice: Faculty 
 
 - [Thread](https://twitter.com/sarahlsheffield/status/1553811480264560641) by Sarah Sheffield (@sarahsheffield) advice for new faculty. 
@@ -25,6 +27,8 @@
 - [Thread](https://twitter.com/alexeble/status/1019278324680593408?s=20&t=cXDVFRK_1_IKKHHyiRKLVw) by Alex Eble (@alexeble) on adivce for thriving in a PhD. Full document [here](http://alexeble.com/s/PhDGuidebook.pdf). Note: has US and economics focus, but translates well.
 - [Website](https://www-users.york.ac.uk/~mb55/pubs/pbstnote.htm) Stats Notes in the British Medical Journal. Like a dictionary but for stats words and methods.
 - [Book](https://www.oreilly.com/library/view/essential-math-for/9781098102920/) Esstential Math for Data Scienceby Thomas Nield. Recommended by Vicki Boykis for those tooking for an intro/refresher on linear algebra, probability and statistics.
+
+
 ### Agent based modelling 
 
 - [Paper](https://inet.ox.ac.uk/files/JEL-v2.0.pdf) review of agent based model (preprint of JEL - chunky at 90 pages!) 
@@ -46,12 +50,22 @@
 
 ### Coding (General) 
 
+#### Short-form 
+
 - [Article](https://tekin.co.uk/2020/03/maintain-a-global-git-ignore-file) on setting up a private .gitignore to keep a clean codebase
 - [Book](https://py-pkgs.org/) / website on package development in Python. (Think Hadley & Bryan's R packages but for Python) Recommended by @EmilyRiederer 
 - [Book](https://themissingreadme.com/) The missing readme by Chris Riccomini and Dmitriy Ryaboy
 - [Paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007142) Ten Simple Rules for Taking Advantage of Git and GitHub
 - [Sildes](https://aosmith16.github.io/spring-r-topics/slides/week07_more_git.html#1) by Ariel Muldoon (@aosmith16) on "More git and github - collaborators, merege conflicts and pull requests"
 - [Docs](https://rstudio.github.io/renv/articles/renv.html) for `{renv}`
+
+#### Long-form 
+
+- [Intermediate programming course](https://iprogramming.bacpop.org/)
+- [Missing Semester](https://missing.csail.mit.edu/) (MIT Computer Science)
+- [Building reproducible analytical pipelines with R](https://raps-with-r.dev/) 
+- [Statistical Programming Paradigms and Workflows](https://www.stephaniehicks.com/jhustatprogramming2023/)
+
 
 ### Docker  
 
@@ -123,9 +137,9 @@
 
 - [Blog Post](https://lernapparat.de/statistics-deep-learning-nonparametric) on double descent in neural network performance
 ### Optimisation
-
 - [Video](https://www.youtube.com/watch?v=8mjcnxGMwFo) by Trefor Bazett (@TreforBazett) on using Lagrange multipliers to solve constrained optimisation problems
 - [Video Series](https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/constrained-optimization-introduction) by @3blue1brown on constrained optimisation (hosted on khan academy)
+- [Course Notes](https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/) Advanced Data Analysis from an Elementary Point of View
 
 ### Parquet 
 

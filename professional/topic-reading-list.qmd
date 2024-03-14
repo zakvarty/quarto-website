@@ -1,0 +1,304 @@
+# Topic Reading List 
+
+### Probability Trees 
+
+- [ ] [maths.org](https://nrich.maths.org/tree-diagram-intro) Introduction to probability trees.
+
+- [ ] [Catech MA103 Notes](https://healy.econ.ohio-state.edu/kcb/Ma103/Notes/Lecture04.pdf) Introductory course on probability in statistics. Lecture 04 covers conditional probability and probability trees. Written by Kim C Border found via Paul J Healy.  
+
+- [ ] [Khan academy video](https://www.youtube.com/watch?v=hxEdXUB_IdQ) Worked example of constructing and using a probability tree.
+
+### Randomised Response 
+
+-	[X] Kearns, M. & Roth, A. (2020). The ethical algorithm: the science of socially aware algorithm design. Oxford University Press. [Chapter 1 - Algorithmic Privacy]
+
+-	[ ] [Warner, S. (1965)](https://www.jstor.org/stable/2283137) Randomized Response: A Survey Technique for Eliminating Evasive Answer Bias. Journal of the American Statistical Association, 60(309), 63–69.
+
+-	[ ] [Blair, G., Imai, K. & Zhou, Y. (2015)](https://doi.org/10.1080/01621459.2015.1050028) Design and Analysis of the Randomized Response Technique. Journal of the American Statistical Association, 110(511), 1304-1319.
+
+-	[ ] [Leslie, J., Loewenstein, G., Acquisti, A. & Vosgerau, J. (2018)](https://doi.org/10.1016/j.obhdp.2018.07.004). When and why randomized response techniques (fail to) elicit the truth. Organizational Behavior and Human Decision Processes, 148, 101-123.
+
+
+
+<!-- ======================================================================================= -->
+<!-- ======================================================================================= -->
+<!--- ## Part 1 -->
+<!-- ======================================================================================= -->
+<!-- ======================================================================================= -->
+
+<!---
+### 1.1 - Foundations of Ethical AI
+
+**Assessed Reading**
+
+- [Floridi, L., & Cowls, J. (2019)](https://hdsr.mitpress.mit.edu/pub/l0jsh9d1/release/8). A Unified Framework of Five Principles for AI in Society. Harvard Data Science Review, 1(1).
+
+**Core Reading** 
+
+- [Kearns, M. & Roth, A. (2020).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma991000531083101591) The ethical algorithm: the science of socially aware algorithm design. Oxford University Press. [Introduction chapter]
+
+**Live Session Documents**
+
+1. [European Union Guidelines](https://op.europa.eu/s/sUPP)
+2. [Royal Statistical Society Guidelines](https://rss.org.uk/RSS/media/News-and-publications/Publications/Reports%20and%20guides/A-Guide-for-Ethical-Data-Science-Final-Oct-2019.pdf)
+3. [Dutch Government Guidelines](https://www.government.nl/documents/reports/2021/07/31/impact-assessment-fundamental-rights-and-algorithms)
+4. [UK Government Guidelines](https://www.gov.uk/guidance/understanding-artificial-intelligence-ethics-and-safety)
+5. [American Mathematical Society Guidelines](http://www.ams.org/about-us/governance/policy-statements/sec-ethics)
+
+
+### 1.2 - Privacy and Autonomy 
+
+**Assessed Reading**
+
+- [Narayanan, & Shmatikov, V. (2008).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/fv0fdm/cdi_ieee_primary_4531148) Robust De-anonymization of Large Sparse Datasets. 2008 IEEE Symposium on Security and Privacy (sp 2008), 111–125.
+
+**Core Reading**
+
+- [Kearns, M. & Roth, A. (2020).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma991000531083101591) The ethical algorithm: the science of socially aware algorithm design. Oxford University Press. [Chapter 1 - Algorithmic Privacy]
+
+
+### 1.3 - Fairness
+
+**Assessed Reading**
+
+- [Buolamwini, J., & Gebru, T. (2018).](http://proceedings.mlr.press/v81/buolamwini18a.html?mod=article_inline) Gender shades:  Intersectional accuracy disparities in commercial gender classification.  In Conference on fairness, accountability and transparency (pp. 77-91). PMLR.
+
+**Core Reading**
+
+- [Kearns, M. & Roth, A. (2020).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma991000531083101591) The ethical algorithm: the science of socially aware algorithm design. Oxford University Press. [Chapter 2 - Algorithmic Fairness]
+
+**Supplementary Reading**
+
+- [Verma, S., & Rubin, J. (2018).](https://dl.acm.org/doi/10.1145/3194770.3194776) Fairness definitions explained. In 2018 ieee/acm international workshop on software fairness (fairware) (pp. 1-7). IEEE.
+
+### 1.4 - Value Alignment and Control 
+
+**Assessed Reading**
+
+- [Awad, E., et al. (2018).](https://doi.org/10.1038/s41586-018-0637-6) The moral machine experiment. Nature 563, 59-64. 
+
+**Core Reading** 
+
+- [Gunantara, N. (2018).](https://doi.org/10.1080/23311916.2018.1502242) A review of multi-objective optimization: methods and its applications. Cogent Engineering 5:1.
+
+
+### 1.5: Explainability and Interpretability 
+
+**Assessed Reading**
+
+- [Ribeiro, M. T., Singh, S., & Guestrin, C. (2016).](https://arxiv.org/pdf/1602.04938.pdf) "Why should I trust you?" Explaining the predictions of any classifier. In Proceedings of the 22nd ACM SIGKDD, International Conference on Knowledge Discovery and Data Mining (pp. 1135-1144). 
+
+**Core Reading**
+
+- Molnar, C. (2020). Interpretable machine learning.  
+	- [Chapter 8.1](https://christophm.github.io/interpretable-ml-book/pdp.html) on Partial Dependence Plots 
+	- [Chapter 9.2](https://christophm.github.io/interpretable-ml-book/lime.html) on LIME 
+
+**Supplementary Reading**
+
+- [Recording](https://dl.acm.org/doi/10.1145/2939672.2939778) of LIME conference presentation (in supplementary material section)
+	
+
+### 1.6: Safety, Security and Accountability
+
+**Assessed Reading**
+
+- [Ameisen. (2020).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma991000615670201591) Building machine learning powered applications: going from idea to product (First edition). O’Reilly. [Chapter 11 - Monitor and Update Models] 
+
+**Core Reading**
+
+- [Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, L., &  Teal, T. K. (2017).](https://doi.org/10.1371/journal.pcbi.1005510)
+ Good enough practices in scientific computing. PLoS computational biology, 13(6).
+-->
+
+<!-- ======================================================================================= -->
+<!-- ======================================================================================= -->
+<!--- ## Part 2 -->
+<!-- ======================================================================================= -->
+<!-- ======================================================================================= -->
+
+<!--
+### 2.1: Model Interpretation
+
+**Assessed Reading**
+
+- [Guthery, F. & Bingham, R. (2007).](https://www.jstor.org/stable/4495239) A Primer on Interpreting Regression Models.  Journal of Wildlife Management 71(3):684–692. 
+
+**Core Reading**
+
+- Molnar, C. (2020). Interpretable machine learning. 
+	- [Chapter 5.1](https://christophm.github.io/interpretable-ml-book/limo.html#limo) - Linear Regression 
+	- [Chapter 5.2](https://christophm.github.io/interpretable-ml-book/logistic.html#logistic) - Logistic Regression 
+	- [Chapter 8.1](https://christophm.github.io/interpretable-ml-book/pdp.html) -  Partial Dependence Plots  
+
+
+**Supplementary Resources:**
+
+- [Tu, Y. K., Gunnell, D., & Gilthorpe, M. S. (2008).](https://doi.org/10.1186%2F1742-7622-5-2) Simpson's  Paradox, Lord's Paradox, and Suppression Effects are the same  phenomenon--the reversal paradox. Emerging themes in epidemiology.
+
+- [Hastie, T., Tibshirani, R., & Friedman, J. H. (2009).](https://hastie.su.domains/ElemStatLearn/) The elements of statistical learning: data mining, inference, and prediction. Springer. [Sections 10.13 & 10.14 - Partial Dependence Plots.]
+
+- pdp package [homepage](https://bgreenwell.github.io/pdp/index.html) and [documentation](https://journal.r-project.org/archive/2017/RJ-2017-016/index.html). 
+
+- sklearn [documentation](https://scikit-learn.org/stable/modules/partial_dependence.html) on partial dependence plots.
+
+
+### 2.2: Local Effects and Interactions
+
+**Assessed Reading**
+
+- [Berrington De Gonzalez, A and Cox, DR. (2007).](https://doi.org/10.1214/07-AOAS124) Interpretation of interaction: a review. Annals of Applied Statistics, 371-385.
+
+**Core Reading**
+
+- Molnar, C. (2020). Interpretable machine learning. 
+	- [Chapter 8.2](https://christophm.github.io/interpretable-ml-book/ale.html) - Accumulated Local Effect Plots
+	- [Chapter 8.3](https://christophm.github.io/interpretable-ml-book/interaction.html) - Feature Interaction
+
+- [Goldstein et al. (2015).](https://doi.org/10.1080/10618600.2014.907095) Peeking Inside the Black Box: Visualizing Statistical Learning With Plots of Individual Conditional Expectation. Journal of Computational and Graphical Statistics, 24:1, 44-65.
+
+**Supplementary Reading**
+
+- Molnar, C. (2020). Interpretable machine learning.
+	- [Chapter 8.5](https://christophm.github.io/interpretable-ml-book/feature-importance.html) - Permuation Feature Importance 
+	- [Chapter 9.5 & 9.6](https://christophm.github.io/interpretable-ml-book/shapley.html) - Shapley values and SHAP
+
+### 2.3: Introduction to Causality
+
+**Assessed Reading**
+
+- [Chesnaye, N. C., et. al. (2022).](https://academic.oup.com/ckj/article/15/1/14/6358134) An introduction to inverse  probability of treatment weighting in observational research. Clinical Kidney Journal, 15(1), 14-20.
+
+
+**Core Reading**
+
+- Huntington-Klein, N.C. (2022) The Effect: An Introduction to Research Design and Causality. 
+	- [Chapter 6](https://theeffectbook.net/ch-CausalDiagrams.html) - Causal Diagrams. 
+	- [Chapter 7](https://theeffectbook.net/ch-DrawingCausalDiagrams.html) - Drawing Causal Diagrams.
+	- [Chapter 8](https://theeffectbook.net/ch-CausalPaths.html) - Causal Paths and Closing Back Doors.
+
+
+**Supplementary Reading**
+
+- Cunninham, S. (2021) Causal Inference: The Mixtape.
+	- [Chapter 9](https://mixtape.scunning.com/09-difference_in_differences) - Difference-in-Differences.
+
+
+### 2.4: Randomised Control Trials and A/B Testing
+
+**Assessed Reading**
+
+- [Kohavi, Tang, D., & Xu, Y. (2020).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma991000534176201591) Trustworthy online controlled experiments: a practical guide to A/B testing. Cambridge University Press. [Chapter 9  -  Ethics of experimental studies in a business setting]
+
+**Core Reading**
+
+- [Kendall J. M. (2003).](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1726034/) Designing a research project: randomised controlled trials and their principles. Emergency medicine journal : EMJ, 20(2), 164–168. 
+
+- [Kohavi, R., Tang, D., Xu, Y., Hemkens, L. G., & Ioannidis, J. (2020).](https://link.springer.com/article/10.1186/s13063-020-4084-y) Online randomized controlled experiments at scale: lessons and  extensions to medicine. Trials, 21(1), 1-9.
+
+**Supplementary Reading**
+
+- [Kirkwood, B. R., & Sterne, J. A. (2010).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma9910990550001591) Essential medical statistics. John Wiley & Sons. [Part F - Chapter 34, particularly §34.2]
+
+- [Kohavi, Tang, D., & Xu, Y. (2020).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma991000534176201591) Trustworthy online controlled experiments: a practical guide to A/B testing. Cambridge University Press. [Chapter 17 - Statistics of Online Controlled Experiments]
+
+- [Hahn S. (2012).](https://doi.org/10.3345/kjp.2012.55.11.403) Understanding noninferiority trials. Korean journal of pediatrics, 55(11), 403–407.
+
+
+### 2.5: Communicating Uncertainty
+
+**Assessed Reading**
+
+- [Van der Bles, A. M., et al. (2019).](https://royalsocietypublishing.org/doi/10.1098/rsos.181870)  Communicating uncertainty about facts, numbers and science. Royal Society open science.
+
+**Core Reading**
+
+- [Schünemann, H. J., et al. (2003).](https://pubmed.ncbi.nlm.nih.gov/14517128/) Letters, numbers, symbols and words: how to communicate  grades of evidence and recommendations. Canadian Medical Association Journal. 
+
+**Supplementary Reading**
+
+- [Kearns, M. & Roth, A. (2020).](https://library-search.imperial.ac.uk/permalink/44IMP_INST/mek6kh/alma991000531083101591) The ethical algorithm: The science of socially aware algorithm design. Oxford University Press. (Chapter 4)
+
+
+### 2.6: Assessment Week
+
+**Assessed Reading**
+
+-  In this exercise you may write a rhetorical precis for _any of the supplementary readings from weeks 1 - 5._
+
+-->
+
+<!-- ======================================================================================= -->
+<!-- ======================================================================================= -->
+<!-- ## Part 3 -->
+<!-- ======================================================================================= -->
+<!-- ======================================================================================= -->
+
+<!--
+
+### 3.1: Reproducibility and Robustness I
+
+**Assessed Reading**
+
+- [Sculley, D. et al. (2015).](https://proceedings.neurips.cc/paper/5656-hidden-technical-debt-in-machine-learning-sy) Hidden Technical Debt in Machine Learning Systems. Advances in neural information processing systems, 28.
+
+
+**Supplementary Reading**
+
+- [Video](https://youtu.be/V18AsBIHlWs) - Machine Learning, Techincal Debt, and You.
+
+### 3.2: Reproducibility and Robustness II
+
+**Assessed Reading**
+
+- [Srivastava, N. et al. (2014).](https://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf) Dropout: a simple way to prevent neural networks from overfitting. The journal of machine learning research.
+
+
+**Supplementary Reading**
+
+- [Hardt, M., Recht, B. and Singer, Y. (2016).](https://proceedings.mlr.press/v48/hardt16.pdf) "Train faster, generalize better: Stability of stochastic gradient descent. Proceedings of Machine Learning Research. 
+
+
+
+### 3.3: Homomorphic Encryption
+
+**Assessed Reading**
+
+- [Chen et al. (2018).](https://doi.org/10.1186/s12920-018-0397-z) Logistic regression over encrypted data from fully homomorphic encryption. BMC Medical Genomics, 11:81.
+
+**Supplementary Reading**
+
+- [Graepel, T., Lauter, K. and Naehrig, M. (2012).](https://link.springer.com/chapter/10.1007/978-3-642-37682-5_1) ML Confidential: Machine Learning on Encrypted Data. International Conference Information Security and Cryptography, 15. [[pdf]](https://link.springer.com/content/pdf/10.1007/978-3-642-37682-5_1.pdf?pdf=inline%20link)
+
+- [Iezzi, M. (2020).](https://arxiv.org/abs/2011.06820) Practical Privacy-Preserving Data Science With Homomorphic Encryption: An Overview. ArXiv Preprint.
+
+### 3.4: Federated Learning
+
+**Assessed Reading**
+
+- [Li et al. (2020).](https://doi.org/10.1109/MSP.2020.2975749) Federated Learning: Challenges, Methods, and Future Directions. IEEE Signal Processing Magazine, vol. 37, no. 3, pp. 50-60.
+
+
+**Core Reading**
+
+- [McMahan et al. (2017).](https://proceedings.mlr.press/v54/) Communication-Efficient Learning of Deep Networks from Decentralized Data. Proceedings of the 20th International Conference on Artificial Intelligence and Statistics, PMLR 54:1273-1282. [[pdf]](https://proceedings.mlr.press/v54/mcmahan17a/mcmahan17a.pdf)
+
+**Supplementary Reading**
+
+- [IBM research blog.](https://research.ibm.com/blog/what-is-federated-learning) What is Federated Learning?
+
+### 3.5: Adverserial Thinking
+
+**Assessed Reading**
+
+-  [Rigaki, M. & Garcia, S. (2020).](https://arxiv.org/abs/2007.07646) "A Survey of Privacy Attacks in Machine Learning". ArXiv preprint.
+
+
+
+### 3.6: Assessment Week
+
+**Assessed Reading**
+
+-  In this exercise you may write a rhetorical precis for _any of the supplementary readings from weeks 1 - 5._
+
+-->

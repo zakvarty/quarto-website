@@ -1,0 +1,479 @@
+---
+title: "Webscraping Book Ratings"
+description: |
+    Comparing Amazon ratings of popular R textbooks.
+date: "2024-01-12"
+categories:
+  - data science
+  - data acquisition
+  - R
+image: R-books.png
+image-alt: "Front covers of three popular R books: R packages, ggplot2 and R for Data Science."
+draft: true
+cache: true
+freeze: true
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: false
+---
+
+```{r setup}
+#| echo: false
+image_path <- "R-books.png"
+image_alt <- "Front covers of three popular R books: R packages, ggplot2 and R for Data Science."
+
+# library calls
+
+# knitr options
+knitr::opts_chunk$set(out.width = "80%", fig.align = "center")
+```
+
+## What are we trying to do?
+
+::: small_right
+<figure><img src="`r image_path`" alt="`r image_alt`" style="border-radius: 3%;"/></figure>
+:::
+
+In this blog post we will write a function to download Amazon product ratings using the `{rvest}` and `{httr}` packages. We'll then use that function to compare the reviews of three popular R programming books: 
+[R for Data Science](https://www.amazon.com/Data-Science-Transform-Visualize-Model/dp/1491910399),
+[R packages](https://www.amazon.com/Packages-Organize-Test-Document-Share/dp/1491910593/) and
+[ggplot2](https://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/331924275X/).
+
+Our aim is to write a function that takes in a product name and an associated URL, which returns a table summarising their reviews as shown below.
+
+<br>
+<br>
+
+```{r amazon-webscraping-example-output}
+#| echo: false
+example_output <- tibble::tibble(
+  product = "product_1_name",
+  n_reviews = 1000,
+  percent_5_star = 20,
+  percent_4_star = 20,
+  percent_3_star = 20,
+  percent_2_star = 20,
+  percent_1_star = 20,
+  url = "www.example.com/product_1"
+)
+knitr::kable(x = example_output)
+```
+
+
+
+## Scrape the star-rating percentages (R4DS)
+
+Visiting the R for Data Science webpage and scrolling down we find the review summaries giving the percentage of reviewers in each category.
+
+```{r amazon-1}
+#| echo: false
+#| fig-alt: Customer reviews section of R for Data Science Amazon page. A bar chart shows the average rating, number of ratings and the proportion of 1 to 5 start reviews.
+knitr::include_graphics(path = "images-2024/amazon-screenshot-1.png")
+```
+
+
+Using the [httr selector gadget](https://rvest.tidyverse.org/articles/selectorgadget.html) (or inspecting the page source), we can identify that the elements we want to scrape are specified by
+
+<!--`.a-nowrap .a-link-normal`--> <!--Amazon HTML changed 2023-2024-->
+`.a-text-right .a-link-normal`
+
+```{r amazon-2}
+#| echo: false
+#| fig-alt: "Customer reviews section of R for Data Science Amazon page. The selector tool shows percentage of 1 to 5 star reviews are included (highlighed green or yellow) and that the star ratings are not included (no highlighting or highlighted red)."
+
+knitr::include_graphics(path = "images-2024/amazon-screenshot-2.png")
+```
+
+
+Our first step is to install and load the required packages: 
+
+```{r load-packages}
+# Web-scraping
+library("rvest")
+library("httr")
+
+# Data manipulation
+library("magrittr")
+```
+
+
+We can then scrape the HTML for the entire page. 
+
+```{r}
+r4ds_url <- "https://www.amazon.com/dp/1491910399/"
+r4ds_html <- rvest::read_html(r4ds_url)
+```
+
+Rvest functions can then be used to extract the elements that we care about and convert these to strings.
+
+```{r}
+data_strings <- r4ds_html %>% 
+  rvest::html_elements(".a-text-right .a-link-normal") %>%
+  rvest::html_text2()
+
+data_strings
+```
+
+Finally, we want to drop the percentage sign from each element of the vector and convert this to a vector of integers, rather than strings.
+
+```{r}
+data_values_as_character <- stringr::str_sub(data_strings, start = 1, end = -2)
+data_values <- as.integer(data_values_as_character)
+data_values
+``` 
+
+## Scraping the number of ratings (R4DS)
+
+Similarly, we can scrape the number of reviews using the selectors 
+
+`.averageStarRatingNumerical`. 
+
+```{r}
+#| echo: false
+#| fig-alt: "Customer reviews section of R for Data Science Amazon page. The selector tool shows the number of reviews is selected (highlighted in green). Nothing else is highlighted."
+knitr::include_graphics(path = "images-2024/amazon-screenshot-3.png")
+```
+
+
+We extract the text elements we care about in the same way as before. 
+
+```{r}
+r4ds_review_count <- r4ds_html %>% 
+  rvest::html_elements(".averageStarRatingNumerical") %>% 
+  rvest::html_text2()
+
+r4ds_review_count
+```
+
+<!-- Notice that there are some development notes in with this text. These did not show up on the webpage because they were commented out.--> To convert this to an integer, we first drop the 15 characters " global ratings" from the end. 
+
+```{r}
+r4ds_review_count <- r4ds_html %>% 
+  rvest::html_elements(".averageStarRatingNumerical") %>% 
+  rvest::html_text2() %>% 
+  stringr::str_sub(start = 1, end = -16)
+
+r4ds_review_count
+```
+
+To get this into the requested format, we need to get rid of the comma and convert this to an integer.
+
+```{r}
+r4ds_review_count <- r4ds_html %>% 
+  rvest::html_elements(".averageStarRatingNumerical") %>% 
+  rvest::html_text2() %>% 
+  stringr::str_sub(start = 1, end = -16) %>% 
+  stringr::str_split_1(",") %>% 
+  stringr::str_flatten() %>% 
+  as.integer()
+
+r4ds_review_count
+```
+
+Finally, we can combine all of this into a single table.
+
+```{r}
+r4ds_data <- tibble::tibble(
+  product = "R4DS",
+  n_reviews = r4ds_review_count, 
+  percent_5_star = data_values[1],
+  percent_4_star = data_values[2],
+  percent_3_star = data_values[3],
+  percent_2_star = data_values[4],
+  percent_1_star = data_values[5],
+  url = r4ds_url)
+
+r4ds_data
+```
+
+## Making this a function
+
+W want to repeat these steps for several different products. To make our life easier, let's turn the above code into a function abstracting out the URL and product name as inputs. 
+
+```{r}
+get_amazon_reviews <- function(product_name, url){
+  css_selectors <- list(
+    percentages = ".a-text-right .a-link-normal",
+    count = ".averageStarRatingNumerical"
+  )
+  
+  # Scrape Amazon page of product
+  product_html <- rvest::read_html(url)
+  
+  # Extract percentage receiving each number of stars
+  review_percentages <- product_html %>% 
+  rvest::html_elements(css_selectors$percentages) %>%    
+  rvest::html_text2() %>%                               
+  stringr::str_sub(start = 1, end = -2) %>%             # remove "%" from string
+  as.integer()                                          
+  
+  # Extract total number of reviews 
+  review_count <- product_html %>% 
+  rvest::html_elements(css_selectors$count) %>% 
+  rvest::html_text2() %>% 
+  stringr::str_sub(start = 1, end = -16) %>%           # remove  global ratings"
+  stringr::str_split_1(",") %>% 
+  stringr::str_flatten() %>% 
+  as.integer()
+  
+  # Construct Tibble 
+  product_data <- tibble::tibble(
+  product = product_name,
+  n_reviews = review_count, 
+  percent_5_star = review_percentages[1],
+  percent_4_star = review_percentages[2],
+  percent_3_star = review_percentages[3],
+  percent_2_star = review_percentages[4],
+  percent_1_star = review_percentages[5],
+  url = url)
+
+product_data
+}
+```
+
+We can test that this works for R4DS. 
+
+```{r}
+get_amazon_reviews("R4DS", url = r4ds_url)
+``` 
+
+## Refactoring 
+
+This function is doing a lot, let's move some of the stages out to helper functions. This will make life easier for us if the structure of the webpages change over time and also if we need to debug the function. 
+
+We will have one function to extract the review percentages from the scraped html. 
+
+```{r}
+extract_review_percentages <- function(scraped_html, css_selector = ".a-text-right .a-link-normal"){
+  scraped_html %>% 
+  rvest::html_elements(css_selector) %>%                # extract information
+  rvest::html_text2() %>%                               # convert to text
+  stringr::str_sub(start = 1, end = -2) %>%             # remove "%" from string
+  as.integer()     
+}
+```
+
+
+A second function to extract the review count from the scraped html. 
+
+```{r}
+extract_review_count <- function(scraped_html, css_selector = ".averageStarRatingNumerical"){
+  
+  scraped_html %>%
+    rvest::html_elements(css_selector) %>%
+    rvest::html_text2() %>%
+    stringr::str_sub(start = 1, end = -16) %>%
+    stringr::str_split_1(",") %>%
+    stringr::str_flatten() %>%
+    as.integer()
+}
+```
+
+And a third function to assemble this information into a tibble. 
+
+```{r}
+construct_product_review_tibble <- function(product_name, url, review_count, review_percentages){
+  tibble::tibble(
+  product = product_name,
+  n_reviews = review_count, 
+  percent_5_star = review_percentages[1],
+  percent_4_star = review_percentages[2],
+  percent_3_star = review_percentages[3],
+  percent_2_star = review_percentages[4],
+  percent_1_star = review_percentages[5],
+  url = url)
+}
+```
+
+
+Each of these can then be called from within an updated version of `get_amazon_reviews()`. 
+
+```{r}
+get_amazon_reviews <- function(product_name, url){
+  
+  # Scrape Amazon page of product
+  product_html <- rvest::read_html(url)
+  
+  # Extract percentage receiving each number of stars
+  review_percentages <- extract_review_percentages(product_html)                                    
+  
+  # Extract total number of reviews 
+  review_count <- extract_review_count(product_html)
+  
+  # Construct Tibble 
+  construct_product_review_tibble(product_name, url, review_count, review_percentages)
+}
+```
+
+Again, we should test that this still works. 
+
+```{r}
+get_amazon_reviews("R4DS", url = r4ds_url)
+``` 
+
+We can also try it with the ggplot2 book 
+
+```{r}
+ggplot2_url <- "https://www.amazon.com/dp/331924275X"
+get_amazon_reviews("ggplot2", url = ggplot2_url)
+``` 
+
+```{r}
+#| echo: false
+#| fig-alt: "Customer reviews section of ggplot2 Amazon page. There are 160 ratings, of which 71% are five-star, 12% are four-star, 10% are three-star, 4% two-star and 4% one-star."
+
+knitr::include_graphics(path = "images-2024/amazon-screenshot-4-ggplot2-reviews.png")
+```
+
+
+Hooray! It works! How about the R packages? 
+
+```{r}
+r_packages_url <- "https://www.amazon.com/dp/1491910593/"
+get_amazon_reviews("R packages", url = r_packages_url)
+``` 
+
+Once again, this has worked out. 
+
+```{r}
+#| echo: false
+#| fig-alt: "Customer reviews section of R Packages Amazon page with 107 ratings. Five-star ratings make up 81% of ratings, four-star 15%, three-star 4%. Two- and one-star ratings each make up 0% of ratings."
+knitr::include_graphics(path = "images-2024/amazon-screenshot-5-r-packages-reviews.png")
+```
+
+
+## Correcting an edge case
+
+Those `NA` values worry me, though. Let's take a look at where they are coming from. 
+
+```{r}
+r_packages_html <- rvest::read_html(r_packages_url)
+extract_review_percentages(r_packages_html)
+```
+
+We only have three values being extracted. This is likely because only the non-zero values were click-able hyperlinks on the webpage. In this case, we got lucky and those happened to be the top three ratings but what would have happened if that were not the case? 
+
+To find out, we need to identify a product which satisfies:
+
+- (at least) one star category $x \in \{2,3,4,5\}$ that has zero percent 
+- a second star category $y \in \{1,2,3,4\}$ such that $y<x$ and y has non-zero percentage of reviews. 
+
+We can maximise our chances of finding a product with an empty star category by looking at products with a low total number of reviews. Staying on topic, I decided to look at mathematics textbooks. It took a bit of digging, because lots of books received only 5-star and 4-star reviews, but I managed to find [Vector Calculus](https://www.amazon.co.uk/dp/3540761802) which, at least at the time of writing, has no 2-star reviews. 
+
+```{r}
+#| echo: false
+#| fig-alt: "Amazon listing for Vecor Calculus textbook"
+knitr::include_graphics(path = "images-2024/amazon-screenshot-6-vector-calc.png")
+```
+
+
+```{r}
+#| echo: false
+#| fig-alt: "Customer reviews section of Vector Calculus, which has 55 ratings overall but no two-star ratings and 2% of one-star ratings."
+knitr::include_graphics(path = "images-2024/amazon-screenshot-7-vector-calc-reviews.png")
+```
+
+We can try applying our `get_amazon_reviews()` function to this vector calculus listing and see what happens. 
+
+```{r amazon-screenshot-7}
+vector_calc_url <- "https://www.amazon.co.uk/dp/3540761802"
+get_amazon_reviews(product_name = "vector calculus", url = vector_calc_url)
+```
+
+As we suspected, the one-star reviews are now misrecorded as being two-star. 
+
+I spent a long time trying differnet workarounds. In the end I found a solution using `try()` within a `for` loop. However, I wasn't particularly satisfied with how readable or robust my solution was.
+
+A much simpler alternative was to return to the selector gadget. Applying this tool to the vector calculus page, we can identify a more robust set of CSS selectors to use as our default within `extract_review_percentages()`. 
+
+```{r amazon-screenshot-8}
+#| echo: false
+#| fig-alt: "Customer reviews section of Vector Calculus Amazon page. The selector tool shows the number of reviews is selected (highlighted in green). Nothing else is highlighted."
+knitr::include_graphics(path = "images-2024/amazon-screenshot-8-vector-calc-selection-gadget.png")
+```
+
+
+This more careful selection from the vector calculus listing gives the following CSS selector, which can be interpreted as hyperlinks that are in the base font size, are right aligned and are contained within a `histogramTable` div.
+
+`#histogramTable .a-text-right .a-size-base`.
+
+We can to update the default value in `extract_review_percentages()` with this more robust selector.
+
+```{r}
+extract_review_percentages <- function(scraped_html, css_selector = "#histogramTable .a-text-right .a-size-base"){
+  scraped_html %>% 
+  rvest::html_elements(css_selector) %>%                # extract information
+  rvest::html_text2() %>%                               # convert to text
+  stringr::str_sub(start = 1, end = -2) %>%             # remove "%" from string
+  as.integer()     
+}
+```
+
+This now gives us the results we would expect for the vector calculus listing. 
+
+```{r}
+get_amazon_reviews(product_name = "vector calculus", url = vector_calc_url)
+```
+
+This change also has the benefit of correcting our output for the R packages listing; what were previously `NA` values are now `0`. 
+
+```{r}
+get_amazon_reviews(product_name = "R packages", url = r_packages_url)
+```
+
+
+We should take the time though, to double check that this change has not  broken either of our complete examples.
+
+```{r}
+get_amazon_reviews(product_name = "R4DS", url = r4ds_url)
+```
+
+```{r}
+get_amazon_reviews(product_name = "ggplot2", url = ggplot2_url)
+```
+
+
+## Final Result 
+
+Our final step is to apply our function over each pair of product names and URLs.
+
+```{r}
+product_names <- c(
+  "ggplot2",
+  "R for Data Science",
+  "R packages",
+  "Vector Calculus"
+)
+product_urls <- c(
+  "https://www.amazon.com/dp/331924275X",
+  "https://www.amazon.com/dp/1491910399",
+  "https://www.amazon.com/dp/1491910593",
+  "https://www.amazon.com/dp/3540761802"
+)
+
+purrr::map2_dfr(.x = product_names, .y = product_urls, .f = get_amazon_reviews)
+```
+
+
+----
+
+
+## Discussion 
+
+## We're done, right? 
+
+So now we have an R function that we can use to scrape product rating data from Amazon. At some point Amazon will inevitably update their front-end design, changing the CSS tags we need and breaking our function. However, the modular nature of our functions lets us easily identify, temporarily alter and update our default CSS selector values. 
+
+## Testing our functions 
+When developing the `get_amazon_reviews()`, we ran a limited number of pretty informal tests. If we were going to properly document this function and add it to a package then we would probably want to want to formalise, expand on and automate this set of tests.
+
+There are a few additional challenges to be aware of when writing tests for webscraping functions. Firstly, our web scraping takes a little while to run so running separate tests for each edge case can rapidly become time intensive. A second consideration is that many of our tests will require us to have an internet connection to execute properly. A third challenge is that our expected response is not static. People will keep reviewing these products and so our expected results will change and our tests can rapidly become outdated. 
+
+I remember Jenny Bryan covering similar concerns about writing tests API functions, potentially for `{googlesheets4}`. Unfortunately, I can no longer locate it. If you are in the unfortunate position of having to write such tests, the package `{httptest}` might save you a little pain. 
+
+
+## Session Information 
+
+```{r}
+pander::pander(sessionInfo())
+```

@@ -4,19 +4,38 @@ I have had the good fortune to supervise some exceptional early career researche
 
 ## PhD 
 
-- __Conor Murphy__ (Oct 2021 - Present) Assessment of hazard and risk due to induced seismicity for underground CO2 Storage and oil and gas production assets. 
-
+- __Conor Murphy__ (Oct 2021 - Present) - Assessment of hazard and risk due to induced seismicity for underground CO2 Storage and oil and gas production assets. 
+- __Wanchen Yue__ (Oct 2023 - Present) - Statistical earthquake models to account for measurement errors and dependence.
 
 ## MSc and MSci
 
-- __Wanchen Yue__ - Evolution of statistical earthquake models to account for measurement errors and dependence.
+#### Academic Year 2023-24
+<!-- AY 2023-2024 -->
+- __Brian Mac Carvill__ - Data privacy and security through homomorphic encryption.
+- __Yingla Qi__ - Investigating the risk of developing diabetes using UK Biobank data.
+- __Etienne Caprioli__ - Analysing Nonstationary Hazard Dynamics (title tbc)
+- __Ioannis Spanos__ - Analysing Nonstationary Hazard Dynamics (title tbc)
+- __Xinran Huang__ - Analysing Nonstationary Hazard Dynamics (title tbc)
+- __Xiyue Zhang__ - Analysing Nonstationary Hazard Dynamics (title tbc)
+- __Zihan Yan__ - Analysing Nonstationary Hazard Dynamics (title tbc)
+- __Jiahui Chen__ - Statistical modelling of earthquakes in the North Anatolian Fault Zone.
+- __Jianjing Yu__ - Rare events in financial time series.
+
+
+<!-- AY 2022-2023 -->
+#### Academic Year 2023-24
+- __Wanchen Yue__ - Statistical earthquake models to account for measurement errors and dependence.
 - __Ash Bellett__ - Contextual bandits with non-stationary Gaussian process rewards.
 - __Christian Liman__ - Multiple imputation for tree-based models.
-- __Li Vern Teo__ - Topics in complex data generating processes (title TBC).
+- __Li Vern Teo__ - Catch me if you CNN: adversarial machine learning for detecting
+synthetic content.
 - __Minjian Wu__ - Outlier detection and adaptation under covariate shift.
 - __Paula Cordero Encinar__ - Representing ignorance about extreme earthquake magnitudes.
-- __Lucy He__ - Including measurement error in earthquake modelling.
+- __Lucy He__ - Measurement errors in earthquake modelling.
 - __Shantianfang Gao__ - Inhomogeneous Poisson point process estimation using spline methods.
+
+<!-- AY 2021-2022 -->
+#### Academic Year 2023-24
 - __Diana Xu__ - An extreme value mixture model for natural gas prices.
 - __Hugo Barnett__ - Hypothesis testing with the self-inhibiting Hawkes process.
 - __Nan Zhou__ - Self-driving vehicles road safety analysis by application of extreme value theory.
