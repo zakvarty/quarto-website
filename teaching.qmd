@@ -2,7 +2,7 @@
 
 I am fortunate to have had the opportunity to teach in a variety of roles. These have included:
 
-- Developing and teaching a number of modules in statistics, data science and data ethics. These were predominantly at the postgradute-level and include courses designed for in-person and remote learning.
+- Developing and teaching modules in statistics, data science and data ethics. I have designed courses for both in-person and remote learning, predominantly at the postgradute level.
 
 - Supervising undergraduate, postgraduate and doctoral research projects. 
 
@@ -10,7 +10,7 @@ I am fortunate to have had the opportunity to teach in a variety of roles. These
 
 - Running workshops and computer labs for undergraduate and postgraduate modules.
 
-- Speaking at univerisity open days and providing one-to-one tuition to high school students.
+- Speaking at university open days and providing one-to-one tuition to high school students.
 
 
 I am an associate fellow of the Higher Education Academy, which you can learn more about [here](https://www.advance-he.ac.uk/fellowship/associate-fellowship). I am currently working toward full fellowship to further develop my teaching practice. 
@@ -19,15 +19,11 @@ I am an associate fellow of the Higher Education Academy, which you can learn mo
 
 | Year    | Course                    |    Role   |
 |---------|:-----------------------------|-----------:|
-|2022-23  | [Data Science](https://eds-notes.zakvarty.com/) | Lecturer  |
+|2021-24  | [Data Science](https://eds-notes.zakvarty.com/) | Lecturer  |
 |         | [Ethics in Data Science I, II and III](ethics-reading-list.qmd) | Lecturer  |
 |         | Data Ethics for Digital Chemistry               | Lecturer  |
 |         | Y1 research projects: point process models      | Lecturer  |
 |2021-22  | Supervised Learning                             | Lecturer  |
-|         | Ethics in Data Science I                        | Lecturer  |
-|         | Ethics in Data Science II                       | Lecturer  |
-|         | Data Ethics for Digital Chemistry               | Lecturer  |
-|         | Y1 research projects: point process models      | Lecturer  |
 | ---     |  ---                                            | ---       |
 |2020-21  | MATH562/582: Extreme Value Theory | Lecturer |
 |         | MATH331: Bayesian Inference  | Graduate teaching assistant|
