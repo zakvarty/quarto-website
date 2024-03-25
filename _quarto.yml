@@ -4,6 +4,7 @@ project:
 website:
   title: "Zak Varty"
   site-url: "https://www.zakvarty.com"
+  description: "Zak Varty, personal webpage."
   favicon: "assets/00_favicon/favicon.ico"
   twitter-card: true
 #    creator: "@zakvarty"

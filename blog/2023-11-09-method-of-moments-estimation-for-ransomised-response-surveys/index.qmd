@@ -1,7 +1,6 @@
 ---
 title: "Method of Moments Estimation for Randomised Response Surveys"
-description: |
-    Method of moments estimation for common data models and randomised response designs.
+description: "Method of moments estimation for common data models and randomised response designs."
 date: "2023-11-09"
 categories:
   - privacy

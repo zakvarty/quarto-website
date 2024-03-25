@@ -3,7 +3,9 @@ title: "Blog"
 listing:
   contents: blog
   sort: "date desc"
-  type: default
-  categories: true
-  feed: true
+  date-format: iso
+  type: table # default / grid / table
+  fields: [image, date, title, reading-time] # image, reading-time
+  categories: false
+  feed: false
 ---
