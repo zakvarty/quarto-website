@@ -1,6 +1,7 @@
 ---
 title: ""
 image: assets/00
+draft: true
 ---
 
 ## Summary
