@@ -36,7 +36,7 @@ website:
       - icon: twitter
         href: "https://www.twitter.com/zakvarty"
       - icon: youtube
-        href: "https://www.youtube.com/@zakvarty"
+        href: "https://www.youtube.com/%40zakvarty"  # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
       - icon: github
         href: "https://www.github.com/zakvarty"
       - icon: google
@@ -51,7 +51,7 @@ website:
       - icon: twitter
         href: "https://www.twitter.com/zakvarty"
       - icon: youtube
-        href: "https://www.youtube.com/@zakvarty"
+        href: "https://www.youtube.com/%40zakvarty" # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
       - icon: github
         href: "https://github.com/zakvarty"
       - icon: google
