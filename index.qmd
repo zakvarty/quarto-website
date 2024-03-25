@@ -6,6 +6,9 @@ about:
     - icon: twitter
       text: twitter
       href: "https://twitter.com/zakvarty"
+    - icon: youtube
+      text: YouTube
+      href: "https://www.youtube.com/@zakvarty"
     - icon: github
       text: Github
       href: "https://github.com/zakvarty"
