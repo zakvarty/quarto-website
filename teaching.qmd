@@ -1,3 +1,8 @@
+---
+format:
+  html:
+    toc: false
+---
 # Teaching
 
 I am fortunate to have had the opportunity to teach in a variety of roles. These have included:

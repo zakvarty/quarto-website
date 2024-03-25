@@ -1,3 +1,8 @@
+---
+format:
+  html:
+    toc: false
+---
 # Bookmarks 
 
 A collection of helpful resources that I might want to find again in the future or point other people towards.

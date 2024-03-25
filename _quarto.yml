@@ -20,20 +20,18 @@ website:
   navbar:
     background: primary
     search: true
-    right:
-      - text: About
-        href: index.qmd
-      - text: Blog
-        href: blog.qmd
+    left:
       - text: Research
         href: research.qmd
       - text: Teaching
         href: teaching.qmd
       - text: Talks
         href: talks.qmd
-      - text: Bookmarks
-        href: bookmarks.qmd
-      - text: " "
+      - text: Writing
+        href: blog.qmd
+      - icon: bookmark
+        href: "./bookmarks.html"
+    right:
       - icon: twitter
         href: "https://www.twitter.com/zakvarty"
       - icon: youtube
