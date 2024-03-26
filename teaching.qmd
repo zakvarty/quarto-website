@@ -1,0 +1,54 @@
+---
+format:
+  html:
+    toc: false
+---
+# Teaching
+
+I am fortunate to have had the opportunity to teach in a variety of roles. These have included:
+
+- Developing and teaching modules in statistics, data science and data ethics. I have designed courses for both in-person and remote learning, predominantly at the postgradute level.
+
+- Supervising undergraduate, postgraduate and doctoral research projects. 
+
+- Adapting and leading short courses on scientific writing and communication.
+
+- Running workshops and computer labs for undergraduate and postgraduate modules.
+
+- Speaking at university open days and providing one-to-one tuition to high school students.
+
+
+I am an associate fellow of the Higher Education Academy, which you can learn more about [here](https://www.advance-he.ac.uk/fellowship/associate-fellowship). I am currently working toward full fellowship to further develop my teaching practice. 
+
+## Course History
+
+| Year    | Course                    |    Role   |
+|---------|:-----------------------------|-----------:|
+|2021-24  | [Data Science](https://eds-notes.zakvarty.com/) | Lecturer  |
+|         | [Ethics in Data Science I, II and III](ethics-reading-list.qmd) | Lecturer  |
+|         | Data Ethics for Digital Chemistry               | Lecturer  |
+|         | Y1 research projects: point process models      | Lecturer  |
+|2021-22  | Supervised Learning                             | Lecturer  |
+| ---     |  ---                                            | ---       |
+|2020-21  | MATH562/582: Extreme Value Theory | Lecturer |
+|         | MATH331: Bayesian Inference  | Graduate teaching assistant|
+|         | MATH330: Likelihood Inference | Graduate teaching assistant|
+| 2019-20 | DSCI485: Introduction to LaTeX   |	Co-leading short course|
+|         | MATH566: Longitudinal Data Analysis | Graduate teaching assistant|
+| 2018-19 |	STOR-i Internship: Introduction to LaTeX  |	Co-leading short course|
+|         | DSCI485: Introduction to LaTeX   |	Co-leading short course|
+|         | MATH562: Extreme Value Theory |	Graduate teaching assistant|
+|         |	MATH235: Statistics II	| Graduate teaching assistant|
+|         |	MATH240: Project Skills   |	Graduate teaching assistant|
+|         |	MATH330: Likelihood Inference   |	Graduate teaching assistant|
+|         |	MATH230: Probability II   |	Graduate teaching assistant|
+| 2017-18 |	STOR-i Internship: Research Project |	Supervisor|
+|         | STOR-i Internship: Introduction to LaTeX  |	Co-leading short course|
+|         |	DSCI485: Introduction to LaTeX   |	Co-leading short course|
+|         |	MATH235: Statistics II	   |Graduate teaching assistant|
+|         |	MATH465: Bayesian Inference   |	Graduate teaching assistant|
+|         |	MATH330: Likelihood Inference   |	Graduate teaching assistant|
+|         |	MATH230: Probability II   |	Graduate teaching assistant|
+| 2015-16 |	LAB100: Introduction to R   |	Graduate teaching assistant|
+| 2011-13 | GCSE & A-level Mathematics | Private tutor |
+

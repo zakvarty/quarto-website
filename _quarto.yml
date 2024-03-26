@@ -4,6 +4,7 @@ project:
 website:
   title: "Zak Varty"
   site-url: "https://www.zakvarty.com"
+  description: "Zak Varty, personal webpage."
   favicon: "assets/00_favicon/favicon.ico"
   twitter-card: true
 #    creator: "@zakvarty"
@@ -11,7 +12,7 @@ website:
     type: express
     style: simple
     palette: light
-  #prefs-text: "This site uses Google Analytics to analyse website traffic and improve your expreience of the site."
+    #prefs-text: "This site uses Google Analytics to analyse website traffic and improve your expreience of the site."
   google-analytics:
     tracking-id: "G-29RLTHLZB5"
     anonymize-ip: true
@@ -19,40 +20,37 @@ website:
   navbar:
     background: primary
     search: true
-    #left:
-    #  - href: index.qmd
-    #    text: Home
-    #  - about.qmd
-    right:
-      - text: Home
-        href: index.qmd
-      - text: About
-        href: about.qmd
-      - text: Blog
+    left:
+      - text: Research
+        href: research.qmd
+      - text: Teaching
+        href: teaching.qmd
+      - text: Talks
+        href: talks.qmd
+      - text: Writing
         href: blog.qmd
-      - text: Professional
-        menu:
-          - professional/research.qmd
-          - text: Supervision
-            href: professional/project-supervision.qmd
-          - professional/teaching.qmd
-          - professional/talks.qmd
-          - professional/bookmarks.qmd
-      - text: Personal
-        menu:
-          - personal/reading-record.qmd
+      - icon: bookmark
+        href: "./bookmarks.html"
+    right:
       - icon: twitter
         href: "https://www.twitter.com/zakvarty"
+      - icon: youtube
+        href: "https://www.youtube.com/%40zakvarty"  # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
       - icon: github
-        href: "https://github.com/zakvarty"
+        href: "https://www.github.com/zakvarty"
+      - icon: google
+        href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
+      - text: " "
   page-footer:
-    #background: light
+    background: light
     border: true
-    left: "Copyright 2022-2023, Zak Varty."
+    left: "Copyright 2022-2024, Zak Varty."
     center: ""
     right:
       - icon: twitter
         href: "https://www.twitter.com/zakvarty"
+      - icon: youtube
+        href: "https://www.youtube.com/%40zakvarty" # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
       - icon: github
         href: "https://github.com/zakvarty"
       - icon: google
@@ -61,7 +59,6 @@ website:
 format:
   html:
     theme: [litera, custom.scss] #litera
-    #css: styles.css
     toc: true
 
 

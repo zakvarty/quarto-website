@@ -1,3 +1,8 @@
+---
+format:
+  html:
+    draft: true
+---
 # Reading record 📚
 This is where I record the books I read each year and the books I might like to read in the future. 
 
