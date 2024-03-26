@@ -33,15 +33,15 @@ engine: knitr
 
 I am a statistician, data scientist and educator. 
 
-I work as a Teaching Fellow in Statistics at [Imperial College London](https://www.imperial.ac.uk/statistics) where I teach courses and supervise research projects in statistics, data science and data ethics. 
+I work as a Teaching Fellow at [Imperial College London](https://www.imperial.ac.uk/statistics) where I teach courses and supervise research projects in statistics, data science and data ethics. 
 
-I develop statistical methodology and data science solutions to solve challenging data problems. I am particularly interested in modelling environmental and industrial processes.
+My research interests intersect applied and methodological statistics. I particularly enjoy developing efficient inference methods for non-standard data generating mechanisms, motivated by environmental and industrial applications.
 
-I completed my PhD in Statistics and Operational Research within the **[STOR-i CDT](https://www.lancaster.ac.uk/stor-i/)** at **[Lancaster University](https://www.lancaster.ac.uk/maths/)**. My PhD work combined point process models with techniques from extreme value theory and Bayesian inference to model induced earthquake activity.
+I completed my PhD in Statistics and Operational Research within the [STOR-i CDT](https://www.lancaster.ac.uk/stor-i/) at [Lancaster University](https://www.lancaster.ac.uk/maths/). My PhD focused on modelling model induced earthquake activity by combined point process models with techniques from extreme value theory and Bayesian inference.
 
-When I am not in front of my computer, I enjoy distance running and I love to read. `r emo::ji("running")` `r emo::ji("book")` Ideally, these activities are accompanied by a good cup of coffee and a large slice of cake!
+When I'm not in front of my computer, I enjoy distance running and I love to read `r emo::ji("running")` `r emo::ji("book")`. Ideally, these activities are accompanied by a good cup of coffee and a large slice of cake!
 
 
 
 <!--Feel free to contact me if you have any questions!-->
-:::
+
