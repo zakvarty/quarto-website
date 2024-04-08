@@ -91,6 +91,8 @@ A collection of helpful resources that I might want to find again in the future 
 
 - Richard McElreath recommendation of [paper](https:// statistics.fas.harvard.edu/files/statisti cs-2/files/statistical_paradises_and_paradoxes.pdf) by Xiao-Li Meng on how data quality influences effective sample size
 
+- Imperial [Explainable AI Seminars](https://xaiseminars.doc.ic.ac.uk/)
+
 - [Thread](https://twitter.com/svpino/status/1546826721839566848) by Santiago (@svpino) on imbalanced datasets
 - [Tweet](https://twitter.com/AdamKruchten/status/1526916448668438528) by Adam Kruchten (@AdamKruchten) on when we care about marginal or conditional effects.
 - [ASA article](https:// amstat.org/asa/files/pdfs /YCR-2020WorkandSalarySurvey.pdf) on the 2020 work and salary survey, showing women tend to earn less in base salary and total income but that in a regression gender is not significant predictor of total income.
@@ -191,3 +193,5 @@ A collection of helpful resources that I might want to find again in the future 
 ### Writing 
 
 - [Books](https://www.helensword.com/books-on-writing) on writing suggested by Helen Sword, author of Stylish Academic Writing.
+
+
