@@ -75,7 +75,7 @@ I have had the good fortune to supervise some exceptional early career researche
 #### Academic Year 2023-24
 <!-- AY 2023-2024 -->
 - __Brian Mac Carvill__ - Data privacy and security through homomorphic encryption.
-- __Yingla Qi__ - Investigating the risk of developing diabetes using UK Biobank data.
+- __Yinglai Qi__ - Investigating the risk of developing diabetes using UK Biobank data.
 - __Etienne Caprioli__ - Analysing Nonstationary Hazard Dynamics (title tbc)
 - __Ioannis Spanos__ - Analysing Nonstationary Hazard Dynamics (title tbc)
 - __Xinran Huang__ - Analysing Nonstationary Hazard Dynamics (title tbc)

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -50,7 +50,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -59,6 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -114,6 +121,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -122,20 +131,44 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta name="twitter:title" content="Zak Varty - Blog">
-<meta name="twitter:image" content="https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/method-of-moments-scales.png">
-<meta name="twitter:image-height" content="400">
-<meta name="twitter:image-width" content="400">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Zak Varty</span>
     </a>
@@ -147,54 +180,54 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./research.html" rel="" target="">
- <span class="menu-text">Research</span></a>
+    <a class="nav-link" href="./research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./teaching.html" rel="" target="">
- <span class="menu-text">Teaching</span></a>
+    <a class="nav-link" href="./teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./talks.html" rel="" target="">
- <span class="menu-text">Talks</span></a>
+    <a class="nav-link" href="./talks.html"> 
+<span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
- <span class="menu-text">Writing</span></a>
+    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+<span class="menu-text">Writing</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="././bookmarks.html" rel="" target=""><i class="bi bi-bookmark" role="img">
+    <a class="nav-link" href="././bookmarks.html"> <i class="bi bi-bookmark" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.twitter.com/zakvarty" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://www.twitter.com/zakvarty"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/%40zakvarty" rel="" target=""><i class="bi bi-youtube" role="img">
+    <a class="nav-link" href="https://www.youtube.com/%40zakvarty"> <i class="bi bi-youtube" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.github.com/zakvarty" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://www.github.com/zakvarty"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://scholar.google.com/citations?user=3H4vg4cAAAAJ&amp;hl=en&amp;oi=ao" rel="" target=""><i class="bi bi-google" role="img">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=3H4vg4cAAAAJ&amp;hl=en&amp;oi=ao"> <i class="bi bi-google" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="dropdown-header">
  <span class="menu-text"> </span></li>
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -223,7 +256,9 @@ cookieconsent.run({
   </div>
   
 
+
 </header>
+
 
 
 
@@ -231,25 +266,25 @@ cookieconsent.run({
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="privacy,estimation,statistics,tutorial" data-listing-date-sort="1699488000000" data-listing-file-modified-sort="1711382638164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="0" data-categories="privacy,estimation,statistics,tutorial" data-listing-date-sort="1699488000000" data-listing-file-modified-sort="1711382638164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1338">
 <div class="thumbnail">
-<p><a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html"> <img src="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/method-of-moments-scales.png" class="thumbnail-image" alt="Method of moments for randomised responses, overlaid on an image of a set of scales."> </a></p>
+<p><a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html" class="no-external"></a></p><a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html" class="no-external">
+<p><img src="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/method-of-moments-scales.png" class="thumbnail-image" alt="Method of moments for randomised responses, overlaid on an image of a set of scales."></p>
+</a><p><a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html">
 <h3 class="no-anchor listing-title">
-Method of Moments Estimation for Randomised Response Surveys
+<a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html" class="no-external">Method of Moments Estimation for Randomised Response Surveys</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Method of moments estimation for common data models and randomised response designs.</p>
+<a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html" class="no-external">Method of moments estimation for common data models and randomised response designs.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html">
+<a href="./blog/2023-11-09-method-of-moments-estimation-for-ransomised-response-surveys/index.html" class="no-external">
 <div class="listing-date">
 2023-11-09
 </div>
@@ -259,25 +294,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="workflows,data science,computing,accessibility,reading summary" data-listing-date-sort="1696287600000" data-listing-file-modified-sort="1701272751283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="1" data-categories="workflows,data science,computing,accessibility,reading summary" data-listing-date-sort="1696287600000" data-listing-file-modified-sort="1701272751283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="351">
 <div class="thumbnail">
-<p><a href="./blog/2023-10-03-notably-inaccessible/index.html"> <img src="./blog/2023-10-03-notably-inaccessible/notably-inaccessible-flowchart.png" class="thumbnail-image" alt="Flow chart showing the stages of preprocessing and analysis used by Potluri et al to quantify data science notebook accessibility."> </a></p>
+<p><a href="./blog/2023-10-03-notably-inaccessible/index.html" class="no-external"></a></p><a href="./blog/2023-10-03-notably-inaccessible/index.html" class="no-external">
+<p><img src="./blog/2023-10-03-notably-inaccessible/notably-inaccessible-flowchart.png" class="thumbnail-image" alt="Flow chart showing the stages of preprocessing and analysis used by Potluri et al to quantify data science notebook accessibility."></p>
+</a><p><a href="./blog/2023-10-03-notably-inaccessible/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-10-03-notably-inaccessible/index.html">
 <h3 class="no-anchor listing-title">
-Notably Inaccessible
+<a href="./blog/2023-10-03-notably-inaccessible/index.html" class="no-external">Notably Inaccessible</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-10-03-notably-inaccessible/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>A data driven investigation into the (in)accessibility of data science notebooks.</p>
+<a href="./blog/2023-10-03-notably-inaccessible/index.html" class="no-external">A data driven investigation into the (in)accessibility of data science notebooks. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-10-03-notably-inaccessible/index.html">
+<a href="./blog/2023-10-03-notably-inaccessible/index.html" class="no-external">
 <div class="listing-date">
 2023-10-03
 </div>
@@ -287,25 +322,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="templates,writing" data-listing-date-sort="1694559600000" data-listing-file-modified-sort="1694691629578" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
+<div class="quarto-post image-right" data-index="2" data-categories="templates,writing" data-listing-date-sort="1694559600000" data-listing-file-modified-sort="1694691629578" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1646">
 <div class="thumbnail">
-<p><a href="./blog/2023-09-13-bib-but-better/index.html"> <img src="./blog/2023-09-13-bib-but-better/bibtex-logo.jpg" class="thumbnail-image" alt="BibTeX written on an green background."> </a></p>
+<p><a href="./blog/2023-09-13-bib-but-better/index.html" class="no-external"></a></p><a href="./blog/2023-09-13-bib-but-better/index.html" class="no-external">
+<p><img src="./blog/2023-09-13-bib-but-better/bibtex-logo.jpg" class="thumbnail-image" alt="BibTeX written on an green background."></p>
+</a><p><a href="./blog/2023-09-13-bib-but-better/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-09-13-bib-but-better/index.html">
 <h3 class="no-anchor listing-title">
-Bib but Better
+<a href="./blog/2023-09-13-bib-but-better/index.html" class="no-external">Bib but Better</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-09-13-bib-but-better/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Templates for all the bib entries you never knew you needed.</p>
+<a href="./blog/2023-09-13-bib-but-better/index.html" class="no-external">Templates for all the bib entries you never knew you needed. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-09-13-bib-but-better/index.html">
+<a href="./blog/2023-09-13-bib-but-better/index.html" class="no-external">
 <div class="listing-date">
 2023-09-13
 </div>
@@ -315,25 +350,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="reading summary,fairness,data ethics,data science" data-listing-date-sort="1692226800000" data-listing-file-modified-sort="1693325780193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="3" data-categories="reading summary,fairness,data ethics,data science" data-listing-date-sort="1692226800000" data-listing-file-modified-sort="1693325780193" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="726">
 <div class="thumbnail">
-<p><a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html"> <img src="./blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png" class="thumbnail-image" alt="Plot from Chen, Johansson and Sontag (2018). The expected loss for each subgroup of a protected characteristic is shown as power-law function of their sample size. This can be used to inform which subgroups to collect further samples from, and how many further samples to collect."> </a></p>
+<p><a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html" class="no-external"></a></p><a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html" class="no-external">
+<p><img src="./blog/2023-08-17-why-is-my-classifier-discrimanatory/chen-2018-loss-vs-training-size.png" class="thumbnail-image" alt="Plot from Chen, Johansson and Sontag (2018). The expected loss for each subgroup of a protected characteristic is shown as power-law function of their sample size. This can be used to inform which subgroups to collect further samples from, and how many further samples to collect."></p>
+</a><p><a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html">
 <h3 class="no-anchor listing-title">
-Why is My Classifier Discrimanatory?
+<a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html" class="no-external">Why is My Classifier Discrimanatory?</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>A fresh view on understanding and addressing unfairness in classification (and regression) models.</p>
+<a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html" class="no-external">A fresh view on understanding and addressing unfairness in classification (and regression) models. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html">
+<a href="./blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html" class="no-external">
 <div class="listing-date">
 2023-08-17
 </div>
@@ -343,25 +378,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="reading summary,reproducibility,workflows,data science" data-listing-date-sort="1692054000000" data-listing-file-modified-sort="1692113318636" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="4" data-categories="reading summary,reproducibility,workflows,data science" data-listing-date-sort="1692054000000" data-listing-file-modified-sort="1692113318636" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="562">
 <div class="thumbnail">
-<p><a href="./blog/2023-08-15-improve-your-relationship/index.html"> <img src="./blog/2023-08-15-improve-your-relationship/improve-your-relationship.png" class="thumbnail-image" alt="Title page of Bowers and Voors (2016)."> </a></p>
+<p><a href="./blog/2023-08-15-improve-your-relationship/index.html" class="no-external"></a></p><a href="./blog/2023-08-15-improve-your-relationship/index.html" class="no-external">
+<p><img src="./blog/2023-08-15-improve-your-relationship/improve-your-relationship.png" class="thumbnail-image" alt="Title page of Bowers and Voors (2016)."></p>
+</a><p><a href="./blog/2023-08-15-improve-your-relationship/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-08-15-improve-your-relationship/index.html">
 <h3 class="no-anchor listing-title">
-How to Improve Your Relationship with Your Future Self
+<a href="./blog/2023-08-15-improve-your-relationship/index.html" class="no-external">How to Improve Your Relationship with Your Future Self</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-08-15-improve-your-relationship/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Reproducible workflows are not just good for science.</p>
+<a href="./blog/2023-08-15-improve-your-relationship/index.html" class="no-external">Reproducible workflows are not just good for science. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-08-15-improve-your-relationship/index.html">
+<a href="./blog/2023-08-15-improve-your-relationship/index.html" class="no-external">
 <div class="listing-date">
 2023-08-15
 </div>
@@ -371,25 +406,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="reading summary,data science,reproducibility,pedagogy" data-listing-date-sort="1691449200000" data-listing-file-modified-sort="1691600132628" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="5" data-categories="reading summary,data science,reproducibility,pedagogy" data-listing-date-sort="1691449200000" data-listing-file-modified-sort="1691600132628" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="160">
 <div class="thumbnail">
-<p><a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html"> <img src="./blog/2023-08-08-overcoming-barriers-to-sharing-code/reproducibility-workshop-banner.png" class="thumbnail-image" alt="Stylised combination of the CN tower and data icons in purple and orange"> </a></p>
+<p><a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html" class="no-external"></a></p><a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html" class="no-external">
+<p><img src="./blog/2023-08-08-overcoming-barriers-to-sharing-code/reproducibility-workshop-banner.png" class="thumbnail-image" alt="Stylised combination of the CN tower and data icons in purple and orange"></p>
+</a><p><a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html">
 <h3 class="no-anchor listing-title">
-Overcoming Barriers to Sharing Code
+<a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html" class="no-external">Overcoming Barriers to Sharing Code</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Talk summary from the Toronto Workshop on Reproducibility in February 2023.</p>
+<a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html" class="no-external">Talk summary from the Toronto Workshop on Reproducibility in February 2023. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html">
+<a href="./blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html" class="no-external">
 <div class="listing-date">
 2023-08-08
 </div>
@@ -399,25 +434,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="reading summary,workflows,data science" data-listing-date-sort="1690326000000" data-listing-file-modified-sort="1690376462416" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="6" data-categories="reading summary,workflows,data science" data-listing-date-sort="1690326000000" data-listing-file-modified-sort="1690376462416" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="213">
 <div class="thumbnail">
-<p><a href="./blog/2023-07-26-mundanity-of-excellence/index.html"> <img src="./blog/2023-07-26-mundanity-of-excellence/unsplash-swimming.jpg" class="thumbnail-image" alt="Six swimmers in a swimming pool, competing in a race. One swimmer is leading by quite some way."> </a></p>
+<p><a href="./blog/2023-07-26-mundanity-of-excellence/index.html" class="no-external"></a></p><a href="./blog/2023-07-26-mundanity-of-excellence/index.html" class="no-external">
+<p><img src="./blog/2023-07-26-mundanity-of-excellence/unsplash-swimming.jpg" class="thumbnail-image" alt="Six swimmers in a swimming pool, competing in a race. One swimmer is leading by quite some way."></p>
+</a><p><a href="./blog/2023-07-26-mundanity-of-excellence/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-07-26-mundanity-of-excellence/index.html">
 <h3 class="no-anchor listing-title">
-The Mundanity of Excellence
+<a href="./blog/2023-07-26-mundanity-of-excellence/index.html" class="no-external">The Mundanity of Excellence</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-07-26-mundanity-of-excellence/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Exceptional performance is acheived by doing the small, boring stuff really well.</p>
+<a href="./blog/2023-07-26-mundanity-of-excellence/index.html" class="no-external">Exceptional performance is acheived by doing the small, boring stuff really well. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-07-26-mundanity-of-excellence/index.html">
+<a href="./blog/2023-07-26-mundanity-of-excellence/index.html" class="no-external">
 <div class="listing-date">
 2023-07-26
 </div>
@@ -427,25 +462,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="reading summary,data ethics,data science" data-listing-date-sort="1689289200000" data-listing-file-modified-sort="1689332051323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="7" data-categories="reading summary,data ethics,data science" data-listing-date-sort="1689289200000" data-listing-file-modified-sort="1689332051323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="213">
 <div class="thumbnail">
-<p><a href="./blog/2023-07-14-counting-the-countless/index.html"> <img src="./blog/2023-07-14-counting-the-countless/counting-the-countless-screenshot.png" class="thumbnail-image" alt="Article headline from Real Life - counting the countless, why data science is a profound treat for queer people."> </a></p>
+<p><a href="./blog/2023-07-14-counting-the-countless/index.html" class="no-external"></a></p><a href="./blog/2023-07-14-counting-the-countless/index.html" class="no-external">
+<p><img src="./blog/2023-07-14-counting-the-countless/counting-the-countless-screenshot.png" class="thumbnail-image" alt="Article headline from Real Life - counting the countless, why data science is a profound treat for queer people."></p>
+</a><p><a href="./blog/2023-07-14-counting-the-countless/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-07-14-counting-the-countless/index.html">
 <h3 class="no-anchor listing-title">
-Counting the Countless
+<a href="./blog/2023-07-14-counting-the-countless/index.html" class="no-external">Counting the Countless</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-07-14-counting-the-countless/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Is data science compatible with queerness?</p>
+<a href="./blog/2023-07-14-counting-the-countless/index.html" class="no-external">Is data science compatible with queerness? </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-07-14-counting-the-countless/index.html">
+<a href="./blog/2023-07-14-counting-the-countless/index.html" class="no-external">
 <div class="listing-date">
 2023-07-14
 </div>
@@ -455,25 +490,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="R,data science,tutorial" data-listing-date-sort="1674086400000" data-listing-file-modified-sort="1674144321842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23">
+<div class="quarto-post image-right" data-index="8" data-categories="R,data science,tutorial" data-listing-date-sort="1674086400000" data-listing-file-modified-sort="1674144321842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="23" data-listing-word-count-sort="4417">
 <div class="thumbnail">
-<p><a href="./blog/2023-01-16-minimal-R-package/index.html"> <img src="./blog/2023-01-16-minimal-R-package/horst-amazing-function.png" class="thumbnail-image" alt="Drawing of two people, the first proundly displays a screen full of code while saying  “Behold an Amazing Function!”. The second person looks a bit scared and replies  “I would rather not behold...”."> </a></p>
+<p><a href="./blog/2023-01-16-minimal-R-package/index.html" class="no-external"></a></p><a href="./blog/2023-01-16-minimal-R-package/index.html" class="no-external">
+<p><img src="./blog/2023-01-16-minimal-R-package/horst-amazing-function.png" class="thumbnail-image" alt="Drawing of two people, the first proundly displays a screen full of code while saying  “Behold an Amazing Function!”. The second person looks a bit scared and replies  “I would rather not behold...”."></p>
+</a><p><a href="./blog/2023-01-16-minimal-R-package/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-01-16-minimal-R-package/index.html">
 <h3 class="no-anchor listing-title">
-Packaging your R code
+<a href="./blog/2023-01-16-minimal-R-package/index.html" class="no-external">Packaging your R code</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-01-16-minimal-R-package/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>A tutorial to guide you as you make your first (or hundredth) minimal R package.</p>
+<a href="./blog/2023-01-16-minimal-R-package/index.html" class="no-external">A tutorial to guide you as you make your first (or hundredth) minimal R package. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-01-16-minimal-R-package/index.html">
+<a href="./blog/2023-01-16-minimal-R-package/index.html" class="no-external">
 <div class="listing-date">
 2023-01-19
 </div>
@@ -483,25 +518,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="data science,data wrangling,tutorial" data-listing-date-sort="1672963200000" data-listing-file-modified-sort="1673284155988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18">
+<div class="quarto-post image-right" data-index="9" data-categories="data science,data wrangling,tutorial" data-listing-date-sort="1672963200000" data-listing-file-modified-sort="1673284155988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3457">
 <div class="thumbnail">
-<p><a href="./blog/2023-01-06-data-wrangling/index.html"> <img src="./blog/2023-01-06-data-wrangling/horst-wrangle-monsters.jpg" class="thumbnail-image" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labeled “TIDY.”"> </a></p>
+<p><a href="./blog/2023-01-06-data-wrangling/index.html" class="no-external"></a></p><a href="./blog/2023-01-06-data-wrangling/index.html" class="no-external">
+<p><img src="./blog/2023-01-06-data-wrangling/horst-wrangle-monsters.jpg" class="thumbnail-image" alt="Two happy looking round fuzzy monsters, each holding a similarly shaped wrench with the word “wrangle” on it. Between their tools is held up a rectangular data table labeled “TIDY.”"></p>
+</a><p><a href="./blog/2023-01-06-data-wrangling/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2023-01-06-data-wrangling/index.html">
 <h3 class="no-anchor listing-title">
-Data Wrangling
+<a href="./blog/2023-01-06-data-wrangling/index.html" class="no-external">Data Wrangling</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2023-01-06-data-wrangling/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Get your data ducks in a line using base R and the tidyverse.</p>
+<a href="./blog/2023-01-06-data-wrangling/index.html" class="no-external">Get your data ducks in a line using base R and the tidyverse. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2023-01-06-data-wrangling/index.html">
+<a href="./blog/2023-01-06-data-wrangling/index.html" class="no-external">
 <div class="listing-date">
 2023-01-06
 </div>
@@ -511,25 +546,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1670976000000" data-listing-file-modified-sort="1671211207640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14">
+<div class="quarto-post image-right" data-index="10" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1670976000000" data-listing-file-modified-sort="1671211207640" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2763">
 <div class="thumbnail">
-<p><a href="./blog/2022-12-14-apis-and-httr/index.html"> <img src="./blog/2022-12-14-apis-and-httr/apis-and-httr.png" class="thumbnail-image" alt="The text APIs and httr, written on a black hexagon."> </a></p>
+<p><a href="./blog/2022-12-14-apis-and-httr/index.html" class="no-external"></a></p><a href="./blog/2022-12-14-apis-and-httr/index.html" class="no-external">
+<p><img src="./blog/2022-12-14-apis-and-httr/apis-and-httr.png" class="thumbnail-image" alt="The text APIs and httr, written on a black hexagon."></p>
+</a><p><a href="./blog/2022-12-14-apis-and-httr/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-12-14-apis-and-httr/index.html">
 <h3 class="no-anchor listing-title">
-Aquiring Data via an API
+<a href="./blog/2022-12-14-apis-and-httr/index.html" class="no-external">Aquiring Data via an API</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-12-14-apis-and-httr/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Part 2 of a mini-series on aquiring data from the web, focusing on data aquisition via APIs.</p>
+<a href="./blog/2022-12-14-apis-and-httr/index.html" class="no-external">Part 2 of a mini-series on aquiring data from the web, focusing on data aquisition via APIs. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-12-14-apis-and-httr/index.html">
+<a href="./blog/2022-12-14-apis-and-httr/index.html" class="no-external">
 <div class="listing-date">
 2022-12-14
 </div>
@@ -539,25 +574,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="workflows,git" data-listing-date-sort="1670889600000" data-listing-file-modified-sort="1670929952018" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="11" data-categories="workflows,git" data-listing-date-sort="1670889600000" data-listing-file-modified-sort="1670929952018" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="353">
 <div class="thumbnail">
-<p><a href="./blog/2022-12-13-git-remote-branches/index.html"> <img src="./blog/2022-12-13-git-remote-branches/git-logo.png" class="thumbnail-image" alt="git logo. This is a red-orange square with rounded corners, it is rotated by 45 degrees so that it is standing on one corner and has a cut-out design representing a branching graph."> </a></p>
+<p><a href="./blog/2022-12-13-git-remote-branches/index.html" class="no-external"></a></p><a href="./blog/2022-12-13-git-remote-branches/index.html" class="no-external">
+<p><img src="./blog/2022-12-13-git-remote-branches/git-logo.png" class="thumbnail-image" alt="git logo. This is a red-orange square with rounded corners, it is rotated by 45 degrees so that it is standing on one corner and has a cut-out design representing a branching graph."></p>
+</a><p><a href="./blog/2022-12-13-git-remote-branches/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-12-13-git-remote-branches/index.html">
 <h3 class="no-anchor listing-title">
-Git: putting your new feature out into the world.
+<a href="./blog/2022-12-13-git-remote-branches/index.html" class="no-external">Git: putting your new feature out into the world.</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-12-13-git-remote-branches/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>A git workflow to put a local feature out in the wild, then tidy up after yourself.</p>
+<a href="./blog/2022-12-13-git-remote-branches/index.html" class="no-external">A git workflow to put a local feature out in the wild, then tidy up after yourself. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-12-13-git-remote-branches/index.html">
+<a href="./blog/2022-12-13-git-remote-branches/index.html" class="no-external">
 <div class="listing-date">
 2022-12-13
 </div>
@@ -567,25 +602,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1669852800000" data-listing-file-modified-sort="1671039607715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12">
+<div class="quarto-post image-right" data-index="12" data-categories="data science,data acquisition,tutorial" data-listing-date-sort="1669852800000" data-listing-file-modified-sort="1671039607715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2249">
 <div class="thumbnail">
-<p><a href="./blog/2022-12-01-rvest/index.html"> <img src="./blog/2022-12-01-rvest/rvest-logo.png" class="thumbnail-image" alt="Hexagonal logo of the rvest package; a sickle cutting wheat on a red background."> </a></p>
+<p><a href="./blog/2022-12-01-rvest/index.html" class="no-external"></a></p><a href="./blog/2022-12-01-rvest/index.html" class="no-external">
+<p><img src="./blog/2022-12-01-rvest/rvest-logo.png" class="thumbnail-image" alt="Hexagonal logo of the rvest package; a sickle cutting wheat on a red background."></p>
+</a><p><a href="./blog/2022-12-01-rvest/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-12-01-rvest/index.html">
 <h3 class="no-anchor listing-title">
-Web Scraping with <code>{rvest}</code>
+<a href="./blog/2022-12-01-rvest/index.html" class="no-external">Web Scraping with <code>{rvest}</code></a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-12-01-rvest/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Part 1 of a mini-series on aquiring data from the web, focusing on scraping webpages using the {rvest} package.</p>
+<a href="./blog/2022-12-01-rvest/index.html" class="no-external">Part 1 of a mini-series on aquiring data from the web, focusing on scraping webpages using the {rvest} package. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-12-01-rvest/index.html">
+<a href="./blog/2022-12-01-rvest/index.html" class="no-external">
 <div class="listing-date">
 2022-12-01
 </div>
@@ -595,25 +630,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="reading summary,reproducibility,academic skills,computing" data-listing-date-sort="1666134000000" data-listing-file-modified-sort="1694695251017" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="13" data-categories="reading summary,reproducibility,academic skills,computing" data-listing-date-sort="1666134000000" data-listing-file-modified-sort="1694695251017" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html"> <img src="./blog/2022-10-19-good-enough-practices-in-scientific-computing/gepisc-image.png" class="thumbnail-image" alt="Header section of a PLOS Comptational Biology perspective paper titled &amp;#039;Good Enough Practices in Scientific Computing'."> </a></p>
+<p><a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html" class="no-external"></a></p><a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html" class="no-external">
+<p><img src="./blog/2022-10-19-good-enough-practices-in-scientific-computing/gepisc-image.png" class="thumbnail-image" alt="Header section of a PLOS Comptational Biology perspective paper titled &amp;#039;Good Enough Practices in Scientific Computing'."></p>
+</a><p><a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html">
 <h3 class="no-anchor listing-title">
-Good Enough Practices in Scientific Computing
+<a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html" class="no-external">Good Enough Practices in Scientific Computing</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Reading Summary of Wilson et al.&nbsp;(2017).</p>
+<a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html" class="no-external">Reading Summary of Wilson et al.&nbsp;(2017). </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html">
+<a href="./blog/2022-10-19-good-enough-practices-in-scientific-computing/index.html" class="no-external">
 <div class="listing-date">
 2022-10-19
 </div>
@@ -623,26 +658,26 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="data visualisation" data-listing-date-sort="1665788400000" data-listing-file-modified-sort="1669918090501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="14" data-categories="data visualisation" data-listing-date-sort="1665788400000" data-listing-file-modified-sort="1669918090501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1180">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-15-BBC-temperature-plot/index.html"> <img src="./blog/2022-10-15-BBC-temperature-plot/zdv-temperature-records.png" class="thumbnail-image" alt="BBC dumbbell plot showing stations with the largest gaps between previous and new records, ordered by the highest new temperature.
-"> </a></p>
+<p><a href="./blog/2022-10-15-BBC-temperature-plot/index.html" class="no-external"></a></p><a href="./blog/2022-10-15-BBC-temperature-plot/index.html" class="no-external">
+<p><img src="./blog/2022-10-15-BBC-temperature-plot/zdv-temperature-records.png" class="thumbnail-image" alt="BBC dumbbell plot showing stations with the largest gaps between previous and new records, ordered by the highest new temperature.
+"></p>
+</a><p><a href="./blog/2022-10-15-BBC-temperature-plot/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-10-15-BBC-temperature-plot/index.html">
 <h3 class="no-anchor listing-title">
-Data Journalism: Recreating a Professional Plot
+<a href="./blog/2022-10-15-BBC-temperature-plot/index.html" class="no-external">Data Journalism: Recreating a Professional Plot</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-10-15-BBC-temperature-plot/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Recreating a plot of record breaking temperatures by the BBC data journalism team.</p>
+<a href="./blog/2022-10-15-BBC-temperature-plot/index.html" class="no-external">Recreating a plot of record breaking temperatures by the BBC data journalism team. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-10-15-BBC-temperature-plot/index.html">
+<a href="./blog/2022-10-15-BBC-temperature-plot/index.html" class="no-external">
 <div class="listing-date">
 2022-10-15
 </div>
@@ -652,26 +687,26 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="data visualisation,tidy tuesday" data-listing-date-sort="1665529200000" data-listing-file-modified-sort="1671039607715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="15" data-categories="data visualisation,tidy tuesday" data-listing-date-sort="1665529200000" data-listing-file-modified-sort="1671039607715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="948">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html"> <img src="./blog/2022-10-11-ravelry-tidy-tuesday/2022-10-11-tidy-tuesday-ravelry.png" class="thumbnail-image" alt="Stacked bar chart of yarn weights on Ravelry. Bars are descending order by their fequency, with yarn-type labels written within the bars and count values to the right of the bars. Annotations indicate that the most popular yarn weights are Fingering and Double Knit, and that there were more missing yarn weights than in all remaining categories combined.
-"> </a></p>
+<p><a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html" class="no-external"></a></p><a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html" class="no-external">
+<p><img src="./blog/2022-10-11-ravelry-tidy-tuesday/2022-10-11-tidy-tuesday-ravelry.png" class="thumbnail-image" alt="Stacked bar chart of yarn weights on Ravelry. Bars are descending order by their fequency, with yarn-type labels written within the bars and count values to the right of the bars. Annotations indicate that the most popular yarn weights are Fingering and Double Knit, and that there were more missing yarn weights than in all remaining categories combined.
+"></p>
+</a><p><a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html">
 <h3 class="no-anchor listing-title">
-Tidy Tuesday: Ravelry Yarn
+<a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html" class="no-external">Tidy Tuesday: Ravelry Yarn</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Tidy Tuesday 2022 || Week 41</p>
+<a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html" class="no-external">Tidy Tuesday 2022 || Week 41 </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html">
+<a href="./blog/2022-10-11-ravelry-tidy-tuesday/index.html" class="no-external">
 <div class="listing-date">
 2022-10-12
 </div>
@@ -681,25 +716,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="academic skills,reading" data-listing-date-sort="1665356400000" data-listing-file-modified-sort="1665623364621" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="16" data-categories="academic skills,reading" data-listing-date-sort="1665356400000" data-listing-file-modified-sort="1665623364621" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="827">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-10-statistics-books/index.html"> <img src="./blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" class="thumbnail-image" alt="Photograph of the mathematics section of Blackwell&amp;#039;s book shop in Oxford."> </a></p>
+<p><a href="./blog/2022-10-10-statistics-books/index.html" class="no-external"></a></p><a href="./blog/2022-10-10-statistics-books/index.html" class="no-external">
+<p><img src="./blog/2022-10-10-statistics-books/blackwells-maths-section.jpg" class="thumbnail-image" alt="Photograph of the mathematics section of Blackwell&amp;#039;s book shop in Oxford."></p>
+</a><p><a href="./blog/2022-10-10-statistics-books/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-10-10-statistics-books/index.html">
 <h3 class="no-anchor listing-title">
-Recommended Statistics Books
+<a href="./blog/2022-10-10-statistics-books/index.html" class="no-external">Recommended Statistics Books</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-10-10-statistics-books/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Book recommendations for those looking to reinforce their knowledge of undergraduate and advanced statistics.</p>
+<a href="./blog/2022-10-10-statistics-books/index.html" class="no-external">Book recommendations for those looking to reinforce their knowledge of undergraduate and advanced statistics. </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-10-10-statistics-books/index.html">
+<a href="./blog/2022-10-10-statistics-books/index.html" class="no-external">
 <div class="listing-date">
 2022-10-10
 </div>
@@ -709,25 +744,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="academic skills,writing,reading" data-listing-date-sort="1665097200000" data-listing-file-modified-sort="1666188672967" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="17" data-categories="academic skills,writing,reading" data-listing-date-sort="1665097200000" data-listing-file-modified-sort="1666188672967" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="846">
 <div class="thumbnail">
-<p><a href="./blog/2022-10-07-rhetorical-precis/index.html"> <img src="./blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" class="thumbnail-image" alt="Photograph of a filing cabinet filled with library index cards."> </a></p>
+<p><a href="./blog/2022-10-07-rhetorical-precis/index.html" class="no-external"></a></p><a href="./blog/2022-10-07-rhetorical-precis/index.html" class="no-external">
+<p><img src="./blog/2022-10-07-rhetorical-precis/maksym-kaharlytskyi-Q9y3LRuuxmg-unsplash.jpg" class="thumbnail-image" alt="Photograph of a filing cabinet filled with library index cards."></p>
+</a><p><a href="./blog/2022-10-07-rhetorical-precis/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-10-07-rhetorical-precis/index.html">
 <h3 class="no-anchor listing-title">
-Writing a rhetorical précis
+<a href="./blog/2022-10-07-rhetorical-precis/index.html" class="no-external">Writing a rhetorical précis</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-10-07-rhetorical-precis/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Structured summaries to remember and retrieve what you read</p>
+<a href="./blog/2022-10-07-rhetorical-precis/index.html" class="no-external">Structured summaries to remember and retrieve what you read </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-10-07-rhetorical-precis/index.html">
+<a href="./blog/2022-10-07-rhetorical-precis/index.html" class="no-external">
 <div class="listing-date">
 2022-10-07
 </div>
@@ -737,25 +772,25 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="quarto,tutorial" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1665162093927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="18" data-categories="quarto,tutorial" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1665162093927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="703">
 <div class="thumbnail">
-<p><a href="./blog/2022-09-26-adding-a-quarto-blog/index.html"> <img src="./blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" class="thumbnail-image" alt="Mechanical typewriter on white background."> </a></p>
+<p><a href="./blog/2022-09-26-adding-a-quarto-blog/index.html" class="no-external"></a></p><a href="./blog/2022-09-26-adding-a-quarto-blog/index.html" class="no-external">
+<p><img src="./blog/2022-09-26-adding-a-quarto-blog/florian-klauer-mk7D-4UCfmg-unsplash.jpg" class="thumbnail-image" alt="Mechanical typewriter on white background."></p>
+</a><p><a href="./blog/2022-09-26-adding-a-quarto-blog/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-09-26-adding-a-quarto-blog/index.html">
 <h3 class="no-anchor listing-title">
-Setting up a quarto blog
+<a href="./blog/2022-09-26-adding-a-quarto-blog/index.html" class="no-external">Setting up a quarto blog</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-09-26-adding-a-quarto-blog/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>Adding a blog <em>within</em> a quarto website</p>
+<a href="./blog/2022-09-26-adding-a-quarto-blog/index.html" class="no-external">Adding a blog <em>within</em> a quarto website </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-09-26-adding-a-quarto-blog/index.html">
+<a href="./blog/2022-09-26-adding-a-quarto-blog/index.html" class="no-external">
 <div class="listing-date">
 2022-09-26
 </div>
@@ -765,26 +800,26 @@ Zak Varty
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="quarto,templates" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1694695361139" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="19" data-categories="quarto,templates" data-listing-date-sort="1664146800000" data-listing-file-modified-sort="1694695361139" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="130">
 <div class="thumbnail">
-<p><a href="./blog/2022-09-26-hello-world/index.html"> <img src="./blog/2022-09-26-hello-world/hello-world-image.jpg" class="thumbnail-image" alt="The text Hello, World` written in red monospaced font inside curly braces on a grey background.
-"> </a></p>
+<p><a href="./blog/2022-09-26-hello-world/index.html" class="no-external"></a></p><a href="./blog/2022-09-26-hello-world/index.html" class="no-external">
+<p><img src="./blog/2022-09-26-hello-world/hello-world-image.jpg" class="thumbnail-image" alt="The text Hello, World` written in red monospaced font inside curly braces on a grey background.
+"></p>
+</a><p><a href="./blog/2022-09-26-hello-world/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/2022-09-26-hello-world/index.html">
 <h3 class="no-anchor listing-title">
-Hello, World!
+<a href="./blog/2022-09-26-hello-world/index.html" class="no-external">Hello, World!</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/2022-09-26-hello-world/index.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-<p>A minimal first post</p>
+<a href="./blog/2022-09-26-hello-world/index.html" class="no-external">A minimal first post </a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/2022-09-26-hello-world/index.html">
+<a href="./blog/2022-09-26-hello-world/index.html" class="no-external">
 <div class="listing-date">
 2022-09-26
 </div>
@@ -878,10 +913,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.zakvarty\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -891,8 +943,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -904,7 +965,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -948,6 +1132,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -973,6 +1158,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1035,7 +1246,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2022-2024, Zak Varty.</div>   
+    <div class="nav-footer-left">
+<p>Copyright 2022-2024, Zak Varty.</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
@@ -1069,6 +1282,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
