@@ -1,0 +1,30 @@
+---
+title: "To Be Read"
+search: false
+---
+
+Cool things I'd like to read and do. 
+
+## Courses 
+
+- [ ] [Computational Discovery on Jupyter](https://computational-discovery-on-jupyter.github.io/Computational-Discovery-on-Jupyter/). Intro to scientific programming in Python with fun math examples.
+
+- [ ] [Econometrics course slides](https://nickch-k.github.io/EconometricsSlides/) by Nick Huntington Klein.
+
+## Slide Decks 
+
+- [ ] [Multivariable Regression Slides](https://nickch-k.github.io/EconometricsSlides/Week_04/Week_04_Slides_2_Multivariate_Regression.html#6) by Nick Huntington Klein. Includes causal discussions in an econometrics context.   
+
+## Papers
+
+### RJMCMC 
+
+- [ ] [Waagpetersen and Sorensen (2001).](https://doi.org/10.1111/j.1751-5823.2001.tb00479.x) Tutorial on RJMCMC.  
+
+- [ ] [Hastie and Green (2012).](https://doi.org/10.1111/j.1467-9574.2012.00516.x) Model choice using reversible jump Markov chain Monte Carlo.  
+
+
+### Extremes
+
+- [ ] 
+
