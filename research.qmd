@@ -11,8 +11,9 @@ My research interests lie in the intersection between applied and methodological
 
 I'm particularly interested in developing efficient inference methods for non-standard data generating mechanisms to better model the rich, complex data sets that arise from environmental and industrial processes.
 
-## Past Projects 
+## Projects 
 
+__Automated threshold selection and associated inference uncertainty for univariate extremes.__ ([arXiv](https://arxiv.org/abs/2310.17999)) Work with [Conor Murphy](https://www.lancaster.ac.uk/maths/people/conor-murphy2), developing a novel methodology for automated threshold selection in univariate extreme value modelling and to propagate uncertainty in this threshold choice through to estimates of extreme quantiles. The effectiveness of our method is demonstrated though an extensive simulation study, compared to the leading existing methods and applied to the well-known and troublesome example of the River Nidd dataset. 
 
 __Inference for extreme earthquake magnitudes accounting for a time-varying measurement process.__ ([arXiv](https://arxiv.org/abs/2102.00884))  Motivated by earthquake catalogues, we consider variable data quality in the form of rounded and incompletely observed data. We develop an approach to select a time-varying modelling threshold that makes best use of the available data in an extreme value analysis, accounting for uncertainty in the magnitude model and for the rounding of observations. 
 
@@ -22,29 +23,16 @@ __A review of simulated annealing techniques:__ Simulated annealing is a metahur
 
 __Inference on censored networks:__ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness were explored. Master's project supervised by Dr. Christopher Nemeth.
 
-__Computionally intensive methods for modelling houshold epidemics:__
+__Computationally intensive methods for modelling household epidemics:__
 Approximate Bayesian Computation was utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervised by Prof. Peter Neal.
 
-<!-- 
-My PhD research focused on developing statistical models to describe and understand earthquakes that are caused by gas extraction in the Netherlands. 
-
-Human-induced earthquakes are usually smaller in magnitude and fewer in number than their tectonic counterparts. This low-data setting is a challenge to statistical modelling and necessitates the inclusion of domain-expert knowledge. If this low-data setting was not challenging enough, changes in gas extraction and earthquake detection lead to further complications and inefficiencies if standard modelling approaches are used.
-
-My PhD research developed statistical methodology to make most efficient use of the limited available data and extended existing earthquake models to improve understanding of these induced seismic events. 
-
-You can find a copy of my thesis on [github](https://github.com/zakvarty/varty_thesis_public).
-
-
-## PhD outputs
-
-### Publications 
-**Varty, Z.**, Tawn J.A., Atkinson P.M. and Bierman S. (2021). Inference for extreme earthquake mangitudes accounting for a time-varying measurement process. (Preprint on [arXiv](https://arxiv.org/abs/2102.00884))
--->
 
 ## Conference and workshop contributions
 
 | Date      | Event | Location |
 |-----------|:-----------------|------------------:|
+| Sep 2024  | Royal Statistical Society conference | Brighton, UK. |
+| Jun 2024  | UK Conference on Teaching Statistics | Manchester, UK. |
 | Nov 2023  | RSS Local Group Meeting | Bath, UK. |
 | Sep 2023  | Royal Statistical Society conference | Harrogate, UK. |
 | Sep 2023  | RSS pre-conference workshop | Harrogate, UK. |
@@ -74,13 +62,15 @@ I have had the good fortune to supervise some exceptional early career researche
 
 #### Academic Year 2023-24
 <!-- AY 2023-2024 -->
-- __Brian Mac Carvill__ - Data privacy and security through homomorphic encryption.
+- __Brian Mac Carvill__ - Modelling extreme changes in
+crude oil prices.
 - __Yinglai Qi__ - Investigating the risk of developing diabetes using UK Biobank data.
-- __Etienne Caprioli__ - Analysing Nonstationary Hazard Dynamics (title tbc)
-- __Ioannis Spanos__ - Analysing Nonstationary Hazard Dynamics (title tbc)
-- __Xinran Huang__ - Analysing Nonstationary Hazard Dynamics (title tbc)
-- __Xiyue Zhang__ - Analysing Nonstationary Hazard Dynamics (title tbc)
-- __Zihan Yan__ - Analysing Nonstationary Hazard Dynamics (title tbc)
+- __Etienne Caprioli__ - Modelling extreme natural hazards in the United States of America. 
+- __Ioannis Spanos__ - Peaks over threshold modelling with missing data.
+- __Xinran Huang__ - Nonstationary ETAS models for temporal variations in
+earthquake occurrences
+- __Tommy Tong__ - Analyzing the Dynamics and Catastrophic Events of Space Weather.
+- __Zihan Yan__ - Analysis of significant wave heights in the North Atlantic Ocean. 
 - __Jiahui Chen__ - Statistical modelling of earthquakes in the North Anatolian Fault Zone.
 - __Jianjing Yu__ - Rare events in financial time series.
 
