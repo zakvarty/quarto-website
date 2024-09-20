@@ -27,7 +27,7 @@ I am an associate fellow of the Higher Education Academy, which you can learn mo
 |2021-24  | [Data Science](https://eds-notes.zakvarty.com/) | Lecturer  |
 |         | [Ethics in Data Science I, II and III](ethics-reading-list.qmd) | Lecturer  |
 |         | Data Ethics for Digital Chemistry               | Lecturer  |
-|         | Y1 research projects: point process models      | Lecturer  |
+|         | [Y1 research projects: point process models](https://m1r.zakvarty.com/)      | Lecturer  |
 |2021-22  | Supervised Learning                             | Lecturer  |
 | ---     |  ---                                            | ---       |
 |2020-21  | MATH562/582: Extreme Value Theory | Lecturer |
