@@ -27,13 +27,8 @@ I am an associate fellow of the Higher Education Academy, which you can learn mo
 |2021-24  | Data Science [Notes](https://eds-notes.zakvarty.com/) [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17AiyuMwW77yGnVuqbS8tdtq&si=hK0sT8aKnPe_RyBs) | Lecturer  |
 |         | Ethics in Data Science I, II and III [Reading List](ethics-reading-list.qmd) | Lecturer  |
 |         | Data Ethics for Digital Chemistry               | Lecturer  |
-<<<<<<< HEAD
 |         | Y1 research projects: point process models [Notes](https://m1r.zakvarty.com/)      | Lecturer  |
 |2021-22  | Supervised Learning [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17BybIN_6drVs9LLmw7f_XvN&si=1JbE4Uci_RfqjTzJ)                             | Lecturer  |
-=======
-|         | [Y1 research projects: point process models](https://m1r.zakvarty.com/)      | Lecturer  |
-|2021-22  | Supervised Learning                             | Lecturer  |
->>>>>>> edb8df7852d76f8fb3e458d5fa6dee8a79f60912
 | ---     |  ---                                            | ---       |
 |2020-21  | MATH562/582: Extreme Value Theory [Notes](https://extremes-notes.zakvarty.com/) [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17Ce7tO3bkJqgJT_JrgkFgA5&si=FSX7cOx8JxzTmqgu)| Lecturer |
 |         | MATH331: Bayesian Inference  | Graduate teaching assistant|
