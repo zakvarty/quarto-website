@@ -21,10 +21,10 @@ website:
     background: primary
     search: true
     left:
-      - text: Research
-        href: research.qmd
       - text: Teaching
         href: teaching.qmd
+      - text: Research
+        href: research.qmd
       - text: Talks
         href: talks.qmd
       - text: Writing
