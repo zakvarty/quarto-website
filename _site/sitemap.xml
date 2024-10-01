@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.zakvarty.com/blog.html</loc>
-    <lastmod>2024-03-26T13:23:04.698Z</lastmod>
+    <lastmod>2024-09-30T11:11:22.619Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/bookmarks.html</loc>
-    <lastmod>2024-04-08T14:50:08.596Z</lastmod>
+    <lastmod>2024-09-30T11:11:22.622Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2023-08-17-why-is-my-classifier-discrimanatory/index.html</loc>
@@ -41,48 +41,52 @@
     <lastmod>2023-11-29T15:45:51.283Z</lastmod>
   </url>
   <url>
-    <loc>https://www.zakvarty.com/blog/2022-12-01-rvest/index.html</loc>
-    <lastmod>2022-12-14T17:40:07.715Z</lastmod>
+    <loc>https://www.zakvarty.com/blog/2024-10-01-steal-like-a-generative-artist/index.html</loc>
+    <lastmod>2024-10-01T12:08:22.353Z</lastmod>
   </url>
   <url>
-    <loc>https://www.zakvarty.com/blog/2023-09-13-bib-but-better/index.html</loc>
-    <lastmod>2023-09-14T11:40:29.578Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/index.html</loc>
-    <lastmod>2024-03-26T13:38:28.115Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/professional/topic-reading-list.html</loc>
-    <lastmod>2024-01-12T13:31:55.496Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/research.html</loc>
-    <lastmod>2024-08-10T20:10:41.085Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/teaching.html</loc>
-    <lastmod>2024-09-30T11:05:41.111Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/ethics-reading-list.html</loc>
-    <lastmod>2023-08-10T16:15:04.929Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/talks.html</loc>
-    <lastmod>2024-03-25T15:25:55.422Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.zakvarty.com/recipies.html</loc>
-    <lastmod>2024-04-10T10:33:27.136Z</lastmod>
+    <loc>https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/index.html</loc>
+    <lastmod>2022-12-16T17:20:07.640Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2023-08-08-overcoming-barriers-to-sharing-code/index.html</loc>
     <lastmod>2023-08-09T16:55:32.628Z</lastmod>
   </url>
   <url>
-    <loc>https://www.zakvarty.com/blog/2022-12-14-apis-and-httr/index.html</loc>
-    <lastmod>2022-12-16T17:20:07.640Z</lastmod>
+    <loc>https://www.zakvarty.com/recipies.html</loc>
+    <lastmod>2024-09-30T11:11:22.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/talks.html</loc>
+    <lastmod>2024-09-30T11:11:22.628Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/ethics-reading-list.html</loc>
+    <lastmod>2024-09-30T11:11:22.622Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/teaching.html</loc>
+    <lastmod>2024-09-30T11:11:22.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/research.html</loc>
+    <lastmod>2024-09-30T11:11:22.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/professional/topic-reading-list.html</loc>
+    <lastmod>2024-01-12T13:31:55.496Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/index.html</loc>
+    <lastmod>2024-09-30T11:11:22.623Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2023-09-13-bib-but-better/index.html</loc>
+    <lastmod>2023-09-14T11:40:29.578Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.zakvarty.com/blog/2022-12-01-rvest/index.html</loc>
+    <lastmod>2022-12-14T17:40:07.715Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2022-10-11-ravelry-tidy-tuesday/index.html</loc>
@@ -90,7 +94,7 @@
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2023-11-09-method-of-moments-estimation-for-randomised-response-surveys/index.html</loc>
-    <lastmod>2024-03-25T16:03:58.164Z</lastmod>
+    <lastmod>2024-09-30T11:11:22.621Z</lastmod>
   </url>
   <url>
     <loc>https://www.zakvarty.com/blog/2023-07-26-mundanity-of-excellence/index.html</loc>
@@ -118,6 +122,6 @@
   </url>
   <url>
     <loc>https://www.zakvarty.com/tbr.html</loc>
-    <lastmod>2024-04-10T10:30:21.062Z</lastmod>
+    <lastmod>2024-09-30T11:11:22.628Z</lastmod>
   </url>
 </urlset>
