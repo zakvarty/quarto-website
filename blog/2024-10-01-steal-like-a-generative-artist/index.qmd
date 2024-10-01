@@ -1,0 +1,321 @@
+---
+title: "Steal like a generative artist"
+description: |
+    A first forray into generative art
+date: "2024-10-01"
+categories:
+  - R
+  - Generative Art
+  - Events
+image: pyramid-header-1812-2.png
+image-alt: "Grid of pyramids viewed from above each with one random side coloured in the zvplot colour palette."
+draft: false
+freeze: true
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: true
+---
+
+```{r setup}
+#| echo: false
+# library calls
+
+# knitr options
+```
+
+## Making a new banner image 
+
+I recently realised that my banner image on twitter was a bit dated and that I didn't even have one on LinkedIn. To fix that, I'm going to to follow up on the session that [Nicola Rennie](https://nrennie.rbind.io/) ran at the RSS pre-conference workshop and get started with generative art. (Slides from the session are available at this [link](https://nrennie.rbind.io/rss-2024-generative-art/))
+
+I've done lots of plotting of simulated data before, which I guess technically counts as generative art, but this is my first attempt at making plots for purely ~\*aesthetic\*~ purposes. One of the main takeaways for me from Nicola's talk was to [steal like an artist](https://bookshop.org/p/books/steal-like-an-artist-10-things-nobody-told-you-about-being-creative-austin-kleon/6862462). In a nutshell, a great way to learn any new creative skill is to copy and riff on what other people have done already. When developing generative art skills it can be helpful to:
+
+- start by using tools that other people have made to create generative art,
+- recreate or adapt those tools for yourself,
+- take inspiration for generative designs from more traditional art forms,
+- recreate designs or patterns from objects in the world around you. 
+
+In that spirit, I'll be recreating and adapting one of her title slide artworks. 
+
+```{r}
+#| echo: false
+#| fig-alt: "Section slide from Nicola Rennie. The slide features a tiled design of multi-coloured squares, split into triangles to give the appearance of pyramids viewed from above. The order of the colours and the location of the pyramid peaks are chosen randomly."
+#| out-width: 70%
+#| fig-align: center
+knitr::include_graphics("./generative-art-slide-nrennie.png")
+```
+
+## Scoping the project
+
+**The parameters** set by the user for this artwork would likely include: the number of rows and columns of "pyramids", the four colours to be used or the sides of the pyramids and perhaps the spacing between the pyramids relative to their base size.
+
+**The randomness** seems to come from the location of the "apex" of each square-based pyramid and the order in which the four face colours are applied.
+
+**The rules** are the additional structure that stays the same between each generation. This might be things like the spacing between the pyramids, how close the apex can get to the edge of each square and that each face colour must appears exactly once on every pyramid.
+
+**My modifications** to this will be to allow the user to specify two sets of colour inputs, one set of neutral colours and one set of accent colours. Each pyramid will get three neutral sides and one accent side. 
+
+## Keep It Simple, Stupid
+
+I've used R to plot polygons quite a few times before but usually in the context of something like adding a credible region around a function estimate or to show the outline of a geographic region. In both cases that's a either a single or small number of polygons where each has very many sides. What I need here is the exact opposite of that: a large number of polygons, each with a small number of sides (three to b e exact). 
+
+Before worrying about any of that though, there are a few parameters that I can set up-front, for example I can set a colour scheme that is aligned with my usual styling.
+
+```{r}
+library(zvplot)
+neutrals = c(zv_black, zv_white, zv_light_grey, zv_mid_grey)
+accents = c(zv_navy, zv_orange, zv_fuchia, zv_blue)
+```
+
+Let's start with the smallest example possible where I will be able to tell that everything is working as it should, a 2x3 grid.
+
+```{r}
+n_rows = 2
+n_cols = 3
+```
+
+To make this easier on myself I'm going to start off just trying to generate the squares that will form the base of each pyramid. To make finding coordinates slightly easier, I'll use a coordinate system where each square is 1 units. That will also make the parameter controlling the gap between pyramids easier to interpret.
+
+```{r}
+gap_size = 0.1
+```
+
+I will be using `{ggplot2}` to make the plot, so I'll need to organise the coordinates of my polygon corners into a data frame. As a first step, I'll making a data frame that indexes and describes each of the squares I will need to plot. 
+
+```{r}
+n_squares <- n_rows * n_cols
+square_id <- seq_len(n_squares)
+row_num <- rep(1:n_rows, each = n_cols)
+col_num <- rep(1:n_cols, times = n_rows)
+squares <- data.frame(id = square_id, row_num, col_num)
+squares
+```
+
+I can then add in the coordinates of each corner as new columns 
+
+```{r}
+squares$x_min <- (1 + gap_size) * (squares$col_num - 1) + gap_size
+squares$y_min <- (1 + gap_size) * (squares$row_num - 1) + gap_size
+squares$x_max <- squares$x_min + 1
+squares$y_max <- squares$y_min + 1
+  
+squares
+```
+
+Looking at the [examples](https://ggplot2.tidyverse.org/reference/geom_polygon.html#ref-examples) from the `geom_poly()` documentation, I'll need the x- and y-coordinates for each vertex of every square in two separate vectors and an id vector that links each vertex (row) to it's specific polygon. As with `polygon()` in base R, it seems like polygons should be specified anti-clockwise.
+
+
+After a bit of head scratching, the most natural (but probably not most efficient) approach to me would be to interleave the bottom-left, bottom-right, top-right and top-left coordinates of each square that we just generated. The `{vctrs}` package has a helpful function to do this, which works for two or more vector-like objects of the same type. 
+
+```{r}
+library(vctrs)
+vec_interleave(as.character(1:5), letters[1:5])
+```
+
+```{r}
+vec_interleave(as.character(1:5), letters[1:5], LETTERS[1:5])
+```
+
+Taking care to specify the coordinates in the right order, we can construct a dataframe that contains all the information needed to create the simplified plot.
+
+```{r}
+id <- rep(squares$id, each = 4)
+x <- vec_interleave(squares$x_min, squares$x_max, squares$x_max, squares$x_min)
+y <- vec_interleave(squares$y_min, squares$y_min, squares$y_max, squares$y_max)
+value <- sample(x = c(neutrals, accents), size = n_squares)
+value <- rep(value, each = 4)
+
+plotting <- data.frame(id, x, y, value)
+head(plotting)
+```
+
+That is all the up-front work done, we should now have everything we need to get our minimal working example up and running. The code to create the plot itself is remarkably simple. 
+
+```{r}
+#| fig-align: center
+library(ggplot2)
+
+ggplot(plotting, aes(x = x, y = y)) +
+  geom_polygon(aes(group = id), fill = value) +
+  coord_equal() +
+  theme_void()
+```
+
+## Add a little more complexity
+
+It's great that the simple square version works but it's not particularly exciting. Let's add in the second random aspect, the location of the apex or peak of each pyramid. To do this I'll add the x- and y-coordinates of that peak as a column in the `squares` data frame. 
+
+When generating peak locations, I could locate them uniformly at random over the unit square. One issue with this approach is that it might cause ugly realisations where the peak is very close to one of the edges. There are lots of ways to avoid this but I'll keep it simple again and add a buffer zone that keeps the peak away from the edges. 
+
+```{r}
+buffer = 0.1 
+
+squares$peak_x <- runif(
+  n = n_squares,
+  min = squares$x_min + buffer,
+  max = squares$x_max - buffer)
+
+squares$peak_y <- runif(
+  n = n_squares,
+  min = squares$y_min + buffer,
+  max = squares$y_max - buffer)
+
+squares
+```
+
+Our logic and variables are all in place to make the more complicated pyramid plot. It's exactly the same idea as before but with 24 triangles rather than 6 squares. 
+
+```{r}
+id <- rep(1:(n_squares * 4), each = 3)
+x <- vec_interleave(squares$x_min, squares$peak_x, squares$x_min,
+                    squares$x_min, squares$peak_x, squares$x_max,
+                    squares$x_max, squares$x_max, squares$peak_x,
+                    squares$x_max, squares$x_min, squares$peak_x)
+y <- vec_interleave(squares$y_min, squares$peak_y, squares$y_max,
+                    squares$y_max, squares$peak_y, squares$y_max,
+                    squares$y_max, squares$y_min, squares$peak_y,
+                    squares$y_min, squares$y_min, squares$peak_y)
+value <- c()
+for (i in 1:n_squares) {
+  colours <- c(sample(neutrals, 3), sample(accents, 1)) # pick colours
+  colours <- sample(colours, 4)                         # shuffle
+  value <- c(value, colours)                            # record
+}
+value <- rep(value, each = 3) # colour value for every vertex of every triangle
+
+plotting <- data.frame(id, x, y, value)
+head(plotting)
+```
+
+Since we set everything up in the same way, we can use the same simple code to plot our pyramids as we did for the squares. 
+
+```{r}
+#| fig-align: center
+ggplot(plotting, aes(x = x, y = y)) +
+  geom_polygon(aes(group = id), fill = value) +
+  coord_equal() +
+  theme_void()
+```
+
+
+## Make it a function 
+
+Okay, we have made one version of the artwork, but the joy of generative art is
+being able to easily get many realisations of the same artwork and to experiment
+with different parameter values. 
+
+We can make that a lot easier to do by consolidating the code above into a function. 
+
+```{r}
+pyramids <- function(n_rows = 5, n_cols = 10, gap_size = 0.1, buffer = 0.1, neutrals = NULL, accents = NULL){
+  
+  # set palette if not defined by the user 
+  if (is.null(neutrals)) { 
+    neutrals <- c("#202020", "#FAFAFA", "#EEEEEE", "#555555")
+  }
+  if (is.null(accents)) {
+    accents <- c("#003E74", "#E87800", "#C81E87", "#3D52D5")
+  }
+
+  # define square bases of pyramids
+  n_squares <- n_rows * n_cols
+  square_id <- seq_len(n_squares)
+  row_num <- rep(1:n_rows, each = n_cols)
+  col_num <- rep(1:n_cols, times = n_rows)
+  squares <- data.frame(id = square_id, row_num, col_num)
+
+  # add columns for coordinates
+  squares$x_min <- (1 + gap_size) * (squares$col_num - 1) + gap_size
+  squares$y_min <- (1 + gap_size) * (squares$row_num - 1) + gap_size
+  squares$x_max <- squares$x_min + 1
+  squares$y_max <- squares$y_min + 1
+  squares$peak_x <- runif(n_squares, squares$x_min + buffer, squares$x_max - buffer)
+  squares$peak_y <- runif(n_squares, squares$y_min + buffer, squares$y_max - buffer)
+
+  # create dataframe of polygons
+  id <- rep(x = 1:(n_squares * 4), each = 3)
+  x <- vec_interleave(squares$x_min, squares$peak_x, squares$x_min,
+                      squares$x_min, squares$peak_x, squares$x_max,
+                      squares$x_max, squares$x_max, squares$peak_x,
+                      squares$x_max, squares$x_min, squares$peak_x)
+  y <- vec_interleave(squares$y_min, squares$peak_y, squares$y_max,
+                      squares$y_max, squares$peak_y, squares$y_max,
+                      squares$y_max, squares$y_min, squares$peak_y,
+                      squares$y_min, squares$y_min, squares$peak_y)
+  value <- c()
+  for (i in 1:n_squares) {
+    colours <- c(sample(neutrals, 3), sample(accents, 1)) # pick colours
+    colours <- sample(colours, 4)                         # shuffle
+    value <- c(value, colours)                            #record
+  }
+  value <- rep(value, each = 3) # colour value for each vertex of every triangle
+  
+  plotting <- data.frame(id, x, y, value)
+  
+  # return plot
+  ggplot(plotting, aes(x = x, y = y)) +
+    geom_polygon(aes(group = id), fill = value) +
+    coord_equal() +
+    theme_void()
+}
+```
+
+This lets us check that when we run the function multiple times we get different realisations. 
+
+```{r}
+#| layout-ncol: 3
+#| fig-align: center
+pyramids(n_rows = 3, n_cols = 3)
+pyramids(n_rows = 3, n_cols = 3)
+pyramids(n_rows = 3, n_cols = 3)
+```
+
+And when we set the same seed, we should be able to recreate a specific version of the artwork. 
+
+```{r}
+#| layout-ncol: 2
+#| fig-align: center
+set.seed(1234)
+pyramids(n_rows = 3, n_cols = 3)
+
+set.seed(1234)
+pyramids(n_rows = 3, n_cols = 3)
+```
+
+The really fun part is exploring new parameter combinations. Can you figure out which settings I used below?
+
+```{r}
+#| echo: false
+#| fig-align: center
+pyramids(n_rows = 3, n_cols = 15,gap_size = 0.4, buffer = 0.49, accents = "#5487C0")
+```
+
+## Try it yourself
+
+If you would like to make your own artwork in this style, you can either copy the code I've provided above. Alternatively, you can get started faster by using the  packaged versions of the `pyramids()` function from `{zvplot}` - there's a function for the simpler squares design too.
+
+```{r}
+#| eval: false
+devtools::install_github("zakvarty/zvplot")
+```
+
+```{r}
+#| layout-ncol: 2
+#| fig-align: center
+squares(n_rows = 12, n_cols = 22)
+pyramids(n_rows = 2, n_cols = 2)
+```
+
+Finally, I have an up-to-date banner image! Check it out below, on [Twitter](https://x.com/zakvarty) and [LinkedIn](https://www.linkedin.com/in/zak-varty-b60a19b5/). 
+
+```{r}
+#| echo: false
+#| fig-align: center
+knitr::include_graphics("pyramid-header-1812-2.png")
+```
+
+## Session Information 
+
+```{r}
+#| echo: false
+pander::pander(sessionInfo())
+```
