@@ -12,7 +12,7 @@ The website is built using [Quarto](https://quarto.org/) and deployed with [Netl
 If you find any mistakes, broken bits or anything that isn't working as it should then please [raise an issue](https://github.com/zakvarty/quarto-website/issues) to let me know.
 
 
-## What is Quarto and how do I get stared? 
+## What is Quarto and how do I get started? 
 
 Quarto is an open-source system for scientific and technical publishing. It's a bit like a jupyter notebook on steroids.
 
