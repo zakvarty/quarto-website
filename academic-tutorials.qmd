@@ -4,30 +4,30 @@
 
 ### Week 3
 
-- [Problem sheet](../assets/academic-tutorials/T1_PT1_problems.pdf)
-- [Solution sheet](../assets/academic-tutorials/T1_PT1_sol.pdf)
-- [Tutor sheet](../assets/academic-tutorials/T1_PT1_tutor.pdf)
+- [Problem sheet](./assets/academic-tutorials/T1_PT1_problems.pdf)
+- [Solution sheet](./assets/academic-tutorials/T1_PT1_sol.pdf)
+- [Tutor sheet](./assets/academic-tutorials/T1_PT1_tutor.pdf)
 
 ### Week 5
 
-- [Problem sheet](../assets/academic-tutorials/T1_PT2_problems.pdf)
-- [Solution sheet](../assets/academic-tutorials/T1_PT2_sol.pdf)
-- [Tutor sheet](../assets/academic-tutorials/T1_PT2_tutor.pdf)
+- [Problem sheet](./assets/academic-tutorials/T1_PT2_problems.pdf)
+- [Solution sheet](./assets/academic-tutorials/T1_PT2_sol.pdf)
+- [Tutor sheet](./assets/academic-tutorials/T1_PT2_tutor.pdf)
 
 ### Week 7
 
-- [Problem sheet](../assets/academic-tutorials/T1_PT3_problems.pdf)
-- [Solution sheet](../assets/academic-tutorials/T1_PT3_sol.pdf)
-- [Tutor sheet](../assets/academic-tutorials/T1_PT3_tutor.pdf)
+- [Problem sheet](./assets/academic-tutorials/T1_PT3_problems.pdf)
+- [Solution sheet](./assets/academic-tutorials/T1_PT3_sol.pdf)
+- [Tutor sheet](./assets/academic-tutorials/T1_PT3_tutor.pdf)
 
 ### Week 9
 
-- [Problem sheet](../assets/academic-tutorials/T1_PT4_problems.pdf)
-- [Solution sheet](../assets/academic-tutorials/T1_PT4_sol.pdf)
-- [Tutor sheet](../assets/academic-tutorials/T1_PT4_tutor.pdf)
+- [Problem sheet](./assets/academic-tutorials/T1_PT4_problems.pdf)
+- [Solution sheet](./assets/academic-tutorials/T1_PT4_sol.pdf)
+- [Tutor sheet](./assets/academic-tutorials/T1_PT4_tutor.pdf)
 
 ### Week 11
 
-- [Problem sheet](../assets/academic-tutorials/T1_PT5_problems.pdf)
-- [Solution sheet](../assets/academic-tutorials/T1_PT5_sol.pdf)
-- [Tutor sheet](../assets/academic-tutorials/T1_PT5_tutor.pdf)
+- [Problem sheet](./assets/academic-tutorials/T1_PT5_problems.pdf)
+- [Solution sheet](./assets/academic-tutorials/T1_PT5_sol.pdf)
+- [Tutor sheet](./assets/academic-tutorials/T1_PT5_tutor.pdf)
