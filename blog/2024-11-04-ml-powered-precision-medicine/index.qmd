@@ -1,0 +1,98 @@
+---
+title: "Time to reality check the promists of machine learning-powered precision medicine"
+description: |
+    Reading summary of Wilkinson et al. (2020)
+date: "2024-11-04"
+categories:
+  - reading summary
+image: ""
+image-alt: "Title and abstract of Wilkinson et al. (2020), a viewpoint paper published in the Lancet, Digital Health."
+draft: false
+freeze: false
+appendix-style: plain #(default, plain, none)
+bibliography: ../library.bib
+citation: false
+---
+
+```{r}
+#| echo: false
+image_path <- "wilkinson-et-al-2020-header.png"
+image_alt <- "Title and abstract of Wilkinson et al. (2020), a viewpoint paper published in the Lancet, Digital Health."
+```
+
+## Reading Summary
+
+`wilkinson2020reality` [@wilkinson2020reality]
+
+**Title:** _Time to reality check the promises of machine learning-powered precision medicine. {Lancet Digital Health, 2020} (e677-e680)._
+
+**Authors:** _Jack Wilkinson, Kellyn F Arnold, Eleanor J Murray, Maarten van Smeden, Kareem Carr, Rachel Sippy, Marc de Kamps, Andrew Beam, Stefan Konigorski, Christoph Lippert, Mark S Gilthorpe and Peter W G Tennan._
+
+**Key words:** _machine learning applications_, _personalised medicine_. 
+
+::: medium_right
+<figure><img src="`r image_path`" alt="`r image_alt`" style="border-radius: 3%;"/></figure>
+:::
+
+In this opinion piece, a large group of authors from specialisms across health data science argue that algorithmic complexity is not the limiting factor to achieving personalised medical care. They support this position by presenting arguments against the assumptions that machine learning will provide automated diagnoses with unprecedented accuracy and can identity the best therapy at an individual level.
+
+It is important that medics, researchers and funding bodies are aware of the limitations of ML for individualised medicine, so that research efforts and funding are directed towards problems that ML is best able to address. As such, this article is written to be accessible to a wide range of people working in healthcare, particularly those who might not have an extensive background in mathematical or statistical modelling.
+
+## Notes
+
+### Claim 1: machine learning will enable automated diagnoses with unprecedented accuracy
+
+1. Individualised Predictions
+
+> "Proponents of precision medicine make a compelling pitch: traditonal approaches to health science have focused too much on comparing effectiveness in the average person and too little on the nees of actual individuals."
+
+- The average person does not exist. Population perspective and expected outcomes useful from a policy perspective but are of limited use for individual decision making.
+- Interesting parallels to explainability methods: partial dependence plot vs individual conditional expectation. 
+
+
+2. Poorly validated studies
+
+In many applications of machine learning to medicine there is a lack of validation and where this does occur, it is rare that there is comparison to a relevant baseline. Being better than a random guess is not good enough, you have to be able to beat the current diagnostic procedure - a human!
+
+> Only 20 of (24%) the 82 studies identified evaluated the performance of their algorithm in an external cohort, and only 14 (17%) studies compared this out-of-sample performance with that of health professionals.  
+
+3. Reductive emphasis on predictive performance 
+
+The article also points out that "emphasis on predictive performance over clinical utility is not unusual" in healthcare applications of ML. The need to reduce medical conditions to a binary outcome (or a probability of a binary outcome) is necessarily reductive and misses the nuance of many health conditions.  
+
+> There is also increasing focus on classifying patients into simple categories (eg, with and without the disease) rather than predicting a continuum of risk. 
+
+This point underlines the importance of not only ensuring that your model gives a meaningful representation of reality but that the loss function that you choose to use when fitting that model properly captures what you care about. 
+
+4. Limitations of predictive analytics
+
+The authors conclude their arguments by emphasising that the quality and quantity of training data limits the ultimate quality of any model. The high-quality training data required can be incredibly expensive to generate in a healthcare setting, e.g. labelling of diagnostic images, and is still subject to limitations that can lead to model failure when applied to new data sources. One example of this is a diagnostic model for diabetic retinopathy, performing poorly in Thai clinics where overhead lighting differed from the clinics in the training data. 
+
+### Claim 2: Machine Learning-powered precision medicine will enable identification of the best therapies for individuals rather than subgroups.
+
+ML can identify correlations but has no way of identifying these as causal. To do that requires experimentation and/or significant contextual knowledge. 
+Without understanding causality, we cannot know why treatments work and so cannot justify individualised predictions through anything other than a probabilistic argument. 
+
+> machine learning approaches are not (currently) able to identify cause and effect, becasue causal inference is fundamentally impossible to achieve without making assumptions. 
+
+> causal inference requires external contextual infoormation about the meaning of and relationships between the relevant variables in a given context. 
+
+> the second more fundamental problem [is] that the majority of health states and events are so complex that we can only understand them probabilistically, and chance can never be predicted at the individual level.
+
+This final point supports an issue that is true in a much broader context: if a process is interesting enough that we are using statistical or machine learning models to understand it, then it is almost always too complicated for us to model deterministically. This means that "individual outcomes will always be subject to chance, no matter how precisely we can describe these for groups of similar patients."
+
+### Pragmatic routes to personalisation
+
+For personalised medicine to be meaningful, we need between-subject variability in treatment responses. We need treatments to have different effects in different people and for this variate to be at least in part predictable.  
+
+Unfortuantately, in most cases this is not true and understanding what drives variation in treatment response is nontrivial. "For most health states and events, we remain unable to achieve the ostensibly much easier task of improving the average response in a group". The standard designs in clinical trails and observational studies do not generally enable us to do this either
+
+> it might not be possible to differentiate within-individual and between-individual variation without strong assumptions that are only plausible in specific circumstances (eg, where the symptoms and participant circumstances are stable over time and the treatments have no long-term effects)
+
+The authors echo existing calls for greater investment into confirmatory studies, rather than exploratory ones, and warn the reader of the dangers around multiple testing and underpowered study designs.
+
+The paper concludes by suggesting stratified medicine as a more meaningful goal, which is certainly more aligned with the conditional probabilities that machine learning models are actually designed to handle. 
+
+### Further reading
+
+"Why representativeness should be avoided" by @rothman2013representativeness might be interesting to include when introducing propensity scores and inverse probability of treatment weightings. 

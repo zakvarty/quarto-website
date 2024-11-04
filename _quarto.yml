@@ -27,7 +27,7 @@ website:
         href: research.qmd
       - text: Talks
         href: talks.qmd
-      - text: Writing
+      - text: Blog
         href: blog.qmd
       - icon: bookmark
         href: "./bookmarks.html"
