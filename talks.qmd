@@ -8,14 +8,62 @@ format:
 
 ## Upcoming
 
+#### Workshop: Privacy in Machine Learning - University of Venice
 
+Details to follow. 
+
+<!--
 No upcoming talks currently scheduled. 
+-->
 
-Have a speaking opportunity that you think I'd be great for? [Let me know about it](](https://twitter.com/messages/compose?recipient_id={4708109019}))!
+Have a speaking opportunity that you think I'd be great for? [Let me know about it](mailto:z.varty@imperial.ac.uk)!
 
 
 
 ## Archive 
+
+### 2024 
+
+#### Mathematics Teaching Seminar - Imperial College London
+
+:::{.callout-warning appearance="minimal" collapse=true}
+## The Impact of Personal Tutoring on Staff Wellbeing
+
+__Slides__: 
+
+<a href="https://zakvarty.github.io/talks/2024-personal-tutoring/2024-personal-tutoring.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- -->
+<a href="https://github.com/zakvarty/talks/tree/main/2024-personal-tutoring" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
+
+
+__Abstract:__
+
+This session will explore the impact that personal tutoring can have on both students and staff. We will examine how personal tutoring influences academic success, student well-being, and staff-student relationships by summarising two studies covering the effectiveness of tutoring programs, their benefits and challenges for both students and staff.
+
+The session aims to spark a discussion on best practices and potential improvements in the tutoring system and how it might be optimised to ensure a positive, supportive and sustainable system for everyone involved.
+:::
+
+#### MSc Project Intro Session - University of Southampton
+
+:::{.callout-warning appearance="minimal" collapse=true}
+## A Very Brief Introduction to Statistical Hazard Modelling
+
+__Slides__: 
+
+<a href="https://zakvarty.github.io/talks/2024-hazard-modelling/2024-hazard-modelling.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- -->
+<a href="https://github.com/zakvarty/talks/tree/main/2024-hazard-modelling" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
+
+
+__Abstract:__
+
+This talk will provide a whirlwind introduction to the core topics in statistical hazard modelling. 
+
+I'm giving you the best bits of a five week course in just 30 minutes. That means this is going to be fast. Don't worry about understanding every detail. The point of this talk is simply for you to become aware of some foundational results/models in hazard modelling. 
+
+Towards the end of the talk I'll allude to some ways we can add non-stationarity into these models and to point you towards resources that you can use to explore these ideas at your own pace. 
+:::
+
 
 ### 2023
 
