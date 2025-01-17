@@ -132,11 +132,10 @@ This course will introduce you to a formal strategy for modelling the tails of r
 
 
 
-<!--- 
 
 | Year    | Course                    |    Role   |
 |---------|:-----------------------------|-----------:|
-|2021-24  | Data Science [Notes](https://eds-notes.zakvarty.com/) [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17AiyuMwW77yGnVuqbS8tdtq&si=hK0sT8aKnPe_RyBs) | Lecturer  |
+|2021-25  | Data Science [Notes](https://eds-notes.zakvarty.com/) [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17AiyuMwW77yGnVuqbS8tdtq&si=hK0sT8aKnPe_RyBs) | Lecturer  |
 |         | Ethics in Data Science I, II and III [Reading List](ethics-reading-list.qmd) | Lecturer  |
 |         | Data Ethics for Digital Chemistry               | Lecturer  |
 |         | Y1 research projects: point process models [Notes](https://m1r.zakvarty.com/)      | Lecturer  |
@@ -164,4 +163,3 @@ This course will introduce you to a formal strategy for modelling the tails of r
 | 2015-16 |	LAB100: Introduction to R   |	Graduate teaching assistant|
 | 2011-13 | GCSE & A-level Mathematics | Private tutor |
 
--->

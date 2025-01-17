@@ -262,39 +262,152 @@ cookieconsent.run({
 <p>The majority of approaches in statistics and data science aim to learn about the “typical” levels of a process. In some cases though, we really want to understand those outcomes that are unusually large or small. We might want to understand when the weakest link in a chain will break, to predict record-breaking athletic performances or to describe the size and frequency of the largest financial losses.</p>
 <p>To answer these questions we must extrapolate beyond the range of observed outcomes. This can be a risky business and requires careful, domain-specific considerations. Extreme value theory gives us a principled, mathematically motivated framework for modelling the largest (or smallest) values within a dataset.</p>
 <p>This course will introduce you to a formal strategy for modelling the tails of random variables. We will develop this modelling framework based on an area of probability theory that is rarely studied at undergraduate level, paying close attention to the issues that come with using such asymptotically motivated models. We will see how techniques from standard statistical inference can be adapted into this modelling framework and apply it to a range of examples from finance and the environmental sciences.</p>
-<!--- 
-
-| Year    | Course                    |    Role   |
-|---------|:-----------------------------|-----------:|
-|2021-24  | Data Science [Notes](https://eds-notes.zakvarty.com/) [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17AiyuMwW77yGnVuqbS8tdtq&si=hK0sT8aKnPe_RyBs) | Lecturer  |
-|         | Ethics in Data Science I, II and III [Reading List](ethics-reading-list.qmd) | Lecturer  |
-|         | Data Ethics for Digital Chemistry               | Lecturer  |
-|         | Y1 research projects: point process models [Notes](https://m1r.zakvarty.com/)      | Lecturer  |
-|2021-22  | Supervised Learning [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17BybIN_6drVs9LLmw7f_XvN&si=1JbE4Uci_RfqjTzJ)                             | Lecturer  |
-| ---     |  ---                                            | ---       |
-|2020-21  | MATH562/582: Extreme Value Theory [Notes](https://extremes-notes.zakvarty.com/) [Videos](https://youtube.com/playlist?list=PLBVD-YN3U17Ce7tO3bkJqgJT_JrgkFgA5&si=FSX7cOx8JxzTmqgu)| Lecturer |
-|         | MATH331: Bayesian Inference  | Graduate teaching assistant|
-|         | MATH330: Likelihood Inference | Graduate teaching assistant|
-| 2019-20 | DSCI485: Introduction to LaTeX   |  Co-leading short course|
-|         | MATH566: Longitudinal Data Analysis | Graduate teaching assistant|
-| 2018-19 | STOR-i Internship: Introduction to LaTeX  | Co-leading short course|
-|         | DSCI485: Introduction to LaTeX   |  Co-leading short course|
-|         | MATH562: Extreme Value Theory | Graduate teaching assistant|
-|         | MATH235: Statistics II  | Graduate teaching assistant|
-|         | MATH240: Project Skills   | Graduate teaching assistant|
-|         | MATH330: Likelihood Inference   |   Graduate teaching assistant|
-|         | MATH230: Probability II   | Graduate teaching assistant|
-| 2017-18 | STOR-i Internship: Research Project |   Supervisor|
-|         | STOR-i Internship: Introduction to LaTeX  | Co-leading short course|
-|         | DSCI485: Introduction to LaTeX   |  Co-leading short course|
-|         | MATH235: Statistics II     |Graduate teaching assistant|
-|         | MATH465: Bayesian Inference   | Graduate teaching assistant|
-|         | MATH330: Likelihood Inference   |   Graduate teaching assistant|
-|         | MATH230: Probability II   | Graduate teaching assistant|
-| 2015-16 | LAB100: Introduction to R   |   Graduate teaching assistant|
-| 2011-13 | GCSE & A-level Mathematics | Private tutor |
-
--->
+<table class="table">
+<thead>
+<tr class="header">
+<th>Year</th>
+<th style="text-align: left;">Course</th>
+<th style="text-align: right;">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2021-25</td>
+<td style="text-align: left;">Data Science <a href="https://eds-notes.zakvarty.com/">Notes</a> <a href="https://youtube.com/playlist?list=PLBVD-YN3U17AiyuMwW77yGnVuqbS8tdtq&amp;si=hK0sT8aKnPe_RyBs">Videos</a></td>
+<td style="text-align: right;">Lecturer</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">Ethics in Data Science I, II and III <a href="./ethics-reading-list.html">Reading List</a></td>
+<td style="text-align: right;">Lecturer</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">Data Ethics for Digital Chemistry</td>
+<td style="text-align: right;">Lecturer</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">Y1 research projects: point process models <a href="https://m1r.zakvarty.com/">Notes</a></td>
+<td style="text-align: right;">Lecturer</td>
+</tr>
+<tr class="odd">
+<td>2021-22</td>
+<td style="text-align: left;">Supervised Learning <a href="https://youtube.com/playlist?list=PLBVD-YN3U17BybIN_6drVs9LLmw7f_XvN&amp;si=1JbE4Uci_RfqjTzJ">Videos</a></td>
+<td style="text-align: right;">Lecturer</td>
+</tr>
+<tr class="even">
+<td>—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="odd">
+<td>2020-21</td>
+<td style="text-align: left;">MATH562/582: Extreme Value Theory <a href="https://extremes-notes.zakvarty.com/">Notes</a> <a href="https://youtube.com/playlist?list=PLBVD-YN3U17Ce7tO3bkJqgJT_JrgkFgA5&amp;si=FSX7cOx8JxzTmqgu">Videos</a></td>
+<td style="text-align: right;">Lecturer</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">MATH331: Bayesian Inference</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">MATH330: Likelihood Inference</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="even">
+<td>2019-20</td>
+<td style="text-align: left;">DSCI485: Introduction to LaTeX</td>
+<td style="text-align: right;">Co-leading short course</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">MATH566: Longitudinal Data Analysis</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="even">
+<td>2018-19</td>
+<td style="text-align: left;">STOR-i Internship: Introduction to LaTeX</td>
+<td style="text-align: right;">Co-leading short course</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">DSCI485: Introduction to LaTeX</td>
+<td style="text-align: right;">Co-leading short course</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">MATH562: Extreme Value Theory</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">MATH235: Statistics II</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">MATH240: Project Skills</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">MATH330: Likelihood Inference</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">MATH230: Probability II</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="odd">
+<td>2017-18</td>
+<td style="text-align: left;">STOR-i Internship: Research Project</td>
+<td style="text-align: right;">Supervisor</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">STOR-i Internship: Introduction to LaTeX</td>
+<td style="text-align: right;">Co-leading short course</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">DSCI485: Introduction to LaTeX</td>
+<td style="text-align: right;">Co-leading short course</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">MATH235: Statistics II</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">MATH465: Bayesian Inference</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: left;">MATH330: Likelihood Inference</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td style="text-align: left;">MATH230: Probability II</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="even">
+<td>2015-16</td>
+<td style="text-align: left;">LAB100: Introduction to R</td>
+<td style="text-align: right;">Graduate teaching assistant</td>
+</tr>
+<tr class="odd">
+<td>2011-13</td>
+<td style="text-align: left;">GCSE &amp; A-level Mathematics</td>
+<td style="text-align: right;">Private tutor</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
