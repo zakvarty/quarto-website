@@ -8,21 +8,33 @@ format:
 
 ## Upcoming
 
-#### Workshop: Privacy in Machine Learning - University of Venice
-
-Details to follow. 
-
-<!--
 No upcoming talks currently scheduled. 
--->
+<!-- -->
 
 Have a speaking opportunity that you think I'd be great for? [Let me know about it](mailto:z.varty@imperial.ac.uk)!
 
 
 
-## Archive 
+## Past Talks
 
 ### 2024 
+
+#### Guest Lecture - University of Venice
+:::{.callout-warning appearance="minimal" collapse=true}
+## Privacy by Design in the Machine Learning Pipeline
+
+__Slides__: 
+
+<a href="https://zakvarty.github.io/talks/2024-privacy-by-design/2024-privacy-by-design.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- -->
+<a href="https://github.com/zakvarty/talks/tree/main/2024-privacy-by-design" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
+
+
+__Abstract:__
+
+A non-technical introduction to the ethical issues relating to privacy though-out all stages of a machine learning project (collection, storage, analytics, modelling and production). Focus is placed on data collection and storage, including survey and sampling designs for sensitive topics and hard to reach populations. 
+:::
+
 
 #### Mathematics Teaching Seminar - Imperial College London
 
@@ -178,7 +190,7 @@ In this short talk, I will discuss how introducing peer-marked reading summaries
 
 #### Royal Statistical Society Conference 2022
 
-:::{.callout-warning title="Abstract" appearance="minimal" collapse=true}
+:::{.callout-warning appearance="minimal" collapse=true}
 ## Incorporating Ethics into the Data Science Curriculum 
 
 <a href="../assets/talks/2022_RSS_slides_zak_varty.pdf" class="btn btn-outline-primary m-1">Slides <span class="bi bi-file-pdf"></span></a>
