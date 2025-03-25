@@ -6,13 +6,11 @@ website:
   site-url: "https://www.zakvarty.com"
   description: "Zak Varty, personal webpage."
   favicon: "assets/00_favicon/favicon.ico"
-  twitter-card: true
-#    creator: "@zakvarty"
   cookie-consent:
     type: express
     style: simple
     palette: light
-    #prefs-text: "This site uses Google Analytics to analyse website traffic and improve your expreience of the site."
+    #prefs-text: "This site uses Google Analytics to analyse website traffic and improve your experience of the site."
   google-analytics:
     tracking-id: "G-29RLTHLZB5"
     anonymize-ip: true
@@ -32,29 +30,24 @@ website:
       - icon: bookmark
         href: "./bookmarks.html"
     right:
-      - icon: twitter
-        href: "https://www.twitter.com/zakvarty"
-      - icon: youtube
-        href: "https://www.youtube.com/%40zakvarty"  # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
       - icon: github
         href: "https://www.github.com/zakvarty"
-      - icon: google
+      - text: "{{< iconify academicons google-scholar size=2xl >}}"
         href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
-      - text: " "
+      - icon: youtube
+        href: "https://www.youtube.com/%40zakvarty"  # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
   page-footer:
     background: light
     border: true
-    left: "Copyright 2022-2024, Zak Varty."
+    left: "Copyright 2022-2025, Zak Varty."
     center: ""
     right:
-      - icon: twitter
-        href: "https://www.twitter.com/zakvarty"
-      - icon: youtube
-        href: "https://www.youtube.com/%40zakvarty" # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
       - icon: github
         href: "https://github.com/zakvarty"
-      - icon: google
+      - text: "{{< iconify academicons google-scholar size=xl >}}"
         href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
+      - icon: youtube
+        href: "https://www.youtube.com/%40zakvarty" # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
 
 format:
   html:

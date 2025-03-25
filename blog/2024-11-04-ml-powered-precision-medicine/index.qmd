@@ -5,7 +5,7 @@ description: |
 date: "2024-11-04"
 categories:
   - reading summary
-image: ""
+image: "wilkinson-et-al-2020-header.png"
 image-alt: "Title and abstract of Wilkinson et al. (2020), a viewpoint paper published in the Lancet, Digital Health."
 draft: false
 freeze: false
