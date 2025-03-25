@@ -3,18 +3,14 @@ title: Zak Varty
 about:
   template: solana
   links:
-    - icon: twitter
-      text: twitter
-      href: "https://twitter.com/zakvarty"
-    - icon: youtube
-      text: YouTube
-      href: "https://www.youtube.com/@zakvarty"
     - icon: github
       text: Github
       href: "https://github.com/zakvarty"
-    - icon: google
-      text: "Google Scholar" 
+    - text: "{{< iconify academicons google-scholar size=xl >}} Google Scholar" 
       href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
+    - icon: youtube
+      text: YouTube
+      href: "https://www.youtube.com/@zakvarty"
 freeze: true
 engine: knitr
 # Code blocks normally specify the engine to use. To get inline R code to 
@@ -33,7 +29,7 @@ engine: knitr
 
 I am a statistician, data scientist and educator. 
 
-I work as a Teaching Fellow at [Imperial College London](https://www.imperial.ac.uk/statistics) where I teach courses and supervise research projects in statistics, data science and data ethics. 
+I work as a Senior Teaching Fellow at [Imperial College London](https://www.imperial.ac.uk/statistics) where I teach courses and supervise research projects in statistics, data science and data ethics. 
 
 My research interests are at the intersection of applied and methodological statistics. I particularly enjoy developing efficient inference methods for non-standard data generating mechanisms and data science projects with environmental or industrial applications.
 

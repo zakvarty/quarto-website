@@ -32,9 +32,8 @@ website:
     right:
       - icon: github
         href: "https://www.github.com/zakvarty"
-      - icon: google
+      - text: "{{< iconify academicons google-scholar size=2xl >}}"
         href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
-      - text: " "
       - icon: youtube
         href: "https://www.youtube.com/%40zakvarty"  # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
   page-footer:
@@ -45,7 +44,7 @@ website:
     right:
       - icon: github
         href: "https://github.com/zakvarty"
-      - icon: google
+      - text: "{{< iconify academicons google-scholar size=xl >}}"
         href: "https://scholar.google.com/citations?user=3H4vg4cAAAAJ&hl=en&oi=ao"
       - icon: youtube
         href: "https://www.youtube.com/%40zakvarty" # Using %40 instead of @ avoids ref confusion. See: https://github.com/quarto-dev/quarto-cli/issues/3493
