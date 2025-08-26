@@ -130,3 +130,21 @@ To answer these questions we must extrapolate beyond the range of observed outco
 
 This course will introduce you to a formal strategy for modelling the tails of random variables. We will develop this modelling framework based on an area of probability theory that is rarely studied at undergraduate level, paying close attention to the issues that come with using such asymptotically motivated models. We will see how techniques from standard statistical inference can be adapted into this modelling framework and apply it to a range of examples from finance and the environmental sciences.
 
+
+## Teaching Statistics Resources
+
+### Groups 
+
+- [Teaching Statistics Section](https://rss.org.uk/membership/rss-groups-and-committees/sections/teaching-statistics) of the Royal Statistical Society
+- [Consortium for the Advancement of Undergraduate Statistics Education](https://causeweb.org/cause) (CAUSE)
+- [Burwalls](https://sites.google.com/view/burwalls/home)
+- [The Teaching Statistics Trust](https://teachingstatisticstrust.org.uk/) 
+- [Researchers of Statistics Education Network](https://rose-network.org) (RoSE)
+- [Teaching and Learning Mathematics Online](https://talmo.uk/) (TALMO)
+
+### Journals 
+
+- [Teaching Statistics](https://onlinelibrary.wiley.com/journal/14679639)
+- [Journal of Statistics and Data Science Education](https://www.tandfonline.com/journals/ujse21)
+- [Statistics Education Research Journal](https://iase-pub.org/ojs/SERJ)
+- [Technology Innovations in Statistics Education](https://escholarship.org/uc/tise/aboutus)
