@@ -13,17 +13,33 @@ I'm particularly interested in developing efficient inference methods for non-st
 
 ## Projects 
 
-__Automated threshold selection and associated inference uncertainty for univariate extremes.__ ([preprint](https://arxiv.org/abs/2310.17999), [article](https://www.tandfonline.com/doi/full/10.1080/00401706.2024.2421744)) Work with [Conor Murphy](https://www.lancaster.ac.uk/maths/people/conor-murphy2), developing a novel methodology for automated threshold selection in univariate extreme value modelling and to propagate uncertainty in this threshold choice through to estimates of extreme quantiles. The effectiveness of our method is demonstrated though an extensive simulation study, compared to the leading existing methods and applied to the well-known and troublesome example of the River Nidd dataset. 
+>__Integrating Experts’ Belief in Upper Tail Inference for Modelling of Human-Induced Earthquake Magnitudes.__ 
+> ([article](http://dx.doi.org/10.1007/s13253-025-00710-9)) 
+>
+> Work with [Wanchen Yue](https://www.lancaster.ac.uk/stor-i/about-us/people/wanchen-yue) on how to incorporate expert opinion on upper bounds for earthquake magnitudes (not just the endpoint itself) into both frequentist and Bayesian tail inference.
+>Applied to the Groningen gas field (NL), this approach improves estimates of extreme magnitudes and strengthens seismic hazard assessment & risk management. 
 
-__Inference for extreme earthquake magnitudes accounting for a time-varying measurement process.__ ([arXiv](https://arxiv.org/abs/2102.00884))  Motivated by earthquake catalogues, we consider variable data quality in the form of rounded and incompletely observed data. We develop an approach to select a time-varying modelling threshold that makes best use of the available data in an extreme value analysis, accounting for uncertainty in the magnitude model and for the rounding of observations. 
 
-__Statistical Modelling of Induced Earthquakes__ ([PhD Thesis](https://doi.org/10.17635/lancaster/thesis/1436)). My PhD thesis focused on how to model anthropogenic earthquakes while making best use of the limited available data. Firstly, a selection of physically-motivated parametric models are explored for describing the link between gas extraction and induced earthquake locations. Secondly, new inference methods are developed that allow improvements to the earthquake detection network to be included when modelling extreme earthquake magnitudes. Finally, a reparameterised and extended version of the Epidemic Type Aftershock model introduced. This both allows for more efficient inference and relaxes the common assumption of independent and identically distributed magnitudes.
+> __Automated threshold selection and associated inference uncertainty for univariate extremes.__
+> ([article](https://www.tandfonline.com/doi/full/10.1080/00401706.2024.2421744)) 
+>
+> Work with [Conor Murphy](https://www.lancaster.ac.uk/maths/people/conor-murphy2), developing a novel methodology for automated threshold selection in univariate extreme value modelling and to propagate uncertainty in this threshold choice through to estimates of extreme quantiles. The effectiveness of our method is demonstrated though an extensive simulation study, compared to the leading existing methods and applied to the well-known and troublesome example of the River Nidd dataset. 
 
-__A review of simulated annealing techniques:__ Simulated annealing is a metahuristic technique mainly used for combinatorial optimisation. Applications, parallelisation and extensions of the technique were reviewed.
+> __Inference for extreme earthquake magnitudes accounting for a time-varying measurement process.__
+> ([arXiv](https://arxiv.org/abs/2102.00884))
+>
+> Motivated by earthquake catalogues, we consider variable data quality in the form of rounded and incompletely observed data. We develop an approach to select a time-varying modelling threshold that makes best use of the available data in an extreme value analysis, accounting for uncertainty in the magnitude model and for the rounding of observations. 
 
-__Inference on censored networks:__ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness were explored. Master's project supervised by Dr. Christopher Nemeth.
+> __Statistical Modelling of Induced Earthquakes__ 
+> ([PhD Thesis](https://doi.org/10.17635/lancaster/thesis/1436)).
+>
+> My PhD thesis focused on how to model anthropogenic earthquakes while making best use of the limited available data. Firstly, a selection of physically-motivated parametric models are explored for describing the link between gas extraction and induced earthquake locations. Secondly, new inference methods are developed that allow improvements to the earthquake detection network to be included when modelling extreme earthquake magnitudes. Finally, a reparameterised and extended version of the Epidemic Type Aftershock model introduced. This both allows for more efficient inference and relaxes the common assumption of independent and identically distributed magnitudes.
 
-__Computationally intensive methods for modelling household epidemics:__
+> __A review of simulated annealing techniques:__ Simulated annealing is a metahuristic technique mainly used for combinatorial optimisation. Applications, parallelisation and extensions of the technique were reviewed.
+
+> __Inference on censored networks:__ Networks are censored when existing nodes or edges are not observed. Methods for inference under different types of missingness were explored. Master's project supervised by Dr. Christopher Nemeth.
+
+> __Computationally intensive methods for modelling household epidemics:__
 Approximate Bayesian Computation was utilised to allow inference on disease models with intractable likelihoods. Master's dissertation supervised by Prof. Peter Neal.
 
 
@@ -55,8 +71,9 @@ I have had the good fortune to supervise some exceptional early career researche
 
 ### PhD 
 
-- __Conor Murphy__ (Oct 2021 - Present) - Assessment of hazard and risk due to induced seismicity for underground CO2 Storage and oil and gas production assets. 
 - __Wanchen Yue__ (Oct 2023 - Present) - Statistical earthquake models to account for measurement errors and dependence.
+
+- __Conor Murphy__ (Oct 2021 - Aug 2025) - Assessment of hazard and risk due to induced seismicity for underground CO2 Storage and oil and gas production assets. 
 
 ### MSc and MSci
 
@@ -64,10 +81,12 @@ I have had the good fortune to supervise some exceptional early career researche
 
 <!-- AY 2024-25 -->
 
-- __Leyli Cowell__ - Topic TBC 
-- __Katerina Kaplunova__ - Topic TBC 
-- __Lauryne Moyse__ - Topic TBC 
-- __Moad Ouaaline__ - Topic TBC 
+- __Leyli Cowell__ - Structural causal models for tail dependencies among European currencies.
+- __Katerina Kaplunova__ - Robust extreme-value anomaly
+detection in non-stationary streams. 
+- __Lauryne Moyse__ - Adaptive quantile boosted
+classification for imbalanced data. 
+- __Moad Ouaaline__ - Multivariate financial risk estimation via the SPAR model.
 - __Arnav Agarwal__ - A compositional analysis of the UK energy supply
 - __Yuqing Wang__ - Modelling extremal behaviour within the UK energy supply
 
