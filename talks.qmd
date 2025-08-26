@@ -8,11 +8,49 @@ format:
 
 ## Upcoming
 
-No upcoming talks currently scheduled. 
-<!-- -->
+### RSS Conference 2025 - Edinburgh 
+
+I will be organising two sessions on behalf of the Young Statisticians Section and together with the Teaching Statistics Section.
+
+> *Careers in Statistics Education*
+> _15:00-16:20 Tuesday, 2 September, 2025, Moorfoot._
+>
+> The teaching of Statistics and data literacy varies greatly between, secondary post-compulsory and higher education but these are not the only career paths for a statistical educator. Training staff in government or industry or conducting education research each offer their own opportunities, challenges and unique career journeys, whether that is as an employee, freelancer or business owner.   
+>
+> This conference session will showcase diverse career paths in statistics education, highlighting the wide range of teaching roles available today. Each speaker will provide an overview of how they entered their chosen field and how they developed their teaching expertise.  
+>
+> This session aims to inspire both new and experienced educators in the data sciences by illustrating the varied opportunities that are available across different sectors. 
+>
+> Speakers:
+>
+> - Claire Rebello, Imperial College Maths School
+> - Elinor Jones, University College London
+> - Ioanna Papatsouma, Imperial College London
+> - Sophie Lee, Veramed
+>
+> Organised by Zak Varty and Nicola Rennie for Young Statisticians Section and Teaching Statistics Section 
+>
+
+
+> *Learn from my mistakes: career advice from successful statisticians*
+> _11:30-12:50 Wednesday, 3 September, 2025, Moorfoot_
+> 
+> There are many ways to be successful as a statistician. However you define success, one certainty is that you will make a few mistakes along the way.
+>
+> Join our invited panel of experienced statisticians as they describe what “success” means to them and share stories of their career highs, lows and the lessons they have learned. Let’s use the experience of others so that we can, at least, make new mistakes for ourselves! 
+>
+> Panellists:
+>
+> - Richard Samworth (University of Cambridge)
+> - Fiona Underwood (Independent statistical consultant and researcher)
+> - Lucy Teece (Medical Statistician and Statistical Ambassador)
+
+
+<!--
+No upcoming talks currently scheduled.
 
 Have a speaking opportunity that you think I'd be great for? [Let me know about it](mailto:z.varty@imperial.ac.uk)!
-
+-->
 
 
 ## Past Talks
