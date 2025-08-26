@@ -19,6 +19,23 @@ Have a speaking opportunity that you think I'd be great for? [Let me know about 
 
 ### 2024 
 
+#### Mini Lecture - Imperial College London
+:::{.callout-warning appearance="minimal" collapse=true}
+## An introduction to Random Forests (in 10 minutes or less)
+
+__Slides__: 
+
+<a href="https://zakvarty.github.io/talks/2024-random-forests/2024-random-forests.html" class="btn btn-outline-primary m-1" target="_blank">HTML <span class="bi bi-filetype-html"></span></a>
+<!-- -->
+<a href="https://github.com/zakvarty/talks/tree/main/2024-random-forests" class="btn btn-outline-primary m-1" target="_blank">Source <span class="bi bi bi-file-earmark-code"></span></a> 
+
+
+__Abstract:__
+
+A mini lecture  third-year undergraduate students in the BSc program for Mathematics. The lecture is designed to a brief overview of random forests, introduced via bootstrap aggregation, in ten minutes or less.
+:::
+
+
 #### Guest Lecture - University of Venice
 :::{.callout-warning appearance="minimal" collapse=true}
 ## Privacy by Design in the Machine Learning Pipeline
