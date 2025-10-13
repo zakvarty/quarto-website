@@ -1,0 +1,61 @@
+# Undergraduate Research Projects 2025-26
+
+## Overview
+
+This year I will offer up to **two undergraduate research projects**, both focusing on the **modelling of aftershocks** — earthquakes that are triggered by other earthquakes.  
+Each project will involve literature review, coding, simulation, and application to real data.
+
+Both projects will require the student to:
+
+- undertake a review of the existing literature;
+- code their own implementation of existing methods;
+- conduct extensive simulation experiments to compare the behaviour of existing methods in idealised conditions (preferably in R but Python may also be used);
+- compare methods on at least one earthquake catalogue of the student's choosing.
+
+---
+
+## Project 1: Modelling Earthquake Sequences — Identifying Fore-, Main-, and Aftershock Clusters
+
+### Overview
+
+Earthquakes often occur in clusters rather than as isolated events. A major earthquake (the *mainshock*) may be preceded by smaller *foreshocks* and followed by numerous *aftershocks*. Accurately identifying these clusters is essential for understanding seismicity patterns, improving hazard models, and gaining insight into the physical processes driving earthquake triggering.
+
+This project will focus on reviewing, implementing, and comparing existing methods for identifying fore-, main-, and aftershock clusters within earthquake catalogues. The student will explore a variety of algorithmic and statistical approaches — including space-time windowing, nearest-neighbour methods, and stochastic declustering — and assess their relative strengths and weaknesses.
+
+### Project Aims
+
+- Conduct a comprehensive literature review of current methods for earthquake sequence identification.  
+- Implement a selection of these methods in R (preferred) or Python, developing reusable and well-documented code.  
+- Design and perform simulation experiments to test how each method behaves under controlled, idealised conditions (e.g. synthetic earthquake catalogues).  
+- Apply the methods to at least one real earthquake catalogue chosen by the student (for example, from Japan, California, or New Zealand).  
+- Compare the results quantitatively and qualitatively, and provide recommendations for best practices in aftershock identification.
+
+### Expected Outcomes
+
+The student will gain experience in statistical modelling, programming, and geophysical data analysis.  
+The final product will be a systematic comparison of earthquake sequence identification methods, potentially forming the basis for a conference poster or a research paper.
+
+---
+
+## Project 2: Modelling Earthquake Sequences — Dependence of Magnitudes within Fore-/Main-/Aftershock Clusters
+
+### Overview
+
+Once clusters of related earthquakes have been identified, a key question is whether the magnitudes of events within each cluster are independent (as assumed in many models) or display some form of dependency. Understanding magnitude dependence has significant implications for statistical models of seismicity, earthquake forecasting, and physical interpretations of stress transfer.
+
+This project will review and compare statistical methods used to test for and model magnitude dependence within identified earthquake clusters. The student will evaluate existing approaches, such as conditional intensity models, copula-based dependence models, and empirical correlation measures, assessing their theoretical basis, assumptions, and practical performance.
+
+### Project Aims
+
+- Undertake a detailed literature review of methods for assessing magnitude dependence in earthquake clusters.  
+- Implement selected methods in R (preferred) or Python, ensuring clarity and reproducibility.  
+- Design and run simulation experiments to explore how different methods perform under scenarios of known dependence and independence.  
+- Apply the chosen methods to at least one real earthquake catalogue, using cluster identifications obtained from the first project or existing algorithms.  
+- Compare and interpret the results to determine whether and how magnitude dependence can be detected reliably in observational data.
+
+### Expected Outcomes
+
+The student will develop skills in statistical modelling, simulation design, and data-driven analysis.  
+The project will produce a critical comparison of dependence-testing methods, with potential applications in seismic hazard assessment and earthquake physics research.
+
+---
