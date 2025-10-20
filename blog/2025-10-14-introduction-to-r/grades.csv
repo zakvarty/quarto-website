@@ -1,0 +1,7 @@
+"","student_id","score","class","pass","gender"
+"1",1,90,"Distinction",TRUE,"Female"
+"2",2,85,"Distinction",TRUE,"Female"
+"3",3,88,"Distinction",TRUE,"Female"
+"4",4,52,"Pass",TRUE,"Female"
+"5",5,66,"Merit",TRUE,"Female"
+"6",6,41,"Fail",FALSE,"Female"

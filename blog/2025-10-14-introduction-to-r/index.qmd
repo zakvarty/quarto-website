@@ -1,0 +1,1574 @@
+---
+title: "Introduction to R"
+subtitle: "(in 3 hours or less)"
+description: |
+    A hands-on workshop covering R essentials.
+date: "2025-10-14"
+categories:
+  - R
+#image: PATH/TO/IMAGE
+#image-alt: "ALT TEXT STRING."
+draft: false
+freeze: true
+appendix-style: plain #(default, plain, none)
+#bibliography: ../library.bib
+#citation: false
+---
+
+```{r setup}
+#| echo: false
+# library calls
+
+# knitr options
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+## Introduction 
+
+The workshop was designed for people with some background in statistics but might have limited programming experience. You may find it useful if you have previously worked mainly in Excel or have used tools like SPSS which promote point-and-click analyses. Alternatively, you might be comfortable with other programming languages such as Python or MATLAB but are new to R. 
+
+The aim of this workshop is to give you the 20% of R knowledge that can be combined to get you through 80% of all tasks and to show you how to help yourself through the remaining 20%. 
+
+### What is R?
+
+R is a statistical programming language that’s widely used in data analysis, research, and industry. It allows you to manipulate data, perform statistical modelling, and produce publication-quality graphics, all within a single environment.
+
+### Why R?
+
+There are many reasons to learn R, but here are a few of the most important ones:
+
+- To prepare for your first-term modules and assessments, which assume a basic working knowledge of R.
+-  R is a high-level programming language that allows you to focus on ideas and analysis rather than getting bogged down in low-level code.
+-  R was built by statisticians, for statisticians and offers powerful tools for statistical work that are missing from more general programming languages.
+- R has extensive documentation and community support. From textbooks and tutorials to online forums and help pages, there’s a huge amount of accessible material available.
+- It’s another valuable skill to add to your toolkit. Knowing R can complement other languages like Python or SQL and give you more flexibility in both study and work.
+
+
+### What should you have done already?
+
+Before starting, you should:
+
+- **Install R and RStudio**. Follow [Sections 5–8](https://happygitwithr.com/github-acct) of Happy Git with R. These steps are required — we don’t support legacy software.
+
+- **Optionally link RStudio and GitHub**. Follow [Sections 4, 9 and 11](https://happygitwithr.com/https-pat) of Happy Git with R. This isn’t essential, but it makes managing and sharing your code much easier later on.
+
+
+### Workshop objectives 
+
+The main goal is to help you start thinking like a programmer while using R to do what you already know best: exploring and understanding data.
+
+By the end of this workshop, you should be able to:
+
+- Use R as a calculator, a general-purpose programming language, and a dedicated statistical tool.
+- Write R code to perform common scientific computing tasks and basic data analyses.
+- Run your R code interactively or as a script, and understand when each approach makes the most sense.
+- Produce, customise, and save figures for reports or presentations.
+
+
+## 1. R for Data Analyltics
+
+### Putting the Data in Data Science
+
+R is a statistical programming language. That means it is great for working with data. [Menti](https://www.menti.com/al8a2iot2gdb)
+
+> What types of data do you know of already? 
+
+> What data structures do you know of already? (ways to store, retreive and operate on data)
+
+
+### Types of data in R 
+
+You can tell the type of a data object using the `class()` function. Some common data types are: 
+
+- Integer: `1`, `32542`, `-7`, `0`
+
+- Numeric: `3.14`, `0.0`, `1.0`, `9.99999`, `-7.89`
+
+- Logical: `TRUE`, `FALSE`, `class(TRUE)`
+
+- Character: `"apple"`, `"1"`, `'carrot'`, `'"quoted speach"'` 
+
+- Factor (categorical): `factor(c("red", "green", "blue", "green"))`
+
+- Factor (ordinal): `factor(c("medium", "small", "large", "small"))`
+
+- Missing: `NA`
+
+
+There are also more esoteric ones that you learn as you need them.
+
+You can convert between types of data using e.g. `as.numeric()`, `as.logical()` or `as.factor()`.
+
+### R as a Calculator 
+
+The simplest way you can use R is as a calculator. 
+
+```{r}
+1 + 2
+1 - 2
+1 * 2
+1 / 2
+```
+
+R has lots of built-in mathematical functions and some built-in constants too.
+
+```{r}
+exp(1)
+
+sin(pi / 2)
+
+log(2)    # natural logarithm by default
+log10(2)  # base 10 is available
+```
+
+### Data Structures 
+
+#### Vectors
+
+Vectors _concatenate_ lots of values of the same type in one dimension.
+
+```{r}
+c(1,2,3,4)
+0:5
+
+c("apple", "banana", "carrot")
+
+c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE)
+```
+
+Assignment allows you to store and recall values and is done with an "arrow" `<-`. 
+
+```{r}
+one <- 1 
+two <- 2 
+
+one 
+two 
+one + two
+```
+
+You can store vectors too. To extract or replace elements of them, use square brackets. 
+
+> Pythonistas take note: R uses natural indexing! 
+
+```{r}
+foods <- c("apple", "banana", "carrot")
+foods
+foods[1]
+
+fruits <- foods 
+fruits[3] <- "celementine"
+fruits
+
+# drop elements by using negative integers
+foods[-3]
+```
+
+:::{.callout-tip title="Test your understanding"}
+
+What value is contained in the last element of the `foods` vector? 
+
+- `"carrot"`
+- `"clementine"` 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+When we ran the line `fruits <- foods` above, R made a copy of the foods object. This means that when we alter `fruits`, the `foods` vector remains unchanged and the last element is still `carrot`. 
+
+```{r}
+foods[3]
+```
+
+For more on nitty-gritty details of names and values in R, see the relevant section of [Advanced R](https://adv-r.hadley.nz/names-values.html). 
+:::
+
+:::{.callout-tip title="Test your understanding"}
+
+What do you expect the output to be?
+
+```{r}
+#| eval: false 
+# a
+1 + 1:3
+
+# b
+c(1, 2, 3, 4, 5, 6) + c(0, 1)
+
+# c
+c(1, 2, 3, 4, 5) + c(0, 1)
+```
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+In each case, R tries to _recycle_ the shorter object up to the length of the longer object by repeating elements. This creates a warning in case (c), because the second vector of length 2 is not repeated a whole number of times.
+
+```{r}
+# a
+1 + 1:3
+
+# b
+c(1, 2, 3, 4, 5, 6) + c(0, 1)
+
+# c
+c(1, 2, 3, 4, 5) + c(0, 1)
+```
+:::
+
+Having data stored in a vector allows us to easily calculate summary statistics.
+
+```{r}
+x <- 1:10 
+```
+
+```{r}
+length(x)
+```
+
+```{r}
+sum(x)
+```
+
+```{r}
+mean(x)
+```
+
+:::{.callout-tip title="Test your understanding"}
+How would you find the median of `x`? How about the 90th percentile? 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+median(x)
+quantile(x, probs = 0.9)
+```
+This is the first time we have seen a function with multiple inputs or _arguments_.
+:::
+
+:::{.callout-tip title="Test your understanding"}
+Use `c()` to add a missing value to the start of the vector `x`. How does that impact the previous summary statistics? 
+:::
+
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+#| error: true
+x <- c(NA, x)
+length(x)
+sum(x)
+mean(x)
+median(x)
+quantile(x, probs = 0.9)
+``` 
+While the `length` function still works as previously, the different statistical summary functions handle the missing value in different ways. The first three summaries now return `NA` but the quantile function instead produces an error. 
+
+In each case, these functions have an additional argument `na.rm` which allows us to calculate the summary ignoring any missing values. This is computationally useful but statistically dangerous: estimating quantities using only complete cases can bias our estimates. 
+
+To learn more about working with missing data see [R for Data Science](https://r4ds.hadley.nz/missing-values.html#summary) and for the statistical aspects, see [Felxible Imputation on Missing Data](https://stefvanbuuren.name/fimd/).
+:::
+
+#### Matricies and Arrays 
+
+You can also store numbers in two dimensional arrays (matrices). 
+This can make your code very efficient if it can be represented as a series of matrix operations. 
+
+```{r}
+A <- matrix(1:9, nrow = 3)
+A
+```
+
+:::{.callout-tip title="Test your understanding"}
+Make a 3 by 2 matrix $B$ containing the numbers 1 to 6.
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+B <- matrix(1:6, nrow = 3)
+B
+```
+:::
+
+:::{.callout-tip title="Test your understanding"}
+
+Use `%*%` to calculate $AB$.
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+A %*% B
+```
+:::
+
+:::{.callout-tip title="Test your understanding"}
+
+Create a matrix $C$ as defined below and calculate its inverse using `solve()`. Store $C^{-1}$ assign the result to `C_inv` 
+:::
+
+$$
+C = \begin{bmatrix}
+1 & 1 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}.
+$$ {#eq-matrix-c}
+
+:::{.callout-note title="Model Solution" collapse="true"}
+
+```{r}
+C <- matrix(
+  data = c(1,1,0,0,1,1,0,0,1),
+  nrow = 3,
+  byrow = TRUE) # my data is ordered by row, not by column
+C
+```
+
+```{r}
+C_inv <- solve(C)
+C_inv
+```
+
+:::
+
+You will often want to calculate row-wise or column-wise summary statistics of matrices and other grid-like data structures. 
+
+Some summary statistics have nice built-in functions such as `rowSums()` and `colSums()`. For less common summaries we can use the `apply()` function to _apply_ another function to each row of column of a matrix.  
+
+```{r}
+rowSums(A)
+```
+
+```{r}
+apply(X = A, MARGIN = 1, FUN = sum)
+```
+
+```{r}
+colMeans(A)
+```
+
+```{r}
+apply(X = A, MARGIN = 2, FUN = mean)
+```
+
+This is the first time we have seen a function with multiple inputs (arguments). These can be given without names in the default order or in any order with names.
+
+:::{.callout-tip title="Test your understanding"}
+Calculate the column means of $C$ and the row medians of $C^{-1}$.
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+
+```{r}
+colMeans(C)
+apply(X = C_inv, MARGIN = 1, FUN = median)
+```
+
+:::
+
+:::{.callout-caution}
+In RStudio you can preview the inputs of a function by typing its name with an open parenthesis and then pressing tab. (e.g. `apply(` + `tab`.) 
+
+You can then use the arrow keys to move through the inputs. 
+
+To get more detailed information on a function you can look at its documentation. 
+
+To show the documentation for a function, put a question mark before its name. `?apply`
+:::
+
+:::{.callout-tip title="Test your understanding"}
+- What is the second argument of `max()` and what does it do? 
+
+- Look at the documentation for `rowSums()`. What subtle difference is there between `rowSums(A)` and `apply(X = A, MARGIN = 1, FUN = sum)`?
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+We can access the documentation of `max()` by prepending a question mark:
+
+```{r}
+#| eval: false
+?max()
+```
+
+As with our other summaries, the second argument is `na.rm` which takes a logical value (`TRUE` or `FALSE`) to indicate whether missing values should be removed when calculating the maximum.
+
+We can similarly access the documentation for `rowSums()` to see how it differs from using `apply()`.
+
+```{r}
+#| eval: false
+?rowSums()
+```
+
+> #### Details
+> These functions are equivalent to use of apply with `FUN = mean` or `FUN = sum` with appropriate margins, but are a lot faster. As they are written for speed, they blur over some of the subtleties of `NaN` and `NA`. If `na.rm = FALSE` and either `NaN` or `NA` appears in a sum, the result will be one of `NaN` or `NA`, but which might be platform-dependent.
+>
+:::
+
+#### Data Frames 
+
+So far we have focused on collecting together data that is all of the same type. A `data.frame` allows you to gather data of different types. 
+
+Usually each row will represent one observational unit (a person, a penguin, a city) and each column represents a measured quantity (age, gender, sex, species, population, capital status). 
+
+```{r}
+grades <- data.frame(student_id = 1:3, score = c(90, 85, 88))
+grades 
+```
+
+```{r}
+# Avoid very long lines by using line breaks
+grades <- data.frame(
+  student_id = 1:6,
+  score = c(90, 85, 88, 52, 66, 41),
+  class = c("Distinction", "Distinction", "Distinction",
+            "Pass", "Merit", "Fail"),
+  pass = c(rep(TRUE, 5), FALSE)
+)
+
+grades
+```
+
+We can extract individual rows using their row and column indices 
+
+```{r}
+# first row
+grades[1, ]
+```
+
+```{r}
+# second column 
+grades[ ,2]
+```
+
+```{r}
+# first row of second column 
+grades[1, 2]
+```
+
+Or using the column names: 
+
+```{r}
+grades$class 
+```
+
+```{r}
+grades[ ,"class"]
+```
+
+```{r}
+grades[, c("score", "class")]
+```
+
+Or using logical conditions: 
+
+```{r}
+grades[grades$pass == FALSE, ]
+```
+
+:::{.callout-tip title="Test your understanding"}
+Subset the `grades` data frame to extract the id and score of the students whose score is at least 87.
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+grades[grades$score >= 87, c("student_id", "score")]
+```
+:::
+
+:::{.callout-tip title="Test your understanding"}
+Is there any difference between `grades$class` and `grades[ ,"class"]`? 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+# are the entries the same?
+grades$class
+grades[,"class"]
+
+# are the data structures the same?
+class(grades$class)
+class(grades[,"class"])
+```
+
+When subsetting a data.frame, either method will produce a vector. This is not the same as for a closely related data structure known as a [tibble](https://tibble.tidyverse.org/). 
+:::
+
+You can add elements to a data.frame by assigning them to non-existent columns or rows. (Be careful of the latter!) 
+
+```{r}
+grades$gender <- rep("Female", 6)
+```
+
+:::{.callout-tip title="Test your understanding"}
+Make up a vector with an additional entry and try adding it as a 7th row of `grades`. What happens? Why do you think that happens? 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+If we try to make an extra row of data as a vector, we will run into trouble. Vectors are only allowed to contain a single data type and so R will quietly coerce all of the elements into the most general form, in this case a character string. 
+
+```{r}
+extra_student <- c(7, 69, "Merit", TRUE, "Male")
+extra_student
+```
+
+If we then try to add this to our data.frame, R will convert each column to be character strings too. 
+
+```{r}
+rbind(grades, extra_student)
+```
+Instead, what we should do is create a smaller data.frame for our new student. 
+
+```{r}
+extra_student_df <- data.frame(
+  student_id = 7,
+  score = 69,
+  class = "Merit",
+  pass = TRUE,
+  gender = "Male"
+)
+extra_student_df
+```
+
+As long as our column names and types align properly, this can then be successfully row-bound to the existing `grades` data.frame. 
+
+```{r}
+rbind(grades, extra_student_df)
+```
+:::
+
+#### Lists 
+
+Lists generalise data.frames by allowing us to have entries of different data types _and_ different lengths. 
+
+```{r}
+zv <- list(
+  forename = "Zak", 
+  surname = "Varty",
+  years_at_imperial = 4, 
+  modules = c('Data Science', "Ethical MLDS"))
+```
+
+You can even get wild and have nested lists, where elements of the list are themselves lists! 
+
+```{r}
+zv <- list(
+  forename = "Zak", 
+  surname = "Varty",
+  years_at_imperial = 4, 
+  modules = list(
+    data_science = list(programme = "MSc Stats", 
+                        students = 85,
+                        online = FALSE,
+                        room = "HXLY 139"),
+    ethical_mlds = list(programme = "MSc MLDS",
+                        students = 95,
+                        online = TRUE))
+  )
+```
+
+R also has some other, application specific, data structures but under the hood these are usually just lists.  
+
+### Reading and Writing Data 
+
+If we have tabular data, a comma separated value (csv) file is one of the most accessible ways to store it. We can create files using `write.csv()`
+
+```{r}
+write.csv(grades, "grades.csv")
+```
+
+We can then remove it from our workspace 
+
+```{r}
+rm(grades)
+```
+
+and re-load it from the CSV we just created 
+
+```{r}
+grades <- read.csv("grades.csv")
+```
+
+
+If we want to save R objects in their existing form we can use an R Data Serialised (RDS) file. This lets us save and load more complicated data structures but at the expense of making our data harder to access using tools other than R. 
+
+(RDS files are not human-readable and are not easily ported between programming languages.)
+
+:::{.callout-tip title="Test your understanding"}
+Follow the previous example to use `saveRDS()` and `readRDS()` to save the `zv` nested list to a file, remove it from the workspace and reload it from the file you just created. 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+#| error: true
+saveRDS(object = zv, file = "zv.RDS")
+rm(zv)
+zv
+```
+```{r}
+zv <- readRDS(file = "zv.RDS")
+zv
+```
+:::
+
+:::{.callout-warning}
+> It is important to be aware of where in your file system R is running. This is the so-called "working directory" and file paths are relative to this location. Use `pwd` in the terminal or `getwd()` in R to find this out.
+>
+> If your code is run from a notebook document like Rmd, qmd and jupytper notebook code and any file paths will be run from the location of the notebook.
+>
+> If you are editing a notebook in RStudio, the working directory for your console might not be the same as the location of the notebook. While you can use `setwd()` to change this, it is much better to design your projects to use [portable file paths](https://eds-notes.zakvarty.com/103-workflows-organising-your-code#structuring-r-script-headers). The `{here}` package can be helpful for this, check out the [getting started](https://here.r-lib.org/articles/here.html) documentation.
+:::
+
+## 2. R as a statistical programming language 
+
+### Referencing statistical distributions
+
+#### Probability Density / Mass Functions
+
+Probability density/mass functions can be referenced using functions with a `d` prefix. (e.g. `dnorm()`, `dgamma()`, ...)
+
+```{r}
+dnorm(x = 0, mean = 0, sd = 1)
+# sanity check
+1/(sqrt(2 * pi))
+```
+
+We can pass vectors as inputs. Smaller inputs will be "recycled"
+
+```{r}
+dnorm(x = 1:6, mean = 1:3, sd = 1:2)
+```
+
+:::{.callout-tip title="Test your understanding"}
+Describe to your neighbour which probability density functions are being referenced in the above code. 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+
+- $X_1 \sim \text{Normal}(\mu = 1, \sigma = 1)$, evaluating $f_{X_1}(1)$.
+- $X_2 \sim \text{Normal}(\mu = 2, \sigma = 2)$, evaluating $f_{X_2}(2)$.
+- $X_3 \sim \text{Normal}(\mu = 3, \sigma = 1)$, evaluating $f_{X_3}(3)$.
+- $X_4 \sim \text{Normal}(\mu = 1, \sigma = 2)$, evaluating $f_{X_4}(4)$.
+- $X_5 \sim \text{Normal}(\mu = 2, \sigma = 1)$, evaluating $f_{X_5}(5)$.
+- $X_6 \sim \text{Normal}(\mu = 3, \sigma = 2)$, evaluating $f_{X_6}(6)$.
+
+:::
+
+This same feature allows us to easily plot probability density functions.
+
+```{r}
+x <- seq(from = -3,to = 3, by = 0.01)
+density <- dnorm(x = x, mean = 0 , sd = 1)
+
+plot(x = x, y = density, type = "l")
+```
+
+#### Probability functions
+
+Probability functions take as input a value and return the corresponding quantile level of the distribution ($x \rightarrow \Pr(X \leq x)$).  Let's sanity check this against a few common reference values that you might be familiar with already.
+
+```{r}
+# check against some reference values
+pnorm(q = -1.64, mean = 0, sd = 1)
+pnorm(q = 0, mean = 0, sd = 1)
+pnorm(q = 1.96, mean = 0, sd = 1)
+```
+
+These functions take vectorised inputs and so can be used to easily plot cumulative distribution functions
+
+```{r}
+x <- seq(from = -3,to = 3, by = 0.01)
+probability <- pnorm(q = x, mean = 0 , sd = 1)
+
+plot(x = x,
+     y = probability,
+     type = "l",
+     main = "CDF of standard Normal distribution")
+```
+
+Finally, quantile functions take a probability and return the corresponding quantile of that distribution. 
+
+```{r}
+p <- ppoints(1001)
+quantile <- qnorm(p = p, mean = 0, sd = 1)
+
+plot(
+  x = p,
+  y = quantile,
+  type = "l",
+  main = "Inverse CDF of standard Normal distribution")
+```
+
+:::{.callout-tip title="Test your understanding"}
+Make similar plots for the standard exponential distribution. 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+#| layout-ncol: 3
+#| label: fig-std-exp
+#| fig-cap: "The standard exponential distribution."
+#| fig-subcap: 
+#|   - "Probability density function"
+#|   - "Cumulative distribution function"
+#|   - "Quantile or inverse cumulative density function"
+x <- seq(from = -0.1, to = 5, by = 0.01)
+p <- ppoints(1001)
+
+density <- dexp(x = x, rate = 1)
+probability <- pexp(q = x, rate = 1)
+quantile <- qexp(p = p, rate =  1)
+
+plot(
+  x = x,
+  y = density,
+  type = "l",
+  #main = "PDF of standard Exponential distribution", 
+  cex.axis = 1.8,
+  cex.lab = 1.8,
+  lwd = 2)
+
+plot(
+  x = x,
+  y = probability,
+  type = "l",
+  #main = "CDF of standard Exponential distribution",  
+  cex.axis = 1.8,
+  cex.lab = 1.8,
+  lwd = 2)
+
+plot(
+  x = p,
+  y = quantile,
+  type = "l",
+  #main = "Inverse CDF of standard Exponential distribution",
+  cex.axis = 1.8,
+  cex.lab = 1.8,
+  lwd = 2)
+```
+:::
+
+:::{.callout-tip title="Test your understanding"}
+- What do you think are the names of the equivalent functions for the continuous uniform distribution? 
+- Why might one of these names be confusing?
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+The corresponding functions are called: `dunif()`, `runif()`, `punif()`, and `qunif()`.
+
+The function `runif()` often causes confusion because it can be mistakenly read as **run**if()
+rather than r**unif**().
+:::
+
+### Simulating from statistical distributions 
+
+We can simulate a realisation of a random variable by using the equivalent functions with an "r" prefix. We could generate a single random variate from the standard normal distribution.
+
+```{r}
+rnorm(n = 1, mean = 0, sd = 1)
+```
+
+To simulate lots of random variates we increase the sample size, `n`.
+
+```{r}
+rnorm(n = 5, mean = 1, sd = 1)
+```
+
+Similar to previous functions we can vectorise the inputs.
+
+```{r}
+rnorm(n = 5, mean = 1:5, sd = 1)
+```
+
+But if we re-run the same line of code we get a different set of outputs. 
+
+```{r}
+rnorm(n = 5, mean = 1:5, sd = 1)
+```
+
+This is exactly what we want but is terrible for reproducibility. What if your work is reviewed and the conclusions no longer match the simulated data?
+
+We can set the _seed_ of our random number generator to avoid this problem. Suppose in our simulations we want to generate two sets of random numbers. 
+
+```{r}
+set.seed(1234)
+rnorm(n = 5, mean = 1:5, sd = 1)
+rnorm(n = 5, mean = 1:5, sd = 1)
+```
+
+We get different numbers each time we run `rnorm()` but if we rerun the entire code we will get the same result.
+
+```{r}
+set.seed(1234)
+rnorm(n = 5, mean = 1:5, sd = 1)
+rnorm(n = 5, mean = 1:5, sd = 1)
+```
+
+You can think of the seed as the starting point in a long list of random numbers and you are choosing which entry to start reading from.
+
+Randomness is inherent to a lot of the work we do as data scientists but making the randomness reproducible by using a seed lets us act more like software engineers.
+
+> __Reproducibile Results:__ Do you get the exact same results each time code is run?  
+
+Benefits of reproducible results: 
+
+  - _Debugging your code_ is much easier 
+  - _Testing your code_ is much easier
+  - _Comparing methods_ is more robust
+  - _Convincing others_ is much simpler.
+
+:::{.callout-warning}
+### We are data scientists, not cherry pickers!
+
+One caveat is to be wary of "seed hacking". While checking that your results stay the same numerically for a given seed, the qualitative conclusions you draw should be stable across a range of seed values.
+:::
+
+:::{.callout-tip title="Test your understanding"}
+
+a) Without setting a seed, simulate 2 datasets. Each should come be of a different size and be drawn from two Normal distributions with different parameters. 
+
+b) Use `qqnorm()` to create a plot comparing the quantiles of your samples to the quantiles of the best-fitting Normal distribution. 
+
+c) Rerun your previous code and see the plots change. 
+
+d) Add a seed to your code and check that you get the same plots every time. 
+
+e) Use `hist()` to create a histogram for each of your samples.
+:::
+
+
+:::{.callout-note title="Model Solution" collapse="true"}
+
+```{r}
+#| echo: false
+set.seed(666) # fix for written interpretations
+```
+
+We first simulate two datasets and create a qq-plot for each. We can also add a line to show equality between quantiles of the sample and the best fitting Gaussian model.
+
+```{r}
+#| layout-ncol: 2
+
+# a)
+x <- rnorm(n = 100, mean = 0, sd = 1)
+y <- rnorm(n = 30, mean = -1, sd = 0.1)
+
+# b)
+qqnorm(x, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(x)
+qqnorm(y, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(y)
+```
+
+If we run the same code again, we get different data sets. This is most visible for `x` where the smallest sample quantiles go from being above to below the line of equality. 
+
+```{r}
+#| layout-ncol: 2
+#c)
+x <- rnorm(n = 100, mean = 0, sd = 1)
+y <- rnorm(n = 30, mean = -1, sd = 0.1)
+
+qqnorm(x, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(x)
+qqnorm(y, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(y)
+```
+
+We can add a seed to prevent this from happening.
+
+```{r}
+#| layout-ncol: 2
+#d)
+set.seed(1234)
+x <- rnorm(n = 100, mean = 0, sd = 1)
+y <- rnorm(n = 30, mean = -1, sd = 0.1)
+
+qqnorm(x, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(x)
+qqnorm(y, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(y)
+```
+
+Running the same code again now gets us the same results. We can also add in histograms of each sample anywhere within this code because they do not require any random number generation.
+
+```{r}
+#| layout-ncol: 2
+#
+set.seed(1234)
+x <- rnorm(n = 100, mean = 0, sd = 1)
+y <- rnorm(n = 30, mean = -1, sd = 0.1)
+
+qqnorm(x, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(x)
+hist(x)
+
+qqnorm(y, main = "", bty = "n", cex.axis = 1.5, cex.lab = 1.5, pch = 16, asp = 1)
+qqline(y)
+hist(y)
+```
+
+:::
+
+
+
+## 3. Don't Repeat Yourself! 
+
+### For Loops 
+
+Sometimes you have to do things over and over and over and over and over....
+
+If there is structure to what you are doing, you don't need to repeat yourself in code. 
+
+```{r}
+# The dumb way
+print("a")
+print("b")
+print("c")
+print('...')
+```
+
+```{r}
+# The DRY way
+for (i in 1:26) {
+  print(letters[i])
+}
+```
+
+Here `i` is a _dummy variable_. It exists only within that for look and progresses through the values of `c(1, 2, ..., 26)` as the code in curly brackets gets executed for each of these values.
+
+Since `i` is a dummy variable, we can call it anything we like. A more informative way of writing the same code would be:
+
+```{r}
+for (letter in letters) {
+  print(letter)
+}
+```
+
+> __Note:__ For loops are relatively slow compared to vectorisation. They should mainly be used when there is a requirement for things to be done sequentially.
+
+
+:::{.callout-tip title="Test your understanding"}
+A useful helper functions to use with for loops is `seq_along()`. What do you think it does? 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+`seq_along()` returns a regular sequence of integers matching the dimension of it's first argument. This can be useful when iterating over an object in a `for` loop. 
+
+Vector and list inputs behave as one might expect. 
+
+```{r}
+seq_along(foods)
+seq_along(zv)
+```
+
+A data.frame is actually a list where each element is one column, so the sequence goes along the columns rather than the rows as we might expect. 
+
+```{r}
+seq_along(grades)
+```
+A matrix is actually a vector with dimension meta-data attached, so the sequence goes over all elements of the vector.
+
+```{r}
+seq_along(A)
+```
+:::
+
+
+### While Loops 
+
+One downside to `for` loops is that, before you run the code, you either need an object to iterate along or to know how many times to repeat the code within the curly braces. 
+
+`while`-loops avoid this need. They will repeat the bracketed code until the condition you pre-specify is no longer `TRUE`.
+
+```{r}
+j <- 12 
+i <- 0
+
+while (j > 0.002) {
+  j <- j / 3
+  i <- i + 1
+  print(j)
+}
+```
+
+You can use any sort of Boolean condition as your condition:
+
+- Comparisons: `<`, `<=`, `==`, `>=`, `>`, `!==`. 
+- Functions which evaluate to `TRUE` or `FALSE`: `%in%` ,`is.na()`
+
+:::{.callout-warning} 
+There is danger here. If the condition is always `TRUE` you will be stuck in an infinite loop and your code will never stop running. (Note: this is not as scary as it sounds!)
+:::
+
+```{r}
+#| eval: false 
+j <- 12 
+i <- 0
+
+while (j > 0.002) {
+  i <- i / 3
+  j <- j + 1
+  Sys.sleep(1)         # slow things down for demo
+  print(j)
+}
+```
+
+
+### Control Flow 
+
+While loops lead us nicely into flow control. This is where under different conditions you want to take different actions. `if` and `else` allow you to do this and take the same structure as `while`. 
+
+```{r}
+a <- 1
+if (a > 2) {print(a)}
+if (a > 0) {print("a is positive")}
+if (a == 0) {print("a is neither postive nor negative")}
+if (a < 0) {print("a is negative")}
+```
+
+```{r}
+a <- 1
+if (a > 2) {
+  print(a)
+} else if (a > 0) {
+  print("a is positive")
+} else if (a < 0) {
+  print("a is negative")
+} else {
+  print("a is neither positive nor negative")
+}
+```
+
+Multiple-case flow control like this can be hard to read and write but they do have a computational benefit if one of the `if` conditions is expensive to evaluate and sometimes having a catch-all `else` term is useful for handling unexpected situations gracefully. 
+
+:::{.callout-tip title="Test your understanding"}
+Can you think of an example where the second code would work but the first would not?
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+If we set `a <- "a"` then in the first code block, then `a > 2` and `a > 0` are both `TRUE` but `a == 0` is `FALSE`. 
+
+The first two of these might seem odd. This is because `2` and `0` are transformed into character strings `"2"` and `"0"` before comparison is made with `"a"`. The logical output follows because `"a"` is earlier in the alphabet than numerals. The first code fails to make the user aware "a" is neither positive nor negative and that this unexpected sort of comparison is taking place.
+
+Another important difference is that the first code will check every condition. In the second code, as soon as one condition is true the rest are skipped. This can be helpful when trying to write more efficient code.
+:::
+
+:::{.callout-tip title="Test your understanding"}
+Write a loop that prints whether each number from 1 to 5 is even or odd. You might find `%%` useful for this.
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+When we have only two options in an if-else construction, the `ifelse()` function provides a useful shorthand.
+
+```{r}
+for (integer in 1:5) {
+  odd_or_even <- ifelse(test = integer %% 2 == 0, yes = "even.", no = "odd.")
+  print(paste(integer, "is", odd_or_even ))
+}
+```
+:::
+
+:::{.callout-tip title="Test your understanding"}
+Write code that picks a number $N$ between 5 and 10 (inclusive) uniformly at random. Write a loop that prints whether each number from n to 10 is even or odd.
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+# sample random integer
+N <- sample(x = 5:10, size = 1)
+
+# print odd/even status of N an all larger integers up to 10
+for (integer in N:10) {
+  odd_or_even <- ifelse(test = integer %% 2 == 0, yes = "even.", no = "odd.")
+  print(paste(integer, "is", odd_or_even ))
+}
+```
+:::
+
+:::{.callout-tip title="Test your understanding"}
+Write code that starts with an empty vector `c()` and simulates exponential random variates until their sum exceeds 10. Your code should return the sequence of partial sums. 
+:::
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+# simulation parameters
+limit <- 10
+exponential_rate <- 1
+
+# initialise simulation
+total <- 0 
+partial_sums <- c()
+
+# generate random variates
+while (total < limit) {
+  total <- total + rexp(n = 1, rate = exponential_rate)
+  if (total < limit) {partial_sums <- c(partial_sums, total)}
+}
+
+partial_sums
+```
+
+:::
+
+### Functions 
+
+In data science you’ll often find yourself repeating the same task again and again — maybe calculating a summary statistic, making a specific type of plot, or pre-processing multiple datasets in the same way.
+
+This can lead to a lot of repeated code with only small changes. This is:
+
+- a waste of your time to type by hand, 
+- an easy way to make mistakes by copying and pasting,
+- a lot of effort to go back and fix a typo in every repetition.
+
+Instead we can write a function to capture the shared structure of the repeated code.
+
+```{r}
+# function with one input
+square <- function(x) {
+  return(x^2)
+}
+
+# function with two inputs
+add <- function(x, y){ 
+  return(x + y)
+}
+```
+
+Suppose we have repetitious code like that below, which pads each vector with `NA` values.
+
+```{r}
+# extract columns as vectors
+class <- grades$class
+gender <- grades$gender
+pass <- grades$pass
+
+# add leading and trailing NA values
+class_padded <- c(NA, NA, grades$class, NA)
+gender_padded <- c(NA, NA, grades$gender, NA)
+pass_padded <- c(NA, NA, grades$pass, NA)
+
+```
+
+:::{.callout-example} 
+Write a function `pad_with_NA` to streamline this code. `pad_with_NAs(x, n_left, n_right)` It should take 3 inputs:
+
+- `x` the vector to be padded,
+- `n_left` the number of `NA` values to be added before the vector, 
+- `n_right` the number of `NA` values to be added after the vector.
+:::
+
+The very simplest implementation would be something like
+
+```{r}
+pad_with_NAs <- function(x, n_left, n_right){
+    c(rep(NA, n_left), x, rep(NA, n_right))
+}
+```
+
+
+We might also want to add some checks on the inputs the user supplies.
+
+```{r}
+pad_with_NAs <- function(x, n_left, n_right){
+    
+    stopifnot(n_left >= 0)
+    stopifnot(n_right >= 0)
+    stopifnot(class(x) %in% c("character", "complex", "integer", 
+        "logical", "numeric", "factor"))
+
+    c(rep(NA, n_left), x, rep(NA, n_right))
+}
+
+```
+
+We can then replace our previous code with the following.
+
+```{r}
+# add leading and trailing NA values
+class_padded <- pad_with_NAs(grades$class, n_left = 2, n_right = 1)
+gender_padded <- pad_with_NAs(grades$gender, n_left = 2, n_right = 1)
+pass_padded <- pad_with_NAs(grades$pass, n_left = 2, n_right = 1)
+```
+
+> **Note:** For such a simple operation, this might not seem worthwhile. However, for more complicated operations it can reduce the overall amount of code needed or make the purpose of the code much more clear. 
+
+:::{.callout-tip title="Test your understanding"}
+`airquality` is a dataset that is included in the base R installation.
+
+Write a function `farenheit_to_centigrade()` and use this to add a `Temp_C` 
+column to the `airquality` data frame. _Note:_ $C = (F - 32) \times \frac{5}{9}$.
+:::
+
+```{r}
+airquality <- datasets::airquality
+
+farenheit_to_centigrade <- function(){
+# YOUR CODE GOES HERE
+}
+
+# YOUR CODE GOES HERE
+```
+
+:::{.callout-note title="Model Solution" collapse="true"}
+```{r}
+farenheit_to_centigrade <- function(farenheit, round_digits = 0){
+ round((farenheit - 32) * 5 / 9, round_digits)
+}
+```
+
+```{r}
+airquality$Temp_C <- farenheit_to_centigrade(airquality$Temp, round_digits = 1)
+
+head(airquality, n = 5)
+
+```
+:::
+
+
+Function definitions can get quite long and messy. In real-world applications we usually keep them in their own R file named after the function. This keeps any notebooks or analysis scripts easy to read and makes the relevant function definition easy to find. 
+
+:::{.callout-tip title="Test your understanding"}
+- Make a new subfolder called `src` in the same directory as this notebook.
+- Create two files in that subfolder called `pad_with_NAs.R` and `farenheit_to_centigrade.R`.
+- Copy the function definitions into each R file.
+:::
+
+We can now remove the functions from our working environment and load them from their source code. 
+
+```{r}
+rm("pad_with_NAs", "farenheit_to_centigrade")
+```
+
+```{r}
+source("src/farenheit_to_centigrade.R")
+source("src/pad_with_NAs.R")
+```
+
+Building up a collection of function definitions like this can:
+
+- simplify the code you present in an analysis
+- save you a lot of time writing repeated code
+- allow you to share functions across notebooks or projects
+- allow you to share your functions with other people.
+
+### Packages
+
+The last part of this is where `libraries` or `packages` come in. These are ways for people to share their functions, code or data with other people. They are just collections of files like `src/pad_with_NAs.R`, designed to extend to capabilities of base R. 
+
+Making your own R package is surprisingly easy. See [https://r-pkgs.org/](https://r-pkgs.org/) for more details.
+
+Some common packages you might have heard about are `{ggplot2}` for data visualisation, `{dplyr}` for data wrangling or `{ts}` for time-series analyses. 
+
+```{r}
+#| eval: false
+# download package files from CRAN to your computer
+install.packages("ggplot2")
+```
+
+```{r}
+#| eval: false
+# quietly load the functions and data for use in R
+library("ggplot2")
+```
+
+```{r}
+# access a dataset from that package
+head(ggplot2::diamonds, n = 4)
+```
+
+One thing that good packages have in abundance is documentation. 
+
+:::{.callout-tip title="Test your understanding"}
+run `?diamonds` to learn about the diamonds dataset. 
+:::
+
+There is a package called `{ROxygen2}` that is full of useful functions to help you document your own code. 
+
+```{r}
+#| eval: false
+install.packages("roxygen2")
+``` 
+
+
+- With cursor inside function go to the menu and click Code > Insert Roxygen Skeleton
+- Keyboard short cut: `cmd` + `option` + `shift` + "r" or `crtl` + `option` + `shift` + "r".
+
+```{r}
+pad_with_NAs <- function(x, n_left, n_right){
+  
+  stopifnot(n_left >= 0)
+  stopifnot(n_right >= 0)
+  stopifnot(class(x) %in% c("character", "complex", "integer", 
+                            "logical", "numeric", "factor"))
+  
+  c(rep(NA, n_left), x, rep(NA, n_right))
+}
+```
+
+This should get you something like this.
+
+```{r}
+#' Title
+#'
+#' @param x 
+#' @param n_left 
+#' @param n_right 
+#'
+#' @returns
+#' @export
+#'
+#' @examples
+pad_with_NAs <- function(x, n_left, n_right){
+  
+  stopifnot(n_left >= 0)
+  stopifnot(n_right >= 0)
+  stopifnot(class(x) %in% c("character", "complex", "integer", 
+                            "logical", "numeric", "factor"))
+  
+  c(rep(NA, n_left), x, rep(NA, n_right))
+}
+```
+
+You just need to fill out relevant fields to tell someone else (or future you) what the function does, it's expected inputs and outputs.
+
+```{r}
+#' Add NAs to a vector
+#'
+#' @param x Vector to which NAs will be added.
+#' @param n_left Number of NAs to add before x.
+#' @param n_right Number of NAs to add after x.
+#'
+#' @return A vector containing x with the requested number of NA values before and after.
+#'
+#' @export
+#' @examples
+#' pad_with_NAs(1:5, n_left = 0, n_right = 3)
+#' pad_with_NAs(c("spider", "mouse", "cat", "dog"), n_left = 1, n_right = 2)
+#'
+pad_with_NAs <- function(x, n_left, n_right){
+  
+  stopifnot(n_left >= 0)
+  stopifnot(n_right >= 0)
+  stopifnot(class(x) %in% c("character", "complex", "integer", 
+                            "logical", "numeric", "factor"))
+  
+  c(rep(NA, n_left), x, rep(NA, n_right))
+}
+```
+
+:::{.callout-tip title="Test your understanding"}
+Add this documentation to `pad_with_NAs.R` and add your own documentation for to `farenheit_to_centigrade.R`. 
+:::
+
+## 4. Putting it all together
+
+### Where You Code 
+
+| Property              | Notebook | Script | Command Line |
+|-----------------------|:--------:|:------:|:------------:|
+| reproducible          |    \~    |   ✓    |      X       |
+| readable              |    \~    |   ✓    |      \~      |
+| self-documenting      |    ✓     |   X    |      X       |
+| in production         |    X     |   ✓    |      \~      |
+| ordering / automation |    \~    |   ✓    |      \~      |
+
+
+### Putting it all together
+
+1. Install the `palmerpenguins` package and load the `penguins` dataset it contains.
+2. Add an additional column `TRUE`/`FALSE` values indicating whether there are missing values for each penguin. 
+3. Find the average bill length and flipper length for each species of penguin.
+4. Write a function `species_mean()` that calculates the mean of a numeric variable for each species. Document it with Roxygen2-style comments.
+5. Create a scatter plot of flipper length vs. body mass, with different symbols and colours for each species.
+6. Add points to your scatter plot to show the species-specific mean values, using a different shape or colour.
+
+:::{.callout-note title="Model Solution" collapse="true"}
+
+```{r}
+#| eval: false
+# =============
+# 1 - load Palmer Penguins data ------------------------------------------------
+# =============
+
+# if you do not have the package installed already
+install.packages("palmerpenguins")
+```
+
+```{r}
+# load the package
+penguins <- palmerpenguins::penguins
+```
+
+There are many ways to add an `all_observed` column. In this implementation, we initially create a logical vector with one value per row in the `penguins` dataset, starting with all `FALSE`, essentially assuming that every row has no missing values to begin with.
+
+We then loop over each column in the dataset in turn, updating `missing_values` based on whether the current column or any previous column contained a missing value. Finally we negate this to get a vector indicating whether all values were observed for each penguin.
+
+```{r}
+# =============
+# 2 - add `missing_values` column ----------------------------------------------
+# =============
+
+missing_values <- rep(FALSE, nrow(penguins))
+
+for (col in seq_along(penguins)) {
+  missing_values <- missing_values | is.na(penguins[ ,col])
+}
+
+penguins$missing_values <- missing_values
+head(penguins, n = 5)
+```
+
+There are many other ways of implementing this and it is such a common operation that there is a built-in function to help with this: `penguins$missing_values <- !complete.cases(penguins)`.
+
+```{r}
+#######
+# 3 - Find the average bill length and flipper length for each species of penguin.
+#######
+
+species_names <- levels(penguins$species)
+n_species <- length(species_names)
+cols_to_summarise <- c("bill_length_mm", "flipper_length_mm", "body_mass_g")
+
+# storage for output
+species_summaries <- data.frame(
+  species = species_names, 
+  bill_length_mm = rep(NA, n_species),
+  flipper_length_mm = rep(NA, n_species)
+)
+
+species_id <- 1
+for (species_name in species_names) {
+  # subset to relevant metrics for penguins of the correct species
+  is_in_species <- penguins$species == species_name
+  species_data <- penguins[is_in_species, cols_to_summarise]
+  
+  # calculate means of desired columns
+  species_means <- colMeans(species_data, na.rm = TRUE)
+  
+  # store in data.frame
+  species_summaries[species_id, cols_to_summarise] <- species_means
+  species_id <- species_id + 1
+}
+```
+
+
+The average of the recorded bill and flipper lengths for each species are given in @tbl-penguin-dimensions. From this table we can see that Adelie penguins are, on average, the smallest in both respects.
+
+```{r}
+#| label: tbl-penguin-dimensions
+#| tbl-cap-location: bottom
+#| tbl-cap: "Average recorded penguin dimensions by species."
+knitr::kable(species_summaries)
+```
+
+```{r}
+# =============
+# 4 - species mean of numeric variable ------------------------------------------------
+# =============
+
+#' Calculate species-wise means for a given variable
+#'
+#' This function computes the mean of a specified numeric variable 
+#' for each species in a dataset containing a `species` column.
+#' It returns a summary data frame with one row per species.
+#'
+#' @param data A data frame containing at least a `species` column 
+#'   and the variable specified by `variable_name`.
+#' @param variable_name A string giving the name of the numeric variable 
+#'   to summarize (e.g., `"bill_length_mm"`).
+#'
+#' @return A data frame with two columns:
+#' \describe{
+#'   \item{species}{The species names.}
+#'   \item{<variable_name>}{The mean of the specified variable for each species.}
+#' }
+#'
+#' @details
+#' The function checks that both the `species` column and the specified variable 
+#' exist in the provided dataset. Missing values (`NA`) are ignored when computing means.
+#'
+#' @examples
+#' \dontrun{
+#'   library(palmerpenguins)
+#'   species_mean(penguins, "bill_length_mm")
+#' }
+#'
+species_mean <- function(data, variable_name){
+  stopifnot("species" %in% colnames(data))
+  stopifnot(variable_name %in% colnames(data))
+  
+  species_names <- levels(penguins$species)
+  n_species <- length(species_names)
+  # storage for output
+  species_summaries <- data.frame(X1 = species_names, X2 = rep(NA, n_species))
+  colnames(species_summaries) <- c("species", variable_name)
+
+  species_id <- 1
+  for (species_name in species_names) {
+  # subset to relevant metrics for penguins of the correct species
+  is_in_species <- data$species == species_name
+  species_data <- data[is_in_species, variable_name]
+  
+  # calculate means of desired columns
+  species_mean <- mean(species_data, na.rm = TRUE)
+  
+  # store in data.frame
+  species_summaries[species_id, variable_name] <- species_mean
+  species_id <- species_id + 1
+  }
+  species_summaries
+}
+
+species_mean(data = penguins, variable_name = "bill_length_mm")
+```
+
+```{r}
+#######
+# 5 - Create a scatter plot of flipper length vs. body mass, with different 
+#     symbols and colours for each species.
+#######
+
+plot(
+  x = penguins$body_mass_g,
+  y = penguins$flipper_length_mm, 
+  col = 1 + as.numeric(penguins$species),
+  pch = 15 + as.numeric(penguins$species),
+  xlab = "Body mass (g)", 
+  ylab = "Flipper length (mm)")
+
+###
+# 6 - Add points to your scatter plot to show the species-specific mean values,
+#    using a different shape or colour
+###
+
+points(
+  x = species_summaries$body_mass_g,
+  y =  species_summaries$flipper_length_mm,
+  cex = 1.5,
+  pch = 16:18)
+legend(
+  "bottomright",
+  title = "Species",
+  legend = species_summaries$species,
+  pch = 16:18, 
+  col = 2:4,
+  bty = "n"
+)
+```
+:::
+
+
+
+### Where to learn more?
+
+- Office hour later today, Huxley 533.
+
+- [Effective Data Science Notes](https://eds-notes.zakvarty.com/) - Chapters 1 - 4.
+
+- [Telling Stories With Data](https://tellingstorieswithdata.com/20-r_essentials.html) - R essentials 
+
+- GTA support during Statistics Clinics
+
+- Each other!
+
+### Session Information 
+
+```{r}
+pander::pander(sessionInfo())
+```
