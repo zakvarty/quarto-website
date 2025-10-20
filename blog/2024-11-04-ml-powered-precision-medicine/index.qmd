@@ -1,5 +1,5 @@
 ---
-title: "Time to reality check the promists of machine learning-powered precision medicine"
+title: "Time to reality check the promises of machine learning-powered precision medicine"
 description: |
     Reading summary of Wilkinson et al. (2020)
 date: "2024-11-04"
