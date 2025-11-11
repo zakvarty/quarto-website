@@ -56,7 +56,7 @@ knitr::include_graphics("./generative-art-slide-nrennie.png")
 
 ## Keep It Simple, Stupid
 
-I've used R to plot polygons quite a few times before but usually in the context of something like adding a credible region around a function estimate or to show the outline of a geographic region. In both cases that's a either a single or small number of polygons where each has very many sides. What I need here is the exact opposite of that: a large number of polygons, each with a small number of sides (three to b e exact). 
+I've used R to plot polygons quite a few times before but usually in the context of something like adding a credible region around a function estimate or to show the outline of a geographic region. In both cases that's a either a single polygon or small number of polygons where each has very many sides. What I need here is the exact opposite of that: a large number of polygons, each with a small number of sides (three to be exact). 
 
 Before worrying about any of that though, there are a few parameters that I can set up-front, for example I can set a colour scheme that is aligned with my usual styling.
 
@@ -66,14 +66,14 @@ neutrals = c(zv_black, zv_white, zv_light_grey, zv_mid_grey)
 accents = c(zv_navy, zv_orange, zv_fuchia, zv_blue)
 ```
 
-Let's start with the smallest example possible where I will be able to tell that everything is working as it should, a 2x3 grid.
+Let's start with the smallest example where I will be able to tell that everything is working as it should: a 2x3 grid.
 
 ```{r}
 n_rows = 2
 n_cols = 3
 ```
 
-To make this easier on myself I'm going to start off just trying to generate the squares that will form the base of each pyramid. To make finding coordinates slightly easier, I'll use a coordinate system where each square is 1 units. That will also make the parameter controlling the gap between pyramids easier to interpret.
+To make this easier on myself I'm going to start off just trying to generate the squares that form the base of each pyramid. To make finding coordinates as easy as possible, I'll use a coordinate system where each square has sides of length 1. A nice side-effect is that this will also make it easier to interpret the parameter specifying the gap between pyramids.
 
 ```{r}
 gap_size = 0.1
@@ -104,7 +104,7 @@ squares
 Looking at the [examples](https://ggplot2.tidyverse.org/reference/geom_polygon.html#ref-examples) from the `geom_poly()` documentation, I'll need the x- and y-coordinates for each vertex of every square in two separate vectors and an id vector that links each vertex (row) to it's specific polygon. As with `polygon()` in base R, it seems like polygons should be specified anti-clockwise.
 
 
-After a bit of head scratching, the most natural (but probably not most efficient) approach to me would be to interleave the bottom-left, bottom-right, top-right and top-left coordinates of each square that we just generated. The `{vctrs}` package has a helpful function to do this, which works for two or more vector-like objects of the same type. 
+After a bit of head scratching, the most natural approach to me (but probably not most efficient) would be to interleave the bottom-left, bottom-right, top-right and top-left coordinates of each square that we just generated. The `{vctrs}` package has a helpful function to do this, which works for two or more vector-like objects of the same type. 
 
 ```{r}
 library(vctrs)
@@ -115,7 +115,7 @@ vec_interleave(as.character(1:5), letters[1:5])
 vec_interleave(as.character(1:5), letters[1:5], LETTERS[1:5])
 ```
 
-Taking care to specify the coordinates in the right order, we can construct a dataframe that contains all the information needed to create the simplified plot.
+Taking care to specify the coordinates in the right order, we can construct a data frame that contains all the information needed to create the simplified plot.
 
 ```{r}
 id <- rep(squares$id, each = 4)
@@ -142,9 +142,9 @@ ggplot(plotting, aes(x = x, y = y)) +
 
 ## Add a little more complexity
 
-It's great that the simple square version works but it's not particularly exciting. Let's add in the second random aspect, the location of the apex or peak of each pyramid. To do this I'll add the x- and y-coordinates of that peak as a column in the `squares` data frame. 
+It's great that the simple square version works but it's not particularly exciting. Let's add in the second random aspect, the location of the apex or peak for each pyramid. To do this I'll add the x- and y-coordinates of each peak as a column in the `squares` data frame. 
 
-When generating peak locations, I could locate them uniformly at random over the unit square. One issue with this approach is that it might cause ugly realisations where the peak is very close to one of the edges. There are lots of ways to avoid this but I'll keep it simple again and add a buffer zone that keeps the peak away from the edges. 
+When generating peak locations, I could locate them uniformly at random over the unit square. However, this might cause ugly realisations where the peak is very close to one of the edges. There are lots of ways to avoid this but I'll keep it simple again and add a buffer zone that keeps the peak away from the edges. 
 
 ```{r}
 buffer = 0.1 
@@ -200,8 +200,7 @@ ggplot(plotting, aes(x = x, y = y)) +
 ## Make it a function 
 
 Okay, we have made one version of the artwork, but the joy of generative art is
-being able to easily get many realisations of the same artwork and to experiment
-with different parameter values. 
+being able to easily get many realisations of the same artwork and to experiment with different parameter values. 
 
 We can make that a lot easier to do by consolidating the code above into a function. 
 
@@ -286,7 +285,7 @@ The really fun part is exploring new parameter combinations. Can you figure out 
 ```{r}
 #| echo: false
 #| fig-align: center
-pyramids(n_rows = 3, n_cols = 15,gap_size = 0.4, buffer = 0.49, accents = "#5487C0")
+pyramids(n_rows = 3, n_cols = 15, gap_size = 0.4, buffer = 0.49, accents = "#5487C0")
 ```
 
 ## Try it yourself
