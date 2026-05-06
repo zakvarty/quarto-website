@@ -7,11 +7,19 @@ format:
 
 ## Research Interests 
 
-My research interests lie in the intersection between applied and methodological statistics. My past projects focused on missing data, predictive analytics, extreme value analysis and point process modelling.
+My research interests lie in the intersection between applied and methodological statistics. My past projects have focused on missing data, predictive analytics, extreme value analysis and point process modelling.
 
 I'm particularly interested in developing efficient inference methods for non-standard data generating mechanisms to better model the rich, complex data sets that arise from environmental and industrial processes.
 
+I also have a developing interest in education research. At the moment I am most interested in teaching and learning for postgraduate students and, more broadly, statistics education at all levels. 
+
 ## Projects 
+
+> __Spatio‐Temporal Modelling of Extreme Induced Seismicity in the Presence of An Evolving Measurement Network.__
+> ([article](https://onlinelibrary.wiley.com/doi/pdf/10.1002/env.70090))
+>
+> Work with [Conor Murphy](https://www.linkedin.com/in/conor-murphy-a0a050158/) developing a novel extreme-value modelling procedure that uses known changes in the earthquake measurement network to automatically select a parametric, spatio-temporal threshold that accounts for undetected earthquakes. We also introduce methods to propagate uncertainty in the extreme-value model, threshold parameters and threshold formulation through to future hazard estimates. 
+
 
 >__Integrating Experts’ Belief in Upper Tail Inference for Modelling of Human-Induced Earthquake Magnitudes.__ 
 > ([article](http://dx.doi.org/10.1007/s13253-025-00710-9)) 
@@ -47,6 +55,7 @@ Approximate Bayesian Computation was utilised to allow inference on disease mode
 
 | Date      | Event | Location |
 |-----------|:-----------------|------------------:|
+| Sep 2025  | Royal Statistical Society conference | Edinburgh, UK. |
 | Sep 2024  | Royal Statistical Society conference | Brighton, UK. |
 | Jun 2024  | UK Conference on Teaching Statistics | Manchester, UK. |
 | Nov 2023  | RSS Local Group Meeting | Bath, UK. |
@@ -78,6 +87,19 @@ I have had the good fortune to supervise some exceptional early career researche
 ### MSc and MSci
 
 #### Academic Year 2024-25
+
+<!-- AY 2025-26 -->
+
+- __Nayu Ding__ - A comparative study of earthquake forecasting methods in California.
+- __Seojeong Hong__ - Parameter bias in ETAS models under short-term incompleteness.
+- __Xin Lin__ - A time-varying ETAS model for induced seismicity decay in Oklahoma.
+- __Ti Qing__ - Benchmarks for medium-term magnitude predictions in the Sichuan region using LSTM networks and random forests.
+- __Sachit Ramakrishnan__ - Physics-informed Bayesian ETAS: a study of the 2019 Ridgecrest earthquake.
+- __Nattanicha Reanroo__ - Estimating economic time-to-recovery for Japanese earthquakes.
+- __Zhaolan Wang__ - Investigating the impact of declustering on short-term earthquake forecasting.
+
+- __Kaihua Su__ - Identifying fore-, main-, and aftershock Clusters (title TBC).
+- __Zhicheng Zhang__ - Dependence of magnitudes within fore-/main-/aftershock clusters (title TBC).
 
 <!-- AY 2024-25 -->
 
