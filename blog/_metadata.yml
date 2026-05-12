@@ -1,4 +1,13 @@
 # options apply to all posts in this folder
+format:
+  html:
+    toc: true
+    toc-title: Contents
+    toc-location: left
+    grid:
+      margin-width: 350px
+reference-location: margin
+citation-location: margin
 
 # freeze computational output
 freeze: auto

@@ -13,7 +13,7 @@ draft: true
 
 <br>
 
-Zak Varty is a statistician, data scientist and educator. 
+Zak Varty is a statistician, data scientist and educator.
 
 He is a Teaching Fellow in Statistics at Imperial College London where he teaches courses and supervises research projects in statistics, data science and data ethics.
 

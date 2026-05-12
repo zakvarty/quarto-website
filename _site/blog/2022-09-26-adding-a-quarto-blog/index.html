@@ -64,7 +64,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2c9916d0038fa3d26bf82aadd5066e09.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-0c61cd20e5f7e013c499484e2c2b9a97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -125,7 +125,7 @@ cookieconsent.run({
 
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -189,10 +189,9 @@ cookieconsent.run({
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#what-am-i-trying-to-do" id="toc-what-am-i-trying-to-do" class="nav-link active" data-scroll-target="#what-am-i-trying-to-do">What am I trying to do?</a></li>
@@ -200,9 +199,13 @@ cookieconsent.run({
   <li><a href="#checking-that-references-work" id="toc-checking-that-references-work" class="nav-link" data-scroll-target="#checking-that-references-work">Checking that references work</a></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -268,11 +271,13 @@ cookieconsent.run({
 </ol>
 <p>Freezing the code within posts will improve the build speed, as well as make the website more stable and portable. See the quarto docs on <a href="https://quarto.org/docs/websites/website-blog.html#freezing-posts">freezing posts</a> for more details. My current plan is to have this as <code>false</code> by default and change to <code>true</code> on publication of each post.</p>
 </section>
-<section id="checking-that-references-work" class="level1">
+<section id="checking-that-references-work" class="level1 page-columns page-full">
 <h1>Checking that references work</h1>
 <p>I have set up a single bibtex file in which to store references for all posts. This lives in the <code>blog/</code> directory and is set as the default <code>bibliography</code> parameter for each post in the file <code>blog/_metadata.yml</code>.</p>
 <p>This is an in-line reference to <span class="citation" data-cites="wan2020network">Wan et al. (<a href="#ref-wan2020network" role="doc-biblioref">2020</a>)</span> written as <code>@citationkey</code>. Parenthetical references, such as <span class="citation" data-cites="wan2020network">(<a href="#ref-wan2020network" role="doc-biblioref">Wan et al. 2020</a>)</span>, are written using <code>[@citationkey]</code>. These can be strung together by separating each citation key with a semicolon, for example <span class="citation" data-cites="wan2020network wan2020network">(<a href="#ref-wan2020network" role="doc-biblioref">Wan et al. 2020</a>, <a href="#ref-wan2020network" role="doc-biblioref">2020</a>)</span>.</p>
-<p>To let people know the license your work is under and how they should cite your blog posts you can use the <code>appendix-style</code> argument. This can be added to the YAML header of individual blog posts or you can specify a default value in <code>blog/_metadata.yml</code>. There are three options for this parameter:</p>
+<div class="no-row-height column-margin column-container"><div id="ref-wan2020network" class="csl-entry" role="listitem">
+Wan, Phyllis, Tiandong Wang, Richard A Davis, and Sidney I Resnick. 2020. <span>“Are Extreme Value Estimation Methods Useful for Network Data?”</span> <em>Extremes</em> 23 (1): 171–95.
+</div></div><p>To let people know the license your work is under and how they should cite your blog posts you can use the <code>appendix-style</code> argument. This can be added to the YAML header of individual blog posts or you can specify a default value in <code>blog/_metadata.yml</code>. There are three options for this parameter:</p>
 <ul>
 <li><code>default</code> does some nice formatting and makes the text a bit smaller than the rest of the article;</li>
 <li><code>plain</code> matches the style of the rest of your post;</li>
@@ -285,11 +290,7 @@ cookieconsent.run({
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-wan2020network" class="csl-entry" role="listitem">
-Wan, Phyllis, Tiandong Wang, Richard A Davis, and Sidney I Resnick. 2020. <span>“Are Extreme Value Estimation Methods Useful for Network Data?”</span> <em>Extremes</em> 23 (1): 171–95.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{varty2022,
   author = {Varty, Zak},
   title = {Setting up a Quarto Blog},
   date = {2022-09-26},
@@ -721,11 +722,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2022-2025, Zak Varty.</p>
+<p>Copyright 2022-2026, Zak Varty.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">This site uses Google Analytics to to analyze our website traffic, to understand where our visitors are coming from and to improve your browsing experience on our website.</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

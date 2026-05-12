@@ -64,7 +64,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2c9916d0038fa3d26bf82aadd5066e09.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-0c61cd20e5f7e013c499484e2c2b9a97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -154,7 +154,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -218,10 +218,9 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#reading-summary" id="toc-reading-summary" class="nav-link active" data-scroll-target="#reading-summary">Reading Summary</a></li>
@@ -232,9 +231,13 @@ window.Quarto = {
   </ul></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -278,10 +281,10 @@ window.Quarto = {
 </header>
 
 
-<section id="reading-summary" class="level2">
+<section id="reading-summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
 <p><code>chen2018why</code> <span class="citation" data-cites="chen2018why">(<a href="#ref-chen2018why" role="doc-biblioref">Chen, Johansson, and Sontag 2018</a>)</span></p>
-<p><strong>Title:</strong> <em>Why is My Classifier Discriminatory? {ArXiV preprint, 2018} (9 pages).</em></p>
+<div class="no-row-height column-margin column-container"></div><p><strong>Title:</strong> <em>Why is My Classifier Discriminatory? {ArXiV preprint, 2018} (9 pages).</em></p>
 <p><strong>Authors:</strong> <em>Irene E. Chen, Fredrik D. Johansson and David Sontag. (Massachusetts Institute of Technology)</em></p>
 <p><strong>Key words:</strong> <em>Fairness</em>, <em>Data Ethics</em>, <em>Data Science</em>.</p>
 <div class="medium_right">
@@ -290,9 +293,9 @@ window.Quarto = {
 </figure>
 </div>
 <p>Fairness is often viewed as a secondary objective in machine learning, which must be bought at some cost to a model’s predictive performance. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> argue that when machine learning is applied in areas such as medicine, finance or criminal justice, any misclassification will have serious and lasting consequences for the individuals involved and therefore any such compromises are not acceptable.</p>
-<p>The authors argue that we should instead try to understand the source of the unfairness within a classifier and how this might be addressed by targeted collection of additional data. The authors decompose common loss functions into three components (which they call bias, variance and noise) and use these to advise on the collection of additional data.</p>
+<div class="no-row-height column-margin column-container"></div><p>The authors argue that we should instead try to understand the source of the unfairness within a classifier and how this might be addressed by targeted collection of additional data. The authors decompose common loss functions into three components (which they call bias, variance and noise) and use these to advise on the collection of additional data.</p>
 </section>
-<section id="notes" class="level2">
+<section id="notes" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <section id="identifying-unfairness-through-loss-decomposition" class="level3">
 <h3 class="anchored" data-anchor-id="identifying-unfairness-through-loss-decomposition">Identifying unfairness through loss-decomposition</h3>
@@ -309,27 +312,25 @@ window.Quarto = {
 <li><strong>Differences in the noise term</strong> suggest that, for some level(s) of the protected attribute, there is additional variability in <span class="math inline">\(y\)</span> that cannot be described by the measured set of predictors. Differences in the noise contribution are unrelated to the model choice or dataset size and “may only be reduced by measuring additional variables” (i.e., adding columns to the data).</li>
 </ul>
 </section>
-<section id="the-cliche-of-more-data" class="level3">
+<section id="the-cliche-of-more-data" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="the-cliche-of-more-data">The cliche of more data</h3>
 <p>Improving model performance by collecting more data is far from an original suggestion. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> provide novelty by suggesting <em>what</em> data and <em>how much</em> of it to collect, in order to improve the fairness of the resulting classifier.</p>
-<ul>
+<div class="no-row-height column-margin column-container"></div><ul>
 <li><p>When there are large difference in the variance term between subgroups, we must decide how many additional observations to make in each protected subgroup. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> model the expected prediction loss within each subgroup (<span class="math inline">\(a \in A\)</span>) as a function of sample size using a shifted inverse power-law distribution:</p>
 <p><span class="math display">\[ \bar L_{\text{pred}}(n_a) = \alpha_a n_a^{-\beta_a} + \delta_a,\]</span></p>
 <p>where <span class="math inline">\((\alpha_a, \beta_a, \delta_a)\)</span> are subgroup-specific parameters that are to be estimated. The fitted power-law functions are extrapolated in <span class="math inline">\(n_a\)</span> to identify the subgroups in which further data collection would be most impactful.</p></li>
 <li><p>When there are large differences in the error term between subgroups, we aim to collect additional predictors to describe variation in the response that is unexplained by the current predictors. <span class="citation" data-cites="chen2018why">Chen, Johansson, and Sontag (<a href="#ref-chen2018why" role="doc-biblioref">2018</a>)</span> suggest a method of identifying additional predictors. The data are clustered based on the current predictor set and discrimination is quantified within each cluster. Expert opinion can then be elicited to suggest additional predictors could further distinguish between outcomes for members of these clusters.</p></li>
 </ul>
-<p>The authors go on to demonstrate these methods on three example datasets: predicting income using demographic information, predicting mortality using the text in clinical notes, and predicting book ratings using review text.</p>
-
-
-
-</section>
-</section>
-
-<div id="quarto-appendix"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-chen2018why" class="csl-entry" role="listitem">
+<div class="no-row-height column-margin column-container"><div id="ref-chen2018why" class="csl-entry" role="listitem">
 Chen, Irene, Fredrik D Johansson, and David Sontag. 2018. <span>“Why Is My Classifier Discriminatory?”</span> In. Vol. 31. Curran Associates, Inc. <a href="https://proceedings.neurips.cc/paper/2018/hash/1f1baa5b8edac74eb4eaa329f14a0361-Abstract.html">https://proceedings.neurips.cc/paper/2018/hash/1f1baa5b8edac74eb4eaa329f14a0361-Abstract.html</a>.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+</div></div><p>The authors go on to demonstrate these methods on three example datasets: predicting income using demographic information, predicting mortality using the text in clinical notes, and predicting book ratings using review text.</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -751,11 +752,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2022-2025, Zak Varty.</p>
+<p>Copyright 2022-2026, Zak Varty.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">This site uses Google Analytics to to analyze our website traffic, to understand where our visitors are coming from and to improve your browsing experience on our website.</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

@@ -64,7 +64,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2c9916d0038fa3d26bf82aadd5066e09.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-0c61cd20e5f7e013c499484e2c2b9a97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -125,7 +125,7 @@ cookieconsent.run({
 
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -189,19 +189,22 @@ cookieconsent.run({
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#reading-summary" id="toc-reading-summary" class="nav-link active" data-scroll-target="#reading-summary">Reading Summary</a></li>
   <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -245,10 +248,12 @@ cookieconsent.run({
 </header>
 
 
-<section id="reading-summary" class="level2">
+<section id="reading-summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
 <p><code>bowers2016improve</code> <span class="citation" data-cites="bowers2016improve">(<a href="#ref-bowers2016improve" role="doc-biblioref">Bowers and Voors 2016</a>)</span></p>
-<p><strong>Title:</strong> <em>How to Improve Your Relationship with Your Future Self. {Revista de Ciencia Politica, 2016} (19 pages).</em></p>
+<div class="no-row-height column-margin column-container"><div id="ref-bowers2016improve" class="csl-entry" role="listitem">
+Bowers, Jake, and Maarten Voors. 2016. <span>“How to Improve Your Relationship with Your Future Self.”</span> <em>Revista de Ciencia Política</em> 36 (3): 829–48. <a href="https://doi.org/10.4067/S0718-090X2016000300011">https://doi.org/10.4067/S0718-090X2016000300011</a>.
+</div></div><p><strong>Title:</strong> <em>How to Improve Your Relationship with Your Future Self. {Revista de Ciencia Politica, 2016} (19 pages).</em></p>
 <p><strong>Authors:</strong> <em>Jake Bowers and Maarten Voors. (University of Illinois, Wageningen University)</em></p>
 <p><strong>Key words:</strong> <em>Reproducibility</em>, <em>Workflows</em>, <em>Data Science</em>.</p>
 <div class="medium_right">
@@ -258,7 +263,7 @@ cookieconsent.run({
 </div>
 <p>Bowers and Voors introduce seven principles to guide the reader in their move toward reproducible research. Based around their own workflows, they justify and give examples of how each of these principles can be put into practice. Although many of these principles are widely known, it can take many iterations for an individual to implement them; the authors seek to ameliorate the reader’s journey toward current best practices. The article focuses mainly on the implementation of best practices, rather than justifying them, and so is aimed at data scientists and data analysts who are aware of the need for reproducibility but don’t know where to get started.</p>
 </section>
-<section id="notes" class="level2">
+<section id="notes" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p>The seven principles introduced are:</p>
 <ol type="1">
@@ -271,7 +276,9 @@ cookieconsent.run({
 <li>Research ought to be credible communication.</li>
 </ol>
 <p>There is a large crossover between these and <span class="citation" data-cites="wilson2017good">Wilson et al. (<a href="#ref-wilson2017good" role="doc-biblioref">2017</a>)</span>.</p>
-<ul>
+<div class="no-row-height column-margin column-container"><div id="ref-wilson2017good" class="csl-entry" role="listitem">
+Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (June): 1–20. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
+</div></div><ul>
 <li><p>“In another study, 29 research teams recently collaborated on a project focusing on applied statistics to see if the same answers would emerge from re-analyses of the same dataset <span class="citation" data-cites="silberzahn2015">(<a href="#ref-silberzahn2015" role="doc-biblioref">Silberzahn and Uhlmann 2015</a>)</span>. They don’t.”</p></li>
 <li><p>Coding scales better and reproduces better than using a GUI.</p></li>
 <li><p>Scripting reduces the opportunity for mistakes and makes them faster to correct.</p></li>
@@ -280,10 +287,14 @@ cookieconsent.run({
 <li><p>Data Science is just a series of decisions. Document the options you have and why you make the choice that you do.</p></li>
 <li><p>Write your code for other people, not yourself. This holds you accountable for its quality and to writing clear code.</p></li>
 </ul>
-<blockquote class="blockquote">
+<div class="no-row-height column-margin column-container"><div id="ref-silberzahn2015" class="csl-entry" role="listitem">
+Silberzahn, Raphael, and Eric L. Uhlmann. 2015. <span>“Crowdsourced Research: Many Hands Make Tight Work.”</span> <em>Nature</em> 526 (7572): 189–91. <a href="https://doi.org/10.1038/526189a">https://doi.org/10.1038/526189a</a>.
+</div></div><div class="page-columns page-full"><blockquote class="blockquote">
 <p>Let us change our traditional attitude to the construction of programs: instead of imagining that our main task is to instruct a computer what to do, let us concentrate on explaining to human beings what we want a computer to do.</p>
 <p><span class="citation" data-cites="knuth1984literate">Knuth (<a href="#ref-knuth1984literate" role="doc-biblioref">1984</a>)</span></p>
-</blockquote>
+</blockquote><div class="no-row-height column-margin column-container"><div id="ref-knuth1984literate" class="csl-entry" role="listitem">
+Knuth, D. E. 1984. <span>“Literate Programming.”</span> <em>The Computer Journal</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+</div></div></div>
 <ul>
 <li><p>Literate programming allows mixing of code and description, helping code and report to be seen as one thing. Misses the difficulties of scaling and automation with notebooks.</p></li>
 <li><p>Write portable file paths from the root directory of your project.</p></li>
@@ -293,35 +304,20 @@ cookieconsent.run({
 <li><p>A formal example of the fork and pull-request workflow is given in this <a href="https://gist.github.com/Chaser324/ce0505fbed06b947d962">gist by Chase Pettit</a></p></li>
 <li><p>Section 6 ends with a nice quote to motivate practice:</p></li>
 </ul>
-<blockquote class="blockquote">
+<div class="page-columns page-full"><blockquote class="blockquote">
 <p>“We all learn by doing. When we create a reproducible workflow and share reproducible materials we improve both cumulation of knowledge and our methods for doing social science.”</p>
 <p><span class="citation" data-cites="freese2007 king1995replication">(<a href="#ref-freese2007" role="doc-biblioref">Freese 2007</a>; <a href="#ref-king1995replication" role="doc-biblioref">King 1995</a>)</span></p>
-</blockquote>
+</blockquote><div class="no-row-height column-margin column-container"><div id="ref-freese2007" class="csl-entry" role="listitem">
+Freese, Jeremy. 2007. <span>“Replication Standards for Quantitative Social Science: Why Not Sociology?”</span> <em>Sociological Methods &amp; Research</em> 36 (2): 153–72. <a href="https://doi.org/10.1177/0049124107306659">https://doi.org/10.1177/0049124107306659</a>.
+</div><div id="ref-king1995replication" class="csl-entry" role="listitem">
+King, Gary. 1995. <span>“Replication, Replication.”</span> <em>PS: Political Science &amp; Politics</em> 28 (3): 444452.
+</div></div></div>
 
 
 
 </section>
 
-<div id="quarto-appendix"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-bowers2016improve" class="csl-entry" role="listitem">
-Bowers, Jake, and Maarten Voors. 2016. <span>“How to Improve Your Relationship with Your Future Self.”</span> <em>Revista de Ciencia Política</em> 36 (3): 829–48. <a href="https://doi.org/10.4067/S0718-090X2016000300011">https://doi.org/10.4067/S0718-090X2016000300011</a>.
-</div>
-<div id="ref-freese2007" class="csl-entry" role="listitem">
-Freese, Jeremy. 2007. <span>“Replication Standards for Quantitative Social Science: Why Not Sociology?”</span> <em>Sociological Methods &amp; Research</em> 36 (2): 153–72. <a href="https://doi.org/10.1177/0049124107306659">https://doi.org/10.1177/0049124107306659</a>.
-</div>
-<div id="ref-king1995replication" class="csl-entry" role="listitem">
-King, Gary. 1995. <span>“Replication, Replication.”</span> <em>PS: Political Science &amp; Politics</em> 28 (3): 444452.
-</div>
-<div id="ref-knuth1984literate" class="csl-entry" role="listitem">
-Knuth, D. E. 1984. <span>“Literate Programming.”</span> <em>The Computer Journal</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
-<div id="ref-silberzahn2015" class="csl-entry" role="listitem">
-Silberzahn, Raphael, and Eric L. Uhlmann. 2015. <span>“Crowdsourced Research: Many Hands Make Tight Work.”</span> <em>Nature</em> 526 (7572): 189–91. <a href="https://doi.org/10.1038/526189a">https://doi.org/10.1038/526189a</a>.
-</div>
-<div id="ref-wilson2017good" class="csl-entry" role="listitem">
-Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (June): 1–20. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -743,11 +739,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2022-2025, Zak Varty.</p>
+<p>Copyright 2022-2026, Zak Varty.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">This site uses Google Analytics to to analyze our website traffic, to understand where our visitors are coming from and to improve your browsing experience on our website.</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

@@ -84,11 +84,12 @@ I have had the good fortune to supervise some exceptional early career researche
 
 - __Conor Murphy__ (Oct 2021 - Aug 2025) - Assessment of hazard and risk due to induced seismicity for underground CO2 Storage and oil and gas production assets. 
 
+
 ### MSc and MSci
 
-#### Academic Year 2024-25
-
 <!-- AY 2025-26 -->
+
+#### Academic Year 2025-26
 
 - __Nayu Ding__ - A comparative study of earthquake forecasting methods in California.
 - __Seojeong Hong__ - Parameter bias in ETAS models under short-term incompleteness.
@@ -97,11 +98,13 @@ I have had the good fortune to supervise some exceptional early career researche
 - __Sachit Ramakrishnan__ - Physics-informed Bayesian ETAS: a study of the 2019 Ridgecrest earthquake.
 - __Nattanicha Reanroo__ - Estimating economic time-to-recovery for Japanese earthquakes.
 - __Zhaolan Wang__ - Investigating the impact of declustering on short-term earthquake forecasting.
-
 - __Kaihua Su__ - Identifying fore-, main-, and aftershock Clusters (title TBC).
 - __Zhicheng Zhang__ - Dependence of magnitudes within fore-/main-/aftershock clusters (title TBC).
 
+
 <!-- AY 2024-25 -->
+
+#### Academic Year 2024-25
 
 - __Leyli Cowell__ - Structural causal models for tail dependencies among European currencies.
 - __Katerina Kaplunova__ - Robust extreme-value anomaly

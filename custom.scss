@@ -1,34 +1,38 @@
 /*-- scss:defaults --*/
 
 // Define Fonts
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&display=swap');
+//@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"); //title
+//@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@200;300;400;500;600;700&display=swap'); //body
+//@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200..800&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Metrophobic:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martel:wght@200;300;400;600;700;800;900&&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@200;300;400;500;600;700&display=swap');
 
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
-
-$title-font-family: 'Oswald', Georgia, serif !important;
-$body-font-family: 'Oxygen', Arial, sans-serif !important;
-$body-font-weight: 300;
-
-$font-size-base: 0.95rem;
+$font-family-base: 'Gentium Plus';
+$font-weight-base: 400;
+$font-size-base: 1.0rem;
 $code-block-font-size: 0.7rem;
 $nav-link-active-weight: 600;
+$title-font-family: 'Martel';
 
 // Define Colours
 $zv-black:  #202020;
 $zv-white:  #FAFAFA;
 $zv-light-grey: #EEEEEE;
 $zv-mid-grey: #555555;
-$zv-teal:   #0AB3C7;
+//$zv-teal:   #0AB3C7;
 $zv-fuchia: #C81E87;
-$zv-blue:   #3D52D5;
+//$zv-blue:   #3D52D5;
 $zv-orange: #E87800;
-$zv-navy:   #003E74;
+//$zv-navy:   #003E74;
+
 
 // SCSS variables
 $body-color: $zv-black;
-$primary: $zv-mid-grey;
+$primary: $zv-white;
 $link-color: $zv-orange;
 $body-bg: $zv-white;
 $code-block-bg: $zv-light-grey;
@@ -39,14 +43,12 @@ $code-color: $zv-fuchia;
 // Custom CSS styling
 
 // -- Text
-p{
-  font-family: $body-font-family;
-  font-weight: $body-font-weight;
-}
+p, li {
+  //font-family: $body-font-family, serif;
+  //font-weight: $body-font-weight;
+  max-width: 50ch}
 
-h1, h2, .navbar {
-  font-family: $title-font-family
-}
+li {max-width: 65ch !important}
 
 .navbar-brand, .nav-link{
       font-size: larger; // xx-small, x-small, small, medium, large, larger,
@@ -54,19 +56,67 @@ h1, h2, .navbar {
 }
 
 
-// -- Navbar interactive color. (Hacky - return to later.)
+// Buttons for course notes and source files
+.btn {
+  font-family: $font-family-base !important;
+}
+
+.btn-outline-primary {
+    color: $zv-black !important;
+    border-color: $zv-black!important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $zv-orange !important;
+      background-color: $zv-white !important;
+      border-color: $zv-orange !important;
+    }
+  }
+
+// Interactive colour on hover and active links and navbar
+
 .navbar-title:hover, .nav-link:hover, .nav-link.active {color: $zv-orange !important;}
 
 #navbarCollapse:hover, #navbarCollapse:active {color: $zv-orange !important;}
-
 a.dropdown-item:hover{color: $zv-orange !important}
 .aa-SubmitIcon:hover {fill: $zv-orange !important}
+
+
+// Links in text and lists should not be in primary colour but orange on hover
+p a, li a {color: $zv-black}
+p a:hover, li a:hover {color: $zv-orange}
+.listing-title a:hover {color: $zv-orange} // same for blogpost listings
+
+// Cookies pop-up match to theme -----------------------------------------------
+.cc-nb-reject, .cc-nb-okagree, .cc-nb-changep {
+  font-family: $title-font-family !important;
+  color: $zv-white !important;
+  background-color: $zv-black!important;
+  &:hover{
+    background-color: $zv-orange !important;
+  }
+}
+
+.cc-nb-changep {
+  background-color: $zv-mid-grey !important;
+}
+
+.cc-nb-title{
+  font-family: $title-font-family !important;
+}
+
+.cc-nb-text {
+  font-family: $font-family-base !important;
+}
+
+// Dropdown menu items - not currently relevant---------------------------------
 
 //.nav-menu-professional.nav-link.dropdown-toggle.show {colour: $zv-orange !important;}
 
 
+// -- Custom floats for wrapped content ----------------------------------------
 
-// -- Custom floats
 .small_right, .small_left {
   display: inline-block;
   width: 33%;
@@ -83,7 +133,6 @@ a.dropdown-item:hover{color: $zv-orange !important}
 .small_left img, .small_right img{
   max-width: 100%;
 }
-
 
 .medium_right, .medium_left {
   display: inline-block;

@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2c9916d0038fa3d26bf82aadd5066e09.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-0c61cd20e5f7e013c499484e2c2b9a97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -159,7 +159,7 @@ cookieconsent.run({
 
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -223,10 +223,9 @@ cookieconsent.run({
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#reading-summary" id="toc-reading-summary" class="nav-link active" data-scroll-target="#reading-summary">Reading Summary</a></li>
@@ -242,9 +241,13 @@ cookieconsent.run({
   </ul></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -289,19 +292,23 @@ cookieconsent.run({
 
 
 <!--Photo by <a href="https://unsplash.com/@qwitka?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Maksym Kaharlytskyi</a> on <a href="https://unsplash.com/s/photos/filing-cabinet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> -->
-<section id="reading-summary" class="level2">
+<section id="reading-summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
 <p><code>wilson2017good</code></p>
 <p><strong>Title:</strong> <em>Good Enough Practices in Scientific Computing. {PLOS Computational Biology, 2017} (20 pages).</em></p>
 <p><strong>Authors:</strong> <em>Greg Wilson, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt and Tracy K. Teal.</em></p>
 <p><strong>Key words:</strong> <em>computing</em>, <em>research skills</em>, <em>reproducibilty</em>, <em>guides</em>.</p>
 <p>In this paper by <span class="citation" data-cites="wilson2017good">Wilson et al. (<a href="#ref-wilson2017good" role="doc-biblioref">2017</a>)</span>, a collection of experienced researchers and instructors give simple ways to implement good computing practices during a research project. They do this by providing a list of concrete recommendations that every researcher can adopt, regardless of their current computational skills. This is important to help the transition toward open, documented and reproducible research. The article is aimed specifically at people who are new to computational research but also contains useful guidance for more experienced researchers.</p>
-</section>
-<section id="notes" class="level2">
+<div class="no-row-height column-margin column-container"><div id="ref-wilson2017good" class="csl-entry" role="listitem">
+Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (June): 1–20. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
+</div></div></section>
+<section id="notes" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <p>This article describes some of the best-practices in software development and how those ideas can be implemented in a reasearch project. This focus here is on implementing these approaches without requiring reseachers to learn how to use lots of peripheral technologies (for example git and LaTeX / markdown).</p>
 <p>An earlier paper “Best Practices for Scientifc Computing” <span class="citation" data-cites="wilson2014best">(<a href="#ref-wilson2014best" role="doc-biblioref">Wilson et al. 2014</a>)</span>, is aimed at those who have or would like to develop such peripheral skills.</p>
-</section>
+<div class="no-row-height column-margin column-container"><div id="ref-wilson2014best" class="csl-entry" role="listitem">
+Wilson, Greg, D. A. Aruliah, C. Titus Brown, Neil P. Chue Hong, Matt Davis, Richard T. Guy, Steven H. D. Haddock, et al. 2014. <span>“Best Practices for Scientific Computing.”</span> <em>PLOS Biology</em> 12 (January): 1–7. <a href="https://doi.org/10.1371/journal.pbio.1001745">https://doi.org/10.1371/journal.pbio.1001745</a>.
+</div></div></section>
 <section id="suggested-best-practices" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-best-practices">Suggested Best Practices</h2>
 <p>Best practices are grouped into 6 main themes.</p>
@@ -402,14 +409,7 @@ cookieconsent.run({
 </section>
 </section>
 
-<div id="quarto-appendix"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-wilson2014best" class="csl-entry" role="listitem">
-Wilson, Greg, D. A. Aruliah, C. Titus Brown, Neil P. Chue Hong, Matt Davis, Richard T. Guy, Steven H. D. Haddock, et al. 2014. <span>“Best Practices for Scientific Computing.”</span> <em>PLOS Biology</em> 12 (January): 1–7. <a href="https://doi.org/10.1371/journal.pbio.1001745">https://doi.org/10.1371/journal.pbio.1001745</a>.
-</div>
-<div id="ref-wilson2017good" class="csl-entry" role="listitem">
-Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (June): 1–20. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -831,11 +831,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2022-2025, Zak Varty.</p>
+<p>Copyright 2022-2026, Zak Varty.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">This site uses Google Analytics to to analyze our website traffic, to understand where our visitors are coming from and to improve your browsing experience on our website.</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

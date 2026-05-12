@@ -64,7 +64,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2c9916d0038fa3d26bf82aadd5066e09.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-0c61cd20e5f7e013c499484e2c2b9a97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/iconify-2.1.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -125,7 +125,7 @@ cookieconsent.run({
 
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -189,10 +189,9 @@ cookieconsent.run({
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
    
   <ul>
   <li><a href="#reading-summary" id="toc-reading-summary" class="nav-link active" data-scroll-target="#reading-summary">Reading Summary</a></li>
@@ -205,9 +204,13 @@ cookieconsent.run({
   </ul></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -248,10 +251,12 @@ cookieconsent.run({
 </header>
 
 
-<section id="reading-summary" class="level2">
+<section id="reading-summary" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="reading-summary">Reading Summary</h2>
 <p><code>wilkinson2020reality</code> <span class="citation" data-cites="wilkinson2020reality">(<a href="#ref-wilkinson2020reality" role="doc-biblioref">Wilkinson et al. 2020</a>)</span></p>
-<p><strong>Title:</strong> <em>Time to reality check the promises of machine learning-powered precision medicine. {Lancet Digital Health, 2020} (e677-e680).</em></p>
+<div class="no-row-height column-margin column-container"><div id="ref-wilkinson2020reality" class="csl-entry" role="listitem">
+Wilkinson, Jack, Kellyn F Arnold, Eleanor J Murray, Maarten van Smeden, Kareem Carr, Rachel Sippy, Marc de Kamps, et al. 2020. <span>“Time to Reality Check the Promises of Machine Learning-Powered Precision Medicine.”</span> <em>The Lancet Digital Health</em> 2 (12): e677–80.
+</div></div><p><strong>Title:</strong> <em>Time to reality check the promises of machine learning-powered precision medicine. {Lancet Digital Health, 2020} (e677-e680).</em></p>
 <p><strong>Authors:</strong> <em>Jack Wilkinson, Kellyn F Arnold, Eleanor J Murray, Maarten van Smeden, Kareem Carr, Rachel Sippy, Marc de Kamps, Andrew Beam, Stefan Konigorski, Christoph Lippert, Mark S Gilthorpe and Peter W G Tennan.</em></p>
 <p><strong>Key words:</strong> <em>machine learning applications</em>, <em>personalised medicine</em>.</p>
 <div class="medium_right">
@@ -262,7 +267,7 @@ cookieconsent.run({
 <p>In this opinion piece, a large group of authors from specialisms across health data science argue that algorithmic complexity is not the limiting factor to achieving personalised medical care. They support this position by presenting arguments against the assumptions that machine learning will provide automated diagnoses with unprecedented accuracy and can identity the best therapy at an individual level.</p>
 <p>It is important that medics, researchers and funding bodies are aware of the limitations of ML for individualised medicine, so that research efforts and funding are directed towards problems that ML is best able to address. As such, this article is written to be accessible to a wide range of people working in healthcare, particularly those who might not have an extensive background in mathematical or statistical modelling.</p>
 </section>
-<section id="notes" class="level2">
+<section id="notes" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <section id="claim-1-machine-learning-will-enable-automated-diagnoses-with-unprecedented-accuracy" class="level3">
 <h3 class="anchored" data-anchor-id="claim-1-machine-learning-will-enable-automated-diagnoses-with-unprecedented-accuracy">Claim 1: machine learning will enable automated diagnoses with unprecedented accuracy</h3>
@@ -320,23 +325,18 @@ cookieconsent.run({
 <p>The authors echo existing calls for greater investment into confirmatory studies, rather than exploratory ones, and warn the reader of the dangers around multiple testing and underpowered study designs.</p>
 <p>The paper concludes by suggesting stratified medicine as a more meaningful goal, which is certainly more aligned with the conditional probabilities that machine learning models are actually designed to handle.</p>
 </section>
-<section id="further-reading" class="level3">
+<section id="further-reading" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="further-reading">Further reading</h3>
 <p>“Why representativeness should be avoided” by <span class="citation" data-cites="rothman2013representativeness">Rothman, Gallacher, and Hatch (<a href="#ref-rothman2013representativeness" role="doc-biblioref">2013</a>)</span> might be interesting to include when introducing propensity scores and inverse probability of treatment weightings.</p>
 
 
-
-</section>
-</section>
-
-<div id="quarto-appendix"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-rothman2013representativeness" class="csl-entry" role="listitem">
+<div class="no-row-height column-margin column-container"><div id="ref-rothman2013representativeness" class="csl-entry" role="listitem">
 Rothman, Kenneth J, John EJ Gallacher, and Elizabeth E Hatch. 2013. <span>“Why Representativeness Should Be Avoided.”</span> <em>International Journal of Epidemiology</em> 42 (4): 1012–14.
-</div>
-<div id="ref-wilkinson2020reality" class="csl-entry" role="listitem">
-Wilkinson, Jack, Kellyn F Arnold, Eleanor J Murray, Maarten van Smeden, Kareem Carr, Rachel Sippy, Marc de Kamps, et al. 2020. <span>“Time to Reality Check the Promises of Machine Learning-Powered Precision Medicine.”</span> <em>The Lancet Digital Health</em> 2 (12): e677–80.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+</div></div>
+</section>
+</section>
+
+<div id="quarto-appendix"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -758,11 +758,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Copyright 2022-2025, Zak Varty.</p>
+<p>Copyright 2022-2026, Zak Varty.</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="cookie-consent-footer"><a href="#" id="open_preferences_center">This site uses Google Analytics to to analyze our website traffic, to understand where our visitors are coming from and to improve your browsing experience on our website.</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
